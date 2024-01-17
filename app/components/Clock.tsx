@@ -9,8 +9,11 @@ const Clock = () => {
     useEffect(() => {
         const updateClock = () => {
             const now = new Date();
-            const hours = now.getHours().toString();
-            const minutes = now.getMinutes().toString();
+            let hours = now.getHours().toString();
+            let minutes = now.getMinutes().toString();
+            if (hours.length < 2) hours = '0' + hours;
+            if (minutes.length < 2) minutes = '0' + minutes;
+            
             setTime(`${hours}:${minutes}`);
         };
 
