@@ -29,3 +29,13 @@ body {
 canvas {
   background-color: #131313;
 }
+
+.clock {
+  position: absolute;
+  left: 50%;
+  font-size: 68px;
+  color: white;
+  text-align: center;
+  transform: translateX(-50%);
+  padding-top: 20px;
+}
