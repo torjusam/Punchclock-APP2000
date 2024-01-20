@@ -1,5 +1,4 @@
-//Forfatter: Torjus A.M
-//denne filen definerer typene, og hva slags datatyper hvert element burde akseptere 
+//Author: Torjus A.M
 export type Employee = {
     id: number;
     first_name: string;

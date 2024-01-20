@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import Clock from './components/Clock'
-import AnimatedBackground from './components/AnimatedBackground'
+import Clock from './components/clock'
+import AnimatedBackground from './components/animatedBackground'
 
 const inter = Inter({ subsets: ['latin'] })
 

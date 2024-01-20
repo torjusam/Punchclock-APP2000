@@ -1,8 +1,13 @@
+//Author: Torjus A.M
+import React from "react";
 
+export function CheckButton(){
+    function handleClick(){
+        
+    }
 
-<button className={buttonClass} onClick={(e) => {
-                e.stopPropagation(); // Prevent onSelect when clicking the button
-                if (isSelected) { onClockInOut(employee.id); }
-            }} disabled={!isSelected}>
-                {employee.isClockedIn ? 'Clock Out' : 'Clock In'}
-            </button>
+};
+
+export function PersonalButton(){
+
+}
