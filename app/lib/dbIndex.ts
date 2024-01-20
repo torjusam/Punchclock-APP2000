@@ -1,7 +1,6 @@
 //Forfatter: Torjus A.M
-//data access klasse: alle database-interaksjoner går gjennom denne klassen.
+//data access class for connecting to db and export some queries with simplified parameters for ease of use elsewhere
 import { sql } from '@vercel/postgres';
-import { unstable_noStore as noStore } from 'next/cache';
 
 import {
   Employee,
@@ -12,7 +11,6 @@ import {
 } from './definitions';
 
 export async function fetchEmployeesWithSetShifts(): Promise<EmployeeShiftInfo[]> {
-  noStore();
   try {
     const employeeWithSetShifts = sql`
       SELECT e.First_name, e.Surname, s.Start, s.End
@@ -28,4 +26,3 @@ export async function fetchEmployeesWithSetShifts(): Promise<EmployeeShiftInfo[]
     throw new Error("Failed to fetch employees with set shifts");
   }
 }
-

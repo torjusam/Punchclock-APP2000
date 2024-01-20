@@ -19,8 +19,6 @@ interface Particle {
     opacity: number;
   }
 
-
-
 const AnimatedBackground = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
