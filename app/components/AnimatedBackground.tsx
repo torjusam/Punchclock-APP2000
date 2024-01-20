@@ -1,5 +1,4 @@
 // Author: Thomas
-
 'use client'
 import React, { useRef, useEffect } from 'react';
 
@@ -68,20 +67,6 @@ const AnimatedBackground = () => {
             context.stroke();
     }; 
 
-    /*
-        // CODE FOR CLOCK
-        const time = () => {
-            const now = new Date();
-             
-            let hours = now.getHours().toString();
-            let minutes = now.getMinutes().toString();
-
-            if (hours.length < 2) hours = '0' + hours;
-            if (minutes.length < 2) minutes = '0' + minutes;
-            
-            return `${hours}:${minutes}`;
-        }
-        */
         // Matches canvas to window size
         const resize = () => {
             canvas.width = window.innerWidth;
@@ -177,7 +162,7 @@ const AnimatedBackground = () => {
     }, 
 []);
 
-    return <canvas ref={canvasRef} style={{ position: 'absolute', width: '100%', height: '100%' }} />;
+    return <canvas ref={canvasRef} style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1 }} />;
 };
 
 export default AnimatedBackground;

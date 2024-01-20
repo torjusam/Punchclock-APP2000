@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import Clock from './components/Clock'
+import AnimatedBackground from './components/AnimatedBackground'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +18,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {/*<AnimatedBackground />*/}
+        <Clock />
+        <div className="content-container">{children}</div>
+      </body>
     </html>
   )
 }
