@@ -1,5 +1,5 @@
 import React from 'react';
-import './EmployeeList.css';
+import '../lib/styles/employeeList.css'
 
 const EmployeeListItem = () => {
     return (

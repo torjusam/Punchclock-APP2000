@@ -16,7 +16,8 @@ export default async function handler(
         s.Start,s.End
       FROM employee AS e
       JOIN shift_employee AS se ON e.id = se.Employee_id
-      JOIN shift AS s ON s.id = se.Shift_id;
+      JOIN shift AS s ON s.id = se.Shift_id
+      WHERE s.Start > NOW();
   `);
     const data: EmployeeShiftInfo[] = result.rows;
     res.status(200).json({ data });

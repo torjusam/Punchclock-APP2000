@@ -6,7 +6,7 @@ import { formatDateTime } from '../lib/dateUtils';
 
 const EmployeeShiftTable: React.FC = () => {
   const [employeeShiftInfo, setEmployeeShiftInfo] = useState<EmployeeShiftInfo[]>([]);
-  //fetches the data from the query in the api folder
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -26,15 +26,9 @@ const EmployeeShiftTable: React.FC = () => {
     fetchData();
   }, []); // empty dependency array ensures the effect runs only once after the initial render
 
-  // filter employees where curdate is lower than the shiftStart
-  const filteredEmployees = employeeShiftInfo.filter(
-    (employee) => new Date() < new Date(employee.shiftStart)
-  );
-  console.log(filteredEmployees);
-
   return (
     <div className="EmployeeShiftTable">
-      {filteredEmployees.length > 0 ? (
+      {employeeShiftInfo.length > 0 ? (
         <table>
           <thead>
             <tr>
@@ -45,12 +39,12 @@ const EmployeeShiftTable: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredEmployees.map((employee, index) => (
+            {employeeShiftInfo.map((employee, index) => (
               <tr key={index}>
                 <td>{employee.firstName}</td>
                 <td>{employee.lastName}</td>
-                <td>{formatDateTime(new Date(employee.shiftStart))}</td>
-                <td>{formatDateTime(new Date(employee.shiftEnd))}</td>
+                <td>{formatDateTime(employee.shiftStart)}</td>
+                <td>{formatDateTime(employee.shiftEnd)}</td>
               </tr>
             ))}
           </tbody>
