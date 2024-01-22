@@ -1,0 +1,4 @@
+//må bruke babel compiler siden SWC ikke går(?)
+{
+    "presets": ["next/babel"]
+  }
