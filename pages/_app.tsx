@@ -1,23 +1,29 @@
-//Author Torjus A.M
-import type { ReactElement, ReactNode } from 'react'
-import type { NextPage } from 'next'
-import type { AppProps } from 'next/app'
-import RootLayout from '../components/layout'
+//Author: Torjus A.M
+//App component to initialize pages. Define shared layout, global.css, inject additional data
+//App does not support Next.js Data Fetching methods like getStaticProps or getServerSideProps
+//getInitialProps or getServerSideProps for commmon data
+import type { AppProps } from 'next/app';
+import Clock from '../components/clock';
 import './globals.css';
+import AnimatedBackground from '../components/animatedBackground';
 
-export type NextPageWithLayout = NextPage<{}, {}> & {
-  getLayout: (page: ReactElement) => ReactNode
-}
+//parameters are passed automatically by Next
+const App = ({ Component, pageProps }: AppProps) => {
+  return (
+    <div>
+      <nav>
+        <ul>
+            <Clock />
+        </ul>
+      </nav>
+      <AnimatedBackground />
 
-type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout
-}
-
-export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
-  const getLayout = (page: ReactElement) => (
-    <RootLayout>{page}</RootLayout>
+      {/* render main component for the current page with props */}
+      <Component {...pageProps} />
+    </div>
   );
+};
 
-  return getLayout(<Component {...pageProps} />);
-}
+export default App;
+
 
