@@ -1,6 +1,4 @@
-// Author: Thomas
-
-'use client'
+//Author: Thomas H
 import React, { useState, useEffect} from 'react';
 
 const Clock = () => {

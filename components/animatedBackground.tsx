@@ -1,6 +1,4 @@
-// Author: Thomas
-
-'use client'
+// Author: Thomas H
 import React, { useRef, useEffect } from 'react';
 
 interface Dot {
@@ -18,8 +16,6 @@ interface Particle {
     radius: number;
     opacity: number;
   }
-
-
 
 const AnimatedBackground = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -70,20 +66,6 @@ const AnimatedBackground = () => {
             context.stroke();
     }; 
 
-    /*
-        // CODE FOR CLOCK
-        const time = () => {
-            const now = new Date();
-             
-            let hours = now.getHours().toString();
-            let minutes = now.getMinutes().toString();
-
-            if (hours.length < 2) hours = '0' + hours;
-            if (minutes.length < 2) minutes = '0' + minutes;
-            
-            return `${hours}:${minutes}`;
-        }
-        */
         // Matches canvas to window size
         const resize = () => {
             canvas.width = window.innerWidth;
@@ -150,20 +132,6 @@ const AnimatedBackground = () => {
       // Resetting so it doesn't affect the clock
       context.shadowBlur = 0;
 
-      /*
-      // Get current time
-      const currentTime = time();
-      
-
-      // Styling clock
-      context.font = '68px Arial';
-      context.fillStyle = 'white';
-      context.textAlign = 'center';
-      context.textBaseline = 'top';
-      
-      const paddingTop = 80;
-      context.fillText(currentTime, canvas.width / 2, paddingTop / 2);
-      */
       requestAnimationFrame(update); // call on browser API to call for update on frame
     };
 
@@ -179,7 +147,7 @@ const AnimatedBackground = () => {
     }, 
 []);
 
-    return <canvas ref={canvasRef} style={{ position: 'absolute', width: '100%', height: '100%' }} />;
+    return <canvas ref={canvasRef} style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1 }} />;
 };
 
 export default AnimatedBackground;
