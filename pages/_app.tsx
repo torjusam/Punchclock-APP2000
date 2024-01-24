@@ -6,6 +6,8 @@ import type { AppProps } from 'next/app';
 import Clock from '../components/clock';
 import './globals.css';
 import AnimatedBackground from '../components/animatedBackground';
+import EmployeeData from '../components/employeeListData';
+import '../components/employeeListData.module.css';
 
 //parameters are passed automatically by Next
 const App = ({ Component, pageProps }: AppProps) => {
@@ -16,6 +18,7 @@ const App = ({ Component, pageProps }: AppProps) => {
             <Clock />
         </ul>
       </nav>
+      <EmployeeData employeeShiftInfo={[]} />
       <AnimatedBackground />
 
       {/* render main component for the current page with props */}

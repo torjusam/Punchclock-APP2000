@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { EmployeeShiftInfo } from '../lib/definitions';
 import { formatDateTime } from '../lib/dateUtils';
+import EmployeeListDisplay from '../components/employeeListData';
 
 const EmployeeShiftTable: React.FC = () => {
   const [employeeShiftInfo, setEmployeeShiftInfo] = useState<EmployeeShiftInfo[]>([]);
@@ -29,26 +30,7 @@ const EmployeeShiftTable: React.FC = () => {
   return (
     <div className="EmployeeShiftTable">
       {employeeShiftInfo.length > 0 ? (
-        <table>
-          <thead>
-            <tr>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Start of shift</th>
-              <th>End of shift</th>
-            </tr>
-          </thead>
-          <tbody>
-            {employeeShiftInfo.map((employee, index) => (
-              <tr key={index}>
-                <td>{employee.firstName}</td>
-                <td>{employee.lastName}</td>
-                <td>{formatDateTime(employee.shiftStart)}</td>
-                <td>{formatDateTime(employee.shiftEnd)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+       <EmployeeListDisplay employeeShiftInfo={employeeShiftInfo} />
       ) : (
         <p>No employees found.</p>
       )}
