@@ -28,8 +28,6 @@ body {
 
 canvas {
   background-color: #131313;
-  top: 0;
-  left: 0;
   z-index: 1;
 }
 
@@ -44,21 +42,15 @@ canvas {
   z-index: 2;
 }
 
-.employeeListContainer123123 {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: left;
+.EmployeeShiftTable {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 60%;
-  height: 65%;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid #ffffff;
-  border-radius: 10px;
-  padding: 20px;
-  overflow-y: auto;
-  z-index: 3; /* Above the canvas */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 85%;
+  height: 100%;
 }

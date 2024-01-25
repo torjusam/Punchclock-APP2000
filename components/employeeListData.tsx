@@ -1,4 +1,5 @@
 // Author: Thomas
+// MÅ OPPDATERES MED SELECT METODE OG STATUS FOR CLOCKED IN ELLER IKKE
 import React from 'react';
 import styles from './employeeListData.module.css';
 import { EmployeeShiftInfo } from '../lib/definitions';
@@ -10,6 +11,7 @@ interface EmployeeDataProps {
 
 interface EmployeeListDisplayProps {
   employeeShiftInfo: EmployeeShiftInfo[];
+  onSelectEmployee: (id: number) => void;
 }
 
 const EmployeeData: React.FC<EmployeeDataProps> = ({ employee }) => {
@@ -25,14 +27,17 @@ const EmployeeData: React.FC<EmployeeDataProps> = ({ employee }) => {
   );
 };
 
-const EmployeeListDisplay: React.FC<EmployeeListDisplayProps> = ({employeeShiftInfo}) => {
+const EmployeeListDisplay: React.FC<EmployeeListDisplayProps> = ({employeeShiftInfo, onSelectEmployee}) => {
   return (
     <div className={styles.employeeList}>
-      {employeeShiftInfo.map((employee, index) => (
-        <EmployeeData
-        key={index}
-        employee={employee}
-        />
+      {employeeShiftInfo.map(employee => ( 
+        <div
+         key={employee.id}
+         className={styles.employeeItem}
+         onClick={() => onSelectEmployee(employee.id)}
+        >
+        <EmployeeData employee={employee}/>
+        </div> 
         ))}
     </div>
   );
