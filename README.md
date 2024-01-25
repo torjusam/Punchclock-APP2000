@@ -2,6 +2,13 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+```bash
+npm install
+npm install npx
+npm i @vercel/postgres
+##latest version of Vercel CLI (idk if needed)
+npm i -g vercel@latest
+```
 First, run the development server:
 
 ```bash

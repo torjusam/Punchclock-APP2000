@@ -1,17 +1,18 @@
 // Author: Torjus A.M
-'use client';
 import React, { useEffect, useState } from 'react';
 import { EmployeeShiftInfo } from '../lib/definitions';
 import { formatDateTime } from '../lib/dateUtils';
 import EmployeeListDisplay from '../components/employeeListData';
 
+//component to fetch and render result of api call
 const EmployeeShiftTable: React.FC = () => {
   const [employeeShiftInfo, setEmployeeShiftInfo] = useState<EmployeeShiftInfo[]>([]);
   
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/getEmployeesWithSetShifts');
+        //HTTP GET request
+        const response = await fetch('/api/getEsWithSetShifts');
         if (response.ok) {
           const result = await response.json();
           console.log(result);
@@ -26,11 +27,12 @@ const EmployeeShiftTable: React.FC = () => {
 
     fetchData();
   }, []); // empty dependency array ensures the effect runs only once after the initial render
-
+  
+  //render component based on if there are any employees
   return (
     <div className="EmployeeShiftTable">
       {employeeShiftInfo.length > 0 ? (
-       <EmployeeListDisplay employeeShiftInfo={employeeShiftInfo} />
+        <EmployeeListDisplay employeeShiftInfo={employeeShiftInfo} />
       ) : (
         <p>No employees found.</p>
       )}
