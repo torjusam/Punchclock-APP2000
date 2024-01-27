@@ -1,6 +1,7 @@
 //Author Torjus A.M
 import type { NextPage } from 'next'
+import EmployeeShiftTable from '../components/employeeTable/employeesWithSetShiftsRows';
 
 export default function Page() {
-  return <h1>Hello, Next.js!</h1>
+  return <EmployeeShiftTable />
 }

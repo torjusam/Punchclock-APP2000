@@ -1,4 +1,4 @@
-//Forfatter: Torjus A.M
+//Author: Torjus A.M
 //data access class, pool for connecting to db
 import pg from 'pg';
 import {QueryResult} from 'pg'

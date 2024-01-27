@@ -3,6 +3,7 @@ export type Employee = {
     id: number;
     first_name: string;
     surname: string;
+    isClockedIn: Boolean;
 }
 
 export type Shift = {
@@ -26,8 +27,7 @@ export type Shift_employee = {
 }
 
 export type EmployeeShiftInfo = {
-    firstName: string;
-    lastName: string;
+    employee: Employee;
     shiftStart: Date;
     shiftEnd: Date;
 }

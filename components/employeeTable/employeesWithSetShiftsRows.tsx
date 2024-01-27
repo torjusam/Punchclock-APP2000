@@ -1,10 +1,8 @@
-// Author: Torjus A.M
+// Author: Torjus A.M, Thomas H
 import React, { useEffect, useState } from 'react';
-import { EmployeeShiftInfo } from '../lib/definitions';
-import { formatDateTime } from '../lib/dateUtils';
-import EmployeeListDisplay from '../components/employeeListData';
-import ClockInOutButton from '../components/ClockInOutButton';
-
+import { EmployeeShiftInfo } from '../../lib/definitions';
+import EmployeeListDisplay from './employeeListData';
+import ClockInOutButton from '../ClockInOutButton';
 
 //component to fetch and render result of api call
 const EmployeeShiftTable: React.FC = () => {
@@ -35,7 +33,7 @@ const EmployeeShiftTable: React.FC = () => {
         console.error('Error fetching data', error);
       }
     };
-
+  
     fetchData();
   }, []);
   
@@ -53,11 +51,10 @@ const EmployeeShiftTable: React.FC = () => {
 
     setIsClockedIn(!clockedIn);
   }
-
-  // temporary funksjon, skal stå "selectedEmployeeId" hvor "showClockButton" er,
+  
+  //temporary funksjon, skal stå "selectedEmployeeId" hvor "showClockButton" er,
   const showClockButton = true;
   
-  // empty dependency array ensures the effect runs only once after the initial render
     console.log("Employee Shift Info:", employeeShiftInfo);
   //render component based on if there are any employees
   return (
