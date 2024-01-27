@@ -27,7 +27,14 @@ export type Shift_employee = {
 }
 
 export type EmployeeShiftInfo = {
-    employee: Employee;
+    first_name: string;
+    surname: string;
     shiftStart: Date;
     shiftEnd: Date;
+}
+
+export type EmployeeCheckInInfo = {
+    id: number;
+    employee_id: Employee;
+    checkIn: Date;
 }
