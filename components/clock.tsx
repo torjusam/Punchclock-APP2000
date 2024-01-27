@@ -1,4 +1,4 @@
-//Author: Thomas H
+// Author: Thomas H
 import React, { useState, useEffect} from 'react';
 
 const Clock = () => {

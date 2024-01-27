@@ -1,8 +1,8 @@
 // Author: Thomas
 // MÅ OPPDATERES MED SELECT METODE OG STATUS FOR CLOCKED IN ELLER IKKE
 import React from 'react';
-import styles from './employeeListData.module.css';
-import { EmployeeShiftInfo } from '../lib/definitions';
+import styles from '../lib/styles/employeeListData.module.css';
+import { EmployeeShiftInfo } from '../../lib/definitions';
 
 /* Using props from EmployeeShiftInfo */
 interface EmployeeDataProps {
