@@ -1,10 +1,9 @@
-// Author: Thomas
+// Author: Thomas, Torjus A.M
 // MÅ OPPDATERES MED SELECT METODE OG STATUS FOR CLOCKED IN ELLER IKKE
+// employeeTable.tsx
 import React from 'react';
-import styles from '../lib/styles/employeeListData.module.css';
 import { EmployeeShiftInfo } from '../../lib/definitions';
 
-/* Using props from EmployeeShiftInfo */
 interface EmployeeDataProps {
   employee: EmployeeShiftInfo;
 }
@@ -12,33 +11,28 @@ interface EmployeeDataProps {
 interface EmployeeListDisplayProps {
   employeeShiftInfo: EmployeeShiftInfo[];
   onSelectEmployee: (id: number) => void;
+  RowComponent: React.FC<{ employee: EmployeeShiftInfo; onSelectEmployee: (id: number) => void }>;
 }
 
-const EmployeeData: React.FC<EmployeeDataProps> = ({ employee }) => {
+export const EmployeeData: React.FC<EmployeeDataProps> = ({ employee }) => {
   return (
-    <div className={styles.employeeListContainer}>
-      <div className={styles.profileContainer}>
-        <div className={styles.profilePicture}></div>
+    <div className="employeeListContainer">
+      <div className="profileContainer">
+        <div className="profilePicture"></div>
       </div>
-      <div className={styles.infoContainer}>
-        <span className={styles.employeeName}>{employee.firstName} {employee.lastName}</span>
+      <div className="infoContainer">
+        <span className="employeeName">{employee.employee.first_name} {employee.employee.surname}</span>
       </div>
-    </div>    
+    </div>
   );
 };
 
-const EmployeeListDisplay: React.FC<EmployeeListDisplayProps> = ({employeeShiftInfo, onSelectEmployee}) => {
+const EmployeeListDisplay: React.FC<EmployeeListDisplayProps> = ({ employeeShiftInfo, onSelectEmployee, RowComponent }) => {
   return (
-    <div className={styles.employeeList}>
-      {employeeShiftInfo.map(employee => ( 
-        <div
-         key={employee.id}
-         className={styles.employeeItem}
-         onClick={() => onSelectEmployee(employee.id)}
-        >
-        <EmployeeData employee={employee}/>
-        </div> 
-        ))}
+    <div className="employeeList">
+      {employeeShiftInfo.map(employee => (
+        <RowComponent key={employee.employee.id} employee={employee} onSelectEmployee={onSelectEmployee} />
+      ))}
     </div>
   );
 };
