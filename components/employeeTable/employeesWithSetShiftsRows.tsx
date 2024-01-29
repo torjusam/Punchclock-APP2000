@@ -8,6 +8,7 @@ import {
   getEmployeesWithUpcomingShifts,
   getPresentEmployees,
   getNotPresentEmployees,
+  getEmployeeById,
 } from '../../lib/employeeStorage';
 
 
@@ -31,7 +32,13 @@ const EmployeeShiftRows: React.FC = () => {
 
   const handleSelectedEmployee = (id: number) => {
     setSelectedEmployeeId(id);
-    // trenger ny funksjon - gammel: setIsClockedIn(employeeShiftInfo.some(emp => emp.id === id && emp.isClockedIn));
+
+    const selectedEmployee = getEmployeeById(id);
+
+    if (selectedEmployee) {
+      setIsClockedIn(!!selectedEmployee.isClockedIn);
+    }
+
   };
 
   const clockInOut = (employeeId: number, clockedIn: boolean) => {
@@ -39,9 +46,7 @@ const EmployeeShiftRows: React.FC = () => {
     setIsClockedIn(!clockedIn);
   };
 
-  const showClockButton = true;
-
-
+  // const showClockButton = true;
 
   return (
     <div className="EmployeeShiftTable">
@@ -59,7 +64,7 @@ const EmployeeShiftRows: React.FC = () => {
             employeeShiftInfo={notPresentEmployees}
             onSelectEmployee={handleSelectedEmployee}
           />
-          {showClockButton && selectedEmployeeId && (
+          {selectedEmployeeId && (
             <ClockInOutButton
               employeeId={selectedEmployeeId}
               onClockInOut={clockInOut}
