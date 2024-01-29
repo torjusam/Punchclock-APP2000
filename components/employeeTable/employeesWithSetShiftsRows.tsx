@@ -1,19 +1,19 @@
 //Author: Torjus A.M, Thomas H
 import React, { useEffect, useState } from 'react';
-import { EmployeeShiftInfo } from '../../lib/definitions';
+import { Employee  } from '../../lib/definitions';
 import EmployeeListDisplay from './employeeTable';
 import ClockInOutButton from '../ClockInOutButton';
-import DataAccess from '../../lib/dataAcess';
+import { fetchEmployeesWithSetShiftsData } from '../../lib/dataAcess';
 
 const EmployeeShiftRows: React.FC = () => {
-  const [employeeShiftInfo, setEmployeeShiftInfo] = useState<EmployeeShiftInfo[]>([]);
+  const [employeeShiftInfo, setEmployeeShiftInfo] = useState< Employee []>([]);
   const [selectedEmployeeId, setSelectedEmployeeId] = useState<number | null>(null);
   const [isClockedIn, setIsClockedIn] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchData = async () => {
       //kaller metoden for å hente og filtrere dataen
-      const result = await DataAccess.fetchEsWithSetShiftsData();
+      const result = await fetchEmployeesWithSetShiftsData();
       setEmployeeShiftInfo(result);
     };
 
@@ -22,7 +22,7 @@ const EmployeeShiftRows: React.FC = () => {
 
   const handleSelectedEmployee = (id: number) => {
     setSelectedEmployeeId(id);
-    setIsClockedIn(employeeShiftInfo.some(emp => emp.employee.id === id && emp.employee.isClockedIn));
+    setIsClockedIn(employeeShiftInfo.some(emp => emp.id === id && emp.isClockedIn));
   };
 
   const clockInOut = (employeeId: number, clockedIn: boolean) => {
