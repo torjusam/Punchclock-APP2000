@@ -3,26 +3,35 @@ import React, { useEffect, useState } from 'react';
 import { Employee  } from '../../lib/definitions';
 import EmployeeListDisplay from './employeeTable';
 import ClockInOutButton from '../ClockInOutButton';
-import { fetchEmployeesWithSetShiftsData } from '../../lib/dataAcess';
+import {
+  initializeEmployeeList,
+  getEmployeesWithUpcomingShifts,
+  getPresentEmployees,
+  getNotPresentEmployees,
+} from '../../lib/employeeStorage';
+
 
 const EmployeeShiftRows: React.FC = () => {
-  const [employeeShiftInfo, setEmployeeShiftInfo] = useState< Employee []>([]);
+  const [scheduledEmployees, setScheduledEmployees] = useState<Employee[]>([]);
+  const [presentEmployees, setPresentEmployees] = useState<Employee[]>([]);
+  const [notPresentEmployees, setNotPresentEmployees] = useState<Employee[]>([]);
   const [selectedEmployeeId, setSelectedEmployeeId] = useState<number | null>(null);
   const [isClockedIn, setIsClockedIn] = useState<boolean>(false);
 
   useEffect(() => {
-    const fetchData = async () => {
-      //kaller metoden for å hente og filtrere dataen
-      const result = await fetchEmployeesWithSetShiftsData();
-      setEmployeeShiftInfo(result);
+    const initEmployeeList = async () => {
+      await initializeEmployeeList();
+      setScheduledEmployees(getEmployeesWithUpcomingShifts());
+      setPresentEmployees(getPresentEmployees());
+      setNotPresentEmployees(getNotPresentEmployees());
     };
 
-    fetchData();
+    initEmployeeList();
   }, []);
 
   const handleSelectedEmployee = (id: number) => {
     setSelectedEmployeeId(id);
-    setIsClockedIn(employeeShiftInfo.some(emp => emp.id === id && emp.isClockedIn));
+    // trenger ny funksjon - gammel: setIsClockedIn(employeeShiftInfo.some(emp => emp.id === id && emp.isClockedIn));
   };
 
   const clockInOut = (employeeId: number, clockedIn: boolean) => {
@@ -32,17 +41,24 @@ const EmployeeShiftRows: React.FC = () => {
 
   const showClockButton = true;
 
-  console.log("Employee Shift Info:", employeeShiftInfo);
+
 
   return (
     <div className="EmployeeShiftTable">
-      {employeeShiftInfo && employeeShiftInfo.length > 0 ? (
+      {scheduledEmployees.length > 0 || presentEmployees.length > 0 || notPresentEmployees.length > 0  ? (
         <>
           <EmployeeListDisplay
-            employeeShiftInfo={employeeShiftInfo}
+            employeeShiftInfo={scheduledEmployees}
             onSelectEmployee={handleSelectedEmployee}
           />
-
+          <EmployeeListDisplay 
+            employeeShiftInfo={presentEmployees}
+            onSelectEmployee={handleSelectedEmployee}
+          />
+          <EmployeeListDisplay 
+            employeeShiftInfo={notPresentEmployees}
+            onSelectEmployee={handleSelectedEmployee}
+          />
           {showClockButton && selectedEmployeeId && (
             <ClockInOutButton
               employeeId={selectedEmployeeId}

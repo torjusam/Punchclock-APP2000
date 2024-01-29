@@ -3,6 +3,8 @@
 // employeeTable.tsx
 import React from 'react';
 import { Employee } from '../../lib/definitions';
+import { initializeEmployeeList, getEmployeesWithUpcomingShifts } from '../../lib/employeeStorage';
+
 
 interface EmployeeDataProps {
   employee: Employee;
@@ -29,20 +31,15 @@ interface EmployeeListDisplayProps {
 }
 
 const EmployeeListDisplay: React.FC<EmployeeListDisplayProps> = ({ employeeShiftInfo, onSelectEmployee }) => {
-  const scheduledWorkers = employeeShiftInfo.filter(employee => employee.shiftStart);
-  const nonScheduledWorkers = employeeShiftInfo.filter(employee => !employee.shiftStart);
   return (
-    <div>
-      <div className="scheduledWorkersList">
-        {scheduledWorkers.map(employee => (
-          <EmployeeData key={employee.id} employee={employee} onSelect={() => onSelectEmployee(employee.id)} />
-        ))}
-    </div>
-      <div className="nonScheduledWorkers">
-        {nonScheduledWorkers.map(employee => (
-          <EmployeeData key={employee.id} employee={employee} onSelect={() => onSelectEmployee(employee.id)} />
-        ))}
-      </div>
+    <div className="EmployeeList">
+      {employeeShiftInfo.map(employee => (
+        <EmployeeData
+          key={employee.id}
+          employee={employee}
+          onSelect={() => onSelectEmployee(employee.id)}
+        />
+      ))}
     </div>
   );
 };
