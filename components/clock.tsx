@@ -1,5 +1,5 @@
 // Author: Thomas H
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Clock = () => {
     const [time, setTime] = useState('');
@@ -11,7 +11,7 @@ const Clock = () => {
             let minutes = now.getMinutes().toString();
             if (hours.length < 2) hours = '0' + hours;
             if (minutes.length < 2) minutes = '0' + minutes;
-            
+
             setTime(`${hours}:${minutes}`);
         };
 

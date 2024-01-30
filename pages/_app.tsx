@@ -11,7 +11,7 @@ import AnimatedBackground from '../components/animatedBackground';
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <div>
-            <nav className="flex items-center">
+      <nav className="flex items-center">
           <Clock />
       </nav>
       <AnimatedBackground />

@@ -1,3 +1,4 @@
+//Author: Torjus A.M
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { EmployeeList } from '../lib/employeeStorage';
@@ -35,6 +36,6 @@ const EmployeePage: React.FC = () => {
         <GoToIndexButton />
       </div>
   );
-};
+}
 
 export default EmployeePage;

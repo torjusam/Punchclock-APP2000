@@ -58,31 +58,31 @@ const EmployeeShiftRows: React.FC = () => {
   };
   // const showClockButton = true;
 
+  const combinedEmployeeList = [...presentEmployees, ...absentEmployees];
+
   return (
     <div className="EmployeeShiftTable">
-      {scheduledEmployees.length > 0 || presentEmployees.length > 0 || absentEmployees.length > 0 ? (
+      {combinedEmployeeList.length > 0 ? (
         <>
           <EmployeeListDisplay
-            employeeShiftInfo={presentEmployees}
-            onSelectEmployee={handleSelectedEmployee}
-          />
-          <EmployeeListDisplay
-            employeeShiftInfo={absentEmployees}
+            employeeShiftInfo={combinedEmployeeList}
             onSelectEmployee={handleSelectedEmployee}
           />
           {selectedEmployeeId && (
-            <React.Fragment>
+            <>
+
               <ClockInOutButton
                 employeeId={selectedEmployeeId}
                 onClockInOut={clockInOut}
                 isClockedIn={isClockedIn}
               />
+            
               <Link href={`/${selectedEmployeeId}`}>
                   <GoToPersonalPageButton 
                   employeeId={selectedEmployeeId}
                   />
               </Link>
-            </React.Fragment>
+            </>
           )}
         </>
       ) : (

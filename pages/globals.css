@@ -40,7 +40,8 @@ canvas {
 }
 
 .EmployeeShiftTable {
-  position: absolute;
+  margin-top: 10px;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
