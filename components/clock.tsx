@@ -24,9 +24,13 @@ const Clock = () => {
         return () => clearInterval(intervalId);
     },
     []);
-
+    //Author Torjus: Styles
     return (
-        <div className="clock">{time}</div>
+        <ul className="flex items-center justify-center w-full">
+        <li className="clock text-white text-center flex items-center justify-center ">
+          {time}
+        </li>
+      </ul>
     );
 
 };

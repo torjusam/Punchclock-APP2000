@@ -1,6 +1,6 @@
 // Author: Thomas H
 import React, { useState } from 'react';
-import styles from '../lib/styles/ClockInOutButton.module.css';
+import styles from '../lib/styles/Buttons.module.css';
 
 interface ClockInOutButtonProps {
     employeeId: number;

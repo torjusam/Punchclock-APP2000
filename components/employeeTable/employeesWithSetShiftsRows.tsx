@@ -62,8 +62,6 @@ const EmployeeShiftRows: React.FC = () => {
     <div className="EmployeeShiftTable">
       {scheduledEmployees.length > 0 || presentEmployees.length > 0 || absentEmployees.length > 0 ? (
         <>
-
-          /
           <EmployeeListDisplay
             employeeShiftInfo={presentEmployees}
             onSelectEmployee={handleSelectedEmployee}

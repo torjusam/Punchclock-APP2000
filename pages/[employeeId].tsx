@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { EmployeeList } from '../lib/employeeStorage';
 import { Employee } from '../lib/definitions';
+import EmployeeForm from '../components/employeeForm';
 
 const EmployeePage: React.FC = () => {
   const router = useRouter();
@@ -25,10 +26,12 @@ const EmployeePage: React.FC = () => {
   }
 
   return (
-    <div className="flex items-center justify-center text-4xl font-bold">
-      <h1>{`${employee.first_name} ${employee.surname}'s Page`}</h1>
-      {/* Display other details about the employee */}
-    </div>
+      <div className="flex flex-col items-center justify-center mt-8">
+        <h1 className="text-4xl font-bold mb-4">
+          {`${employee.first_name} ${employee.surname}'s Page`}
+        </h1>
+        <EmployeeForm />
+      </div>
   );
 };
 

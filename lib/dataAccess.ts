@@ -88,3 +88,26 @@ export async function performCheckOut(employeeId_param: number): Promise<void> {
     console.error('Error calling setCheckIn API:', error);
   }
 }
+
+//Placeholder for prototype
+export async function createEmployee(firstName: string, lastName: string): Promise<string> {
+  try {
+    const response = await fetch('/api/insertEmployees', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ firstName, lastName }),
+    });
+
+    if (response.ok) {
+      return `Successfully created employee: ${firstName} ${lastName}`;
+    } else {
+      console.error('Error:', response.status);
+      return `Failed to create employee: ${firstName} ${lastName}`;
+    }
+  } catch (error) {
+    console.error('Error calling createEmployee API:', error);
+    return 'Error calling createEmployee API';
+  }
+}
