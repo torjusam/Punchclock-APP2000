@@ -9,6 +9,7 @@ interface ClockInOutButtonProps {
 }
 
 const ClockInOutButton: React.FC<ClockInOutButtonProps> = ({ employeeId, onClockInOut, isClockedIn }) => {
+    console.log(`Rendering ClockInOutButton, isClockedIn: ${isClockedIn}`);
     const handleClockInOut = () => {
     onClockInOut(employeeId, !isClockedIn);
 };
