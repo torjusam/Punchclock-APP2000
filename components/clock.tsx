@@ -1,5 +1,5 @@
 // Author: Thomas H
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Clock = () => {
     const [time, setTime] = useState('');
@@ -11,7 +11,7 @@ const Clock = () => {
             let minutes = now.getMinutes().toString();
             if (hours.length < 2) hours = '0' + hours;
             if (minutes.length < 2) minutes = '0' + minutes;
-            
+
             setTime(`${hours}:${minutes}`);
         };
 
@@ -23,10 +23,14 @@ const Clock = () => {
 
         return () => clearInterval(intervalId);
     },
-    []);
-
+        []);
+    //Author Torjus: Styles
     return (
-        <div className="clock">{time}</div>
+        <ul className="flex items-center justify-center w-full">
+        <li className="clock text-white text-center flex items-center justify-center ">
+          {time}
+        </li>
+      </ul>
     );
 
 };

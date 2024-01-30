@@ -7,6 +7,7 @@ import GoToPersonalPageButton from '../redirectToPageButton';
 import { EmployeeList } from '../../lib/employeeStorage';
 import Link from 'next/link';
 
+
 //manage states of component
 const EmployeeShiftRows: React.FC = () => {
   const [employeeList, setEmployeeList] = useState<Employee[]>([]);
@@ -62,8 +63,6 @@ const EmployeeShiftRows: React.FC = () => {
     <div className="EmployeeShiftTable">
       {scheduledEmployees.length > 0 || presentEmployees.length > 0 || absentEmployees.length > 0 ? (
         <>
-
-          /
           <EmployeeListDisplay
             employeeShiftInfo={presentEmployees}
             onSelectEmployee={handleSelectedEmployee}

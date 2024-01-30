@@ -1,6 +1,5 @@
 // Author: Thomas, Torjus A.M
 // MÅ OPPDATERES MED SELECT METODE OG STATUS FOR CLOCKED IN ELLER IKKE
-// employeeTable.tsx
 import React from 'react';
 import { Employee } from '../../lib/definitions';
 

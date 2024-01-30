@@ -1,5 +1,7 @@
+//Author: Torjus A.M
 import React from 'react';
 import { useRouter } from 'next/router';
+import styles from '../lib/styles/Button.module.css';
 
 interface GoToPersonalPageButtonProps {
   employeeId: number;
@@ -14,7 +16,8 @@ const GoToPersonalPageButton: React.FC<GoToPersonalPageButtonProps> = ({ employe
   };
 
   return (
-    <button onClick={goToPersonalPage}>
+    <button onClick={goToPersonalPage}
+    className={styles.redirectButton}>
       Go to Personal Page
     </button>
   );
