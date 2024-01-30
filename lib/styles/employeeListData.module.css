@@ -21,7 +21,7 @@
 }
 
 .employeeName{
-    font-size: 1.5em;
+    font-size: 2em;
     color: white;
 }
 
@@ -34,8 +34,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: left;
-
-
+    
     width: 60%;
     height: 65%;
     background-color: rgba(255, 255, 255, 0.2);
