@@ -3,11 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { Employee } from '../../lib/definitions';
 import EmployeeListDisplay from './employeeTable';
 import ClockInOutButton from '../ClockInOutButton';
+import GoToPersonalPageButton from '../redirectToPageButton';
 import { EmployeeList } from '../../lib/employeeStorage';
+import Link from 'next/link';
 
 //manage states of component
 const EmployeeShiftRows: React.FC = () => {
-  const [employeeList, setEmployeeList] = useState<Employee[]> ([]);
+  const [employeeList, setEmployeeList] = useState<Employee[]>([]);
   const [scheduledEmployees, setScheduledEmployees] = useState<Employee[]>([]);
   const [presentEmployees, setPresentEmployees] = useState<Employee[]>([]);
   const [absentEmployees, setAbsentEmployees] = useState<Employee[]>([]);
@@ -16,27 +18,27 @@ const EmployeeShiftRows: React.FC = () => {
   const [isClockedIn, setIsClockedIn] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-//init state of component with helper functions, update state
-useEffect(() => {
-  const initEmployeeList = async () => {
-    try {
-      await Promise.all([
-        EmployeeList.initializeEmployeeList(),
-      ]);
+  //init state of component with helper functions, update state
+  useEffect(() => {
+    const initEmployeeList = async () => {
+      try {
+        await Promise.all([
+          EmployeeList.initializeEmployeeList(),
+        ]);
 
-      setEmployeeList(EmployeeList.getEmployees());
-      setScheduledEmployees(EmployeeList.getScheduledEmployees());
-      setPresentEmployees(EmployeeList.getPresentEmployees());
-      setAbsentEmployees(EmployeeList.getAbsentEmployees());
-      setIsLoading(false);
-    } catch (error) {
-      console.error('Error initializing employee list:', error);
-      // handle error, show an error message (or retry?)
-    }
-  };
+        setScheduledEmployees(EmployeeList.getScheduledEmployees());
+        setPresentEmployees(EmployeeList.getPresentEmployees());
+        setAbsentEmployees(EmployeeList.getAbsentEmployees());
+        setEmployeeList(EmployeeList.getEmployees());
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Error initializing employee list:', error);
+        // handle error, show an error message (or retry?)
+      }
+    };
 
-  initEmployeeList();
-}, []);
+    initEmployeeList();
+  }, []);
 
   const handleSelectedEmployee = (id: number) => {
     setSelectedEmployeeId(id);
@@ -71,11 +73,18 @@ useEffect(() => {
             onSelectEmployee={handleSelectedEmployee}
           />
           {selectedEmployeeId && (
-            <ClockInOutButton
-              employeeId={selectedEmployeeId}
-              onClockInOut={clockInOut}
-              isClockedIn={isClockedIn}
-            />
+            <React.Fragment>
+              <ClockInOutButton
+                employeeId={selectedEmployeeId}
+                onClockInOut={clockInOut}
+                isClockedIn={isClockedIn}
+              />
+              <Link href={`/${selectedEmployeeId}`}>
+                  <GoToPersonalPageButton 
+                  employeeId={selectedEmployeeId}
+                  />
+              </Link>
+            </React.Fragment>
           )}
         </>
       ) : (
