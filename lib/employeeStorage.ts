@@ -1,6 +1,6 @@
 //Author: Torjus A.M
 import { Employee } from "./definitions";
-import { fetchEmployees, fetchEmployeesWithSetShiftsData } from "./dataAcess";
+import { fetchEmployees, fetchEmployeesWithSetShiftsData } from "./dataAccess";
 
 export class EmployeeManager {
     private employeeList: Employee[] = [];
