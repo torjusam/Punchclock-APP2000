@@ -49,43 +49,27 @@ export async function fetchEmployeesWithSetShiftsData(): Promise<Employee[]> {
   }
 }
 
-export async function performCheckIn(employeeId_param: number): Promise<void> {
-  try {
-    const response = await fetch('/api/checkIn', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ employeeId_param }),
-    });
-    if (response.ok) {
-      //sets clockedIn to true
-      EmployeeList.updateEmployeeStatus(employeeId_param, true);
-    } else {
-      console.error('Error:', response.status);
-    }
-  } catch (error) {
-    console.error('Error calling setCheckIn API:', error);
-  }
-}
 
-export async function performCheckOut(employeeId_param: number): Promise<void> {
+export async function performCheckOperation(employeeId_param: number, isCheckIn: boolean): Promise<void> {
   try {
-    const response = await fetch('/api/checkOut', {
+    const endpoint = isCheckIn ? '/api/checkIn' : '/api/checkOut';
+    
+    const response = await fetch(endpoint, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ employeeId_param }),
     });
+
     if (response.ok) {
-      //sets clockedIn to false
-      EmployeeList.updateEmployeeStatus(employeeId_param, false);
+      // update the employeeList
+      EmployeeList.updateEmployeeStatus(employeeId_param, isCheckIn);
     } else {
       console.error('Error:', response.status);
     }
   } catch (error) {
-    console.error('Error calling setCheckIn API:', error);
+    console.error(`Error calling setCheck${isCheckIn ? 'In' : 'Out'} API:`, error);
   }
 }
 

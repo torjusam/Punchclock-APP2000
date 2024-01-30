@@ -10,10 +10,6 @@ import Link from 'next/link';
 //manage states of component
 const EmployeeShiftRows: React.FC = () => {
   const [employeeList, setEmployeeList] = useState<Employee[]>([]);
-  const [scheduledEmployees, setScheduledEmployees] = useState<Employee[]>([]);
-  const [presentEmployees, setPresentEmployees] = useState<Employee[]>([]);
-  const [absentEmployees, setAbsentEmployees] = useState<Employee[]>([]);
-
   const [selectedEmployeeId, setSelectedEmployeeId] = useState<number | null>(null);
   const [isClockedIn, setIsClockedIn] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -26,9 +22,6 @@ const EmployeeShiftRows: React.FC = () => {
           EmployeeList.initializeEmployeeList(),
         ]);
 
-        setScheduledEmployees(EmployeeList.getScheduledEmployees());
-        setPresentEmployees(EmployeeList.getPresentEmployees());
-        setAbsentEmployees(EmployeeList.getAbsentEmployees());
         setEmployeeList(EmployeeList.getEmployees());
         setIsLoading(false);
       } catch (error) {
@@ -53,19 +46,19 @@ const EmployeeShiftRows: React.FC = () => {
   //takes the selectedEmployee, and updates its clockedIn status by inverting current status
   //update of status forces refresh of entire list
   const clockInOut = async (employeeId: number, clockedIn: boolean) => {
-   await EmployeeList.updateEmployeeStatus(employeeId, clockedIn);
+  await EmployeeList.updateEmployeeStatus(employeeId, clockedIn);
+  
     setIsClockedIn(current => !current);
+    setEmployeeList(EmployeeList.getEmployees());
   };
   // const showClockButton = true;
 
-  const combinedEmployeeList = [...presentEmployees, ...absentEmployees];
-
   return (
     <div className="EmployeeShiftTable">
-      {combinedEmployeeList.length > 0 ? (
+      {employeeList.length > 0 ? (
         <>
           <EmployeeListDisplay
-            employeeShiftInfo={combinedEmployeeList}
+            employeeShiftInfo={employeeList}
             onSelectEmployee={handleSelectedEmployee}
             selectedEmployeeId={selectedEmployeeId}
           />
