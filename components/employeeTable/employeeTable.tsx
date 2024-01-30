@@ -3,15 +3,13 @@
 // employeeTable.tsx
 import React from 'react';
 import { Employee } from '../../lib/definitions';
-import { initializeEmployeeList, getEmployeesWithUpcomingShifts } from '../../lib/employeeStorage';
-
 
 interface EmployeeDataProps {
   employee: Employee;
   onSelect: () => void;
 }
 
-
+//component represetning individual employee within the list
 export const EmployeeData: React.FC<EmployeeDataProps> = ({ employee, onSelect }) => {
   return (
     <div className="employeeListContainer" onClick={onSelect}>
@@ -30,6 +28,7 @@ interface EmployeeListDisplayProps {
   onSelectEmployee: (id: number) => void;
 }
 
+//responsible for displaying list; each employee is represented by employeeData component
 const EmployeeListDisplay: React.FC<EmployeeListDisplayProps> = ({ employeeShiftInfo, onSelectEmployee }) => {
   return (
     <div className="EmployeeList">
