@@ -1,6 +1,6 @@
 //Author: Torjus A.M
 import {Employee } from './definitions';
-import { updateEmployeeStatus } from './employeeStorage';
+import { EmployeeList } from './employeeStorage';
 
 //fetches all employees, and stores in an array of type Employee
 export async function fetchEmployees(): Promise<Employee[]> {
@@ -60,7 +60,7 @@ export async function performCheckIn(employeeId_param: number): Promise<void> {
     });
     if (response.ok) {
       //sets clockedIn to true
-      updateEmployeeStatus(employeeId_param, true);
+      EmployeeList.updateEmployeeStatus(employeeId_param, true);
     } else {
       console.error('Error:', response.status);
     }
@@ -80,7 +80,7 @@ export async function performCheckOut(employeeId_param: number): Promise<void> {
     });
     if (response.ok) {
       //sets clockedIn to false
-      updateEmployeeStatus(employeeId_param, false);
+      EmployeeList.updateEmployeeStatus(employeeId_param, false);
     } else {
       console.error('Error:', response.status);
     }
