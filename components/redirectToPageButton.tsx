@@ -1,3 +1,4 @@
+//Author: Torjus A.M
 import React from 'react';
 import { useRouter } from 'next/router';
 import styles from '../lib/styles/Buttons.module.css';

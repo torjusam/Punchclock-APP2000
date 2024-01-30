@@ -92,7 +92,7 @@ export async function performCheckOut(employeeId_param: number): Promise<void> {
 //Placeholder for prototype
 export async function createEmployee(firstName: string, lastName: string): Promise<string> {
   try {
-    const response = await fetch('/api/insertEmployees', {
+    const response = await fetch('/api/insertEmployee', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

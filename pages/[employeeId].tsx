@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { EmployeeList } from '../lib/employeeStorage';
 import { Employee } from '../lib/definitions';
 import EmployeeForm from '../components/employeeForm';
+import GoToIndexButton from '../components/redirectToIndexButton';
 
 const EmployeePage: React.FC = () => {
   const router = useRouter();
@@ -31,6 +32,7 @@ const EmployeePage: React.FC = () => {
           {`${employee.first_name} ${employee.surname}'s Page`}
         </h1>
         <EmployeeForm />
+        <GoToIndexButton />
       </div>
   );
 };

@@ -4,8 +4,6 @@ import React from 'react';
 import { useState } from 'react';
 import { createEmployee } from '../lib/dataAccess';
 
-
-
 const EmployeeForm: React.FC = () => {
   const [firstName, setFirstName] = useState('');
   const [surname, setSurname] = useState('');
@@ -62,7 +60,7 @@ const EmployeeForm: React.FC = () => {
         className="p-2 bg-blue-500 text-white rounded-md w-full hover:bg-blue-600"
         onClick={handleEnterClick}
       >
-        Enter
+        Create Employee
       </button>
 
       {/* Display Result Message */}
