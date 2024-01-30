@@ -7,12 +7,13 @@ import styles from '../../lib/styles/employeeListData.module.css';
 interface EmployeeDataProps {
   employee: Employee;
   onSelect: () => void;
+  isSelected: boolean;
 }
 
 //component represetning individual employee within the list
-export const EmployeeData: React.FC<EmployeeDataProps> = ({ employee, onSelect }) => {
+export const EmployeeData: React.FC<EmployeeDataProps> = ({ employee, onSelect, isSelected }) => {
   return (
-    <div className={styles.employeeListContainer} onClick={onSelect}>
+    <div className={`${styles.employeeListContainer} ${isSelected ? styles.selected : ''}`} onClick={onSelect}>
       <div className={styles.profileContainer}>
         <div className={styles.profilePicture}></div>
       </div>
@@ -26,10 +27,11 @@ export const EmployeeData: React.FC<EmployeeDataProps> = ({ employee, onSelect }
 interface EmployeeListDisplayProps {
   employeeShiftInfo: Employee[];
   onSelectEmployee: (id: number) => void;
+  selectedEmployeeId: number | null;
 }
 
 //responsible for displaying list; each employee is represented by employeeData component
-const EmployeeListDisplay: React.FC<EmployeeListDisplayProps> = ({ employeeShiftInfo, onSelectEmployee }) => {
+const EmployeeListDisplay: React.FC<EmployeeListDisplayProps> = ({ employeeShiftInfo, onSelectEmployee, selectedEmployeeId }) => {
   return (
     <div className={styles.EmployeeList}>
       {employeeShiftInfo.map(employee => (
@@ -37,6 +39,7 @@ const EmployeeListDisplay: React.FC<EmployeeListDisplayProps> = ({ employeeShift
           key={employee.id}
           employee={employee}
           onSelect={() => onSelectEmployee(employee.id)}
+          isSelected={employee.id === selectedEmployeeId} 
         />
       ))}
     </div>

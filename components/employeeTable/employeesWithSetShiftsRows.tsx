@@ -52,9 +52,9 @@ const EmployeeShiftRows: React.FC = () => {
 
   //takes the selectedEmployee, and updates its clockedIn status by inverting current status
   //update of status forces refresh of entire list
-  const clockInOut = (employeeId: number, clockedIn: boolean) => {
-    EmployeeList.updateEmployeeStatus(employeeId, clockedIn);
-    setIsClockedIn(!clockedIn);
+  const clockInOut = async (employeeId: number, clockedIn: boolean) => {
+   await EmployeeList.updateEmployeeStatus(employeeId, clockedIn);
+    setIsClockedIn(current => !current);
   };
   // const showClockButton = true;
 
@@ -67,6 +67,7 @@ const EmployeeShiftRows: React.FC = () => {
           <EmployeeListDisplay
             employeeShiftInfo={combinedEmployeeList}
             onSelectEmployee={handleSelectedEmployee}
+            selectedEmployeeId={selectedEmployeeId}
           />
           {selectedEmployeeId && (
             <>
