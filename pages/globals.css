@@ -33,12 +33,8 @@ canvas {
 }
 
 .clock {
-  position: absolute;
-  left: 50%;
   font-size: 68px;
   color: white;
-  text-align: center;
-  transform: translateX(-50%);
   padding-top: 20px;
   z-index: 2;
 }
