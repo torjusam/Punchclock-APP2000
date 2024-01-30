@@ -7,7 +7,6 @@ import GoToPersonalPageButton from '../redirectToPageButton';
 import { EmployeeList } from '../../lib/employeeStorage';
 import Link from 'next/link';
 
-
 //manage states of component
 const EmployeeShiftRows: React.FC = () => {
   const [employeeList, setEmployeeList] = useState<Employee[]>([]);
