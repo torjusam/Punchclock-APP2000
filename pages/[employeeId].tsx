@@ -24,7 +24,7 @@ const EmployeePage: React.FC = () => {
   }, [employeeId]);
 
   if (!employee) {
-    return <p>Loading...</p>;
+    return <p style={{color:'white'}}>Loading...</p>;
   }
 
   return (
