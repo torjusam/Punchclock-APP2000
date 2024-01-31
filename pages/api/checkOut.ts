@@ -32,6 +32,3 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         client.release(); // Release the client back to the pool
     }
 }
-
-//select latest checkin where employee_id = $1
-//update, set checkout = curreent_timestamp

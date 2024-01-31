@@ -5,8 +5,9 @@ import EmployeeListDisplay from './employeeTable';
 import ClockInOutButton from '../ClockInOutButton';
 import GoToPersonalPageButton from '../redirectToPageButton';
 import { EmployeeList } from '../../lib/employeeStorage';
-import { performCheckOperation } from '../../lib/dataAccess';
+import { deleteEmployee, performCheckOperation } from '../../lib/dataAccess';
 import Link from 'next/link';
+import DeleteEmployeeButton from '../deleteEmployeeButton';
 
 //manage states of component
 const EmployeeShiftRows: React.FC = () => {
@@ -14,27 +15,23 @@ const EmployeeShiftRows: React.FC = () => {
   const [selectedEmployeeId, setSelectedEmployeeId] = useState<number | null>(null);
   const [isClockedIn, setIsClockedIn] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [resultMessage, setResultMessage] = useState<string | void>('halla');
+  const [resultMessage, setResultMessage] = useState<string | void>();
 
   //init state of component with helper functions, update state
+  const initEmployeeList = async () => {
+    try {
+      await EmployeeList.initializeEmployeeList();
+      setEmployeeList(EmployeeList.getEmployees());
+      setIsLoading(false);
+    } catch (error) {
+      console.error('Error initializing employee list:', error);
+      // handle error, show an error message (or retry?)
+    }
+  };
+  
   useEffect(() => {
-    const initEmployeeList = async () => {
-      try {
-        await Promise.all([
-          EmployeeList.initializeEmployeeList(),
-        ]);
-
-        setEmployeeList(EmployeeList.getEmployees());
-        setIsLoading(false);
-      } catch (error) {
-        console.error('Error initializing employee list:', error);
-        // handle error, show an error message (or retry?)
-      }
-    };
-
     initEmployeeList();
   }, []);
-
   const handleSelectedEmployee = (id: number) => {
     setSelectedEmployeeId(id);
 
@@ -42,6 +39,7 @@ const EmployeeShiftRows: React.FC = () => {
     //checks if employee exists, updates state variable based on isClockedIn property of employee 
     if (selectedEmployee) {
       setIsClockedIn(!!selectedEmployee.isClockedIn);
+      setResultMessage('');
     }
   };
 
@@ -60,7 +58,22 @@ const EmployeeShiftRows: React.FC = () => {
     }
 
   };
-  // const showClockButton = true;
+
+  //placeholder for prototype: delete employee
+  const handleDeleteClick = async () => {
+    try {
+      if (selectedEmployeeId) {
+        const result = await deleteEmployee(selectedEmployeeId);
+        setResultMessage(result);
+        setEmployeeList(EmployeeList.getEmployees());
+      } else {
+        setResultMessage('No employee selected');
+      }
+    } catch (error) {
+      setResultMessage('Error deleting employee');
+    }
+  };
+  
 
   return (
     <div className="EmployeeShiftTable">
@@ -78,12 +91,16 @@ const EmployeeShiftRows: React.FC = () => {
                 onClockInOut={clockInOut}
                 isClockedIn={isClockedIn}
               />
-            
               <Link href={`/${selectedEmployeeId}`}>
-                  <GoToPersonalPageButton 
+                <GoToPersonalPageButton
                   employeeId={selectedEmployeeId}
-                  />
+                />
               </Link>
+              <DeleteEmployeeButton
+                key={selectedEmployeeId}
+                employeeId={selectedEmployeeId}
+                onDelete={handleDeleteClick}
+              />
               {resultMessage && <div className="result-message">{resultMessage}</div>}
             </>
           )}
@@ -93,6 +110,5 @@ const EmployeeShiftRows: React.FC = () => {
       )}
     </div>
   );
-};
-
+      }
 export default EmployeeShiftRows;

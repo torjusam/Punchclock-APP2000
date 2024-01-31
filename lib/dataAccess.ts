@@ -99,3 +99,25 @@ export async function createEmployee(firstName: string, lastName: string): Promi
     return 'Error calling createEmployee API';
   }
 }
+
+export async function deleteEmployee(employeeId_param: number): Promise<string> {
+  try {
+    const response = await fetch('/api/deleteEmployee', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ employeeId: employeeId_param }),
+    });
+    if (response.ok) {
+      await EmployeeList.initializeEmployeeList();
+      return 'Successfully deleted employee';
+    } else {
+      console.error('Error:', response.status);
+      return 'Failed to delte employee';
+    }
+  } catch (error) {
+    console.error('Error calling deleteEmployee API:', error);
+    return 'Error calling deleteEmployee API';
+  }
+}
