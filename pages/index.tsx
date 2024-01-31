@@ -1,4 +1,3 @@
-//Author Torjus A.M
 import type { NextPage } from 'next'
 import EmployeeShiftTable from '../components/employeeTable/employeesWithSetShiftsRows';
 

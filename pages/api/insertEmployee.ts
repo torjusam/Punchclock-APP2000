@@ -1,3 +1,4 @@
+//Author: Torjus A.M
 import { NextApiRequest, NextApiResponse } from 'next';
 import { pool } from '../../lib/dbIndex';
 

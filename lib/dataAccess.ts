@@ -49,9 +49,9 @@ export async function fetchEmployeesWithSetShiftsData(): Promise<Employee[]> {
   }
 }
 
-
-export async function performCheckOperation(employeeId_param: number, isCheckIn: boolean): Promise<void> {
+export async function performCheckOperation(employeeId_param: number, isCheckIn: boolean): Promise<string | void> {
   try {
+    //employees checked-in status chooses endpoint
     const endpoint = isCheckIn ? '/api/checkIn' : '/api/checkOut';
     
     const response = await fetch(endpoint, {
@@ -59,19 +59,23 @@ export async function performCheckOperation(employeeId_param: number, isCheckIn:
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ employeeId_param }),
+      body: JSON.stringify({ employeeId: employeeId_param }),
     });
 
     if (response.ok) {
       // update the employeeList
       EmployeeList.updateEmployeeStatus(employeeId_param, isCheckIn);
+      return `Successfully setCheck${isCheckIn ? 'In' : 'Out'} on: ${EmployeeList.getEmployeeById(employeeId_param)?.first_name}`;
     } else {
       console.error('Error:', response.status);
+      return `Error setCheck${isCheckIn ? 'In' : 'Out'} on: ${EmployeeList.getEmployeeById(employeeId_param)?.first_name}`;
     }
   } catch (error) {
     console.error(`Error calling setCheck${isCheckIn ? 'In' : 'Out'} API:`, error);
+    return `Error setCheck${isCheckIn ? 'In' : 'Out'} on: ${EmployeeList.getEmployeeById(employeeId_param)?.first_name}`;
   }
 }
+
 
 //Placeholder for prototype
 export async function createEmployee(firstName: string, lastName: string): Promise<string> {

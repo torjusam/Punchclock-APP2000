@@ -5,6 +5,7 @@ import EmployeeListDisplay from './employeeTable';
 import ClockInOutButton from '../ClockInOutButton';
 import GoToPersonalPageButton from '../redirectToPageButton';
 import { EmployeeList } from '../../lib/employeeStorage';
+import { performCheckOperation } from '../../lib/dataAccess';
 import Link from 'next/link';
 
 //manage states of component
@@ -13,6 +14,7 @@ const EmployeeShiftRows: React.FC = () => {
   const [selectedEmployeeId, setSelectedEmployeeId] = useState<number | null>(null);
   const [isClockedIn, setIsClockedIn] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [resultMessage, setResultMessage] = useState<string | void>('halla');
 
   //init state of component with helper functions, update state
   useEffect(() => {
@@ -46,10 +48,17 @@ const EmployeeShiftRows: React.FC = () => {
   //takes the selectedEmployee, and updates its clockedIn status by inverting current status
   //update of status forces refresh of entire list
   const clockInOut = async (employeeId: number, clockedIn: boolean) => {
-  await EmployeeList.updateEmployeeStatus(employeeId, clockedIn);
-  
-    setIsClockedIn(current => !current);
-    setEmployeeList(EmployeeList.getEmployees());
+    try {
+        const isCheckIn = !isClockedIn;
+        const result = await performCheckOperation(employeeId, isCheckIn);
+        
+        setResultMessage(result);
+        setIsClockedIn(current => !current);
+        setEmployeeList(EmployeeList.getEmployees());
+    } catch(error) {
+    setResultMessage('Error during clock-in/clock-out');
+    }
+
   };
   // const showClockButton = true;
 
@@ -64,7 +73,6 @@ const EmployeeShiftRows: React.FC = () => {
           />
           {selectedEmployeeId && (
             <>
-
               <ClockInOutButton
                 employeeId={selectedEmployeeId}
                 onClockInOut={clockInOut}
@@ -76,6 +84,7 @@ const EmployeeShiftRows: React.FC = () => {
                   employeeId={selectedEmployeeId}
                   />
               </Link>
+              {resultMessage && <div className="result-message">{resultMessage}</div>}
             </>
           )}
         </>

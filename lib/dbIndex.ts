@@ -2,6 +2,7 @@
 //data access class, pool for connecting to db
 import pg from 'pg';
 import {QueryResult} from 'pg'
+process.env.TZ = 'CET';
 
 const { Pool,  } = pg;
 
