@@ -7,11 +7,11 @@ interface deleteProps{
     employeeId: number;
     onDelete: (employeeId: number) => void;
 }
-const DeleteEmployeeButton: React.FC<deleteProps> = ({employeeId}) => {
+const DeleteEmployeeButton: React.FC<deleteProps> = ({employeeId, onDelete}) => {
 
-  const handleClick = () => {
-    deleteEmployee(employeeId)
-  };
+    const handleClick = () => {
+        onDelete(employeeId);
+      };
 
   return (
     <button onClick={handleClick}
