@@ -1,4 +1,4 @@
-// Author: Thomas H
+// Authors: Thomas H, Ask A
 import React, { useState, useEffect } from 'react';
 
 const Clock = () => {
@@ -7,12 +7,10 @@ const Clock = () => {
     useEffect(() => {
         const updateClock = () => {
             const now = new Date();
-            let hours = now.getHours().toString();
-            let minutes = now.getMinutes().toString();
-            if (hours.length < 2) hours = '0' + hours;
-            if (minutes.length < 2) minutes = '0' + minutes;
+            const timeFix: any = {timeZone:'Europe/Oslo', hour:'2-digit', minute:'2-digit'};
+            const osloTime = now.toLocaleTimeString('nb-NO', timeFix);
 
-            setTime(`${hours}:${minutes}`);
+            setTime(osloTime);
         };
 
         // Updates the clock on screen
