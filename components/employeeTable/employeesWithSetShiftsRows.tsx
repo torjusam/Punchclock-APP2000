@@ -8,6 +8,7 @@ import { EmployeeList } from '../../lib/employeeStorage';
 import { deleteEmployee, performCheckOperation } from '../../lib/dataAccess';
 import Link from 'next/link';
 import DeleteEmployeeButton from '../deleteEmployeeButton';
+import styles from '../../lib/styles/Buttons.module.css';
 
 //manage states of component
 const EmployeeShiftRows: React.FC = () => {
@@ -28,7 +29,7 @@ const EmployeeShiftRows: React.FC = () => {
       // handle error, show an error message (or retry?)
     }
   };
-  
+
   useEffect(() => {
     initEmployeeList();
   }, []);
@@ -47,14 +48,14 @@ const EmployeeShiftRows: React.FC = () => {
   //update of status forces refresh of entire list
   const clockInOut = async (employeeId: number, clockedIn: boolean) => {
     try {
-        const isCheckIn = !isClockedIn;
-        const result = await performCheckOperation(employeeId, isCheckIn);
-        
-        setResultMessage(result);
-        setIsClockedIn(current => !current);
-        setEmployeeList(EmployeeList.getEmployees());
-    } catch(error) {
-    setResultMessage('Error during clock-in/clock-out');
+      const isCheckIn = !isClockedIn;
+      const result = await performCheckOperation(employeeId, isCheckIn);
+
+      setResultMessage(result);
+      setIsClockedIn(current => !current);
+      setEmployeeList(EmployeeList.getEmployees());
+    } catch (error) {
+      setResultMessage('Error during clock-in/clock-out');
     }
 
   };
@@ -73,7 +74,7 @@ const EmployeeShiftRows: React.FC = () => {
       setResultMessage('Error deleting employee');
     }
   };
-  
+
 
   return (
     <div className="EmployeeShiftTable">
@@ -85,7 +86,8 @@ const EmployeeShiftRows: React.FC = () => {
             selectedEmployeeId={selectedEmployeeId}
           />
           {selectedEmployeeId && (
-            <>
+
+            <div className="buttonContainer">
               <ClockInOutButton
                 employeeId={selectedEmployeeId}
                 onClockInOut={clockInOut}
@@ -101,8 +103,10 @@ const EmployeeShiftRows: React.FC = () => {
                 employeeId={selectedEmployeeId}
                 onDelete={handleDeleteClick}
               />
-              {resultMessage && <div className="result-message">{resultMessage}</div>}
-            </>
+              {typeof resultMessage === 'string' && (
+               <div className="result">{resultMessage}</div>
+              )}
+            </div>
           )}
         </>
       ) : (
@@ -110,5 +114,5 @@ const EmployeeShiftRows: React.FC = () => {
       )}
     </div>
   );
-      }
+}
 export default EmployeeShiftRows;

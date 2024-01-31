@@ -3,6 +3,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { createEmployee } from '../lib/dataAccess';
+import styles from '../lib/styles/Buttons.module.css'
 
 const EmployeeForm: React.FC = () => {
   const [firstName, setFirstName] = useState('');
@@ -19,7 +20,7 @@ const EmployeeForm: React.FC = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-white p-8 rounded-md shadow-md">
+    <div className="max-w-md mx-auto bg-white p-8 rounded-md shadow-md flex flex-col items-center">
       <div className="grid grid-cols-2 gap-4 mb-4">
         {/* First Name Field */}
         <div>
@@ -36,7 +37,7 @@ const EmployeeForm: React.FC = () => {
             style={{ color: '#333', backgroundColor: '#f7f7f7' }}
           />
         </div>
-
+  
         {/* Surname Field */}
         <div>
           <label htmlFor="surname" className="block text-sm font-medium text-gray-700">
@@ -53,16 +54,12 @@ const EmployeeForm: React.FC = () => {
           />
         </div>
       </div>
-
+  
       {/* Enter Button */}
-      <button
-        type="button"
-        className="p-2 bg-blue-500 text-white rounded-md w-full hover:bg-blue-600"
-        onClick={handleEnterClick}
-      >
+      <button onClick={handleEnterClick} className={styles.redirectButton}>
         Create Employee
       </button>
-
+  
       {/* Display Result Message */}
       {resultMessage && <div className="mt-4 text-green-700">{resultMessage}</div>}
     </div>

@@ -6,7 +6,8 @@
     padding: 10px;
     border-radius: 8px;
     margin-bottom: 20px;
-    height: 100px;
+    max-height: 300px;
+    overflow-y: auto;
 }
 
 .profileContainer {
@@ -29,14 +30,14 @@
     flex-grow: 1;
 }
 
+/* Author: Torjus A.M: scrolling feature*/
 .EmployeeList {
-    display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: left;
     
     width: 60%;
-    height: 65%;
+    height: 700px;
     background-color: rgba(255, 255, 255, 0.2);
     border: 1px solid #ffffff;
     border-radius: 10px;
