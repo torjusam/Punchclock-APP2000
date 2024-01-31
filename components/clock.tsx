@@ -7,8 +7,8 @@ const Clock = () => {
     useEffect(() => {
         const updateClock = () => {
             const now = new Date();
-            const timeFix: any = {timeZone:'Europe/Oslo', hour:'2-digit', minute:'2-digit'};
-            const osloTime = now.toLocaleTimeString('nb-NO', timeFix);
+            const options: any = {timeZone:'Europe/Oslo', hour:'2-digit', minute:'2-digit'};
+            const osloTime = now.toLocaleTimeString('nb-NO', options);
 
             setTime(osloTime);
         };
