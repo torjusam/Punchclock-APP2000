@@ -1,20 +1,43 @@
 /* Author Thomas, Torjus A.M */
+.EmployeeList {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    width: 73%;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    overflow-y: auto;
+    margin-right: 4%;
+ }
+
 .employeeListContainer {
+    display: flex;
     flex: 0 0 calc(33% - 10px); /* Fixed width pr row!!! */
     margin: 5px;
     background-color: rgba(169, 214, 229, 0.1);
     padding: 5px;
     border-radius: 8px;
+    overflow-y: auto;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Dropshadow */
 }
 
+ .selected {
+    box-shadow: inset 0px 10px 10px rgba(169, 214, 229, 10); 
+    background-color: rgba(169, 214, 229, 0.4);
+ }
+
 .profileContainer {
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    width: 75px;
-    height: 75px;
+    align-items: center;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
+    overflow: hidden;
+    margin: 5px;
     margin-right: 10px;
 }
 
@@ -26,8 +49,11 @@
 
 .infoContainer {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
+    flex-grow: 1;
+    width: 100%;
+    margin-left: 10px;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .employeeName{
@@ -37,24 +63,3 @@
     font-family: 'Roboto', sans-serif; /* Font-family roboto*/
 }
 
-/* Author: Torjus A.M:*/
-.EmployeeList {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: flex-start;
-
-    width: 55vw;
-    height: 70%;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid #ffffff;
-    border-radius: 10px;
-    padding: 20px;
-    overflow: hidden;
-    margin-right: 4%;
- }
-
- .selected {
-    box-shadow: inset 0px 10px 10px rgba(169, 214, 229, 10); 
-    background-color: rgba(169, 214, 229, 0.4);
- }

@@ -2,10 +2,10 @@
     display: flex;
     flex-direction: column;
   }
-  .generalContainerRow {
+  .clockContainer {
     display: flex;
     position: absolute;
-    left: 25%;
+    left: 15%;
     top: 50%;
     transform: translateY(-50%);
     align-items: center;

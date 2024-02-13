@@ -1,4 +1,13 @@
 .clock {
-    font-size: 80px;
+    font-size: 170px;
     color: white;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+}
+
+.dateText {
+    font-size: 64px;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
 }

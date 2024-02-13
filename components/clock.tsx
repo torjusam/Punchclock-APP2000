@@ -1,6 +1,7 @@
 // Authors: Thomas H, Ask A
 import React, { useState, useEffect } from 'react';
-import styles from '../lib/styles/flexContainers.module.css';
+import container from '../lib/styles/flexContainers.module.css';
+import styles from '../lib/styles/layout.module.css'
 
 const Clock = () => {
   const [time, setTime] = useState('');
@@ -25,8 +26,8 @@ const Clock = () => {
     []);
   //Author Torjus: Styles
   return (
-    <div className={styles.generalContainerRow} style={{ fontSize: '80px', color: 'white' }}>
-      {time}
+    <div className={container.clockContainer}>
+      <div className={styles.clock}>{time}</div>
     </div>
   );
 
