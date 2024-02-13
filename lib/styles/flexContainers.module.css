@@ -2,10 +2,21 @@
     display: flex;
     flex-direction: column;
   }
-
+  .generalContainerRow {
+    display: flex;
+    position: absolute;
+    left: 25%;
+    top: 50%;
+    transform: translateY(-50%);
+    align-items: center;
+  }
+  
   .listOuterContainer {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    height: 100%; 
   }

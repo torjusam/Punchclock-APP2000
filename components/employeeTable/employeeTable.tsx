@@ -3,7 +3,7 @@
 import React from 'react';
 import { Employee } from '../../lib/definitions';
 import styles from '../../lib/styles/employeeListData.module.css';
-
+import container from '../../lib/styles/flexContainers.module.css';
 interface EmployeeDataProps {
   employee: Employee;
   onSelect: () => void;
@@ -15,7 +15,7 @@ export const EmployeeData: React.FC<EmployeeDataProps> = ({ employee, onSelect, 
   return (
     <div className={`${styles.employeeListContainer} ${isSelected ? styles.selected : ''}`} onClick={onSelect}>
       <div className={styles.profileContainer}>
-        <div className={styles.profilePicture}></div>
+        <img className={styles.profilePicture} src='stockAvatar.png' alt={`Profile of ${employee.first_name} ${employee.surname}`}></img>
       </div>
       <div className={styles.infoContainer}>
         <span className={styles.employeeName}>{employee.first_name} {employee.surname}</span>

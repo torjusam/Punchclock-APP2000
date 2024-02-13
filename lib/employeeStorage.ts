@@ -10,6 +10,7 @@ export class EmployeeManager {
         const employeesWithShifts = await fetchEmployeesWithSetShiftsData();
 
         employeesWithShifts.forEach((employeeWithShift) => {
+           
             //find matching index
             const existingEmployeeIndex = employees.findIndex(
                 (employee) => employee.id === employeeWithShift.id

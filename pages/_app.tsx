@@ -5,8 +5,6 @@
 import type { AppProps } from 'next/app';
 import Clock from '../components/clock';
 import './globals.css';
-import AnimatedBackground from '../components/animatedBackground';
-import styles from '../lib/styles/flexContainers.module.css'
 
 //parameters are passed automatically by Next
 const App = ({ Component, pageProps }: AppProps) => {
