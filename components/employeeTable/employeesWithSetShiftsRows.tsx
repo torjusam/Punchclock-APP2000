@@ -8,7 +8,8 @@ import { EmployeeList } from '../../lib/employeeStorage';
 import { deleteEmployee, performCheckOperation } from '../../lib/dataAccess';
 import Link from 'next/link';
 import DeleteEmployeeButton from '../deleteEmployeeButton';
-import styles from '../../lib/styles/Buttons.module.css';
+import styles from '../../lib/styles/employeeListData.module.css';
+import container from '../../lib/styles/flexContainers.module.css';
 
 //manage states of component
 const EmployeeShiftRows: React.FC = () => {
@@ -77,42 +78,40 @@ const EmployeeShiftRows: React.FC = () => {
 
 
   return (
-    <div className="EmployeeShiftTable">
+    <>
       {employeeList.length > 0 ? (
-        <>
+        <div className={container.listOuterContainer}>
           <EmployeeListDisplay
             employeeShiftInfo={employeeList}
             onSelectEmployee={handleSelectedEmployee}
             selectedEmployeeId={selectedEmployeeId}
           />
-          {selectedEmployeeId && (
-
-            <div className="buttonContainer">
-              <ClockInOutButton
-                employeeId={selectedEmployeeId}
-                onClockInOut={clockInOut}
-                isClockedIn={isClockedIn}
-              />
-              <Link href={`/${selectedEmployeeId}`}>
-                <GoToPersonalPageButton
-                  employeeId={selectedEmployeeId}
-                />
-              </Link>
-              <DeleteEmployeeButton
-                key={selectedEmployeeId}
-                employeeId={selectedEmployeeId}
-                onDelete={handleDeleteClick}
-              />
-              {typeof resultMessage === 'string' && (
-               <div className="result">{resultMessage}</div>
-              )}
-            </div>
-          )}
-        </>
+        </div>
       ) : (
         <p>No employees found.</p>
       )}
-    </div>
+
+      {selectedEmployeeId && (
+        <div className="buttonContainer">
+          <ClockInOutButton
+            employeeId={selectedEmployeeId}
+            onClockInOut={clockInOut}
+            isClockedIn={isClockedIn}
+          />
+          <Link href={`/${selectedEmployeeId}`}>
+            <GoToPersonalPageButton employeeId={selectedEmployeeId} />
+          </Link>
+          <DeleteEmployeeButton
+            key={selectedEmployeeId}
+            employeeId={selectedEmployeeId}
+            onDelete={handleDeleteClick}
+          />
+          {typeof resultMessage === 'string' && (
+            <div className="result">{resultMessage}</div>
+          )}
+        </div>
+      )}
+    </>
   );
 }
 export default EmployeeShiftRows;

@@ -5,8 +5,7 @@
     background-color: rgba(201, 198, 198, 0.4);
     padding: 10px;
     border-radius: 8px;
-    margin-bottom: 20px;
-    max-height: 300px;
+    margin: 5px;
     overflow-y: auto;
 }
 
@@ -18,9 +17,6 @@
     margin-right: 10px;
 }
 
-.profilePicture {
-}
-
 .employeeName{
     font-size: 2em;
     color: white;
@@ -30,15 +26,14 @@
     flex-grow: 1;
 }
 
-/* Author: Torjus A.M: scrolling feature*/
+/* Author: Torjus A.M:*/
 .EmployeeList {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: left;
-    
-    width: 60%;
-    height: 700px;
-    background-color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    height: 70%;
+    background-color: rgb(255, 255, 255);
     border: 1px solid #ffffff;
     border-radius: 10px;
     padding: 20px;

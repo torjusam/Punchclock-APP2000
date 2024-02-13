@@ -2,9 +2,9 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { EmployeeList } from '../lib/employeeStorage';
-import { Employee } from '../lib/definitions';
-import EmployeeForm from '../components/employeeForm';
 import GoToIndexButton from '../components/redirectToIndexButton';
+import EmployeeForm from '../components/employeeForm';
+import { Employee } from '../lib/definitions';
 
 const EmployeePage: React.FC = () => {
   const router = useRouter();
@@ -28,13 +28,7 @@ const EmployeePage: React.FC = () => {
   }
 
   return (
-      <div className="flex flex-col items-center justify-center mt-8">
-        <h1 className="text-4xl font-bold mb-4">
-          {`${employee.first_name} ${employee.surname}'s Page`}
-        </h1>
-        <EmployeeForm />
         <GoToIndexButton />
-      </div>
   );
 }
 
