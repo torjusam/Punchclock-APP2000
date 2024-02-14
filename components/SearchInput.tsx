@@ -5,6 +5,7 @@ interface iDefault {
     defaultValue: string | null
 }
 
+    //WIP, følger en guide, ikke integrert.
 
 export const SearchInput = ({ defaultValue }: iDefault) => {
 
