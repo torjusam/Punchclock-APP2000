@@ -2,8 +2,7 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { EmployeeList } from '../lib/employeeStorage';
-import GoToIndexButton from '../components/buttons/redirectToIndexButton';
-import EmployeeForm from '../components/CRUD-page/employeeForm';
+import GoToIndexButton from '../components/Buttons/redirectToIndexButton';
 import { Employee } from '../lib/definitions';
 import Square from '../components/employeeTerminal/square';
 
@@ -31,7 +30,6 @@ const EmployeePage: React.FC = () => {
   return (
     <div>
       <GoToIndexButton />
-      <Square />
     </div>
   );
 }

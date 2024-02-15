@@ -1,6 +1,5 @@
-// Authors: Thomas H, Ask A
+// Authors: Thomas H, Ask A, Torjus A.M
 import React, { useState, useEffect } from 'react';
-import container from '../lib/styles/flexContainers.module.css';
 import styles from '../lib/styles/layout.module.css'
 
 const Clock = () => {
@@ -9,6 +8,7 @@ const Clock = () => {
   useEffect(() => {
     const updateClock = () => {
       const now = new Date();
+      //Author: Ask A: Timezone
       const options: any = { timeZone: 'Europe/Oslo', hour: '2-digit', minute: '2-digit' };
       const osloTime = now.toLocaleTimeString('nb-NO', options);
 
@@ -24,7 +24,7 @@ const Clock = () => {
     return () => clearInterval(intervalId);
   },
     []);
-  //Author Torjus: Styles
+  //Author Torjus A.M: Styles
   return (
       <div className={styles.clock}>{time}</div>
   );

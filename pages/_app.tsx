@@ -1,4 +1,4 @@
-//Author: Torjus A.M, Thomas H
+//Author: Torjus A.M
 //App component to initialize pages. Define shared layout, global.css, inject additional data
 //App does not support Next.js Data Fetching methods like getStaticProps or getServerSideProps
 //getInitialProps or getServerSideProps for commmon data

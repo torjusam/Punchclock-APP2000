@@ -2,12 +2,12 @@
 import React, { useEffect, useState, useContext, use } from 'react';
 import { Employee } from '../../lib/definitions';
 import EmployeeListDisplay from './employeeTable';
-import ClockInOutButton from '../buttons/ClockInOutButton';
-import GoToPersonalPageButton from '../buttons/redirectToPageButton';
+import ClockInOutButton from '../Buttons/ClockInOutButton';
+import GoToPersonalPageButton from '../Buttons/redirectToPageButton';
 import { EmployeeList } from '../../lib/employeeStorage';
 import { deleteEmployee, performCheckOperation } from '../../lib/dataAccess';
 import Link from 'next/link';
-import DeleteEmployeeButton from '../buttons/deleteEmployeeButton';
+import DeleteEmployeeButton from '../Buttons/deleteEmployeeButton';
 import container from '../../lib/styles/flexContainers.module.css';
 import { useEmployeeContext } from '../employeeContext';
 
