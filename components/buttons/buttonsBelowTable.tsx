@@ -1,7 +1,7 @@
 // Author: Torjus A.M
 // Flytta knappene som skal være under tabellen til en annen klasse
 import React from 'react';
-import ClockInOutButton from './ClockInOutButton';
+import ClockInOutButton from './clockInOutButton';
 import GoToPersonalPageButton from './redirectToPageButton';
 import Link from 'next/link';
 
