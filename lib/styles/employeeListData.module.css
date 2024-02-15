@@ -3,7 +3,7 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
     width: 57vw;
     background-color: rgb(255, 255, 255);
     border: 1px solid #ffffff;
@@ -30,19 +30,22 @@
 
 .profileContainer {
     display: flex;
-    align-items: center;
-    width: 6.25rem;
-    height: 6.25rem; 
+    align-items: flex-end;
+    justify-content: flex-end;
+    width: 8rem;
     border-radius: 50%;
     overflow: hidden;
     margin: 0.3125rem;
-    margin-right: 0.625rem; 
+    margin-right: 0.425rem; 
+    aspect-ratio: 1/1; 
 }
 
 .profilePicture {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #000; /* adjust border width and color as needed */
 }
 
 .infoContainer {
@@ -59,4 +62,13 @@
     color: #202427;
     font-weight: 600;
     font-family: 'Roboto', sans-serif;
+}
+
+.circle {
+    position: absolute;
+    z-index: 2;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background-color: #ff0000;
 }

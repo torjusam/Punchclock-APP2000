@@ -1,6 +1,11 @@
-import type { NextPage } from 'next'
-import EmployeeShiftTable from '../components/employeeTable/employeesWithSetShiftsRows';
+import React from 'react';
+import EmployeeShiftTable from '../components/employeeTable/empoyeeShiftList';
+import container from '../lib/styles/flexContainers.module.css';
 
 export default function Page() {
-  return <EmployeeShiftTable />
+  return (
+    <div className={container.listOuterContainer}>
+      <EmployeeShiftTable />
+    </div>
+  );
 }

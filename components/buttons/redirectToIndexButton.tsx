@@ -1,6 +1,6 @@
 //Author: Torjus A.M
 import { useRouter } from 'next/router';
-import styles from '../lib/styles/Buttons.module.css';
+import styles from '../../lib/styles/Buttons.module.css';
 
 
 const GoToIndexButton: React.FC = () => {

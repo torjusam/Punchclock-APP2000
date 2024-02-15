@@ -2,8 +2,8 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { EmployeeList } from '../lib/employeeStorage';
-import GoToIndexButton from '../components/redirectToIndexButton';
-import EmployeeForm from '../components/employeeForm';
+import GoToIndexButton from '../components/buttons/redirectToIndexButton';
+import EmployeeForm from '../components/CRUD-page/employeeForm';
 import { Employee } from '../lib/definitions';
 import Square from '../components/employeeTerminal/square';
 

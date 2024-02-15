@@ -1,7 +1,7 @@
 //Author: Torjus A.M
 import React from "react";
-import EmployeeForm from '../components/employeeForm';
-import GoToIndexButton from '../components/redirectToIndexButton';
+import EmployeeForm from '../components/CRUD-page/employeeForm';
+import GoToIndexButton from '../components/buttons/redirectToIndexButton';
 
 const CrudPage: React.FC = () => {
 

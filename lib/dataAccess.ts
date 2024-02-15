@@ -1,7 +1,7 @@
 //Author: Torjus A.M
-import {Employee } from './definitions';
+import { Employee } from './definitions';
 import { EmployeeList } from './employeeStorage';
-
+import { useEmployeeContext } from '../components/employeeContext';
 //fetches all employees, and stores in an array of type Employee
 export async function fetchEmployees(): Promise<Employee[]> {
   try {
@@ -49,11 +49,10 @@ export async function fetchEmployeesWithSetShiftsData(): Promise<Employee[]> {
   }
 }
 
-export async function performCheckOperation(employeeId_param: number, isCheckIn: boolean): Promise<string | void> {
+export async function performCheckOperation(employeeId_param: number, isClockedIn: boolean): Promise<Response> {
   try {
-    //employees checked-in status chooses endpoint
-    const endpoint = isCheckIn ? '/api/checkIn' : '/api/checkOut';
-    
+    const endpoint = isClockedIn ? '/api/checkOut' : '/api/checkIn';
+
     const response = await fetch(endpoint, {
       method: 'POST',
       headers: {
@@ -61,18 +60,10 @@ export async function performCheckOperation(employeeId_param: number, isCheckIn:
       },
       body: JSON.stringify({ employeeId: employeeId_param }),
     });
-
-    if (response.ok) {
-      // update the employeeList
-      EmployeeList.updateEmployeeStatus(employeeId_param, isCheckIn);
-      return `Successfully setCheck${isCheckIn ? 'In' : 'Out'} on: ${EmployeeList.getEmployeeById(employeeId_param)?.first_name}`;
-    } else {
-      console.error('Error:', response.status);
-      return `Error setCheck${isCheckIn ? 'In' : 'Out'} on: ${EmployeeList.getEmployeeById(employeeId_param)?.first_name}`;
-    }
+    return response;
   } catch (error) {
-    console.error(`Error calling setCheck${isCheckIn ? 'In' : 'Out'} API:`, error);
-    return `Error setCheck${isCheckIn ? 'In' : 'Out'} on: ${EmployeeList.getEmployeeById(employeeId_param)?.first_name}`;
+    console.error('Error performing check operation:', error);
+    throw error;
   }
 }
 

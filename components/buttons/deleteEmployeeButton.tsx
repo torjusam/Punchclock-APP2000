@@ -1,7 +1,7 @@
 //Author: Torjus A.M
 //placeholder for prototype
-import styles from '../lib/styles/Buttons.module.css';
-import { deleteEmployee } from '../lib/dataAccess';
+import styles from '../../lib/styles/Buttons.module.css';
+import { deleteEmployee } from '../../lib/dataAccess';
 
 interface deleteProps{
     employeeId: number;

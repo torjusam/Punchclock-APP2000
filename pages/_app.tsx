@@ -5,19 +5,21 @@
 import type { AppProps } from 'next/app';
 import Clock from '../components/clock';
 import './globals.css';
+import EmployeeContextProvider from '../components/employeeContext';
+
 
 const App = ({ Component, pageProps }: AppProps) => {
+
   return (
-    <>
-       <Clock/>
-      <Component {...pageProps} />
-    </>
-      <div style={{ display: 'flex', width: '100%' }}>
-        <div style={{ marginRight: 'auto', justifyContent: 'center', height: '100%' }}>
-          <Clock />
-        </div>
-        <Component {...pageProps} />
+    <div style={{ display: 'flex', width: '100%' }}>
+      <div style={{ marginRight: 'auto', justifyContent: 'center', height: '100%' }}>
+        <Clock />
       </div>
+      {/* ContextProvider around the page-content component, so every component has access to employees state */}
+      <EmployeeContextProvider>
+        <Component {...pageProps} />
+      </EmployeeContextProvider>
+    </div>
   );
 };
 

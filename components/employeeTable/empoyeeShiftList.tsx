@@ -1,64 +1,42 @@
 //Author: Torjus A.M, Thomas H
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext, use } from 'react';
 import { Employee } from '../../lib/definitions';
 import EmployeeListDisplay from './employeeTable';
-import ClockInOutButton from '../ClockInOutButton';
-import GoToPersonalPageButton from '../redirectToPageButton';
+import ClockInOutButton from '../buttons/ClockInOutButton';
+import GoToPersonalPageButton from '../buttons/redirectToPageButton';
 import { EmployeeList } from '../../lib/employeeStorage';
 import { deleteEmployee, performCheckOperation } from '../../lib/dataAccess';
 import Link from 'next/link';
-import DeleteEmployeeButton from '../deleteEmployeeButton';
-import styles from '../../lib/styles/employeeListData.module.css';
+import DeleteEmployeeButton from '../buttons/deleteEmployeeButton';
 import container from '../../lib/styles/flexContainers.module.css';
+import { useEmployeeContext } from '../employeeContext';
 
-//manage states of component
 const EmployeeShiftRows: React.FC = () => {
-  const [employeeList, setEmployeeList] = useState<Employee[]>([]);
+  // Use custom hook for state context
+  const { employees, setEmployees, clockedInEmployees, setClockedInEmployees } = useEmployeeContext()
   const [selectedEmployeeId, setSelectedEmployeeId] = useState<number | null>(null);
   const [isClockedIn, setIsClockedIn] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [resultMessage, setResultMessage] = useState<string | void>();
 
-  //init state of component with helper functions, update state
-  const initEmployeeList = async () => {
-    try {
-      await EmployeeList.initializeEmployeeList();
-      setEmployeeList(EmployeeList.getEmployees());
-      setIsLoading(false);
-    } catch (error) {
-      console.error('Error initializing employee list:', error);
-      // handle error, show an error message (or retry?)
-    }
-  };
-
   useEffect(() => {
-    initEmployeeList();
-  }, []);
+    setIsClockedIn(clockedInEmployees.some(employee => employee.id === selectedEmployeeId));
+  }, [selectedEmployeeId, clockedInEmployees]);
+
   const handleSelectedEmployee = (id: number) => {
     setSelectedEmployeeId(id);
-
-    const selectedEmployee = EmployeeList.getEmployeeById(id);
-    //checks if employee exists, updates state variable based on isClockedIn property of employee 
-    if (selectedEmployee) {
-      setIsClockedIn(!!selectedEmployee.isClockedIn);
-      setResultMessage('');
-    }
+    //const selectedEmployee = employees.find((employee) => employee.id === id)
   };
 
-  //takes the selectedEmployee, and updates its clockedIn status by inverting current status
-  //update of status forces refresh of entire list
-  const clockInOut = async (employeeId: number, clockedIn: boolean) => {
-    try {
-      const isCheckIn = !isClockedIn;
-      const result = await performCheckOperation(employeeId, isCheckIn);
-
-      setResultMessage(result);
-      setIsClockedIn(current => !current);
-      setEmployeeList(EmployeeList.getEmployees());
-    } catch (error) {
+  const clockInOut = async (employeeId: number) => {
+  
+    const response = await performCheckOperation(employeeId, isClockedIn);
+    if (response.ok) {
+      setClockedInEmployees(prevClockedInEmployees => prevClockedInEmployees.filter(employee => employee.id !== employeeId));
+      setResultMessage('Check' + (isClockedIn ? ' out' : ' in') + ' successful');
+    } else {
       setResultMessage('Error during clock-in/clock-out');
     }
-
   };
 
   //placeholder for prototype: delete employee
@@ -67,7 +45,7 @@ const EmployeeShiftRows: React.FC = () => {
       if (selectedEmployeeId) {
         const result = await deleteEmployee(selectedEmployeeId);
         setResultMessage(result);
-        setEmployeeList(EmployeeList.getEmployees());
+        setEmployees(EmployeeList.getEmployees());
       } else {
         setResultMessage('No employee selected');
       }
@@ -79,20 +57,18 @@ const EmployeeShiftRows: React.FC = () => {
 
   return (
     <>
-      {employeeList.length > 0 ? (
-        <div className={container.listOuterContainer}>
-          <EmployeeListDisplay
-            employeeShiftInfo={employeeList}
-            onSelectEmployee={handleSelectedEmployee}
-            selectedEmployeeId={selectedEmployeeId}
-          />
-        </div>
+      {employees.length > 0 ? (
+        <EmployeeListDisplay
+          employeeShiftInfo={employees}
+          onSelectEmployee={handleSelectedEmployee}
+          selectedEmployeeId={selectedEmployeeId}
+        />
       ) : (
         <p>No employees found.</p>
       )}
 
       {selectedEmployeeId && (
-        <div className="buttonContainer">
+        <div className={container.buttonContainer}>
           <ClockInOutButton
             employeeId={selectedEmployeeId}
             onClockInOut={clockInOut}
