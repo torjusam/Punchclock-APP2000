@@ -1,0 +1,11 @@
+.square {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    max-width: 600px;
+    height: auto;
+    padding: 20px;
+    box-sizing: border-box;
+  }

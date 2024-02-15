@@ -26,9 +26,7 @@ const Clock = () => {
     []);
   //Author Torjus: Styles
   return (
-    <div className={container.clockContainer}>
       <div className={styles.clock}>{time}</div>
-    </div>
   );
 
 };

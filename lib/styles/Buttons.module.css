@@ -19,7 +19,7 @@
 /* Author Torjus */
 .buttonContainer {
     display: flex;
-    justify-content: flex-end; /* align to the right */
+    justify-content: center; /* align to the right */
   }
   
 .redirectButton {

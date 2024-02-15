@@ -1,18 +1,25 @@
-/* Author: Thomas H */
+/* Author: Torjus A.M */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-* {
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
   background-color: #01497C;
 }
-body, html {
-  height: 100%;
+
+body,html {
+  height: 100vh;
+}
+
+/* used for shared _app.tsx components */
+.layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
 }

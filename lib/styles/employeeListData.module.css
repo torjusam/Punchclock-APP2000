@@ -4,41 +4,39 @@
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: flex-start;
-
-    width: 73%;
+    width: 57vw;
     background-color: rgb(255, 255, 255);
     border: 1px solid #ffffff;
     border-radius: 10px;
     padding: 20px;
     overflow-y: auto;
-    margin-right: 4%;
- }
+}
 
 .employeeListContainer {
     display: flex;
-    flex: 0 0 calc(33% - 10px); /* Fixed width pr row!!! */
-    margin: 5px;
+    flex: 0 0 calc(33% - 1rem);
+    margin: 0.3125rem; 
     background-color: rgba(169, 214, 229, 0.1);
-    padding: 5px;
-    border-radius: 8px;
+    padding: 0.3125rem; 
+    border-radius: 0.5rem; 
     overflow-y: auto;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Dropshadow */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
- .selected {
+.selected {
     box-shadow: inset 0px 10px 10px rgba(169, 214, 229, 10); 
     background-color: rgba(169, 214, 229, 0.4);
- }
+}
 
 .profileContainer {
     display: flex;
     align-items: center;
-    width: 100px;
-    height: 100px;
+    width: 6.25rem;
+    height: 6.25rem; 
     border-radius: 50%;
     overflow: hidden;
-    margin: 5px;
-    margin-right: 10px;
+    margin: 0.3125rem;
+    margin-right: 0.625rem; 
 }
 
 .profilePicture {
@@ -51,15 +49,14 @@
     display: flex;
     flex-grow: 1;
     width: 100%;
-    margin-left: 10px;
+    margin-left: 0.625rem;
     flex-direction: column;
     justify-content: center;
 }
 
-.employeeName{
+.employeeName {
     font-size: 2em;
     color: #202427;
-    font-weight: 600; /* Semi-bold */
-    font-family: 'Roboto', sans-serif; /* Font-family roboto*/
+    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
 }
-

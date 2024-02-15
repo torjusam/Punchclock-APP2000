@@ -5,6 +5,7 @@ import { EmployeeList } from '../lib/employeeStorage';
 import GoToIndexButton from '../components/redirectToIndexButton';
 import EmployeeForm from '../components/employeeForm';
 import { Employee } from '../lib/definitions';
+import Square from '../components/employeeTerminal/square';
 
 const EmployeePage: React.FC = () => {
   const router = useRouter();
@@ -28,7 +29,10 @@ const EmployeePage: React.FC = () => {
   }
 
   return (
-        <GoToIndexButton />
+    <div>
+      <GoToIndexButton />
+      <Square />
+    </div>
   );
 }
 

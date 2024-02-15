@@ -1,22 +1,16 @@
 .generalContainer {
-    display: flex;
-    flex-direction: column;
-  }
-  .clockContainer {
-    display: flex;
-    position: absolute;
-    left: 15%;
-    top: 50%;
-    transform: translateY(-50%);
-    align-items: center;
-  }
-  
-  .listOuterContainer {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
+  display: flex;
+  flex-direction: column;
+}
+
+.listOuterContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-left: 10vh;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
