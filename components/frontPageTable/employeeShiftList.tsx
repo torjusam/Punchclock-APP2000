@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useContext, use } from 'react';
 import { Employee } from '../../lib/definitions';
 import EmployeeListDisplay from './employeeTable';
-import ClockInOutButton from '../Buttons/ClockInOutButton';
+import ClockInOutButton from '../Buttons/clockInOutButton'
 import GoToPersonalPageButton from '../Buttons/redirectToPageButton';
 import { EmployeeList } from '../../lib/employeeStorage';
 import { deleteEmployee, performCheckOperation } from '../../lib/dataAccess';
@@ -11,10 +11,10 @@ import DeleteEmployeeButton from '../Buttons/deleteEmployeeButton';
 import container from '../../lib/styles/flexContainers.module.css';
 import { useEmployeeContext } from '../employeeContext';
 
-const EmployeeShiftRows: React.FC = () => {
+const EmployeeShiftList: React.FC = () => {
   // Use custom hook for state context
   const { employees, setEmployees, clockedInEmployees, setClockedInEmployees } = useEmployeeContext()
-  const [selectedEmployeeId, setSelectedEmployeeId] = useState<number | null>(null);
+  const [selectedEmployeeId, setSelectedEmployeeId] =  useState<number | null>(null);
   const [isClockedIn, setIsClockedIn] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [resultMessage, setResultMessage] = useState<string | void>();
@@ -90,4 +90,4 @@ const EmployeeShiftRows: React.FC = () => {
     </>
   );
 }
-export default EmployeeShiftRows;
+export default EmployeeShiftList;
