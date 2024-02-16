@@ -3,7 +3,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { createEmployee } from '../../lib/dataAccess';
-import styles from '../lib/styles/Buttons.module.css'
+import styles from '../../lib/styles/Buttons.module.css'
 
 const EmployeeForm: React.FC = () => {
   const [firstName, setFirstName] = useState('');

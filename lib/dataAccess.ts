@@ -1,44 +1,17 @@
 //Author: Torjus A.M
-import { Employee } from './definitions';
-import { EmployeeList } from './employeeStorage';
-import { useEmployeeContext } from '../components/employeeContext';
-//fetches all employees, and stores in an array of type Employee
+import { Employee } from './employee';
+
+// Fetches list of employees from api handler and returns a Employee array
 export async function fetchEmployees(): Promise<Employee[]> {
   try {
     const response = await fetch('/api/getEmployees');
     if (response.ok) {
+      // Result expected to return as: ID, First_name, Surname, Last_checkin, Last_checkout
       const result = await response.json();
       return result.map((row: any) => {
-        return {
-          id: row.id,
-          first_name: row.first_name,
-          surname: row.surname,
-        };
+        return new Employee(row.id, row.first_name, row.surname, row.last_checkin, row.last_checkout);
       });
-    } else {
-      console.error('Error:', response.status);
-      return [];
-    }
-  } catch (error) {
-    console.error('Error fetching data', error);
-    return [];
-  }
-}
-//fetches and formats employees with upcoming shifts
-export async function fetchEmployeesWithSetShiftsData(): Promise<Employee[]> {
-  try {
-    const response = await fetch('/api/getEsWithSetShifts');
-    if (response.ok) {
-      const result = await response.json();
-      return result.map((row: any) => {
-        return {
-          id: row.id,
-          first_name: row.first_name,
-          surname: row.surname,
-          shiftStart: new Date(row.start),
-          shiftEnd: new Date(row.end),
-        };
-      });
+      // Error: return empty employee-array 
     } else {
       console.error('Error:', response.status);
       return [];
@@ -49,26 +22,31 @@ export async function fetchEmployeesWithSetShiftsData(): Promise<Employee[]> {
   }
 }
 
-export async function performCheckOperation(employeeId_param: number, isClockedIn: boolean): Promise<Response> {
+// Checks employee in / out based on isClockedIn status
+export async function performCheckOperation(employeeId: number, isClockedIn: boolean): Promise<string> {
   try {
     const endpoint = isClockedIn ? '/api/checkOut' : '/api/checkIn';
-
     const response = await fetch(endpoint, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ employeeId: employeeId_param }),
+      body: JSON.stringify({ employeeId: employeeId }),
     });
-    return response;
+
+    if (response.ok) {
+      return isClockedIn ? 'Successfully checked out' : 'Successfully checked in';
+    } else {
+      console.error('Error:', response.status);
+      return 'Failed to perform check operation';
+    }
   } catch (error) {
     console.error('Error performing check operation:', error);
-    throw error;
+    return 'Error performing check operation';
   }
 }
 
-
-//Placeholder for prototype
+// Placeholder for prototype (Returns string with result for testing)
 export async function createEmployee(firstName: string, lastName: string): Promise<string> {
   try {
     const response = await fetch('/api/insertEmployee', {
@@ -101,11 +79,10 @@ export async function deleteEmployee(employeeId_param: number): Promise<string> 
       body: JSON.stringify({ employeeId: employeeId_param }),
     });
     if (response.ok) {
-      await EmployeeList.initializeEmployeeList();
       return 'Successfully deleted employee';
     } else {
       console.error('Error:', response.status);
-      return 'Failed to delte employee';
+      return 'Failed to delete employee';
     }
   } catch (error) {
     console.error('Error calling deleteEmployee API:', error);
