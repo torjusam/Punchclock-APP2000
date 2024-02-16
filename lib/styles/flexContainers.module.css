@@ -5,13 +5,26 @@
 }
 
 .listOuterContainer {
+  position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: flex-end;
   align-items: center;
   margin-left: 10vh;
 }
 
 .buttonContainer {
+  position: absolute;
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
   justify-content: center;
+
+  bottom: -14.5vw;
+  width: 57vw;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  overflow-y: auto;
 }

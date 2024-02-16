@@ -1,7 +1,8 @@
 //Author: Torjus A.M
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { Employee } from '../lib/definitions';
+import { Employee } from '../lib/employee';
 import { fetchEmployees } from '../lib/dataAccess';
+import { EmployeeList } from '../lib/employeeStorage';
 
 interface EmployeeContextProps {
     employees: Employee[];
@@ -18,19 +19,15 @@ export default function EmployeeContextProvider({ children }: { children: React.
     const [employees, setEmployees] = useState<Employee[]>([]);
     const [clockedInEmployees, setClockedInEmployees] = useState<Employee[]>([]);
 
+    // Initalize state for employees and clockedInEmployees
     useEffect(() => {
         const initializeEmployees = async () => {
             setEmployees(await fetchEmployees());
+            await setClockedInEmployees(employees.filter((employee) => employee.isClockedIn));
         };
 
         initializeEmployees();
     }, []);
-
-    // Initalize state for clocked in employees
-    useEffect(() => {
-        const clockedIn = employees.filter(employee => employee.isClockedIn);
-        setClockedInEmployees(clockedIn);
-    }, [employees]);
 
     return (
         <EmployeeContext.Provider

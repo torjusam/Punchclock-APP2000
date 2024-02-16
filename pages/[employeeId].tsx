@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { EmployeeList } from '../lib/employeeStorage';
 import GoToIndexButton from '../components/Buttons/redirectToIndexButton';
-import { Employee } from '../lib/definitions';
+import { Employee } from '../lib/employee';
 import Square from '../components/employeeTerminal/square';
 
 const EmployeePage: React.FC = () => {

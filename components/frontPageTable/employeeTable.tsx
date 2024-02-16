@@ -1,8 +1,9 @@
 // Author: Thomas, Torjus A.M
 // MÅ OPPDATERES MED SELECT METODE OG STATUS FOR CLOCKED IN ELLER IKKE
 import React from 'react';
-import { Employee } from '../../lib/definitions';
+import { Employee } from '../../lib/employee';
 import styles from '../../lib/styles/employeeListData.module.css';
+
 interface EmployeeDataProps {
   employee: Employee;
   onSelect: () => void;
@@ -26,20 +27,20 @@ export const EmployeeData: React.FC<EmployeeDataProps> = ({ employee, onSelect, 
 
 interface EmployeeListDisplayProps {
   employeeShiftInfo: Employee[];
-  onSelectEmployee: (id: number) => void;
-  selectedEmployeeId: number | null;
+  onSelectEmployee: (employee: Employee) => void;
+  selectedEmployee: Employee | null;
 }
 
 //responsible for displaying list; each employee is represented by employeeData component
-const EmployeeListDisplay: React.FC<EmployeeListDisplayProps> = ({ employeeShiftInfo, onSelectEmployee, selectedEmployeeId }) => {
+const EmployeeListDisplay: React.FC<EmployeeListDisplayProps> = ({ employeeShiftInfo, onSelectEmployee, selectedEmployee }) => {
   return (
     <div className={styles.EmployeeList}>
       {employeeShiftInfo.map(employee => (
         <EmployeeData
           key={employee.id}
           employee={employee}
-          onSelect={() => onSelectEmployee(employee.id)}
-          isSelected={employee.id === selectedEmployeeId}
+          onSelect={() => onSelectEmployee(employee)}
+          isSelected={employee === selectedEmployee}
         />
       ))}
     </div>

@@ -4,28 +4,18 @@ import React from 'react';
 import ClockInOutButton from './clockInOutButton';
 import GoToPersonalPageButton from './redirectToPageButton';
 import Link from 'next/link';
+import Container from '../../lib/styles/flexContainers.module.css';
 
 interface ButtonsProps {
-  selectedEmployeeId: number | null;
-  isClockedIn: boolean;
-  onClockInOut: (employeeId: number, clockedIn: boolean) => void;
+
 }
 
-const Buttons: React.FC<ButtonsProps> = ({ selectedEmployeeId, isClockedIn, onClockInOut }) => {
+const ButtonsBelowList: React.FC<ButtonsProps> = ({}) => {
   return (
-    selectedEmployeeId && (
-      <div>
-        <ClockInOutButton
-          employeeId={selectedEmployeeId}
-          onClockInOut={onClockInOut}
-          isClockedIn={isClockedIn}
-        />
-        <Link href={`/${selectedEmployeeId}`}>
-          <GoToPersonalPageButton employeeId={selectedEmployeeId} />
-        </Link>
-      </div>
-    )
-  );
+    <div className={Container.buttonContainer}>
+      <button>Hei</button>
+    </div>
+    ); 
 }
 
-export default Buttons;
+export default ButtonsBelowList;

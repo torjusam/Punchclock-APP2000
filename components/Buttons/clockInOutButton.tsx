@@ -1,17 +1,17 @@
 // Author: Thomas H
 import React, { useState } from 'react';
 import styles from '../../lib/styles/Buttons.module.css';
+import { Employee } from '../../lib/employee';
 
 interface ClockInOutButtonProps {
     employeeId: number;
-    onClockInOut: (employeeId: number, isClockedIn: boolean) => void;
+    onClockInOut: (employee: Employee, isClockedIn: boolean) => void;
     isClockedIn: boolean;
 }
 
 const ClockInOutButton: React.FC<ClockInOutButtonProps> = ({ employeeId, onClockInOut, isClockedIn }) => {
-    console.log(`Rendering ClockInOutButton, isClockedIn: ${isClockedIn}`);
     const handleClockInOut = () => {
-    onClockInOut(employeeId, !isClockedIn);
+    onClockInOut(employee, !isClockedIn);
 };
 
 return (
