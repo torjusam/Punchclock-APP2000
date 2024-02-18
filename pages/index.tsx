@@ -8,7 +8,6 @@ export default function Page() {
   return (
     <div className={container.listOuterContainer}>
       <EmployeeShiftList />
-      <ButtonsBelowList />
     </div>
   );
 }

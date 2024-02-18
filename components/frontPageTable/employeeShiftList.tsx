@@ -1,4 +1,4 @@
-//Author: Torjus A.M, Thomas H
+// Author: Torjus A.M, Thomas H
 import React, { useEffect, useState, useRef } from 'react';
 import { Employee } from '../../lib/employee';
 import EmployeeListDisplay from './employeeTable';
@@ -27,13 +27,13 @@ const EmployeeShiftList: React.FC = () => {
   };
 
   // When clicking outside of the list, the selected employee is set to null.
-  const listRef = useRef(null);
-  useOnClickOutside(listRef, () => setSelectedEmployee(null));
+  // const listRef = useRef(null);
+  // useOnClickOutside(listRef, () => setSelectedEmployee(null));
 
   return (
     <>
       {employees.length > 0 ? (
-        <div ref={listRef}>
+        <div /*ref={listRef} */>
           {/* Author: Thomas H */}
           <EmployeeListDisplay
             employeeShiftInfo={employees}

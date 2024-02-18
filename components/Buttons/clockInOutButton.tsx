@@ -11,10 +11,11 @@ interface ClockInOutButtonProps {
 
 // Updates employees status and perforsm check operation. Triggers re-render of employee table on frontpage
 const ClockInOutButton: React.FC<ClockInOutButtonProps> = ({ employee, isClockedIn }) => {
+    const { employees, setEmployees } = useEmployeeContext();
+    
     if (!employee) {
         return null;
     }
-    const { employees, setEmployees } = useEmployeeContext();
 
     const handleClick = async () => {
         await performCheckOperation(employee.id, isClockedIn);

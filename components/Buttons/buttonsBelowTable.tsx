@@ -15,15 +15,15 @@ const ButtonsBelowTable: React.FC<ButtonsProps> = ({ selectedEmployee }) => {
   // Styled conditonally
   return (
     <div className={Container.buttonContainer}>
-      <div className={`${styles.button} ${selectedEmployee ? styles.selected : styles.disabled}`}>
+      <button className={`${styles.button} ${selectedEmployee ? styles.selected : styles.disabled}`}>
         <ClockInOutButton
           employee={selectedEmployee}
           isClockedIn={selectedEmployee?.isClockedIn || false} 
         />
-      </div>
-      <div className={`${styles.button} ${selectedEmployee ? styles.selected : styles.disabled}`}>
+      </button>
+      <button className={`${styles.button} ${selectedEmployee ? styles.selected : styles.disabled}`}>
         <GoToPersonalPageButton employeeId={selectedEmployee?.id} />
-      </div>
+      </button>
     </div>
   );
 }
