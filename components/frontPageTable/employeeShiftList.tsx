@@ -9,6 +9,7 @@ import Link from 'next/link';
 import DeleteEmployeeButton from '../Buttons/deleteEmployeeButton';
 import container from '../../lib/styles/flexContainers.module.css';
 import { useEmployeeContext } from '../employeeContext';
+import ButtonsBelowTable from '../Buttons/buttonsBelowTable';
 
 const EmployeeShiftList: React.FC = () => {
   // Use custom hook for state context
@@ -17,15 +18,19 @@ const EmployeeShiftList: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [resultMessage, setResultMessage] = useState<string | void>();
 
+  useEffect(() => {
+    if (selectedEmployee) {
+      // Fetch the latest data for the selected employee
+      const fetchSelectedEmployee = async () => {
+        const updatedEmployee = employees.find((employee) => employee.id === selectedEmployee.id);
+        setSelectedEmployee(updatedEmployee || null);
+      };
+      fetchSelectedEmployee();
+    }
+  }, [selectedEmployee]);
+
   const handleSelectedEmployee = (employee: Employee) => {
-    setSelectedEmployee(selectedEmployee || null);
-  };
-
-  const clockInOut = async (employee: Employee) => {
-    const response = await performCheckOperation(employee.id, employee.isClockedIn);
-      setClockedInEmployees(prevClockedInEmployees => prevClockedInEmployees.filter(emp => emp.id !== employee.id));
-      setResultMessage('Check' + (employee.isClockedIn ? ' out' : ' in') + ' successful');
-
+    setSelectedEmployee(employee);
   };
 
   return (
@@ -36,9 +41,11 @@ const EmployeeShiftList: React.FC = () => {
           onSelectEmployee={handleSelectedEmployee}
           selectedEmployee={selectedEmployee}
         />
-      ) : (
-        <p>No employees found.</p>
-      )}
+      ) : null}
+      <ButtonsBelowTable
+        selectedEmployee={selectedEmployee}
+        setSelectedEmployee={setSelectedEmployee}
+      />
     </>
   );
 }

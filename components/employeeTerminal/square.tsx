@@ -1,5 +1,5 @@
-//Author: Torjus A.M
-//firkant-komponent som brukes som en felles base for innholdet  
+// Author: Torjus A.M
+// firkant-komponent som brukes som en felles base for innholdet  
 import React from 'react';
 import styles from '../../lib/styles/square.module.css'
 
@@ -8,7 +8,13 @@ interface SquareProps {
 }
 
 const Square: React.FC<SquareProps> = ({ children }) => {
-  return <div className={styles.square}>{children}</div>;
+  return (
+    <div className={styles.squareOuterContainer}>
+      <div className={styles.square}>
+        {children}
+      </div>
+    </div>
+  );
 };
 
 export default Square;

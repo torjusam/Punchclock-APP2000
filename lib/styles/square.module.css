@@ -1,12 +1,23 @@
 /* Author: Torjus A.M */
+.squareOuterContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10vh;
+  
+}
+
 .square {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    max-width: 600px;
-    height: auto;
-    padding: 20px;
-    box-sizing: border-box;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  width: 50vw;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  overflow-y: auto;
+  height: 70vh;
+}

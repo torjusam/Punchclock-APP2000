@@ -1,25 +1,31 @@
-// Author: Thomas H
+// Author: Torjus A.M
 import React, { useState } from 'react';
 import styles from '../../lib/styles/Buttons.module.css';
 import { Employee } from '../../lib/employee';
+import { performCheckOperation } from '../../lib/dataAccess';
+import { useEmployeeContext } from '../employeeContext';
 
 interface ClockInOutButtonProps {
-    employeeId: number;
-    onClockInOut: (employee: Employee, isClockedIn: boolean) => void;
+    employee: Employee;
     isClockedIn: boolean;
+    setSelectedEmployee: React.Dispatch<React.SetStateAction<Employee | null>>
 }
 
-const ClockInOutButton: React.FC<ClockInOutButtonProps> = ({ employeeId, onClockInOut, isClockedIn }) => {
-    const handleClockInOut = () => {
-    onClockInOut(employee, !isClockedIn);
-};
+// Updates employees status and perforsm check operation. Triggers re-render of employee table on frontpage
+const ClockInOutButton: React.FC<ClockInOutButtonProps> = ({ employee, isClockedIn, setSelectedEmployee }) => {
+    const handleClick = async () => {
+        await performCheckOperation(employee.id, isClockedIn);
+        employee.setIsClockedIn(!isClockedIn);
 
-return (
-    <button onClick={handleClockInOut}
-      className={`${styles.button} ${isClockedIn ? styles.clockOut : styles.clockIn}`}>
-        {isClockedIn ? 'Clock Out' : 'Clock In'}
-    </button>
-    );
-};
-
-export default ClockInOutButton;
+        const updatedEmployee = { ...employee, isClockedIn: !isClockedIn };
+        setSelectedEmployee(updatedEmployee as Employee);
+      };
+    
+      return (
+        <button onClick={handleClick}>
+          {isClockedIn ? 'Stemple ut' : 'Stemple inn'}
+        </button>
+      );
+    
+    };
+  export default ClockInOutButton;

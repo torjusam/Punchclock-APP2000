@@ -36,6 +36,7 @@ export async function performCheckOperation(employeeId: number, isClockedIn: boo
 
     if (response.ok) {
       return isClockedIn ? 'Successfully checked out' : 'Successfully checked in';
+
     } else {
       console.error('Error:', response.status);
       return 'Failed to perform check operation';

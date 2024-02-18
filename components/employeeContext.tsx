@@ -2,7 +2,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Employee } from '../lib/employee';
 import { fetchEmployees } from '../lib/dataAccess';
-import { EmployeeList } from '../lib/employeeStorage';
 
 interface EmployeeContextProps {
     employees: Employee[];
@@ -22,8 +21,17 @@ export default function EmployeeContextProvider({ children }: { children: React.
     // Initalize state for employees and clockedInEmployees
     useEffect(() => {
         const initializeEmployees = async () => {
-            setEmployees(await fetchEmployees());
-            await setClockedInEmployees(employees.filter((employee) => employee.isClockedIn));
+            const employees = await fetchEmployees();
+            employees.sort((a, b) => {
+                if (a.isClockedIn && !b.isClockedIn) {
+                    return -1;
+                } else if (!a.isClockedIn && b.isClockedIn) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            });
+            setEmployees(employees);
         };
 
         initializeEmployees();

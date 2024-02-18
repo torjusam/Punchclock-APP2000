@@ -5,17 +5,28 @@ import ClockInOutButton from './clockInOutButton';
 import GoToPersonalPageButton from './redirectToPageButton';
 import Link from 'next/link';
 import Container from '../../lib/styles/flexContainers.module.css';
+import { Employee } from '../../lib/employee';
 
 interface ButtonsProps {
-
+  selectedEmployee: Employee | null
+  setSelectedEmployee: React.Dispatch<React.SetStateAction<Employee | null>>
 }
 
-const ButtonsBelowList: React.FC<ButtonsProps> = ({}) => {
+const ButtonsBelowTable: React.FC<ButtonsProps> = ({ selectedEmployee, setSelectedEmployee }) => {
+  if (!selectedEmployee) {
+    return  <div className={Container.buttonContainer}></div>;
+  }
+
   return (
     <div className={Container.buttonContainer}>
-      <button>Hei</button>
+      <ClockInOutButton
+        employee={selectedEmployee}
+        isClockedIn={selectedEmployee.isClockedIn}
+        setSelectedEmployee={setSelectedEmployee}
+      />
+      <GoToPersonalPageButton employeeId={selectedEmployee.id} />
     </div>
-    ); 
+  );
 }
 
-export default ButtonsBelowList;
+export default ButtonsBelowTable;

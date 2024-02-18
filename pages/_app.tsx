@@ -12,7 +12,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <div style={{ display: 'flex', width: '100%' }}>
-      <div style={{ marginRight: 'auto', justifyContent: 'center', height: '100%' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}>
         <Clock />
       </div>
       {/* ContextProvider around the page-content component, so every component has access to employees state */}

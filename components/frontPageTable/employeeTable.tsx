@@ -15,7 +15,7 @@ export const EmployeeData: React.FC<EmployeeDataProps> = ({ employee, onSelect, 
   return (
     <div className={`${styles.employeeListContainer} ${isSelected ? styles.selected : ''}`} onClick={onSelect}>
       <div className={styles.profileContainer}>
-        <div className={styles.circle}></div>
+        <div className={`${styles.circleStatus} ${employee.isClockedIn ? styles.isClockedIn : ''}`}></div>
         <img className={styles.profilePicture} src='stockAvatar.png' alt={`Profile of ${employee.first_name} ${employee.surname}`}></img>
       </div>
       <div className={styles.infoContainer}>
