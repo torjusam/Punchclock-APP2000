@@ -42,8 +42,4 @@ export class Employee {
             Last checkin: ${this.lastCheckIn}. Last checkout: ${this.lastCheckOut}`
         );
     }
-
-    setIsClockedIn(isClockedIn: boolean) {
-        this.isClockedIn = isClockedIn;
-    }
 }

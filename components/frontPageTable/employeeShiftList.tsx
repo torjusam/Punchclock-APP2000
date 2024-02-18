@@ -1,22 +1,15 @@
 //Author: Torjus A.M, Thomas H
-import React, { useEffect, useState, useContext, use } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Employee } from '../../lib/employee';
 import EmployeeListDisplay from './employeeTable';
-import ClockInOutButton from '../Buttons/clockInOutButton'
-import GoToPersonalPageButton from '../Buttons/redirectToPageButton';
-import { deleteEmployee, performCheckOperation } from '../../lib/dataAccess';
-import Link from 'next/link';
-import DeleteEmployeeButton from '../Buttons/deleteEmployeeButton';
-import container from '../../lib/styles/flexContainers.module.css';
 import { useEmployeeContext } from '../employeeContext';
 import ButtonsBelowTable from '../Buttons/buttonsBelowTable';
+import useOnClickOutside from '../../lib/clickOutside';
 
 const EmployeeShiftList: React.FC = () => {
   // Use custom hook for state context
   const { employees, setEmployees, clockedInEmployees, setClockedInEmployees } = useEmployeeContext()
   const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [resultMessage, setResultMessage] = useState<string | void>();
 
   useEffect(() => {
     if (selectedEmployee) {
@@ -33,18 +26,24 @@ const EmployeeShiftList: React.FC = () => {
     setSelectedEmployee(employee);
   };
 
+  // When clicking outside of the list, the selected employee is set to null.
+  const listRef = useRef(null);
+  useOnClickOutside(listRef, () => setSelectedEmployee(null));
+
   return (
     <>
       {employees.length > 0 ? (
-        <EmployeeListDisplay
-          employeeShiftInfo={employees}
-          onSelectEmployee={handleSelectedEmployee}
-          selectedEmployee={selectedEmployee}
-        />
+        <div ref={listRef}>
+          {/* Author: Thomas H */}
+          <EmployeeListDisplay
+            employeeShiftInfo={employees}
+            onSelectEmployee={handleSelectedEmployee}
+            selectedEmployee={selectedEmployee}
+          />
+        </div>
       ) : null}
       <ButtonsBelowTable
         selectedEmployee={selectedEmployee}
-        setSelectedEmployee={setSelectedEmployee}
       />
     </>
   );

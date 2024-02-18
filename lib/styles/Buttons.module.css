@@ -1,4 +1,4 @@
-/* Author Thomas, Torjus A.M */
+/* Author: Torjus A.M */
 .button {
     padding: 10px 20px;
     border: none;
@@ -16,7 +16,6 @@
     background-color: red;
 }
 
-/* Author Torjus */
 .buttonContainer {
     display: flex;
     justify-content: center; /* align to the right */
@@ -33,4 +32,11 @@
     margin-left: 10px;
   }
 
+.selected {
+    background-color: #4CAF50;
+}
 
+.disabled {
+    background-color: black;
+    cursor: not-allowed;
+}
