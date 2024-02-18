@@ -1,17 +1,6 @@
 /* Author Thomas, Torjus A.M */
-.EmployeeList {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-    width: 57vw;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid #ffffff;
-    border-radius: 10px;
-    padding: 20px;
-    overflow-y: auto;
-}
 
+/* Author Thomas */
 .employeeListContainer {
     display: flex;
     flex: 0 0 calc(33% - 1rem);
@@ -21,11 +10,6 @@
     border-radius: 0.5rem; 
     overflow-y: auto;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.selected {
-    box-shadow: inset 0px 10px 10px rgba(169, 214, 229, 10); 
-    background-color: rgba(169, 214, 229, 0.4);
 }
 
 .profileContainer {
@@ -46,6 +30,25 @@
     object-fit: cover;
     border-radius: 50%;
     border: 2px solid #000; /* adjust border width and color as needed */
+}
+
+/* Author: Torjus A.M */
+.EmployeeList {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    width: 57vw;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.selected {
+    box-shadow: inset 0px 10px 10px rgba(169, 214, 229, 10); 
+    background-color: rgba(169, 214, 229, 0.4);
 }
 
 .infoContainer {

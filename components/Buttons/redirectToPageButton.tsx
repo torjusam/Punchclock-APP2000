@@ -8,11 +8,11 @@ interface GoToPersonalPageButtonProps {
 }
 
 const GoToPersonalPageButton: React.FC<GoToPersonalPageButtonProps> = ({ employeeId }) => {
+  const router = useRouter();
+  
   if (!employeeId) {
     return null;
   }
-
-  const router = useRouter();
 
   const goToPersonalPage = () => {
     // use the router to navigate to the personal page with the employee ID

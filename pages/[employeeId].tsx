@@ -9,7 +9,6 @@ const EmployeePage: React.FC = () => {
   const router = useRouter();
   const { employeeId } = router.query;
 
-
   useEffect(() => {
     if (employeeId) {
       const employeeData = (employee.id);

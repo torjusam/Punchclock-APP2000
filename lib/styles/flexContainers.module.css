@@ -16,15 +16,20 @@
 .buttonContainer {
   position: absolute;
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
-
+  justify-content: space-between;
+  
   bottom: -14.5vw;
   width: 57vw;
   background-color: rgb(255, 255, 255);
   border: 1px solid #ffffff;
   border-radius: 10px;
-  padding: 20px;
+  padding: 0.5rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
   overflow-y: auto;
+}
+
+/* Each item will take up 50% width (2 buttons) */
+.buttonContainer > * {
+  flex: 1 1 50%;
 }
