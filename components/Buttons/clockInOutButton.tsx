@@ -1,31 +1,42 @@
 // Author: Torjus A.M
-import React, { useState } from 'react';
-import styles from '../../lib/styles/Buttons.module.css';
+import React from 'react';
 import { Employee } from '../../lib/employee';
 import { performCheckOperation } from '../../lib/dataAccess';
 import { useEmployeeContext } from '../employeeContext';
 
 interface ClockInOutButtonProps {
-    employee: Employee;
+    employee: Employee | null;
     isClockedIn: boolean;
-    setSelectedEmployee: React.Dispatch<React.SetStateAction<Employee | null>>
 }
 
 // Updates employees status and perforsm check operation. Triggers re-render of employee table on frontpage
-const ClockInOutButton: React.FC<ClockInOutButtonProps> = ({ employee, isClockedIn, setSelectedEmployee }) => {
+const ClockInOutButton: React.FC<ClockInOutButtonProps> = ({ employee, isClockedIn }) => {
+    if (!employee) {
+        return null;
+    }
+    const { employees, setEmployees } = useEmployeeContext();
+
     const handleClick = async () => {
         await performCheckOperation(employee.id, isClockedIn);
-        employee.setIsClockedIn(!isClockedIn);
 
-        const updatedEmployee = { ...employee, isClockedIn: !isClockedIn };
-        setSelectedEmployee(updatedEmployee as Employee);
-      };
-    
-      return (
-        <button onClick={handleClick}>
-          {isClockedIn ? 'Stemple ut' : 'Stemple inn'}
-        </button>
-      );
-    
+        const index = employees.findIndex(emp => emp.id === employee.id);
+
+        employees[index].isClockedIn = !isClockedIn;
+
+        // Create a new array with the updated employee at the beginning if checking in, or at the end if checking out
+        const updatedEmployees = isClockedIn
+            ? [...employees.slice(0, index), ...employees.slice(index + 1), employees[index]]
+            : [employees[index], ...employees.slice(0, index), ...employees.slice(index + 1)];
+
+        // Update states with new array
+        setEmployees(updatedEmployees);
     };
-  export default ClockInOutButton;
+
+    return (
+        <button onClick={handleClick}>
+            {isClockedIn ? 'Stemple ut' : 'Stemple inn'}
+        </button>
+    );
+
+};
+export default ClockInOutButton;

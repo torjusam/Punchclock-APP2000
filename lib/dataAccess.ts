@@ -1,4 +1,4 @@
-//Author: Torjus A.M
+// Author: Torjus A.M
 import { Employee } from './employee';
 
 // Fetches list of employees from api handler and returns a Employee array
