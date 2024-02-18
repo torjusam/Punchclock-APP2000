@@ -64,11 +64,15 @@
     font-family: 'Roboto', sans-serif;
 }
 
-.circle {
+.circleStatus {
     position: absolute;
     z-index: 2;
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 50%;
     background-color: #ff0000;
+}
+
+.isClockedIn {
+    background-color: green;
 }
