@@ -17,8 +17,8 @@
   position: absolute;
   display: flex;
   justify-content: space-between;
-  
-  bottom: -14.5vw;
+     
+  bottom: -25vh;
   width: 57vw;
   background-color: rgb(255, 255, 255);
   border: 1px solid #ffffff;

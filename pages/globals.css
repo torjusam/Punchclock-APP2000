@@ -15,11 +15,3 @@ body {
 body,html {
   height: 100vh;
 }
-
-/* used for shared _app.tsx components */
-.layout {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100vh;
-}

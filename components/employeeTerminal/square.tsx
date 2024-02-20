@@ -2,16 +2,18 @@
 // firkant-komponent som brukes som en felles base for innholdet  
 import React from 'react';
 import styles from '../../lib/styles/square.module.css'
+import { Employee } from '../../lib/employee';
+import PersonalPageData from './personalPageData';
 
 interface SquareProps {
-  children: React.ReactNode; // kan ta imot alle typer komponenter
+  employee: Employee;
 }
 
-const Square: React.FC<SquareProps> = ({ children }) => {
+const Square: React.FC<SquareProps> = ({ employee }) => {
   return (
     <div className={styles.squareOuterContainer}>
       <div className={styles.square}>
-        {children}
+        <PersonalPageData employee={employee} />
       </div>
     </div>
   );

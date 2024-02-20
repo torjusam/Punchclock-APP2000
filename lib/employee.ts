@@ -9,6 +9,7 @@ export class Employee {
     shiftStart?: Date;
     shiftEnd?: Date;
     profilePictureUrl?: string;
+    pin?: number;
 
     constructor(
         id: number,

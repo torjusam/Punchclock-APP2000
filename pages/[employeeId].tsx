@@ -3,31 +3,31 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import GoToIndexButton from '../components/Buttons/redirectToIndexButton';
 import { Employee } from '../lib/employee';
+import { useEmployeeContext } from '../components/employeeContext';
 import Square from '../components/employeeTerminal/square';
 
 const EmployeePage: React.FC = () => {
+  const { employees, setEmployees } = useEmployeeContext()
   const router = useRouter();
   const { employeeId } = router.query;
+  const [employeeData, setEmployeeData] = useState<Employee | undefined>();
 
   useEffect(() => {
     if (employeeId) {
-      const employeeData = (employee.id);
-  
-      // check if the employeeData is defined before setting the state
-      if (employeeData) {
-        setEmployee(employeeData);
-      }
+      const foundEmployee = employees.find((employee) => employee.id === Number(employeeId));
+      setEmployeeData(foundEmployee);
     }
-  }, [employeeId]);
+  }, [employeeId, employees]);
 
-  if (!employee) {
+  if (!employeeData) {
     return <p style={{color:'white'}}>Loading...</p>;
   }
 
   return (
-    <div>
-      <GoToIndexButton />
-    </div>
+    <>
+      <Square employee={employeeData}> 
+      </Square>
+    </>
   );
 }
 
