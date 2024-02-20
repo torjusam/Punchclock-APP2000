@@ -5,28 +5,25 @@
 }
 
 .listOuterContainer {
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  margin-left: 10vh;
+  margin-right: 10vw;
+  width: 100%;
+  max-height: 80vh;
 }
 
 .buttonContainer {
-  position: absolute;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-     
-  bottom: -25vh;
-  width: 57vw;
+  align-items: center;
+  width: 100%;
   background-color: rgb(255, 255, 255);
   border: 1px solid #ffffff;
-  border-radius: 10px;
-  padding: 0.5rem;
-  padding-left: 5rem;
-  padding-right: 5rem;
-  overflow-y: auto;
+  border-radius: 2rem;
+  padding: 0.2rem;
 }
 
 /* Each item will take up 50% width (2 buttons) */

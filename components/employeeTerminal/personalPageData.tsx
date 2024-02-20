@@ -19,6 +19,9 @@ const PersonalPageData: React.FC<personalProps> = ({ employee }) => {
         <h2 className={styles.h1}>I dag</h2>
         <h2 className={styles.h2}>00t 00m</h2>
       </div>
+      <div className={styles.infoContainer}>
+        <hr className={styles.line} />
+      </div>
     </>
   );
 }
