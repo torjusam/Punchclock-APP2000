@@ -1,4 +1,5 @@
 //Author: Torjus A.M
+import React from 'react';
 import { useRouter } from 'next/router';
 import styles from '../../lib/styles/Buttons.module.css';
 
@@ -12,7 +13,7 @@ const GoToIndexButton: React.FC = () => {
 
   return (
     <button onClick={handleClick}
-    className={styles.redirectButton}>
+      className={styles.redirectButton}>
       Go to Homepage
     </button>
   );

@@ -15,9 +15,9 @@ const RedirectToPageButton: React.FC<RedirectToPageButtonProps> = ({ employee })
   probably better ways of doing this but not biggest priority */
   if (!employee) {
     return (
-      <button disabled className={styles.disabledButton}>
-        <img className={styles.icon} src="/clocking.png" alt="clocking-icon" />
-        Stemple
+      <button className={`${styles.buttonBase} ${styles.disabledButton}`}>
+        <img className={`${styles.icon} ${styles.iconDisabled}`} style={{ maxWidth: '3em', marginRight: '0.7em' }} src="/stockAvatar.png" alt="avatar" />
+        Personlig side
       </button>
     )
   }
@@ -30,8 +30,9 @@ const RedirectToPageButton: React.FC<RedirectToPageButtonProps> = ({ employee })
   const buttonClass = employee.isClockedIn ? styles.clockOut : styles.clockIn;
 
   return (
-    <button onClick={goToPersonalPage} className={`${styles.button} ${buttonClass}`}>
-      Gå til personlig side
+    <button onClick={goToPersonalPage} className={`${styles.buttonBase} ${styles.activeButton}`}>
+      <img className={`${styles.icon} ${styles.iconActive}`} style={{ maxWidth: '3em', marginRight: '0.7em' }} src="/stockAvatar.png" alt="avatar" />
+      Personlig side
     </button>
   );
 };

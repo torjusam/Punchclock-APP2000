@@ -26,26 +26,25 @@ const EmployeeShiftList: React.FC = () => {
     setSelectedEmployee(employee);
   };
 
-  // When clicking outside of the list, the selected employee is set to null.
-  // const listRef = useRef(null);
-  // useOnClickOutside(listRef, () => setSelectedEmployee(null));
+  //When clicking outside of the list, the selected employee is set to null.
+  const listRef = useRef(null);
+  useOnClickOutside(listRef, () => setSelectedEmployee(null));
 
   return (
-    <>
+    <div ref={listRef}>
       {employees.length > 0 ? (
-        <div /*ref={listRef} */>
-          {/* Author: Thomas H */}
+        <div>
           <EmployeeListDisplay
             employeeShiftInfo={employees}
             onSelectEmployee={handleSelectedEmployee}
             selectedEmployee={selectedEmployee}
           />
-        </div>
+          </div>
       ) : null}
       <ButtonsBelowTable
         selectedEmployee={selectedEmployee}
       />
-    </>
+    </div>
   );
 }
 
