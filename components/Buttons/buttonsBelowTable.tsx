@@ -13,6 +13,8 @@ interface ButtonsProps {
 
 const ButtonsBelowTable: React.FC<ButtonsProps> = ({ selectedEmployee }) => {
   // Styled conditonally
+  const buttonClass = selectedEmployee?.isClockedIn ? styles.clockOut : styles.clockIn;
+
   return (
     <div className={Container.buttonContainer}>
       <button className={`${styles.button} ${selectedEmployee ? styles.selected : styles.disabled}`}>

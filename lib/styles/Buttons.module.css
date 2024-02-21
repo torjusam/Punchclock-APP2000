@@ -1,17 +1,22 @@
 /* Author: Torjus A.M */
 .button {
     padding: 1rem;
-    font-size: 1em;
+    font-size: 1.5em;
     margin: 0.9rem;
-    color:white;
+    color:rgb(15, 15, 15);
+    border-radius: 1em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 550;
 }
 
 .clockIn {
-    background-color: green;
+    background-color: #22C55E;
+    color: #fff;
 }
 
 .clockOut {
     background-color: red;
+    color: #fff;
 }
 
 .buttonContainer {
@@ -31,10 +36,11 @@
   }
 
 .selected {
-    background-color: #4CAF50;
+    background-color: #A9D6E5;
 }
 
-.disabled {
-    background-color: black;
+/*.disabled {
+    background-color: black;   denne skal vell ikke brukes lengre?
     cursor: not-allowed;
 }
+*/ 
