@@ -17,7 +17,7 @@ const ButtonsBelowTable: React.FC<ButtonsProps> = ({ selectedEmployee }) => {
 
   return (
     <div className={Container.buttonContainer}>
-      <button className={`${styles.button} ${selectedEmployee ? styles.selected : styles.disabled}`}>
+      <button className={`${styles.button} ${selectedEmployee ? buttonClass : styles.disabled}`}>
         <ClockInOutButton
           employee={selectedEmployee}
           isClockedIn={selectedEmployee?.isClockedIn || false} 
