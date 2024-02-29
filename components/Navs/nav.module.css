@@ -1,0 +1,20 @@
+/* Author: Torjus A.M */
+/* Parent nav container */
+.navContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    background-color: #FFFFFF;
+    padding: 1em;
+    margin-bottom: 3em;
+    /* Placeholder to see nav size */
+    border: 1px solid #000000
+}
+
+/* CSS modules for each nav bar? */
+.homePageNav {
+    display: flex;
+}
+
