@@ -1,5 +1,4 @@
 // Author: Thomas, Torjus A.M
-// MÅ OPPDATERES MED SELECT METODE OG STATUS FOR CLOCKED IN ELLER IKKE
 import React from 'react';
 import { Employee } from '../../lib/employee';
 import styles from '../../lib/styles/employeeListData.module.css';

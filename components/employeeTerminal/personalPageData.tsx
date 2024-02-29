@@ -1,8 +1,9 @@
 // Author: Torjus A.M
 // Data on the personal page for employees, placed on the square component.
 import React from 'react';
-import styles from '../../lib/styles/square.module.css';
 import { Employee } from '../../lib/employee';
+import styles from '../../lib/styles/square.module.css';
+import ClockInOutButton from '../Buttons/clockInOutButton';
 
 interface personalProps {
   employee: Employee;
@@ -13,14 +14,17 @@ const PersonalPageData: React.FC<personalProps> = ({ employee }) => {
     <>
       <div className={styles.headerContainer}>
         <img className={styles.profilePicture} src='stockAvatar.png' alt={`Profile of ${employee.first_name} ${employee.surname}`}></img>
-        <h1 className={styles.h1}>{employee.first_name + " " + employee.surname}</h1>
+        <div className={styles.todayTimeInfo}>
+          <h2 className={styles.h1}>I dag</h2>
+          <h2 className={styles.h2}>00t 00m 00s</h2> {/* Create function for employee time and format it */}
+        </div>
       </div>
-      <div className={styles.todayTimeInfo}>
-        <h2 className={styles.h1}>I dag</h2>
-        <h2 className={styles.h2}>00t 00m</h2>
-      </div>
-      <div className={styles.infoContainer}>
+      <div className={styles.lineContainer}>
         <hr className={styles.line} />
+        <h3 className={styles.h3}>Ingen vakt i dag</h3> {/* Create function for employee shift */}
+      </div>
+      <div className={styles.bigButton}>
+        <ClockInOutButton employee={employee} />
       </div>
     </>
   );

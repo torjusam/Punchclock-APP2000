@@ -4,16 +4,6 @@
   flex-direction: column;
 }
 
-.listOuterContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  margin-right: 10vw;
-  width: 100%;
-  max-height: 80vh;
-}
-
 .buttonContainer {
   display: flex;
   flex-direction: row;

@@ -6,6 +6,7 @@ import styles from '../lib/styles/layout.module.css'
 const Clock = () => {
   const [time, setTime] = useState('');
   const [date, setDate] = useState('');
+  const [greeting, setGreeting] = useState('');
 
   useEffect(() => {
     const updateClock = () => {
@@ -13,7 +14,9 @@ const Clock = () => {
       const options: Intl.DateTimeFormatOptions = { timeZone: 'Europe/Oslo', hour: '2-digit', minute: '2-digit' };
       const osloTime = now.toLocaleTimeString('nb-NO', options);
       const formattedOsloDate = formatDate(now);
-
+      
+      // Placeholder. To-Do: Greeting based on time of day
+      setGreeting("God morgen!")
       setDate(formattedOsloDate);
       setTime(osloTime);
     };
@@ -29,7 +32,8 @@ const Clock = () => {
     []);
 
   return (
-    <div className={styles.clockContainer}>
+    <div className={styles.outerDateContainer}>
+      <div className={styles.greetingText}>{greeting}</div>
       <div className={styles.clock}>{time}</div>
       <div className={styles.dateText}>{date}</div>
     </div>

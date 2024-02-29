@@ -33,17 +33,12 @@ const EmployeeShiftList: React.FC = () => {
   return (
     <div ref={listRef}>
       {employees.length > 0 ? (
-        <div>
           <EmployeeListDisplay
             employeeShiftInfo={employees}
             onSelectEmployee={handleSelectedEmployee}
             selectedEmployee={selectedEmployee}
           />
-          </div>
       ) : null}
-      <ButtonsBelowTable
-        selectedEmployee={selectedEmployee}
-      />
     </div>
   );
 }
