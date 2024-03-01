@@ -5,11 +5,13 @@ import EmployeeListDisplay from './employeeTable';
 import { useEmployeeContext } from '../employeeContext';
 import ButtonsBelowTable from '../Buttons/buttonsBelowTable';
 import useOnClickOutside from '../../lib/clickOutside';
+import { useRouter } from 'next/router';
 
 const EmployeeShiftList: React.FC = () => {
   // Use custom hook for state context
   const { employees, setEmployees, clockedInEmployees, setClockedInEmployees } = useEmployeeContext()
   const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     if (selectedEmployee) {
@@ -24,6 +26,7 @@ const EmployeeShiftList: React.FC = () => {
 
   const handleSelectedEmployee = (employee: Employee) => {
     setSelectedEmployee(employee);
+    router.push(`/${employee.id}`);
   };
 
   //When clicking outside of the list, the selected employee is set to null.

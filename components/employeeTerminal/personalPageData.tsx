@@ -1,7 +1,8 @@
 // Author: Torjus A.M
 // Data on the personal page for employees, placed on the square component.
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Employee } from '../../lib/employee';
+import LastCheckTime from '../lastCheckTime';
 import styles from '../../lib/styles/square.module.css';
 import ClockInOutButton from '../Buttons/clockInOutButton';
 
@@ -10,6 +11,7 @@ interface personalProps {
 }
 
 const PersonalPageData: React.FC<personalProps> = ({ employee }) => {
+
   return (
     <>
       <div className={styles.headerContainer}>
@@ -26,6 +28,7 @@ const PersonalPageData: React.FC<personalProps> = ({ employee }) => {
       <div className={styles.bigButton}>
         <ClockInOutButton employee={employee} />
       </div>
+      <LastCheckTime employee={employee} />
     </>
   );
 }

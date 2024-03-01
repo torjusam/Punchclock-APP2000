@@ -17,6 +17,7 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
+  // Uses custom.d.ts to define types for modules that don't have types (SVGs)
   "include": [
     "next-env.d.ts",
     "**/*.ts",

@@ -43,4 +43,12 @@ export class Employee {
             Last checkin: ${this.lastCheckIn}. Last checkout: ${this.lastCheckOut}`
         );
     }
+
+    lastCheck(): Date {
+        if (this.isClockedIn) {
+            return this.lastCheckIn;
+        } else {
+            return this.lastCheckOut;
+        }
+    }
 }

@@ -15,3 +15,15 @@ export function formatDate(date: Date): string {
 
   return `${month} ${formattedDay}, ${year}`;
 }
+
+
+export function formatTime (date: Date): string {
+  date = new Date(date);
+  const hours: number = date.getHours();
+  const minutes: number = date.getMinutes();
+
+  // Add leading zero to minutes if it's a single digit
+  const formattedMinutes: string = (minutes < 10) ? `0${minutes}` : minutes.toString();
+
+  return `${hours}:${formattedMinutes}`;
+}

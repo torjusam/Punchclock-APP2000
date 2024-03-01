@@ -29,9 +29,17 @@ const ClockInOutButton: React.FC<ClockInOutButtonProps> = ({ employee }) => {
     const handleClick = async () => {
         await performCheckOperation(employee.id, employeeStatus);
 
+        // Find the index of the employee in the global state array
         const index = employees.findIndex(emp => emp.id === employee.id);
         employees[index].isClockedIn = !employeeStatus;
 
+        // Update the employee's last check in/out time
+        if (employeeStatus) {
+            employees[index].lastCheckOut = new Date();
+        } else {
+            employees[index].lastCheckIn = new Date();
+        }
+        
         // Create a new array with the updated employee at the beginning if checking in, or at the end if checking out
         // Maybe inneffecient?? But it works
         const updatedEmployees = employeeStatus

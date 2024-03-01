@@ -1,23 +1,18 @@
 /* Author: Torjus A.M */
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 .generalContainer {
   display: flex;
   flex-direction: column;
 }
 
-.buttonContainer {
+.rowContainer{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  background-color: rgb(255, 255, 255);
-  border: 1px solid #ffffff;
-  border-radius: 2rem;
-  padding: 0.2rem;
-  margin-top: 15px;
+  max-width: 10vw;
 }
 
-/* Each item will take up 50% width (2 buttons) */
-.buttonContainer > * {
-  flex: 1 1 50%;
+.timeText {
+  color: #4E5052;
+  font-family: 'Lato', sans-serif;
+  font-size: 2rem;
 }
