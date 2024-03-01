@@ -1,10 +1,10 @@
 //Author: Torjus A.M
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import GoToIndexButton from '../components/Buttons/redirectToIndexButton';
+import PersonalPageData from '../components/employeeTerminal/personalPageData';
 import { Employee } from '../lib/employee';
 import { useEmployeeContext } from '../components/employeeContext';
-import Square from '../components/employeeTerminal/square';
+import styles from '../lib/styles/square.module.css';
 
 const EmployeePage: React.FC = () => {
   const { employees, setEmployees } = useEmployeeContext()
@@ -24,10 +24,9 @@ const EmployeePage: React.FC = () => {
   }
 
   return (
-    <>
-      <Square employee={employeeData}> 
-      </Square>
-    </>
+    <div className={styles.square}>
+    <PersonalPageData employee={employeeData} />
+    </div>
   );
 }
 

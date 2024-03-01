@@ -1,5 +1,4 @@
 // Author: Torjus A.M
-// Data on the personal page for employees, placed on the square component.
 import React, { useState, useEffect } from 'react';
 import { Employee } from '../../lib/employee';
 import LastCheckTime from '../lastCheckTime';
