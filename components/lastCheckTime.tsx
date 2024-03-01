@@ -1,3 +1,6 @@
+/* Author: Torjus A.M
+    This component is used to display the last check time of an employee along with an icon.
+    It is used in the employeeTable component. */
 import React, { useState, useEffect } from 'react';
 import { Employee } from '../lib/employee';
 import { formatTime } from '../lib/dateFormatter';
@@ -7,6 +10,7 @@ import styles from '../lib/styles/flexContainers.module.css'
 
 const LastCheckTime: React.FC<{ employee: Employee }> = ({ employee }) => {
     const [lastCheckTime, setLastCheckTime] = useState('');
+    // This dictates which icon should be used
     const [lastAction, setLastAction] = useState('');
 
     useEffect(() => {
@@ -27,7 +31,7 @@ const LastCheckTime: React.FC<{ employee: Employee }> = ({ employee }) => {
         <div className={styles.rowContainer}>
             {lastAction === 'in' ? <ArrowIn /> : <ArrowOut />}
             <div className={styles.timeText}>
-            {lastCheckTime}
+                {lastCheckTime}
             </div>
         </div>
     );

@@ -17,7 +17,7 @@
     display: flex;
     height: 100vh;
     background-color: #FCFCFC;
-    padding: 3em;
+    padding: 2.5em;
     /* Take up all available space, but dont exceed 67% of the viewport*/
     width: 100%;
     max-width: 67vw;
