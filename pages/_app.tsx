@@ -1,23 +1,24 @@
 //Author: Torjus A.M
 import type { AppProps } from 'next/app';
-import Clock from '../components/clock';
 import EmployeeContextProvider from '../components/employeeContext';
+import LeftContent from '../components/leftSideContent/leftContent';
 import './globals.css';
 import styles from '../lib/styles/layout.module.css';
 
 const App = ({ Component, pageProps }: AppProps) => {
 
+  // The shared layout of the app
   return (
     <div className={styles.veryOuterContainer}>
       <div className={styles.leftContainer}>
-        <Clock />
+        <LeftContent />
       </div>
-      {/* ContextProvider around the page-content component, so every component has access to employees state */}
-      <EmployeeContextProvider>
-        <div className={styles.rightContainer}>
+      <div className={styles.rightContainer}>
+        {/* ContextProvider around the page-content component, so every component has access to employees state */}
+        <EmployeeContextProvider>
           <Component {...pageProps} />
-        </div>
-      </EmployeeContextProvider>
+        </EmployeeContextProvider>
+      </div>
     </div>
   );
 };

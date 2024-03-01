@@ -5,10 +5,13 @@
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
-    width: 100%;
     background-color: #FFFFFF;
     padding: 1em;
     margin-bottom: 3em;
+    /* To-Do: Keep forced sizing? */
+    width: 100%;
+    max-height: 5vw;
+    flex-grow: 1;
     /* Placeholder to see nav size */
     border: 1px solid #000000
 }

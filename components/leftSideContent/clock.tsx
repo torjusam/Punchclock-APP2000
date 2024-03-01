@@ -1,7 +1,7 @@
 // Authors: Thomas H, Ask A, Torjus A.M
 import React, { useState, useEffect } from 'react';
-import { formatDate } from '../lib/dateFormatter';
-import styles from '../lib/styles/layout.module.css'
+import { formatDate } from '../../lib/dateFormatter';
+import styles from './leftContent.module.css'
 
 const Clock = () => {
   const [time, setTime] = useState('');

@@ -1,0 +1,79 @@
+/* Author: Torjus A.M */
+
+/* Google fonts: Lato & DM Sans */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+/* Logo top left */
+.logo {
+    display: flex;
+    align-self: flex-start;
+    width: 8vw;
+    margin: 1rem;
+    /* Hovering changes the cursor (only relevant on PC, not on touchscreen)*/
+    cursor: pointer;
+}
+
+.outerDateContainer {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 3vw;
+    margin-right: 3vw;
+}
+
+.clock {
+    font-size: 10rem;
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: bold;
+    text-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
+    line-height: 13rem;
+    letter-spacing: 0.04em;
+}
+
+.dateText {
+    font-size: 2.8rem;
+    color: #f2f2f2;
+    font-family: 'Lato', sans-serif;
+    text-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
+}
+
+.greetingText {
+    font-size: 3rem;
+    color: #f2f2f2;
+    font-family: 'Lato', sans-serif;
+    text-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
+}
+
+/* Help button */
+.helpContainer {
+    display: flex;
+    align-self: flex-start;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+    /* Hovering changes the cursor (only for CRUD-testing)*/
+    cursor: pointer;
+}
+
+.helpIco {
+    display: flex;
+    aspect-ratio: 1/1;
+    width: 3.5vw;
+    stroke: #f2f2f2;
+    height: max-content;
+}
+
+.helpText {
+    margin-left: 0.5rem;
+    color: #1C274C;
+    opacity: 90%;
+    font-size: 1.1rem;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    text-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.0);
+}
