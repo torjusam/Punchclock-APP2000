@@ -1,46 +1,23 @@
-// Author: Thomas, Torjus A.M
-import React from 'react';
-import { Employee } from '../../lib/employee';
-import LastCheckTime from './lastCheckTime';
+/*
+  Author: Thomas H, Torjus A.M
+  This component is responsible for displaying the employee cards in a table on the frontpage.
+  It uses the custom employeeContext hook to access the array of employees,
+  then maps over it and assigns each to an employee card.
+*/
+import React, { FC } from 'react';
+import EmployeeCard from './employeeCard';
+import { useEmployeeContext } from '../employeeContext';
 import styles from './employeeList.module.css';
 
-interface EmployeeDataProps {
-  employee: Employee;
-  onSelect: () => void;
-  isSelected: boolean;
-}
+const EmployeeListDisplay: FC = () => {
+  const { employees } = useEmployeeContext();
 
-// Component represetning individual employee within the list
-export const EmployeeData: React.FC<EmployeeDataProps> = ({ employee, onSelect, isSelected }) => {
-  const avatar = employee.profilePictureUrl ? employee.profilePictureUrl : './avatar.svg';
-
-  return (
-    <div className={`${styles.employeeCardContainer} ${employee.isClockedIn ? styles.isClockedIn : ''} ${isSelected ? styles.selected : ''}`} onClick={onSelect}>
-      <img className={styles.profilePicture} src={avatar} />
-      <div className={styles.infoContainer}>
-        <span className={styles.employeeName}>{employee.first_name} {employee.surname}</span>
-        <LastCheckTime employee={employee} />
-      </div>
-    </div>
-  );
-};
-
-interface EmployeeListDisplayProps {
-  employeeShiftInfo: Employee[];
-  onSelectEmployee: (employee: Employee) => void;
-  selectedEmployee: Employee | null;
-}
-
-// Responsible for displaying list; each employee is represented by employeeData component
-const EmployeeListDisplay: React.FC<EmployeeListDisplayProps> = ({ employeeShiftInfo, onSelectEmployee, selectedEmployee }) => {
   return (
     <div className={styles.EmployeeList}>
-      {employeeShiftInfo.map(employee => (
-        <EmployeeData
+      {employees.map(employee => (
+        <EmployeeCard
           key={employee.id}
           employee={employee}
-          onSelect={() => onSelectEmployee(employee)}
-          isSelected={employee === selectedEmployee}
         />
       ))}
     </div>

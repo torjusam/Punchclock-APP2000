@@ -1,17 +1,18 @@
 /**
  * Author: Thomas H, Torjus A.M
  *
- * CSS module for the EmployeeList. It contains styles for
- * the list, inidividual employee cards and conditional
- * styling for selected and clocked in employees.
+ * CSS module for the EmployeeList. It contains styles for the list
+ * of employees on the frontpage, inidividual employee cards and conditional
+ * styling for selecting and clocked in employees.
  * 
  * To-Do: 
  *   Update borders on the profile pictures. 
+ *   Handle too long of a employee name. (With ellipsis?)
  */
- 
- /* Google fonts Public Sans & Lato*/
- @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap');
- @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+/* Google fonts Public Sans & Lato*/
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
 /* Outer container */
 .EmployeeList {
@@ -24,10 +25,12 @@
     width: 100%;
 }
 
-/* Ruleset for adjusting the width of the employee cards. By default two cards are displayed per row.
+/* Ruleset for adjusting the employee-cards based on width of the screen.
    ========================================================================== */
 
+/* M resolution, default. Display 2 cards pr row */
 .EmployeeList>div {
+    /* -1rem takes into account 50% including a margin between cards */
     flex-basis: calc(50% - 1rem);
 }
 
@@ -47,9 +50,11 @@
 
 /* Employee cards
    ========================================================================== */
-
 .employeeCardContainer {
     display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
     max-height: 7em;
     margin-bottom: 1rem;
     padding: 0.8em;
@@ -59,14 +64,13 @@
 }
 
 .profilePicture {
-    display: flex;
     max-width: 4.8em;
     border-radius: 50%;
     aspect-ratio: 1/1;
     border: 2px solid #000;
 }
 
-/* Container for employees name and last check */
+/* Container for employees name and last check time */
 .infoContainer {
     display: flex;
     line-height: 1.8rem;
@@ -92,22 +96,18 @@
 }
 
 .lastCheckTime {
-  color: #4E5052;
-  font-family: 'Lato', sans-serif;
-  font-size: 1.8rem;
+    color: #4E5052;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.8rem;
 }
 
 .arrowOut {
-    display: flex;
-    align-self: center;
     stroke: #F33161;
     width: 2.3rem;
     stroke-width: 2;
 }
 
 .arrowIn {
-    display: flex;
-    align-self: center;
     stroke: #19AD79;
     width: 2.3rem;
     stroke-width: 2;
