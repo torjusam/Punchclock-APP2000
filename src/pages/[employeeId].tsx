@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import PersonalPageData from '../components/employeeTerminal/personalPageData';
 import { Employee } from '../lib/employee';
 import { useEmployeeContext } from '../components/employeeContext';
-import styles from '../lib/styles/square.module.css';
+import styles from '..//styles/square.module.css';
 
 const EmployeePage: React.FC = () => {
   const { employees, setEmployees } = useEmployeeContext()

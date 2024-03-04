@@ -3,7 +3,7 @@
 import React from 'react';
 import ClockInOutButton from './clockInOutButton';
 import GoToPersonalPageButton from './redirectToPageButton';
-import Container from '../../lib/styles/flexContainers.module.css';
+import Container from '../..//styles/flexContainers.module.css';
 import { Employee } from '../../lib/employee';
 
 interface ButtonsProps {

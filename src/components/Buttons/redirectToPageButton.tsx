@@ -2,7 +2,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { Employee } from '../../lib/employee';
-import styles from '../../lib/styles/Buttons.module.css';
+import styles from '../..//styles/Buttons.module.css';
 
 interface RedirectToPageButtonProps {
   employee: Employee | null;

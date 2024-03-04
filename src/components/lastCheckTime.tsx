@@ -6,7 +6,7 @@ import { Employee } from '../lib/employee';
 import { formatTime } from '../lib/dateFormatter';
 import ArrowIn from '../lib/assets/svg/arrowIn.svg';
 import ArrowOut from '../lib/assets/svg/arrowOut.svg';
-import styles from '../lib/styles/flexContainers.module.css'
+import styles from '../styles/flexContainers.module.css';
 
 const LastCheckTime: React.FC<{ employee: Employee }> = ({ employee }) => {
     const [lastCheckTime, setLastCheckTime] = useState('');

@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Employee } from '../../lib/employee';
 import LastCheckTime from '../lastCheckTime';
-import styles from '../../lib/styles/square.module.css';
+import styles from './square.module.css';
 import ClockInOutButton from '../Buttons/clockInOutButton';
 
 interface personalProps {

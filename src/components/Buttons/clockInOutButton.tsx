@@ -3,7 +3,7 @@ import React from 'react';
 import { Employee } from '../../lib/employee';
 import { performCheckOperation } from '../../lib/dataAccess';
 import { useEmployeeContext } from '../employeeContext';
-import styles from '../../lib/styles/Buttons.module.css';
+import styles from './buttons.module.css'
 
 interface ClockInOutButtonProps {
     employee: Employee | null;

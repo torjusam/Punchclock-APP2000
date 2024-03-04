@@ -1,6 +1,27 @@
-import "@/styles/globals.css";
-import type { AppProps } from "next/app";
+//Author: Torjus A.M
+import type { AppProps } from 'next/app';
+import EmployeeContextProvider from '../components/employeeContext';
+import LeftContent from '../components/leftSideContent/leftContent';
+import './globals.css';
+import styles from '../styles/layout.module.css';
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
-}
+const App = ({ Component, pageProps }: AppProps) => {
+
+  // The shared layout of the app
+  return (
+    <div className={styles.veryOuterContainer}>
+      <div className={styles.leftContainer}>
+        <LeftContent />
+      </div>
+      <div className={styles.rightContainer}>
+        {/* ContextProvider around the page-content component, so every component has access to employees state */}
+        <EmployeeContextProvider>
+          <Component {...pageProps} />
+        </EmployeeContextProvider>
+      </div>
+    </div>
+  );
+};
+
+export default App;
+
