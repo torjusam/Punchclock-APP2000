@@ -1,91 +1,124 @@
-/* Author Thomas H, Torjus A.M */
-@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap');
+/**
+ * Author: Thomas H, Torjus A.M
+ *
+ * CSS module for the EmployeeList. It contains styles for
+ * the list, inidividual employee cards and conditional
+ * styling for selected and clocked in employees.
+ * 
+ * To-Do: 
+ *   Update borders on the profile pictures. 
+ */
+ 
+ /* Google fonts Public Sans & Lato*/
+ @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
+/* Outer container */
 .EmployeeList {
     display: flex;
     flex-wrap: wrap;
-    /* Row direction where the content wraps on multiple lines as needed. */
     flex-direction: row;
     justify-content: space-evenly;
     background-color: rgb(255, 255, 255);
     border-radius: 3rem;
-}
-
-/* */
-.EmployeeList>div {
-    flex-basis: calc(50% - 1rem);
     width: 100%;
 }
 
-@media screen and (min-width: 1180px) {
+/* Ruleset for adjusting the width of the employee cards. By default two cards are displayed per row.
+   ========================================================================== */
+
+.EmployeeList>div {
+    flex-basis: calc(50% - 1rem);
+}
+
+/* S resolution. Display 1 card per row. */
+@media screen and (max-width: 1100px) {
     .EmployeeList>div {
-        flex-basis: calc(50% - 1rem);
+        flex-basis: 100%;
     }
 }
 
-@media screen and (min-width: 1920px) {
+/* L resolution. Display 3 cards per row. */
+@media screen and (min-width: 1700px) {
     .EmployeeList>div {
         flex-basis: calc(33.33% - 1rem);
     }
 }
 
+/* Employee cards
+   ========================================================================== */
 
-/* Author Thomas */
-.employeeListContainer {
+.employeeCardContainer {
     display: flex;
-    flex: 1 0 32%;
-    /* Grow and shrink, basis of 33% */
-    max-width: 50%;
-    /* Maximum width of 50% */
-    max-height: 8em;
-    margin-left: 0.35rem;
+    max-height: 7em;
     margin-bottom: 1rem;
-    background-color: rgba(169, 214, 229, 0.1);
-    padding: 1em;
-
-    overflow-y: auto;
+    padding: 0.8em;
     border: 2px solid #F33161;
     border-radius: 5em;
-    box-shadow: 0px 10px 10px rgba(169, 214, 229, 0.4);
-}
-
-.profileContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    aspect-ratio: 1/1;
+    box-shadow: 0em 0.2em 0.2em rgba(0, 0, 0, 0.2);
 }
 
 .profilePicture {
-    max-width: 6em;
-    object-fit: cover;
+    display: flex;
+    max-width: 4.8em;
     border-radius: 50%;
     aspect-ratio: 1/1;
     border: 2px solid #000;
-    /* adjust border width and color as needed */
 }
 
-
-
-
-.selected {
-    box-shadow: inset 0px 10px 10px rgba(169, 214, 229, 10);
-    background-color: rgba(169, 214, 229, 0.4);
-}
-
+/* Container for employees name and last check */
 .infoContainer {
     display: flex;
-    line-height: 2.5em;
+    line-height: 1.8rem;
     margin-left: 0.7rem;
     flex-direction: column;
     justify-content: center;
+    max-width: 100%;
 }
 
 .employeeName {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: #121212;
-    font-weight: 700;
+    font-weight: bold;
     font-family: 'Public Sans', sans-serif;
+}
+
+/* Container for arrow icon and last check time */
+.lastCheckContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.lastCheckTime {
+  color: #4E5052;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.8rem;
+}
+
+.arrowOut {
+    display: flex;
+    align-self: center;
+    stroke: #F33161;
+    width: 2.3rem;
+    stroke-width: 2;
+}
+
+.arrowIn {
+    display: flex;
+    align-self: center;
+    stroke: #19AD79;
+    width: 2.3rem;
+    stroke-width: 2;
+}
+
+/* Conditional styling for selecting employees and clocked in employees border
+   ========================================================================== */
+
+.selected {
+    box-shadow: inset 0px 10px 10px rgba(169, 214, 229, 10);
+    background-color: rgba(38, 191, 147, 0.15);
 }
 
 .isClockedIn {

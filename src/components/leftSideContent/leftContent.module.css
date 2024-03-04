@@ -1,4 +1,9 @@
-/* Author: Torjus A.M */
+/**
+ * Author: Torjus A.M
+ *
+ * CSS module for the shared content on the left side of the screen.
+ * Aims to be responsive to changes and have a readable set of texts. 
+ */
 
 /* Google fonts: Lato & DM Sans */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
@@ -8,11 +13,14 @@
 .logo {
     display: flex;
     align-self: flex-start;
-    width: 8vw;
+    width: 9vw;
     margin: 1rem;
-    /* Hovering changes the cursor (only relevant on PC, not on touchscreen)*/
+    /* Hovering changes the cursor to show clickability (only relevant on PC, not on touchscreen)*/
     cursor: pointer;
 }
+
+/* Clock, date and greeting, aswell as media queries to adjust the size based on screen width.
+   ========================================================================== */
 
 .outerDateContainer {
     display: flex;
@@ -25,30 +33,80 @@
 }
 
 .clock {
-    font-size: 10rem;
+    font-size: 11rem;
     color: white;
     font-family: 'DM Sans', sans-serif;
     font-weight: bold;
     text-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
-    line-height: 13rem;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.03em;
+    line-height: 15rem;
 }
 
 .dateText {
-    font-size: 2.8rem;
-    color: #f2f2f2;
-    font-family: 'Lato', sans-serif;
-    text-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
-}
-
-.greetingText {
     font-size: 3rem;
     color: #f2f2f2;
     font-family: 'Lato', sans-serif;
     text-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
 }
 
-/* Help button */
+.greetingText {
+    font-size: 3.5rem;
+    color: #f2f2f2;
+    font-family: 'Lato', sans-serif;
+    text-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
+}
+
+/* S tablet */
+@media screen and (max-width: 1100px) {
+    .clock {
+        font-size: 7rem;
+        line-height: 10rem;
+    }
+
+    .dateText {
+        font-size: 2.3rem;
+    }
+
+    .greetingText {
+        font-size: 2.7rem;
+    }
+}
+
+/* M tablet */
+@media screen and (max-width: 1350px) {
+    .clock {
+        font-size: 8rem;
+        line-height: 10rem;
+    }
+
+    .dateText {
+        font-size: 2.7rem;
+    }
+
+    .greetingText {
+        font-size: 2.7rem;
+    }
+}
+
+/* L */
+@media screen and (min-width: 1700px) {
+    .clock {
+        font-size: 13rem;
+        line-height: 17rem;
+    }
+
+    .dateText {
+        font-size: 4rem;
+    }
+
+    .greetingText {
+        font-size: 5rem;
+    }
+}
+
+/* Help button on the bottom left.
+   ========================================================================== */
+
 .helpContainer {
     display: flex;
     align-self: flex-start;
@@ -56,7 +114,7 @@
     justify-content: center;
     align-items: center;
     margin: 1rem;
-    /* Hovering changes the cursor (only for CRUD-testing)*/
+    /* Hovering changes the cursor (only for CRUD-testing) */
     cursor: pointer;
 }
 

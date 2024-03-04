@@ -1,7 +1,7 @@
 // Author: Torjus A.M
 import React, { useState, useEffect } from 'react';
 import { Employee } from '../../lib/employee';
-import LastCheckTime from '../lastCheckTime';
+import LastCheckTime from '../frontPageTable/lastCheckTime';
 import styles from './square.module.css';
 import ClockInOutButton from '../Buttons/clockInOutButton';
 

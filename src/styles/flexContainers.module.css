@@ -1,18 +1,6 @@
 /* Author: Torjus A.M */
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
 .generalContainer {
   display: flex;
   flex-direction: column;
-}
-
-.rowContainer{
-  display: flex;
-  flex-direction: row;
-  max-width: 7.5vw;
-}
-
-.timeText {
-  color: #4E5052;
-  font-family: 'Lato', sans-serif;
-  font-size: 1.8rem;
 }

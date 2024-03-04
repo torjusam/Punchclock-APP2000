@@ -1,5 +1,16 @@
-/* Author: Torjus A.M */
-/* Parent nav container */
+/**
+ * Author: Torjus A.M
+ *
+ * CSS module for the Nav Bars.
+ *
+ * To-Do: 
+ *   Style searchbar on the homepage. Add media queries.
+ *   Keep forced width?
+ *   Remove border.
+ */
+
+
+/* Parent container for all the different nav bars */
 .navContainer {
     display: flex;
     justify-content: space-between;
@@ -8,7 +19,6 @@
     background-color: #FFFFFF;
     padding: 1em;
     margin-bottom: 3em;
-    /* To-Do: Keep forced sizing? */
     width: 100%;
     max-height: 5vw;
     flex-grow: 1;

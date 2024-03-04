@@ -1,7 +1,7 @@
 // Author: Thomas, Torjus A.M
 import React from 'react';
 import { Employee } from '../../lib/employee';
-import LastCheckTime from '../lastCheckTime';
+import LastCheckTime from './lastCheckTime';
 import styles from './employeeList.module.css';
 
 interface EmployeeDataProps {
@@ -15,10 +15,8 @@ export const EmployeeData: React.FC<EmployeeDataProps> = ({ employee, onSelect, 
   const avatar = employee.profilePictureUrl ? employee.profilePictureUrl : './avatar.svg';
 
   return (
-    <div className={`${styles.employeeListContainer} ${employee.isClockedIn ? styles.isClockedIn : ''} ${isSelected ? styles.selected : ''}` } onClick={onSelect}>
-      <div className={styles.profileContainer}>
-        <img className={styles.profilePicture} src={avatar} />
-      </div>
+    <div className={`${styles.employeeCardContainer} ${employee.isClockedIn ? styles.isClockedIn : ''} ${isSelected ? styles.selected : ''}`} onClick={onSelect}>
+      <img className={styles.profilePicture} src={avatar} />
       <div className={styles.infoContainer}>
         <span className={styles.employeeName}>{employee.first_name} {employee.surname}</span>
         <LastCheckTime employee={employee} />

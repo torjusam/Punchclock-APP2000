@@ -5,15 +5,15 @@ interface iDefault {
     defaultValue: string | null
 }
 
-    //WIP, følger en guide, ikke integrert.
+//WIP, følger en guide, ikke integrert.
 
 export const SearchInput = ({ defaultValue }: iDefault) => {
 
     const router = useRouter()
-  
+
     const [inputValue, setValue] = useState(defaultValue)
 
-    const handleChange = (event: ChangeEvent<HTMLInputElement>) =>{
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
 
         const inputValue = event.target.value;
 

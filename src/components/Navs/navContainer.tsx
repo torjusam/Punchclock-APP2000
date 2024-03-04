@@ -2,6 +2,8 @@
 import { useRouter } from 'next/router';
 import React, { use } from 'react';
 import HomePageNav from './homePageNav';
+import CrudPageNav from './CrudPageNav';
+import PersonalPageNav from './personalPageNav';
 import styles from './nav.module.css';
 
 const NavContainer: React.FC = () => {
@@ -10,13 +12,11 @@ const NavContainer: React.FC = () => {
 
     // Renders nav bar content depending on the current page
     return (
-        <div className={styles.navContainer}>
+        <nav className={styles.navContainer}>
             {pathname === '/' && <HomePageNav />}
-            {/*
             {pathname === '/crudTest' && <CrudPageNav />}
-            {pathname.includes('/employeeId') && <EmployeePageNav />}
-            */}
-        </div>
+            {pathname.includes('/employeeId') && <PersonalPageNav />}
+        </nav>
     );
 };
 

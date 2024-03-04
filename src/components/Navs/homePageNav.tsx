@@ -1,13 +1,18 @@
 // Author: Torjus A.M
-import React from 'react';
-import styles from './nav.module.css';
+import React, { useState, ChangeEvent } from 'react';
+import { SearchInput } from '../SearchInput';
 
-const HomePageNav: React.FC = () => { 
+const HomePageNav: React.FC = () => {
+    const [searchTerm, setSearchTerm] = useState('');
+
+    const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setSearchTerm(event.target.value);
+    };
 
     return (
-        <div className={styles.homePageNav}>
-            <h1>HomePageNav</h1>
-        </div>
+        <nav>
+            <SearchInput value={searchTerm} onChange={handleSearchChange} />
+        </nav>
     );
 };
 

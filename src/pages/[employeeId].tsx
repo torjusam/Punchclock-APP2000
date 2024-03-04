@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react';
 import PersonalPageData from '../components/employeeTerminal/personalPageData';
 import { Employee } from '../lib/employee';
 import { useEmployeeContext } from '../components/employeeContext';
-import styles from '..//styles/square.module.css';
+import NavContainer from '../components/Navs/navContainer';
+import styles from '../styles/flexContainers.module.css'
 
 const EmployeePage: React.FC = () => {
   const { employees, setEmployees } = useEmployeeContext()
@@ -20,12 +21,13 @@ const EmployeePage: React.FC = () => {
   }, [employeeId, employees]);
 
   if (!employeeData) {
-    return <p style={{color:'white'}}>Loading...</p>;
+    return <p style={{ color: 'white' }}>Loading...</p>;
   }
 
   return (
-    <div className={styles.square}>
-    <PersonalPageData employee={employeeData} />
+    <div className={styles.generalContainer}>
+      <NavContainer />
+      <PersonalPageData employee={employeeData} />
     </div>
   );
 }
