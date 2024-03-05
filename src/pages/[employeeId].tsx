@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import PersonalPageData from '../components/employeeTerminal/personalPageData';
 import { Employee } from '../lib/employee';
-import { useEmployeeContext } from '../components/employeeContext';
+import { useEmployeeContext } from '../hooks/employeeContext';
 import NavContainer from '../components/Navs/navContainer';
 import styles from '../styles/flexContainers.module.css'
 

@@ -7,7 +7,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const { employeeId } = req.body;
         const currentTimestamp = new Date();
 
-        const text = 'INSERT INTO CheckIn_CheckOut (Employee_id, Checkin) VALUES ($1, $2)';
+        const text = 'INSERT INTO fleksitidBank (Employee_id, Checkin) VALUES ($1, $2)';
         const values = [employeeId, currentTimestamp];
 
         await pool.query(text, values);

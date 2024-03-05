@@ -1,6 +1,6 @@
 //Author: Torjus A.M
 import type { AppProps } from 'next/app';
-import EmployeeContextProvider from '../components/employeeContext';
+import EmployeeContextProvider from '../hooks/employeeContext';
 import LeftContent from '../components/leftSideContent/leftContent';
 import './globals.css';
 import styles from '../styles/layout.module.css';

@@ -2,8 +2,9 @@
 import React from 'react';
 import { Employee } from '../../lib/employee';
 import { performCheckOperation } from '../../lib/dataAccess';
-import { useEmployeeContext } from '../employeeContext';
+import { useEmployeeContext } from '../../hooks/employeeContext';
 import styles from './buttons.module.css'
+import { useCheckOperation } from '../../hooks/checkOperation';
 
 interface ClockInOutButtonProps {
     employee: Employee | null;
@@ -23,39 +24,17 @@ const ClockInOutButton: React.FC<ClockInOutButtonProps> = ({ employee }) => {
             </button>
         )
     }
-    
-    const employeeStatus = employee.isClockedIn;
 
     const handleClick = async () => {
-        await performCheckOperation(employee.id, employeeStatus);
-
-        // Find the index of the employee in the global state array
-        const index = employees.findIndex(emp => emp.id === employee.id);
-        employees[index].isClockedIn = !employeeStatus;
-
-        // Update the employee's last check in/out time
-        if (employeeStatus) {
-            employees[index].lastCheckOut = new Date();
-        } else {
-            employees[index].lastCheckIn = new Date();
-        }
-        
-        // Create a new array with the updated employee at the beginning if checking in, or at the end if checking out
-        // Maybe inneffecient?? But it works
-        const updatedEmployees = employeeStatus
-            ? [...employees.slice(0, index), ...employees.slice(index + 1), employees[index]]
-            : [employees[index], ...employees.slice(0, index), ...employees.slice(index + 1)];
-
-        // Update states with new array
-        setEmployees(updatedEmployees);
+        useCheckOperation(employee.id, employee.isClockedIn);
     };
 
-    const buttonClass = employeeStatus ? styles.clockOut : styles.clockIn;
+    const buttonClass = employee.isClockedIn ? styles.clockOut : styles.clockIn;
     
     return (
         <button onClick={handleClick} className={`${styles.buttonBase} ${styles.activeButton} ${buttonClass}`}>
             <img className={`${styles.icon} ${styles.iconActive}`} src="/clocking.png" alt="clocking-icon" />
-            {employeeStatus ? 'Stemple ut' : 'Stemple inn'}
+            {employee.isClockedIn ? 'Stemple ut' : 'Stemple inn'}
         </button>
     );
 };
