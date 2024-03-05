@@ -7,7 +7,7 @@ process.env.TZ = 'CET';
 const { Pool,  } = pg;
 
 export const pool = new Pool({
-  connectionString: process.env.POSTGRES_URL + "?sslmode=require",
+  connectionString: process.env.PSQL_URL + "?sslmode=require",
 })
 
 export const query = (text: string, params: any[]): Promise<QueryResult> => pool.query(text, params);

@@ -17,10 +17,6 @@ const LastCheckTime: React.FC<{ employee: Employee }> = ({ employee }) => {
     const [lastAction, setLastAction] = useState('');
 
     useEffect(() => {
-        // Gets last check and formats it to hh:mm
-        const lastCheck = employee.lastCheck();
-        setLastCheckTime(lastCheck ? formatTime(lastCheck) : '?');
-
         // Sets last action to in or out based on if employee is clocked in or not.
         if (employee.isClockedIn) {
             setLastCheckTime(formatTime(employee.lastCheckIn))
@@ -29,7 +25,7 @@ const LastCheckTime: React.FC<{ employee: Employee }> = ({ employee }) => {
             setLastCheckTime(formatTime(employee.lastCheckOut))
             setLastAction('out');
         }
-
+    
     }, [employee.lastCheckIn, employee.lastCheckOut]);
 
     return (

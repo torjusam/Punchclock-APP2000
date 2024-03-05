@@ -14,7 +14,7 @@ const PersonalPageData: React.FC<personalProps> = ({ employee }) => {
   return (
     <>
       <div className={styles.headerContainer}>
-        <img className={styles.profilePicture} src='stockAvatar.png' alt={`Profile of ${employee.first_name} ${employee.surname}`}></img>
+        <img className={styles.profilePicture} src='stockAvatar.png' alt={`Profile of ${employee.name}`}></img>
         <div className={styles.todayTimeInfo}>
           <h2 className={styles.h1}>I dag</h2>
           <h2 className={styles.h2}>00t 00m 00s</h2> {/* Create function for employee time and format it */}

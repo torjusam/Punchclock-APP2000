@@ -1,7 +1,7 @@
 //Author: Torjus A.M
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import PersonalPageData from '../components/employeeTerminal/personalPageData';
+import PersonalPageData from '../components/employeePage/personalPageData';
 import { Employee } from '../lib/employee';
 import { useEmployeeContext } from '../hooks/employeeContext';
 import NavContainer from '../components/Navs/navContainer';

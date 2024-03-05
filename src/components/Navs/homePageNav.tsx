@@ -7,13 +7,12 @@ const HomePageNav: React.FC = () => {
 
     const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(event.target.value);
-    };
-
     return (
         <nav>
-            <SearchInput value={searchTerm} onChange={handleSearchChange} />
+             {/*<SearchInput value={searchTerm} onChange={handleSearchChange} />*/}
         </nav>
     );
 };
 
+}
 export default HomePageNav;

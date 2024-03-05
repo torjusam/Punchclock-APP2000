@@ -6,10 +6,10 @@ export async function fetchEmployees(): Promise<Employee[]> {
   try {
     const response = await fetch('/api/getEmployees');
     if (response.ok) {
-      // Result expected to return as: ID, First_name, Surname, Last_checkin, Last_checkout
+      // Result expected to return as: Id, Name, role, pin, Profilepictureurl, LastCheckIn, LastCheckOut
       const result = await response.json();
       return result.map((row: any) => {
-        return new Employee(row.id, row.first_name, row.surname, row.last_checkin, row.last_checkout);
+        return new Employee(row.id, row.name, row.role, row.pin, row.profilepictureurl, row.lastcheckin, row.lastcheckout);
       });
       // Error: return empty employee-array 
     } else {
@@ -19,31 +19,6 @@ export async function fetchEmployees(): Promise<Employee[]> {
   } catch (error) {
     console.error('Error fetching data', error);
     return [];
-  }
-}
-
-// Checks employee in / out based on isClockedIn status
-export async function performCheckOperation(employeeId: number, isClockedIn: boolean): Promise<string> {
-  try {
-    const endpoint = isClockedIn ? '/api/checkOut' : '/api/checkIn';
-    const response = await fetch(endpoint, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ employeeId: employeeId }),
-    });
-
-    if (response.ok) {
-      return isClockedIn ? 'Successfully checked out' : 'Successfully checked in';
-
-    } else {
-      console.error('Error:', response.status);
-      return 'Failed to perform check operation';
-    }
-  } catch (error) {
-    console.error('Error performing check operation:', error);
-    return 'Error performing check operation';
   }
 }
 

@@ -29,7 +29,7 @@ export const EmployeeCard: FC<EmployeeCardProps> = ({ employee }) => {
     <div className={`${styles.employeeCardContainer} ${employee.isClockedIn && styles.isClockedIn}`} onClick={onSelect}>
       <img className={styles.profilePicture} src={avatar} />
       <div className={styles.infoContainer}>
-        <span className={styles.employeeName}>{employee.first_name} {employee.surname}</span>
+        <span className={styles.employeeName}>{employee.name}</span>
         <LastCheckTime employee={employee} />
       </div>
     </div>

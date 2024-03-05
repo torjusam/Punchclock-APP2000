@@ -26,6 +26,7 @@ export default function EmployeeContextProvider({ children }: { children: React.
     useEffect(() => {
         const initializeEmployees = async () => {
             const fetchedEmployees = await fetchEmployees();
+            
             setEmployees(fetchedEmployees);
         };
         initializeEmployees();

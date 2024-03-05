@@ -6,23 +6,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const client = await pool.connect();
 
     try {
-        const { employeeId } = req.body;
-        await client.query('BEGIN');
-        await client.query("SET TIME ZONE 'CET'");
-        const selectQuery = 'SELECT MAX(Checkin) FROM CheckIn_CheckOut WHERE Employee_id = $1';
-        const updateQuery = 'UPDATE CheckIn_CheckOut SET Checkout = CURRENT_TIMESTAMP ' +
-                            'WHERE Employee_id = $1 AND Checkin = $2';
-        const insertQuery = 'INSERT INTO fleksitidBank (Employee_id, Checkin, Checkout) ' +
-                            'VALUES ($1, $2, CURRENT_TIMESTAMP)';
-        
+        const { employee } = req.body;
+        const { id } = employee;
+        const currentTimestamp = new Date();
 
-        const result = await client.query(selectQuery, [employeeId]);
-        const latestCheckin = result.rows[0].max;
+        const text = (`
+        UPDATE fleksitidBank
+            SET Checkout = $2
+            WHERE Employee_id = $1
+            AND Checkin = (SELECT MAX(Checkin) FROM fleksitidBank WHERE Employee_id = $1);
+        `);
+        const values = [id, currentTimestamp];
 
-        await client.query(updateQuery, [employeeId, latestCheckin]);
-        await client.query(insertQuery, [employeeId, latestCheckin]);
+        await pool.query(text, values);
 
-        await client.query('COMMIT'); // Commit the transaction
         res.status(200).json({ success: true });
     } catch (error) {
         await client.query('ROLLBACK'); // Rollback the transaction on error

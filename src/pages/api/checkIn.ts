@@ -4,11 +4,12 @@ import { pool } from '../../lib/dbIndex';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     try {
-        const { employeeId } = req.body;
+        const { employee } = req.body;
+        const { id } = employee;
         const currentTimestamp = new Date();
 
         const text = 'INSERT INTO fleksitidBank (Employee_id, Checkin) VALUES ($1, $2)';
-        const values = [employeeId, currentTimestamp];
+        const values = [id, currentTimestamp];
 
         await pool.query(text, values);
 
