@@ -22,7 +22,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         res.status(200).json({ success: true });
     } catch (error) {
-        await client.query('ROLLBACK'); // Rollback the transaction on error
         console.error('Error inserting check-out data:', error);
         res.status(500).json({ error: 'Internal Server Error' });
     } finally {

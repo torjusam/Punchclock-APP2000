@@ -1,11 +1,10 @@
 //Author: Torjus A.M
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import PersonalPageData from '../components/employeePage/personalPageData';
+import PersonalPageData from '../components/employeePage/empPageData';
 import { Employee } from '../lib/employee';
 import { useEmployeeContext } from '../hooks/employeeContext';
-import NavContainer from '../components/Navs/navContainer';
-import styles from '../styles/flexContainers.module.css'
+import EmployeePageNav from '../components/employeePage/empNav';
 
 const EmployeePage: React.FC = () => {
   const { employees, setEmployees } = useEmployeeContext()
@@ -13,6 +12,8 @@ const EmployeePage: React.FC = () => {
   const { employeeId } = router.query;
   const [employeeData, setEmployeeData] = useState<Employee | undefined>();
 
+
+  
   useEffect(() => {
     if (employeeId) {
       const foundEmployee = employees.find((employee) => employee.id === Number(employeeId));
@@ -25,8 +26,8 @@ const EmployeePage: React.FC = () => {
   }
 
   return (
-    <div className={styles.generalContainer}>
-      <NavContainer />
+    <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+      <EmployeePageNav employee={employeeData} />
       <PersonalPageData employee={employeeData} />
     </div>
   );

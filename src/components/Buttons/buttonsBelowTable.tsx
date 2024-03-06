@@ -1,7 +1,7 @@
 // Author: Torjus A.M
 // Buttons below the employee table. Contains a clock in/out button and a button to redirect to the personal page of the selected employee
 import React from 'react';
-import ClockInOutButton from './clockInOutButton';
+import ClockInOutButton from '../employeePage/clockInOutButton';
 import GoToPersonalPageButton from './redirectToPageButton';
 import Container from '../../styles/flexContainers.module.css';
 import { Employee } from '../../lib/employee';

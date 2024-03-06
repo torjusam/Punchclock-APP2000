@@ -2,8 +2,8 @@
 import React from 'react';
 import { Employee } from '../../lib/employee';
 import { useEmployeeContext } from '../../hooks/employeeContext';
-import styles from './buttons.module.css'
-import { checkOperation } from '../../hooks/checkOperation';
+import styles from '../Buttons/buttons.module.css'
+import { checkOperation } from '../../lib/checkOperation';
 
 interface ClockInOutButtonProps {
     employee: Employee;

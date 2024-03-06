@@ -1,0 +1,144 @@
+/**
+ * Author: Torjus A.M
+ *
+ * CSS module for the personal page. 
+ * 
+ * 
+ * 
+ * To-Do: 
+ *   Remove all borders
+ *   Make the arrow icon be at the right of the module
+ *   Make stemplingshistorikk wider than the other modules 
+ */
+
+/* Google fonts Public Sans & Lato*/
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+/* Outer container */
+.personalPage {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+/* Modules on the left: shiftList and punchClock
+   ========================================================================== */
+.moduleContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 1.5rem;
+}
+
+.squareModule {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  border-radius: 0.5em;
+  margin-top: 1.6rem;
+  background-color: #FFFFFF;
+  box-shadow: 1px 3px 4px 1px #e0dada;
+  /* Placeholder to see the container */
+  border: #000 dashed 1px;
+}
+
+.moduleHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1em;
+}
+
+.headerText {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #212B36;
+  line-height: 1em;
+  font-family: 'Public Sans', sans-serif;
+}
+
+.iconBackground {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0A98FF;
+  width: max-content;
+  border-radius: 0.8em;
+  padding: 0.4em;
+  margin-right: 1em;
+}
+
+.icon {
+  display: flex;
+  stroke: white;
+  fill: none;
+  width: 2.1em;
+  stroke-width: 0.1em;
+}
+
+.line {
+  height: 0.05em;
+  width: 100%;
+  background-color: #b9bbc0;
+  margin-bottom: 0.3em;
+}
+
+.moduleContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
+  width: 100%;
+  height: 100%;
+}
+
+
+
+/* ShiftList
+   ========================================================================== */
+
+.expandIcon {
+  display: flex;
+  justify-self: flex-end;
+  stroke: #212B36;
+  width: 2.1em;
+  stroke-width: 0.1em;
+}
+
+.monthContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.monthText {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #C9CBD0;
+  margin-right: 1.5em;
+  margin-left: 1.5em;
+}
+
+
+/* Clock History: Stemplingshistorikk
+   ========================================================================== */
+
+.clockHistory {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: #FFFFFF;
+  box-shadow: 1px 3px 4px 1px #e0dada;
+  margin-top: 1.5rem;
+  border-radius: 0.5em;
+  /* Placeholder to see the container */
+  border: #000 dashed 1px;
+}

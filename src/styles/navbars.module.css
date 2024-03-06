@@ -1,0 +1,71 @@
+/**
+ * Author: Torjus A.M
+ *
+ *  CSS module for all the navbars.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap');
+
+/* Parent of all nav bars*/
+.navBarContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    background-color: #FFFFFF;
+    padding: 1em;
+    width: 100%;
+    max-height: 5vw;
+    flex-grow: 1;
+    /* Placeholder to see nav size */
+    border: 1px solid #000000;
+    box-shadow: 0px 2px 5px 0px #acacac;
+}
+
+/* Homepage navbar
+   ========================================================================== */
+
+
+
+/* Employeepage navbar
+   ========================================================================== */
+
+.backButton {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #E6EBF2;
+    box-shadow: 0px 2px 3px 0px #e0dada;
+}
+
+.icons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* The profile info on the right side, for the name and avatar */
+.profileContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    border: 1px solid #000000;
+}
+
+.avatar {
+    width: 3em;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    margin-right: 1em;
+    box-shadow: 0px 1px 2px 0px #acacac;
+}
+
+.employeeName {
+    font-family: 'Public Sans', sans-serif;
+    font-size: 1.2em;
+    font-weight: 700;
+    color: #212B36;
+}
+
+/* CrudPage navbar
+   ========================================================================== */

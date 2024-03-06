@@ -1,13 +1,12 @@
 // Author: Torjus A.M,
 import React from 'react';
 import EmployeeListDisplay from '../components/frontPageTable/employeeTable';
-import NavContainer from '../components/Navs/navContainer';
-import styles from '../styles/flexContainers.module.css'
+import FrontPageNav from '../components/frontPageTable/navBarFrontpage';
 
 export default function Page() {
   return (
-    <div className={styles.generalContainer}>
-      <NavContainer />
+    <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+      <FrontPageNav />
       <EmployeeListDisplay />
     </div>
   );

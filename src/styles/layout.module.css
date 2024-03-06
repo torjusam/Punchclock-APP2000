@@ -1,9 +1,11 @@
-/* Author: Torjus A.M */
-
-/* CSS module for main shared layout of all pages. 
-    Divided into two main containers in a parent container.
-    Responsive design: Left (34%) and right (67%) of viewport.
-    Primarly aimed at tablets and touchscreens. */
+/**
+ * Author: Torjus A.M
+ *
+ *  CSS module for main shared layout of all pages. 
+ *  Divided into two main containers in a parent container.
+ *  Responsive design: Left (34%) and right (67%) of viewport.
+ *  Primarly aimed at tablets and touchscreens. 
+ */
 
 /* Parent container */
 .veryOuterContainer {
