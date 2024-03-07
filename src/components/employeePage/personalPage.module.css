@@ -1,14 +1,16 @@
 /**
  * Author: Torjus A.M
  *
- * CSS module for the personal page. 
- * 
+ * Styles for the employee-page and its modules. (Nav bar styling is in .src/styles/navbars.module.css).
+ * Starts by defining shared styles for all containers, then specific styles for the modules.
  * 
  * 
  * To-Do: 
- *   Remove all borders
- *   Make the arrow icon be at the right of the module
- *   Make stemplingshistorikk wider than the other modules 
+ *  Remove all borders
+ *  Make the arrow icon be at the right of the module
+ *  Make stemplingshistorikk wider than the other modules 
+ *   - Header text responsiveness
+ *  Fix the text in the month container
  */
 
 /* Google fonts Public Sans & Lato*/
@@ -24,28 +26,9 @@
   height: 100%;
 }
 
-/* Modules on the left: shiftList and punchClock
+/* ==========================================================================
+   Shared styles for all modules
    ========================================================================== */
-.moduleContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  margin-right: 1.5rem;
-}
-
-.squareModule {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  border-radius: 0.5em;
-  margin-top: 1.6rem;
-  background-color: #FFFFFF;
-  box-shadow: 1px 3px 4px 1px #e0dada;
-  /* Placeholder to see the container */
-  border: #000 dashed 1px;
-}
 
 .moduleHeader {
   display: flex;
@@ -55,7 +38,7 @@
   padding: 1em;
 }
 
-.headerText {
+.moduleHeader h1 {
   font-size: 1.7rem;
   font-weight: 800;
   color: #212B36;
@@ -63,12 +46,13 @@
   font-family: 'Public Sans', sans-serif;
 }
 
-.iconBackground {
+.iconContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #0A98FF;
-  width: max-content;
+  width: 3em;
+  aspect-ratio: 1/1;
   border-radius: 0.8em;
   padding: 0.4em;
   margin-right: 1em;
@@ -78,29 +62,67 @@
   display: flex;
   stroke: white;
   fill: none;
-  width: 2.1em;
-  stroke-width: 0.1em;
+  width: 100%;
+  stroke-width: 0.12em;
 }
 
-.line {
+/* Media queries to change the module content by screen-size */
+@media screen and (max-width: 1300px) {
+  .moduleHeader {
+    padding: 0.8em;
+  }
+
+  .headerText {
+    font-size: 1.4rem;
+  }
+
+  .iconContainer {
+    width: 2.5em;
+  }
+}
+
+/* Line seperators below header */
+.personalPage hr {
   height: 0.05em;
   width: 100%;
   background-color: #b9bbc0;
   margin-bottom: 0.3em;
 }
 
+/* Container for content inside modules, below the header and seperator. */
 .moduleContent {
   display: flex;
   flex-direction: column;
-  align-items: center;
   padding: 1em;
   width: 100%;
   height: 100%;
 }
 
+/* ==========================================================================
+   Styles for modules ShiftList and PunchClock
+   ========================================================================== */
+
+/* Holds both modules on the left, stacks them ontop of eachother evenly spaced */
+.outerModuleContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.module {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  border-radius: 0.5em;
+  margin-top: 1.6rem;
+  background-color: #FFFFFF;
+  box-shadow: 2px 3px 5px 1px #e0dada;
+}
 
 
-/* ShiftList
+/* ShiftList: Vaktliste
    ========================================================================== */
 
 .expandIcon {
@@ -126,19 +148,23 @@
   margin-left: 1.5em;
 }
 
-
-/* Clock History: Stemplingshistorikk
+/* ==========================================================================
+   Clock History layout: Stemplingshistorikk
    ========================================================================== */
 
-.clockHistory {
+.clockHistoryContainer {
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 100%;
   background-color: #FFFFFF;
-  box-shadow: 1px 3px 4px 1px #e0dada;
   margin-top: 1.5rem;
+  margin-left: 1.5rem;
   border-radius: 0.5em;
-  /* Placeholder to see the container */
-  border: #000 dashed 1px;
+  box-shadow: 2px 3px 5px 1px #e0dada;
+}
+
+.clockHistoryIcon {
+  fill: white;
+  stroke-width: 0.3;
+  aspect-ratio: 1/1;
 }

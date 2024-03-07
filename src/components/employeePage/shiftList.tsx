@@ -21,18 +21,18 @@ const ShiftList: FC<ShiftListProps> = ({ employee }) => {
     }, []);
 
     return (
-        <div className={styles.squareModule}>
+        <div className={styles.module}>
             <div className={styles.moduleHeader}>
-                <div className={`${styles.iconBackground}`} style={{ padding: '0.57em' }}>
-                    <Shifts className={`${styles.icon}`} style={{ width: '1.8em' }} />
+                <div className={`${styles.iconContainer}`} style={{ padding: '0.57em' }}>
+                    <Shifts className={styles.icon} />
                 </div>
                 <h1 className={styles.headerText}>Vaktliste</h1>
                 <Expand className={styles.expandIcon}/>
             </div>
             <div className={styles.monthContainer}>
-                <hr className={styles.line} />
+                <hr />
                 <h2 className={styles.monthText}>Feb 2024</h2>
-                <hr className={styles.line} />
+                <hr />
             </div>
             <div className={styles.moduleContent}>
                 <h1>Put content here</h1>

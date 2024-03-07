@@ -25,14 +25,14 @@ const PunchClock: FC<PunchClockProps> = ({ employee }) => {
     }, []);
 
     return (
-        <div className={styles.squareModule}>
+        <div className={styles.module}>
             <div className={styles.moduleHeader}>
-                <div className={`${styles.iconBackground}`} style={{ background: '#1BDA0A' }}>
+                <div className={`${styles.iconContainer}`} style={{ background: '#1BDA0A' }}>
                     <Clock className={styles.icon} />
                 </div>
                 <h1 className={styles.headerText}>Stemplingsklokke</h1>
             </div>
-            <hr className={styles.line}/>
+            <hr />
             <div className={styles.moduleContent}>
                 <h1>Put content here</h1>
             </div>

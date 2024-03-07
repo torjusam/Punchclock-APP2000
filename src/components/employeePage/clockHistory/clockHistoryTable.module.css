@@ -1,0 +1,98 @@
+/**
+ * Author: Torjus A.M
+ *
+ * CSS module to style the table aswell as the time modules of 
+ * the clock history module. "Stemplingshistorikk".
+ * 
+ *
+ * 
+ * TODO:
+ *
+ */
+
+ @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@800&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+/* Styles for the time modules
+   ========================================================================== */
+.timeModulesContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.timeModules {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    padding-top: 0.em;
+    padding-bottom: 0.5em;
+    box-shadow: 2px 3px 2px 0.5px #e0dada;
+    width: 100%;
+}
+
+.timeModules h1 {
+    font-size: 1.5rem;
+    color: #212B36;
+    font-family: 'Public Sans', sans-serif;
+}
+
+.timeModules h2 {
+    font-size: 2.2rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: #212B36;
+    letter-spacing: 0.03em;
+}
+
+.salaryTextColor {
+    color: #0DB714;
+}
+
+/* Styles for the table
+   ========================================================================== */
+
+.table {
+    margin-top: 1.5rem;
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+    box-shadow: 2px 3px 2px 0.5px #e0dada;
+}
+
+/* Table head */
+.table thead {
+    background-color: #F5F7FA;
+}
+
+.table th {
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-family: 'Public Sans', sans-serif;
+    color: #606266;
+    text-align: left;
+}
+
+.row {
+    border-bottom: 0.1em solid #C9CBD0;
+}
+
+/* Date column */
+.date {
+    text-align: center;
+}
+
+.date h1 {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: #212B36;
+}
+
+.date h2 {
+    font-family: 'Public Sans', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #606266;
+}

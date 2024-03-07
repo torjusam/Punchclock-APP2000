@@ -1,7 +1,7 @@
 //Author: Torjus A.M
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import PersonalPageData from '../components/employeePage/empPageData';
+import EmployeePageData from '../components/employeePage';
 import { Employee } from '../lib/employee';
 import { useEmployeeContext } from '../hooks/employeeContext';
 import EmployeePageNav from '../components/employeePage/empNav';
@@ -12,8 +12,6 @@ const EmployeePage: React.FC = () => {
   const { employeeId } = router.query;
   const [employeeData, setEmployeeData] = useState<Employee | undefined>();
 
-
-  
   useEffect(() => {
     if (employeeId) {
       const foundEmployee = employees.find((employee) => employee.id === Number(employeeId));
@@ -28,7 +26,7 @@ const EmployeePage: React.FC = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
       <EmployeePageNav employee={employeeData} />
-      <PersonalPageData employee={employeeData} />
+      <EmployeePageData employee={employeeData} />
     </div>
   );
 }

@@ -21,8 +21,9 @@
     flex-direction: row;
     justify-content: space-evenly;
     background-color: rgb(255, 255, 255);
-    border-radius: 3rem;
     width: 100%;
+    /* Margin between navbar */
+    margin-top: 1.5rem;
 }
 
 /* Ruleset for adjusting the employee-cards based on width of the screen.
@@ -35,7 +36,7 @@
 }
 
 /* S resolution. Display 1 card per row. */
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1000px) {
     .EmployeeList>div {
         flex-basis: 100%;
     }
