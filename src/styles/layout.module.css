@@ -17,11 +17,8 @@
 /* Parent of all items on right side */
 .rightContainer {
     display: flex;
-    height: 100vh;
     background-color: #FCFCFC;
-    padding: 2.5rem;
     /* Take up all available space, but dont exceed 67% of the viewport*/
-    width: 100%;
     max-width: 67vw;
     flex-grow: 1;
     /* Grow automatically to take up any remaining space*/

@@ -17,7 +17,7 @@ const { day, dayOfWeek } = formatDay(date);
 const ClockHistoryTable: React.FC<ClockHistoryTableProps> = (employee) => {
     const renderRows = () => {
         const emptyRows = [];
-        for (let i = 0; i < 7; i++) {
+        for (let i = 0; i < 8; i++) {
             emptyRows.push(
                 <tr key={i} className={styles.row}>
                     <td className={styles.date}>
@@ -47,19 +47,21 @@ const ClockHistoryTable: React.FC<ClockHistoryTableProps> = (employee) => {
                 </div>
             </div>
             {/* Table */}
-            <table className={styles.table}>
-                <thead>
-                    <tr>
-                        <th>Dato</th>
-                        <th>Stempling</th>
-                        <th>Arbeidstid</th>
-                        <th style={{ color: '#0DB714' }}>Fleks Saldo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {renderRows()}
-                </tbody>
-            </table>
+            <div className={styles.tableContainer}>
+                <table className={styles.table}>
+                    <thead>
+                        <tr>
+                            <th>Dato</th>
+                            <th>Stempling</th>
+                            <th>Arbeidstid</th>
+                            <th style={{ color: '#0DB714' }}>Fleks Saldo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {renderRows()}
+                    </tbody>
+                </table>
+            </div>
         </>
     );
 };

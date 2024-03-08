@@ -10,8 +10,8 @@
  *
  */
 
- @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@800&display=swap');
- @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
 /* Styles for the time modules
    ========================================================================== */
@@ -50,13 +50,20 @@
     color: #0DB714;
 }
 
-/* Styles for the table
+/* ==========================================================================
+   Table styles
    ========================================================================== */
 
-.table {
+.tableContainer {
+    display: flex;
     margin-top: 1.5rem;
+    overflow: auto;
+    flex-grow: 1;
+}
+
+.table {
+    flex-grow: 1;
     width: 100%;
-    height: 100%;
     border-collapse: collapse;
     box-shadow: 2px 3px 2px 0.5px #e0dada;
 }
@@ -95,4 +102,19 @@
     font-size: 1.2rem;
     font-weight: 400;
     color: #606266;
+}
+
+/* Table media queries
+   ========================================================================== */
+
+/* S resolution: tablet */
+@media screen and (max-width: 1250px) {
+    .table {
+    }
+}
+
+/* L resolution */
+@media screen and (min-width: 1700px) {
+    .table {
+    }
 }

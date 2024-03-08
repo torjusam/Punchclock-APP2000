@@ -24,10 +24,9 @@ const EmployeePage: React.FC = () => {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
-      <EmployeePageNav employee={employeeData} />
+    <>
       <EmployeePageData employee={employeeData} />
-    </div>
+    </>
   );
 }
 

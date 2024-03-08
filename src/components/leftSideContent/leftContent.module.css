@@ -54,7 +54,7 @@
 }
 
 /* S resolution: tablet */
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1250px) {
     .clock {
         font-size: 8rem;
         line-height: 10rem;
