@@ -1,4 +1,7 @@
-
+/* 
+    Author: Torjus A.M
+    Various functions for performing check operations on employees.
+*/
 const updateEmployeeStatus = (employees, employee) => {
   return employees.map(emp => {
       if (emp.id !== employee.id) {
@@ -27,6 +30,8 @@ const performCheckOperation = async (employee) => {
       throw new Error('Failed to perform check operation');
   }
 };
+
+// To-Do: Perform must update plannedwork, Balance, Fleksitid_Balance from employee
 
 export const checkOperation = async (employee, employees, setEmployees) => {
   try {

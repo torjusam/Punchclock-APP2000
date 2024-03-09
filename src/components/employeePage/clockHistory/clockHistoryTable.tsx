@@ -7,6 +7,7 @@ import { Employee } from '../../../lib/employee';
 import { formatDay } from '../../../lib/dateFormatter';
 import ArrowIn from '../../../lib/assets/svg/arrowIn.svg';
 import ArrowOut from '../../../lib/assets/svg/arrowOut.svg';
+import useClockHistory from '../../../hooks/useClockHistory';
 import styles from './clockHistoryTable.module.css';
 
 interface ClockHistoryTableProps {
@@ -17,10 +18,12 @@ const date = new Date();
 const { day, dayOfWeek } = formatDay(date);
 
 const ClockHistoryTable: React.FC<ClockHistoryTableProps> = (employee) => {
+    const clockHistory = useClockHistory(employee);
+
     // Renders 7 rows.
     const renderRows = () => {
-        const emptyRows = [];
-        for (let i = 0; i < 7; i++) {
+        const emptyRows = []; // Declare emptyRows array
+        for (let i = 0; i < 7; i++) { // Declare i variable
             emptyRows.push(
                 <div key={i} className={styles.tableRow}>
                     <div className={`${styles.rowItem} ${styles.date}`}>
@@ -46,7 +49,7 @@ const ClockHistoryTable: React.FC<ClockHistoryTableProps> = (employee) => {
                 </div>
             );
         }
-        return emptyRows;
+        return emptyRows; // Return the emptyRows array
     };
 
     return (

@@ -5,19 +5,35 @@
 */
 import { useState, useEffect } from 'react';
 
-const useCustomHook = () => {
-    // State variables and other logic here
+const useClockHistory = (employee) => {
+    const [data, setData] = useState(null);
 
     useEffect(() => {
-        // Effect logic here
-
-        return () => {
-            // Clean-up logic here (optional)
+        const fetchData = async () => {
+            const result = await performFetch(employee);
+            setData(result);
         };
-    }, []);
 
-    // Return values or functions here
+        fetchData();
+    }, [employee.lastCheckIn, employee.lastCheckOut]);
 
+    return data;
 };
 
-export default useCustomHook;
+export default useClockHistory;
+
+
+const performFetch = async (employee) => {
+
+    const response = await fetch('/api/getClockHistory', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ employee }),
+    });
+
+    if (!response.ok) {
+        throw new Error('Failed to perform check operation');
+    }
+};

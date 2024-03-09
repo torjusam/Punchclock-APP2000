@@ -1,4 +1,4 @@
-//Author: Torjus A.M
+// Author: Torjus A.M
 import { NextApiRequest, NextApiResponse } from 'next';
 import { pool } from '../../lib/dbIndex'
 
@@ -11,6 +11,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             e.role,
             e.pin,
             e.profilepictureurl,
+            e.plannedwork,
+            e.balance,
+            e.Fleksitid_Balance,
             MAX(fb.Checkin) AS lastCheckIn,
             MAX(fb.Checkout) AS lastCheckOut
         FROM
