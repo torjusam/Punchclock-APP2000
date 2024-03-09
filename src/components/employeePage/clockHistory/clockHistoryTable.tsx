@@ -17,17 +17,20 @@ const { day, dayOfWeek } = formatDay(date);
 const ClockHistoryTable: React.FC<ClockHistoryTableProps> = (employee) => {
     const renderRows = () => {
         const emptyRows = [];
-        for (let i = 0; i < 8; i++) {
+        for (let i = 0; i < 7; i++) {
             emptyRows.push(
-                <tr key={i} className={styles.row}>
-                    <td className={styles.date}>
+                <div key={i} className={styles.tableRow}>
+                    <div className={`${styles.rowItem} ${styles.date}`}>
                         <h1>{day}</h1>
                         <h2>{dayOfWeek}</h2>
-                    </td>
-                    <td className={styles.time}>1</td>
-                    <td className={styles.time}>1</td>
-                    <td className={styles.number}>1</td>
-                </tr>
+                    </div>
+                    <div className={styles.rowSubContainer}>
+                        <div className={styles.rowItem}>08:00</div>
+                        <div className={styles.rowItem}>16:00</div>
+                    </div>
+                    <div className={styles.rowItem}>1</div>
+                    <div className={styles.rowItem}>1</div>
+                </div>
             );
         }
         return emptyRows;
@@ -48,19 +51,13 @@ const ClockHistoryTable: React.FC<ClockHistoryTableProps> = (employee) => {
             </div>
             {/* Table */}
             <div className={styles.tableContainer}>
-                <table className={styles.table}>
-                    <thead>
-                        <tr>
-                            <th>Dato</th>
-                            <th>Stempling</th>
-                            <th>Arbeidstid</th>
-                            <th style={{ color: '#0DB714' }}>Fleks Saldo</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {renderRows()}
-                    </tbody>
-                </table>
+                <div className={`${styles.tableRow} ${styles.heading}`}>
+                    <div className={styles.rowItem}>Dato</div>
+                    <div className={styles.rowItem}>Stempling</div>
+                    <div className={styles.rowItem}>Arbeidstid</div>
+                    <div className={`${styles.rowItem}`} style={{ color: '#0DB714' }}>Fleks Saldo</div>
+                </div>
+                {renderRows()}
             </div>
         </>
     );

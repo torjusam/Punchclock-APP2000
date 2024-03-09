@@ -4,10 +4,9 @@
  * CSS module to style the table aswell as the time modules of 
  * the clock history module. "Stemplingshistorikk".
  * 
- *
- * 
  * TODO:
- *
+ *   Make the table actually responsive
+ *   Change the width of each row item
  */
 
 @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@800&display=swap');
@@ -19,7 +18,8 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    width: 100%;
+    width: 90%;
+    margin-bottom: 1em;
 }
 
 .timeModules {
@@ -29,7 +29,7 @@
     padding-top: 0.em;
     padding-bottom: 0.5em;
     box-shadow: 2px 3px 2px 0.5px #e0dada;
-    width: 100%;
+    width: 50%;
 }
 
 .timeModules h1 {
@@ -53,68 +53,102 @@
 /* ==========================================================================
    Table styles
    ========================================================================== */
-
 .tableContainer {
     display: flex;
-    margin-top: 1.5rem;
+    flex-flow: column nowrap;
+    background-color: white;
+    border-radius: 4px;
+    border: 1px solid #DADADA;
+    min-height: 0;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, .08);
     overflow: auto;
-    flex-grow: 1;
 }
 
-.table {
-    flex-grow: 1;
+.tableRow {
+    display: flex;
+    flex-flow: row nowrap;
     width: 100%;
-    border-collapse: collapse;
-    box-shadow: 2px 3px 2px 0.5px #e0dada;
-}
-
-/* Table head */
-.table thead {
-    background-color: #F5F7FA;
-}
-
-.table th {
-    font-size: 1.2rem;
-    font-weight: 700;
-    font-family: 'Public Sans', sans-serif;
-    color: #606266;
-    text-align: left;
-}
-
-.row {
     border-bottom: 0.1em solid #C9CBD0;
 }
 
-/* Date column */
+.rowItem {
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 1;
+    padding: 8px 0;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+}
+
+.heading {
+    background-color: #F5F7FA;
+    flex: 1;
+}
+
+.heading>.rowItem {
+    flex: 1;
+    font-size: 1.15rem;
+    font-weight: 700;
+    font-family: 'Public Sans', sans-serif;
+    color: #606266;
+}
+
+.rowSubContainer {
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 1;
+}
+
+.rowSubContainer>.rowItem {
+    flex: 1;
+    color: #4E5052;
+    padding: 0.07em;
+    font-size: 1.35rem;
+    font-weight: 400;
+    border-bottom: 0.1em solid #C9CBD0;
+    font-family: 'Lato', sans-serif;
+}
+
 .date {
-    text-align: center;
+    width: min-content;
 }
 
 .date h1 {
     font-family: 'Lato', sans-serif;
-    font-size: 1.7rem;
+    font-size: 1.55rem;
     font-weight: 600;
     color: #212B36;
 }
 
 .date h2 {
     font-family: 'Public Sans', sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 400;
     color: #606266;
 }
 
-/* Table media queries
+/* Remove border if its a subContainer to avoid overlapping borders */
+.tableRow:last-child,
+.rowSubContainer .rowItem:last-child {
+    border-bottom: 0;
+}
+
+/* Media queries
    ========================================================================== */
 
 /* S resolution: tablet */
 @media screen and (max-width: 1250px) {
-    .table {
-    }
+    .timeModules h2 {}
 }
 
 /* L resolution */
 @media screen and (min-width: 1700px) {
-    .table {
+    .timeModules h2 {}
+}
+
+/* To-Do: something to fix the table */
+@media screen and (max-height: 880px) {
+    .tableContainer {
     }
 }

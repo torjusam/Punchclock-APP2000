@@ -24,9 +24,7 @@ const ClockHistory: React.FC<ClockHistoryProps> = ({ employee }) => {
                 <h1>Stemplingshistorikk</h1>
             </div>
             <hr />
-            <div className={styles.moduleContent}>
-                <ClockHistoryTable employee={employee} />
-            </div>
+            <ClockHistoryTable employee={employee} />
         </div>
     );
 };

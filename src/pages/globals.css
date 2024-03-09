@@ -4,11 +4,14 @@
 @tailwind utilities;
 
 body {
-  display: flex;
+  position: absolute;
   background-color: #01497C;
 }
 
-body,html {
+body,
+html {
   height: 100%;
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
