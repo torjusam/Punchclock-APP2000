@@ -10,7 +10,7 @@ const LeftContent: FC = () => {
     const router = useRouter();
 
     // Help button goes to CRUD page
-    const handleHelpClick = () => { router.push('/crudTest') };
+    const handleHelpClick = () => { router.push('/crud') };
 
     // Logo goes to index page
     const handleLogoClick = () => { router.push('/') };

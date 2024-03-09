@@ -1,4 +1,7 @@
-// Author: Torjus A.M
+/*  
+    Author: Torjus A.M
+    Defines the layout of the personalPage, and exports it.
+*/
 import React, { useState, useEffect } from 'react';
 import { Employee } from '../../lib/employee';
 import styles from './personalPage.module.css';

@@ -5,6 +5,8 @@
 import React from 'react';
 import { Employee } from '../../../lib/employee';
 import { formatDay } from '../../../lib/dateFormatter';
+import ArrowIn from '../../../lib/assets/svg/arrowIn.svg';
+import ArrowOut from '../../../lib/assets/svg/arrowOut.svg';
 import styles from './clockHistoryTable.module.css';
 
 interface ClockHistoryTableProps {
@@ -15,6 +17,7 @@ const date = new Date();
 const { day, dayOfWeek } = formatDay(date);
 
 const ClockHistoryTable: React.FC<ClockHistoryTableProps> = (employee) => {
+    // Renders 7 rows.
     const renderRows = () => {
         const emptyRows = [];
         for (let i = 0; i < 7; i++) {
@@ -25,11 +28,21 @@ const ClockHistoryTable: React.FC<ClockHistoryTableProps> = (employee) => {
                         <h2>{dayOfWeek}</h2>
                     </div>
                     <div className={styles.rowSubContainer}>
-                        <div className={styles.rowItem}>08:00</div>
-                        <div className={styles.rowItem}>16:00</div>
+                        <div className={styles.rowItem}>
+                            <ArrowIn className={styles.icon} />
+                            <h1>08:00</h1>
+                        </div>
+                        <div className={styles.rowItem}>
+                            <ArrowOut className={styles.icon} />
+                            <h1>16:00</h1>
+                        </div>
                     </div>
-                    <div className={styles.rowItem}>1</div>
-                    <div className={styles.rowItem}>1</div>
+                    <div className={styles.rowItem}>
+                        <h3>08t 00m</h3>
+                    </div>
+                    <div className={styles.rowItem}>
+                        <h3 style={{ color: '#0DB714' }}>+00t 00m</h3>
+                    </div>
                 </div>
             );
         }

@@ -113,6 +113,7 @@
   background-color: #FFFFFF;
   box-shadow: 2px 3px 5px 1px #e0dada;
   margin-bottom: 2rem;
+  border: #eeeeee 1px solid;
 }
 
 /* Container for content inside modules, below the header and seperator. */

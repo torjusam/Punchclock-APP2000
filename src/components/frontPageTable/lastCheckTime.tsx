@@ -25,13 +25,14 @@ const LastCheckTime: React.FC<{ employee: Employee }> = ({ employee }) => {
             setLastCheckTime(formatTime(employee.lastCheckOut))
             setLastAction('out');
         }
-    
-    }, [employee.lastCheckIn, employee.lastCheckOut]);
 
+    }, [employee.lastCheckIn, employee.lastCheckOut]);
+    
+    // The arrow is set based on the last action of the employee.
+    const Arrow = lastAction === 'in' ? ArrowIn : ArrowOut;
     return (
         <div className={styles.lastCheckContainer}>
-            {/* Displays arrow based on the lastAction state variable.*/}
-            {lastAction === 'in' ? <ArrowIn className={styles.arrowIn} /> : <ArrowOut className={styles.arrowOut} />}
+            <Arrow className={styles.icon} />
             <div className={styles.lastCheckTime}>
                 {lastCheckTime}
             </div>

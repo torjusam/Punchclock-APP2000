@@ -99,19 +99,12 @@
 .lastCheckTime {
     color: #4E5052;
     font-family: 'Lato', sans-serif;
-    font-size: 1.8rem;
+    font-size: 1.88rem;
+    margin-left: 0.1em;
 }
 
-.arrowOut {
-    stroke: #F33161;
-    width: 2.3rem;
-    stroke-width: 2;
-}
-
-.arrowIn {
-    stroke: #19AD79;
-    width: 2.3rem;
-    stroke-width: 2;
+.icon {
+    width: 1.3rem;
 }
 
 /* Conditional styling for selecting employees and clocked in employees border
