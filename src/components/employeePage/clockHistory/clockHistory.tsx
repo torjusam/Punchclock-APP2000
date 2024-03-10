@@ -7,6 +7,8 @@ import React from 'react';
 import { Employee } from '../../../lib/employee';
 import ClockCheck from '../../../lib/assets/svg/clockCheck.svg';
 import ClockHistoryTable from './clockHistoryTable';
+import useClockHistory from '../../../hooks/useClockHistory';
+import TimeModules from './timeModules';
 import styles from '../personalPage.module.css';
 
 interface ClockHistoryProps {
@@ -14,6 +16,9 @@ interface ClockHistoryProps {
 }
 
 const ClockHistory: React.FC<ClockHistoryProps> = ({ employee }) => {
+    /* Uses the custom hook to fetch the employees clock history, 
+    then passes it to both children that need it */
+    const { data, isLoading } = useClockHistory(employee);
 
     return (
         <div className={styles.clockHistoryContainer}>
@@ -24,7 +29,8 @@ const ClockHistory: React.FC<ClockHistoryProps> = ({ employee }) => {
                 <h1>Stemplingshistorikk</h1>
             </div>
             <hr />
-            <ClockHistoryTable employee={employee} />
+            <TimeModules data={data} isLoading={isLoading} />
+            <ClockHistoryTable data={data} isLoading={isLoading} />
         </div>
     );
 };

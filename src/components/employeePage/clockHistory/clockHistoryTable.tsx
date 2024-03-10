@@ -1,71 +1,65 @@
 /*
     Author: Torjus A.M
-    Component that generates a table for the employees clock history.
+    Component that generates rows for the table of employees clock history.
 */
-import React from 'react';
+import React, { FC } from 'react';
 import { Employee } from '../../../lib/employee';
 import { formatDay } from '../../../lib/dateFormatter';
 import ArrowIn from '../../../lib/assets/svg/arrowIn.svg';
 import ArrowOut from '../../../lib/assets/svg/arrowOut.svg';
 import useClockHistory from '../../../hooks/useClockHistory';
-import styles from './clockHistoryTable.module.css';
+import { ClockHistoryData } from '../../../lib/types';
+import moment from 'moment';
+import 'moment/locale/nb';
+import styles from './clockHistory.module.css';
+
+// Moment library: NB = Norwegian Bokmål
+moment.locale('nb');
 
 interface ClockHistoryTableProps {
-    employee: Employee;
+    data: Array<ClockHistoryData>;
+    isLoading: boolean;
 }
 
-const date = new Date();
-const { day, dayOfWeek } = formatDay(date);
-
-const ClockHistoryTable: React.FC<ClockHistoryTableProps> = (employee) => {
-    const clockHistory = useClockHistory(employee);
-
+const ClockHistoryTable: FC<ClockHistoryTableProps> = ({ data, isLoading }) => {
     // Renders 7 rows.
     const renderRows = () => {
-        const emptyRows = []; // Declare emptyRows array
-        for (let i = 0; i < 7; i++) { // Declare i variable
-            emptyRows.push(
-                <div key={i} className={styles.tableRow}>
-                    <div className={`${styles.rowItem} ${styles.date}`}>
-                        <h1>{day}</h1>
-                        <h2>{dayOfWeek}</h2>
-                    </div>
-                    <div className={styles.rowSubContainer}>
-                        <div className={styles.rowItem}>
-                            <ArrowIn className={styles.icon} />
-                            <h1>08:00</h1>
-                        </div>
-                        <div className={styles.rowItem}>
-                            <ArrowOut className={styles.icon} />
-                            <h1>16:00</h1>
-                        </div>
+        if (isLoading) {
+            return <div>Loading...</div>;
+        }
+
+        if (!data) {
+            return <div>No data available</div>;
+        }
+
+        return data.map((entry, i) => (
+            <div key={i} className={styles.tableRow}>
+                <div className={`${styles.rowItem} ${styles.date}`}>
+                    <h1>{moment.utc(entry.checkin).format('DD')}</h1>
+                    <h2>{moment(entry.checkin).format('ddd')}</h2>
+                </div>
+                <div className={styles.rowSubContainer}>
+                    <div className={styles.rowItem}>
+                        <ArrowIn className={styles.icon} />
+                        <h1>{moment.utc(entry.checkin).format('LT')}</h1>
                     </div>
                     <div className={styles.rowItem}>
-                        <h3>08t 00m</h3>
-                    </div>
-                    <div className={styles.rowItem}>
-                        <h3 style={{ color: '#0DB714' }}>+00t 00m</h3>
+                        <ArrowOut className={styles.icon} />
+                        <h1>{entry.checkout ? moment.utc(entry.checkout).format('LT') : '-'}</h1>
                     </div>
                 </div>
-            );
-        }
-        return emptyRows; // Return the emptyRows array
+                <div className={styles.rowItem}>
+                    <h3>{entry.workinterval ? `${entry.workinterval.hours}t ${entry.workinterval.minutes}m` : '-'}</h3>
+                </div>
+                <div className={styles.rowItem}>
+                    <h3 style={{ color: '#0DB714' }}>{entry.overtimeinterval ? `${entry.overtimeinterval.hours}t ${entry.overtimeinterval.minutes}m` : '+00t 00m'}</h3>
+                </div>
+            </div>
+        ));
     };
 
     return (
         <>
-            {/* The two time modules */}
-            <div className={styles.timeModulesContainer}>
-                <div className={`${styles.timeModules}`} style={{ marginRight: '1.5rem' }}>
-                    <h1>Arbeidstid</h1>
-                    <h2>23t 00m</h2>
-                </div>
-                <div className={styles.timeModules}>
-                    <h1 style={{ color: '#0DB714' }}>Fleks saldo</h1>
-                    <h2 style={{ color: '#0DB714' }}>23t 00m</h2>
-                </div>
-            </div>
-            {/* Table */}
             <div className={styles.tableContainer}>
                 <div className={`${styles.tableRow} ${styles.heading}`}>
                     <div className={styles.rowItem}>Dato</div>

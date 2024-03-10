@@ -4,8 +4,7 @@ import { pool } from '../../lib/dbIndex'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     try {
-        const { employee } = req.body;
-        const { id } = employee;
+        const { employeeId } = req.body;
 
         const text = (`
             SELECT
@@ -22,9 +21,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             LIMIT 7;
         `);
 
-        const values = [id];
+        const values = [employeeId];
         const result = await pool.query(text, values);
-        
         res.status(200).json(result.rows);
     } catch (error) {
         console.error('Error fetching employee data:', error);
