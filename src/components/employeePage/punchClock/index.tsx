@@ -4,9 +4,10 @@
     It keeps track of current clock-in time and status and allows the user to clock in and out.
 */
 import React, { useEffect, FC } from 'react';
-import { Employee } from '../../lib/employee';
-import Clock from '../../lib/assets/svg/clock.svg';
-import styles from './personalPage.module.css';
+import { Employee } from '../../../lib/employee';
+import Clock from '../../../lib/assets/svg/clock.svg';
+import styles from '../employeePageLayout.module.css';
+import ClockInOutButton from './clockInOutButton';
 
 interface PunchClockProps {
     employee: Employee;
@@ -36,6 +37,7 @@ const PunchClock: FC<PunchClockProps> = ({ employee }) => {
             <div className={styles.moduleContent}>
                 <h1>Put content here</h1>
             </div>
+            <ClockInOutButton employee={employee} />
         </div>
     );
 };

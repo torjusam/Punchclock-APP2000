@@ -2,7 +2,7 @@ import React, { useEffect, FC } from 'react';
 import { Employee } from '../../lib/employee';
 import Shifts from '../../lib/assets/svg/shifts.svg';
 import Expand from '../../lib/assets/svg/expand.svg'
-import styles from './personalPage.module.css';
+import styles from './employeePageLayout.module.css';
 
 interface ShiftListProps {
     employee: Employee;

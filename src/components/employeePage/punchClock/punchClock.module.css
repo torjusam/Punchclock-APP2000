@@ -1,0 +1,66 @@
+/**
+ * Author: Torjus A.M
+ *
+ * Styles for the PunchClock module (Stemplingsklokke).
+ *
+ *
+ * TODO:
+ *   
+ *   indented by 2 spaces.
+ */
+
+ @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@800&display=swap');
+
+/* ==========================================================================
+  Button styles
+  ========================================================================== */
+
+.buttonContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid #000;
+    padding: 0.2em;
+    border-radius: 0.5em;
+    /* Text styles */
+    font-family: 'Public Sans', sans-serif;
+    color: white;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.clockedIn {
+    background-color: #F42B2B;
+}
+
+.clockedOut {
+    background-color: #008A06;
+}
+
+.iconContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.7em;
+    aspect-ratio: 1/1;
+    border-radius: 0.8em;
+    padding: 0.4em;
+    margin-right: 0.5em;
+}
+
+/* Conditional stylign based on if iconcontainer is a child of .clockedOut or not */
+.clockedOut .iconContainer {
+
+}
+
+.clockedIn .iconContainer {
+    background-color: #f74646;
+    box-shadow: 1px 1px 1px  rgba(120, 63, 63, 0.3);
+}
+
+.icon {
+    display: flex;
+    stroke: white;
+    fill: white;
+    stroke-width: 0.1em;
+}

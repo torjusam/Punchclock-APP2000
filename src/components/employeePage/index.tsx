@@ -4,11 +4,11 @@
 */
 import React, { useState, useEffect } from 'react';
 import { Employee } from '../../lib/employee';
-import styles from './personalPage.module.css';
+import styles from './employeePageLayout.module.css';
 import EmployeePageNav from './empNav';
 import PunchClock from './punchClock';
 import ShiftList from './shiftList';
-import ClockHistory from './clockHistory/clockHistory';
+import ClockHistory from './clockHistory';
 
 interface employeePageProps {
   employee: Employee;

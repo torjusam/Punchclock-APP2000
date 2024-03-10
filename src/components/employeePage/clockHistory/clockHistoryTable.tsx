@@ -3,11 +3,8 @@
     Component that generates rows for the table of employees clock history.
 */
 import React, { FC } from 'react';
-import { Employee } from '../../../lib/employee';
-import { formatDay } from '../../../lib/dateFormatter';
 import ArrowIn from '../../../lib/assets/svg/arrowIn.svg';
 import ArrowOut from '../../../lib/assets/svg/arrowOut.svg';
-import useClockHistory from '../../../hooks/useClockHistory';
 import { ClockHistoryData } from '../../../lib/types';
 import moment from 'moment';
 import 'moment/locale/nb';
@@ -49,7 +46,17 @@ const ClockHistoryTable: FC<ClockHistoryTableProps> = ({ data, isLoading }) => {
                     </div>
                 </div>
                 <div className={styles.rowItem}>
-                    <h3>{entry.workinterval ? `${entry.workinterval.hours}t ${entry.workinterval.minutes}m` : '-'}</h3>
+                    {/* Checks for defined values, and displays either minutes, hours or seconds depending on whats defined
+                    For example: undefined hours, but defined minutes and seconds outputs: '03m 33s', 
+                    instead of 'undefined 03m 33s' */}
+                    <h3>
+                        {entry.workinterval
+                            ? (entry.workinterval.hours || entry.workinterval.minutes
+                                ? `${entry.workinterval.hours ? entry.workinterval.hours.toString().padStart(2, '0') + 't' : '00t'} ${entry.workinterval.minutes ? entry.workinterval.minutes.toString().padStart(2, '0') + 'm' : '00m'}`
+                                : `00m ${entry.workinterval.seconds ? entry.workinterval.seconds.toString().padStart(2, '0') : '00'}s`)
+                            : '-'
+                        }
+                    </h3>
                 </div>
                 <div className={styles.rowItem}>
                     <h3 style={{ color: '#0DB714' }}>{entry.overtimeinterval ? `${entry.overtimeinterval.hours}t ${entry.overtimeinterval.minutes}m` : '+00t 00m'}</h3>
