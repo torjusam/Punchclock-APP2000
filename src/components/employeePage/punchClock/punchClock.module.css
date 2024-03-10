@@ -6,15 +6,14 @@
  *
  * TODO:
  *   
- *   indented by 2 spaces.
  */
 
  @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@800&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
 /* ==========================================================================
   Button styles
   ========================================================================== */
-
 .buttonContainer {
     display: flex;
     justify-content: flex-start;
@@ -27,6 +26,11 @@
     color: white;
     font-size: 2rem;
     font-weight: 700;
+}
+
+
+.buttonContainer:active {
+    box-shadow: 2px 4px 6px 0px rgba(79, 83, 85, 0.5);
 }
 
 .clockedIn {
@@ -63,4 +67,30 @@
     stroke: white;
     fill: white;
     stroke-width: 0.1em;
+}
+
+
+/* ==========================================================================
+   Timer styles
+   ========================================================================== */
+.timeDisplay {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 1em auto;
+    /* Text styles */
+    color: #4E5052;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+}
+/* Timer */
+.timeDisplay h1 {
+    font-size: 3.2rem;
+}
+
+/* Time between check-times */
+.timeDisplay h2 {
+    margin-top: 0.5em;
+    font-size: 1.5rem;
 }

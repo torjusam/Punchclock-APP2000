@@ -3,27 +3,24 @@
     This component is the "Stemplingsklokke" on the personal page.
     It keeps track of current clock-in time and status and allows the user to clock in and out.
 */
-import React, { useEffect, FC } from 'react';
+import React, { useEffect, FC, useState } from 'react';
 import { Employee } from '../../../lib/employee';
 import Clock from '../../../lib/assets/svg/clock.svg';
 import styles from '../employeePageLayout.module.css';
 import ClockInOutButton from './clockInOutButton';
+import PunchClockTimeDisplay from './punchClockTimeDisplay';
+import { useEmployeeTimer } from '../../../hooks/useEmployeeTimer';
+import moment from 'moment';
+import 'moment/locale/nb';
+// Moment library: NB = Norwegian Bokmål
+moment.locale('nb');
 
 interface PunchClockProps {
     employee: Employee;
 }
 
 const PunchClock: FC<PunchClockProps> = ({ employee }) => {
-
-    useEffect(() => {
-        // Add your code here
-        // This code will run when the component mounts
-
-        return () => {
-            // Add your cleanup code here
-            // This code will run when the component unmounts
-        };
-    }, []);
+    const { timer, lastCheckOut } = useEmployeeTimer(employee);
 
     return (
         <div className={styles.module}>
@@ -35,7 +32,7 @@ const PunchClock: FC<PunchClockProps> = ({ employee }) => {
             </div>
             <hr />
             <div className={styles.moduleContent}>
-                <h1>Put content here</h1>
+                <PunchClockTimeDisplay timer={timer} employee={employee} />
             </div>
             <ClockInOutButton employee={employee} />
         </div>

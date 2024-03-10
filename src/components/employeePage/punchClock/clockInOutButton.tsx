@@ -1,5 +1,5 @@
 // Author: Torjus A.M
-import React from 'react';
+import React, {useState} from 'react';
 import { Employee } from '../../../lib/employee';
 import { useEmployeeContext } from '../../../hooks/employeeContext';
 import ArrowOut from '../../../lib/assets/svg/arrowOut.svg';
@@ -11,14 +11,16 @@ interface ClockInOutButtonProps {
     employee: Employee;
 }
 
-// Updates employees status and perforsm check operation. Triggers re-render of employee table on frontpage
+// Updates employees status and perforsm check operation.
 const ClockInOutButton: React.FC<ClockInOutButtonProps> = ({ employee }) => {
     const { employees, setEmployees } = useEmployeeContext();
+    const [isLoading, setIsLoading] = useState(true);
 
     const handleClick = async () => {
         if (employee) {
+            setIsLoading(true);
             const status = await checkOperation(employee, employees, setEmployees);
-            console.log(status);
+            setIsLoading(false);
         }
     };
 

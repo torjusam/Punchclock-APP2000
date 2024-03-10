@@ -5,8 +5,7 @@
  * the clock history module. "Stemplingshistorikk".
  * 
  * TODO:
- *   Make the table actually responsive
- *   Change the width of each row item
+ *   Media queries for table?
  */
 
 @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@800&display=swap');
@@ -63,12 +62,10 @@
     background-color: white;
     border-radius: 4px;
     border: 1px solid #DADADA;
-    min-height: 0;
     max-width: 100%;
     box-shadow: 1px 3px 4px rgba(0, 0, 0, .08);
     overflow: auto;
     margin: 0.5em 0;
-    
 }
 
 .tableRow {
@@ -165,7 +162,21 @@
     border-bottom: 0;
 }
 
+/* Loading styles. Scuffed but works(?)
+   ========================================================================== */
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+}
 
+.noData {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+}
 /* Media queries
    ========================================================================== */
 

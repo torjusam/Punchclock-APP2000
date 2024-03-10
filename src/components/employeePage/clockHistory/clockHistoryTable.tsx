@@ -22,27 +22,27 @@ const ClockHistoryTable: FC<ClockHistoryTableProps> = ({ data, isLoading }) => {
     // Renders 7 rows.
     const renderRows = () => {
         if (isLoading) {
-            return <div>Loading...</div>;
+            return <div className={styles.loading}>Loading...</div>;
         }
 
         if (!data) {
-            return <div>No data available</div>;
+            return <div className={styles.noData}>No data available</div>;
         }
 
         return data.map((entry, i) => (
             <div key={i} className={styles.tableRow}>
                 <div className={`${styles.rowItem} ${styles.date}`}>
-                    <h1>{moment.utc(entry.checkin).format('DD')}</h1>
+                    <h1>{moment(entry.checkin).format('DD')}</h1>
                     <h2>{moment(entry.checkin).format('ddd')}</h2>
                 </div>
                 <div className={styles.rowSubContainer}>
                     <div className={styles.rowItem}>
                         <ArrowIn className={styles.icon} />
-                        <h1>{moment.utc(entry.checkin).format('LT')}</h1>
+                        <h1>{moment(entry.checkin).format('LT')}</h1>
                     </div>
                     <div className={styles.rowItem}>
                         <ArrowOut className={styles.icon} />
-                        <h1>{entry.checkout ? moment.utc(entry.checkout).format('LT') : '-'}</h1>
+                        <h1>{entry.checkout ? moment(entry.checkout).format('LT') : '-'}</h1>
                     </div>
                 </div>
                 <div className={styles.rowItem}>
