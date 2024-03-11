@@ -5,6 +5,7 @@
 import React from 'react';
 import { Employee } from '../../../lib/employee';
 import moment from 'moment';
+import { useEmployeeContext } from '../../../hooks/employeeContext';
 import styles from './punchClock.module.css';
 
 interface PunchClockTimeDisplayProps {
@@ -13,6 +14,7 @@ interface PunchClockTimeDisplayProps {
 }
 
 const PunchClockTimeDisplay: React.FC<PunchClockTimeDisplayProps> = ({ timer, employee }) => {
+    const { isLoading } = useEmployeeContext();
     // Helper function to format time: hh't' mm'm' ss's'
     const formatTime = (seconds: number) => {
         const duration = moment.duration(seconds, 'seconds');

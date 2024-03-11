@@ -4,6 +4,7 @@
     This component is responsible for providing a context for managing the array of employees.
     The context is shared across the entire app, allowing any component to access and modify the list.
     Uses a custom provider, and a custom hook to access the context.
+    Also a loading state is added to the context, for components to signify if theyre loading or not.
 */
 import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
 import { Employee } from '../lib/employee';
@@ -21,6 +22,8 @@ export const EmployeeContext = createContext<EmployeeContextProps | null>(null);
 // Custom provider provides children components with state and updater function for the employee state.
 export default function EmployeeContextProvider({ children }: { children: React.ReactNode }) {
     const [employees, setEmployees] = useState<Employee[]>([]);
+    // Additional shared state for loading.
+    const [isLoading, setIsLoading] = useState(true);
 
     // Initialize the employees array when the component mounts.
     useEffect(() => {
@@ -50,9 +53,17 @@ export default function EmployeeContextProvider({ children }: { children: React.
         // Dependency array specifies to only update when employees array is changed.
     }, [employees]);
 
+    const value = {
+        employees,
+        setEmployees,
+        sortedEmployees,
+        isLoading,
+        setIsLoading,
+    };
+
     // Wraps children so that any child component can access the employee state.
     return (
-        <EmployeeContext.Provider value={{ employees, setEmployees, sortedEmployees }}>
+        <EmployeeContext.Provider value={value}>
             {children}
         </EmployeeContext.Provider>
     );

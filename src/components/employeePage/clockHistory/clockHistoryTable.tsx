@@ -72,7 +72,7 @@ const ClockHistoryTable: FC<ClockHistoryTableProps> = ({ data, isLoading }) => {
                     <div className={styles.rowItem}>Dato</div>
                     <div className={styles.rowItem}>Stempling</div>
                     <div className={styles.rowItem}>Arbeidstid</div>
-                    <div className={`${styles.rowItem}`} style={{ color: '#0DB714' }}>Fleks Saldo</div>
+                    <div className={`${styles.rowItem}`} style={{ color: '#0DB714' }}>Saldo</div>
                 </div>
                 {renderRows()}
             </div>
