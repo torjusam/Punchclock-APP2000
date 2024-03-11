@@ -33,6 +33,8 @@ const performCheckOperation = async (employee) => {
 
 // To-Do: Perform must update plannedwork, Balance, Fleksitid_Balance from employee
 
+
+
 export const checkOperation = async (employee, employees, setEmployees) => {
   try {
       if (employee) {

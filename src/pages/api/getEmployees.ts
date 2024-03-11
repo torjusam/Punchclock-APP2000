@@ -11,7 +11,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             e.role,
             e.pin,
             e.profilepictureurl,
-            e.plannedwork,
             e.balance,
             e.Fleksitid_Balance,
             MAX(fb.Checkin) AS lastCheckIn,

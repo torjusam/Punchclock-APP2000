@@ -16,7 +16,7 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    width: 80%;
+    width: 90%;
     margin: 1em;
     margin-bottom: 0;
 }
@@ -24,10 +24,10 @@
 .timeModules {
     display: flex;
     flex-direction: column;
-    padding: 0.7em;
+    padding: 1em;
     border-radius: 1em;
     box-shadow: 2px 4px 3px 0.2px #d5d5d5;
-    border: #f6f6f6 1px solid;
+    border: #f6f6f6 0.5px solid;
     flex-grow: 1;
     line-height: 2.3em;
 }
@@ -38,10 +38,10 @@
 }
 
 .timeModules h2 {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Lato', sans-serif;
     font-weight: 600;
     color: #212B36;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.025em;
     white-space: nowrap;
 }
 
@@ -156,16 +156,16 @@
 /* Media queries
    ========================================================================== */
 /* XS resolution */
-@media screen and (max-width: 1345px) {
+@media screen and (max-width: 1360px) {
     .timeModules {
-        line-height: 2.1em;
+        line-height: 2.2em;
     }
     .timeModules h1 {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
     }
 
     .timeModules h2 {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
     }
 
     .heading>.rowItem {
@@ -212,7 +212,7 @@
 }
 
 /* S resolution */
-@media screen and (min-width: 1345px) and (max-width: 1580px) {
+@media screen and (min-width: 1360px) and (max-width: 1580px) {
     .timeModules {
         line-height: 2.1em;
     }
@@ -227,7 +227,7 @@
     /* Date column and header width */
     .date,
     .heading>.rowItem:nth-child(1) {
-        flex: 0 0 5rem;
+        flex: 0 0 4.8rem;
     }
 
     .rowSubContainer,
@@ -254,7 +254,7 @@
 
     /* Column 3-4: time */
     .rowItem h3 {
-        font-size: 1.9rem;
+        font-size: 1.75rem;
         white-space: nowrap;
         margin-right: 0.1em;
         margin-left: 0.1em;

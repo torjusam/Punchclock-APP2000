@@ -25,7 +25,6 @@ export class Employee {
         profilePictureUrl?: string,
         lastCheckIn?: Date,
         lastCheckOut?: Date,
-        PlannedWork?: String,
         Balance?: Date,
         Fleksitd_Balance?: String,
     ) {
@@ -34,7 +33,6 @@ export class Employee {
         this.lastCheckIn = lastCheckIn;
         this.lastCheckOut = lastCheckOut;
         this.profilePictureUrl = profilePictureUrl;
-        this.PlannedWork = PlannedWork;
         this.Balance = Balance;
         this.Fleksitd_Balance = Fleksitd_Balance;
 

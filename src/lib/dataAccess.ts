@@ -6,10 +6,10 @@ export async function fetchEmployees(): Promise<Employee[]> {
   try {
     const response = await fetch('/api/getEmployees');
     if (response.ok) {
-      // Result expected to return as: Id, Name, role, pin, Profilepictureurl, LastCheckIn, LastCheckOut
       const result = await response.json();
       return result.map((row: any) => {
-        return new Employee(row.id, row.name, row.role, row.pin, row.profilepictureurl, row.lastcheckin, row.lastcheckout, row.plannedwork, row.balance, row.Fleksitid_Balance,);
+        // Creates employee object with results from api
+        return new Employee(row.id, row.name, row.role, row.pin, row.profilepictureurl, row.lastcheckin, row.lastcheckout, row.balance, row.Fleksitid_Balance,);
       });
       // Error: return empty employee-array 
     } else {
