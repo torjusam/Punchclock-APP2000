@@ -28,7 +28,6 @@
 
 /* Ruleset for adjusting the employee-cards based on width of the screen.
    ========================================================================== */
-
 /* M resolution, default. Display 2 cards pr row */
 .EmployeeList>div {
     /* -1rem takes into account 50% including a margin between cards */
@@ -74,7 +73,7 @@
 /* Container for employees name and last check time */
 .infoContainer {
     display: flex;
-    line-height: 1.8rem;
+    line-height: 2rem;
     margin-left: 0.7rem;
     flex-direction: column;
     justify-content: center;

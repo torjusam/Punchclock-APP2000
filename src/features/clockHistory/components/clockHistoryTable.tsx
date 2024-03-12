@@ -6,9 +6,9 @@ import React, { FC } from 'react';
 import ArrowIn from '../../../assets//arrowIn.svg';
 import ArrowOut from '../../../assets//arrowOut.svg';
 import { ClockHistoryData } from '../../../lib/types';
+import styles from './clockHistory.module.css';
 import moment from 'moment';
 import 'moment/locale/nb';
-import styles from './clockHistory.module.css';
 
 // Moment library: NB = Norwegian Bokmål
 moment.locale('nb');

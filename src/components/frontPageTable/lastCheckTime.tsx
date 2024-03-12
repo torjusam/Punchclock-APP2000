@@ -5,9 +5,9 @@
 */
 import React, { useState, useEffect } from 'react';
 import { Employee } from '../../lib/employee';
-import { formatTime } from '../../lib/dateFormatter';
 import ArrowIn from '../../assets//arrowIn.svg';
 import ArrowOut from '../../assets/arrowOut.svg';
+import moment from 'moment';
 import styles from './employeeList.module.css';
 
 const LastCheckTime: React.FC<{ employee: Employee }> = ({ employee }) => {
@@ -18,13 +18,13 @@ const LastCheckTime: React.FC<{ employee: Employee }> = ({ employee }) => {
     useEffect(() => {
         // Sets last action to in or out based on if employee is clocked in or not.
         if (employee.isClockedIn) {
-            setLastCheckTime(formatTime(employee.lastCheckIn))
+            setLastCheckTime(moment(employee.lastCheckIn).format('HH:mm'))
             setLastAction('in');
         } else {
-            setLastCheckTime(formatTime(employee.lastCheckOut))
+            setLastCheckTime(moment(employee.lastCheckOut).format('HH:mm'))
             setLastAction('out');
         }
-
+    
     }, [employee.lastCheckIn, employee.lastCheckOut]);
     
     // The arrow is set based on the last action of the employee.
