@@ -119,6 +119,10 @@
   border: #eeeeee 1px solid;
 }
 
+.h2 {
+  height: fit-content;
+}
+
 /* Container for content inside modules, below the header and seperator. */
 .moduleContent {
   display: flex;

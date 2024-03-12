@@ -3,8 +3,8 @@
     Component that generates rows for the table of employees clock history.
 */
 import React, { FC } from 'react';
-import ArrowIn from '../../../lib/assets/svg/arrowIn.svg';
-import ArrowOut from '../../../lib/assets/svg/arrowOut.svg';
+import ArrowIn from '../../../assets//arrowIn.svg';
+import ArrowOut from '../../../assets//arrowOut.svg';
 import { ClockHistoryData } from '../../../lib/types';
 import moment from 'moment';
 import 'moment/locale/nb';

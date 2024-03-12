@@ -6,7 +6,7 @@
 */
 import React, { FC } from 'react';
 import EmployeeCard from './employeeCard';
-import { useEmployeeContext } from '../../hooks/employeeContext';
+import { useEmployeeContext } from '../../context/employeeContext';
 import styles from './employeeList.module.css';
 
 const EmployeeListDisplay: FC = () => {

@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import EmployeePageData from '../components/employeePage';
 import { Employee } from '../lib/employee';
-import { useEmployeeContext } from '../hooks/employeeContext';
+import { useEmployeeContext } from '../context/employeeContext';
 import EmployeePageNav from '../components/employeePage/empNav';
 
 const EmployeePage: React.FC = () => {

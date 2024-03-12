@@ -1,20 +1,20 @@
 // Author: Torjus A.M
 import React, {useState} from 'react';
 import { Employee } from '../../../lib/employee';
-import { useEmployeeContext } from '../../../hooks/employeeContext';
-import ArrowOut from '../../../lib/assets/svg/arrowOut.svg';
-import ArrowIn from '../../../lib/assets/svg/arrowIn.svg';
+import { useEmployeeContext } from '../../../context/employeeContext';
+import ArrowOut from '../../../assets/arrowOut.svg';
+import ArrowIn from '../../../assets/arrowIn.svg';
 import styles from './punchClock.module.css'
 import { checkOperation } from '../../../lib/checkOperation';
 
 interface ClockInOutButtonProps {
     employee: Employee;
+    setIsLoading: (isLoading: boolean) => void;
 }
 
 // Updates employees status and perforsm check operation.
-const ClockInOutButton: React.FC<ClockInOutButtonProps> = ({ employee }) => {
+const ClockInOutButton: React.FC<ClockInOutButtonProps> = ({ employee, setIsLoading }) => {
     const { employees, setEmployees } = useEmployeeContext();
-    const [isLoading, setIsLoading] = useState(true);
 
     const handleClick = async () => {
         if (employee) {

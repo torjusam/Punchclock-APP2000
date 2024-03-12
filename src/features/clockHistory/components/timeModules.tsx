@@ -5,7 +5,7 @@
 */
 import React, { FC } from 'react';
 import { Employee } from '../../../lib/employee';
-import useWorkTime from '../../../hooks/useWorkTime';
+import useWorkTime from '../../timeModules/hooks/useWorkTime';
 import styles from './clockHistory.module.css';
 import moment from 'moment';
 import 'moment/locale/nb';
@@ -30,7 +30,7 @@ const TimeModules: FC<TimeModulesProps> = ({ employee }) => {
                 */}
                 <h2>
                     {isLoading
-                        ? 'Henter data..'
+                        ? 'Henter..'
                         : (workTimedata && workTimedata.length > 0 && workTimedata[0].sum
                             ? (workTimedata[0].sum.hours > 0
                                 ? `${workTimedata[0].sum.hours.toString().padStart(2, '0')}t ${workTimedata[0].sum.minutes ? workTimedata[0].sum.minutes.toString().padStart(2, '0') + 'm' : '00m'}`

@@ -1,11 +1,14 @@
-//Author: Torjus A.M
+/* 
+    Author: Torjus A.M
+    Main component for all pages. This component is the layout of the app, and is used in every page.
+    It contains all the content on the left side of the screen.
+*/
 import React, { FC } from "react"
 import { useRouter } from 'next/router';
-import HelpIco from '../../lib/assets/svg/helpIco.svg'
+import HelpIco from '../../assets//helpIco.svg'
 import Clock from "./clock"
-import styles from "./leftContent.module.css"
+import styles from "./layout.module.css"
 
-// Component of all the items on the left side of the screen. Used in /pages/_app.tsx
 const LeftContent: FC = () => {
     const router = useRouter();
 

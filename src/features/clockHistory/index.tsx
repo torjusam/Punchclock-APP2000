@@ -4,12 +4,12 @@
     the "Stemplingshistorikk" module.
 */
 import React from 'react';
-import { Employee } from '../../../lib/employee';
-import ClockCheck from '../../../lib/assets/svg/clockCheck.svg';
-import ClockHistoryTable from './clockHistoryTable';
-import useClockHistory from '../../../hooks/useClockHistory';
-import TimeModules from './timeModules';
-import styles from '../employeePageLayout.module.css';
+import { Employee } from '../../lib/employee';
+import ClockCheck from '../../assets/clockCheck.svg';
+import ClockHistoryTable from './components/clockHistoryTable';
+import useClockHistory from './hooks/useClockHistory';
+import TimeModules from './components/timeModules';
+import styles from '../../components/employeePage/employeePageLayout.module.css';
 
 interface ClockHistoryProps {
     employee: Employee;

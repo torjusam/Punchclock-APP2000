@@ -1,7 +1,7 @@
 import React, { useEffect, FC } from 'react';
 import { Employee } from '../../lib/employee';
-import Shifts from '../../lib/assets/svg/shifts.svg';
-import Expand from '../../lib/assets/svg/expand.svg'
+import Shifts from '../../assets/shifts.svg';
+import Expand from '../../assets/expand.svg'
 import styles from './employeePageLayout.module.css';
 
 interface ShiftListProps {

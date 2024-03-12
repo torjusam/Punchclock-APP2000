@@ -2,13 +2,12 @@
     Author: Torjus A.M
     This component is used to display the last check time of an employee
     along with an icon indicating the action (checked in / out).
-    The component is used on the frontpage table aswell as on the employee page.
 */
 import React, { useState, useEffect } from 'react';
 import { Employee } from '../../lib/employee';
 import { formatTime } from '../../lib/dateFormatter';
-import ArrowIn from '../../lib/assets/svg/arrowIn.svg'
-import ArrowOut from '../../lib/assets/svg/arrowOut.svg';
+import ArrowIn from '../../assets//arrowIn.svg';
+import ArrowOut from '../../assets/arrowOut.svg';
 import styles from './employeeList.module.css';
 
 const LastCheckTime: React.FC<{ employee: Employee }> = ({ employee }) => {
