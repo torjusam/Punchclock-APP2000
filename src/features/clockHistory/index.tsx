@@ -26,7 +26,7 @@ const ClockHistory: React.FC<ClockHistoryProps> = ({ employee }) => {
                 <div className={`${styles.iconContainer}`} style={{ padding: '0.57em' }}>
                     <ClockCheck className={`${styles.icon} ${styles.clockHistoryIcon}`} />
                 </div>
-                <h1>Stemplingshistorikk</h1>
+                <h2>Stemplingshistorikk</h2>
             </div>
             <hr />
             <TimeModules employee={employee} />

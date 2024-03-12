@@ -3,7 +3,6 @@
 import React from 'react';
 import { useState } from 'react';
 import { createEmployee } from '../../lib/dataAccess';
-import styles from '../Buttons/buttons.module.css'
 
 const EmployeeForm: React.FC = () => {
   const [firstName, setFirstName] = useState('');
@@ -56,7 +55,7 @@ const EmployeeForm: React.FC = () => {
       </div>
   
       {/* Enter Button */}
-      <button onClick={handleEnterClick} className={styles.redirectButton}>
+      <button onClick={handleEnterClick}>
         Create Employee
       </button>
   

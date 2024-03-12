@@ -1,7 +1,11 @@
 // Author: Torjus A.M
 import React, { useState, ChangeEvent } from 'react';
-import { Employee } from '../../lib/employee';
-import styles from '../../styles/navbars.module.css'
+import { Employee } from '../../../lib/employee';
+import Pinicon from '../../../assets/pinCode.svg';
+import Notif from '../../../assets/notif.svg';
+import Helpico from '../../../assets/helpIco.svg';
+import styles from './navbars.module.css'
+import HomeButton from './homeButton';
 
 interface EmployeePageNavProps {
     employee: Employee;
@@ -11,8 +15,13 @@ const EmployeePageNav: React.FC<EmployeePageNavProps> = ({ employee }) => {
 
     return (
         <nav className={styles.navBarContainer}>
-            <h1>EmployeePageNav</h1>
+            <HomeButton />
             <div className={styles.profileContainer}>
+                <div className={styles.iconContainer}>
+                    <Pinicon className={styles.pinIcon} />
+                    <Notif className={styles.notifIcon} />
+                    <Helpico className={styles.helpIcon} />
+                </div>
                 <img className={styles.avatar} src={avatar} />
                 <h3 className={styles.employeeName}>{employee.name}</h3>
             </div>

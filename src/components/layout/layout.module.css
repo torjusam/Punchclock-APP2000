@@ -101,8 +101,9 @@
 .helpIco {
     display: flex;
     aspect-ratio: 1/1;
-    width: 3.5vw;
-    stroke: #f2f2f2;
+    width: 3.2vw;
+    stroke-width: 1.5px;
+    stroke: #1C274C;
     height: max-content;
 }
 

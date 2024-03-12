@@ -1,0 +1,135 @@
+/**
+ * Author: Torjus A.M
+ *
+ *  CSS module for all the navbars.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap');
+
+/* Parent of all nav bars*/
+.navBarContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    background-color: #FFFFFF;
+    border-radius: 0.8em;
+    min-height: 9vh;    
+    max-height: 9vh;
+    padding: 0.7em;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .14), 0 3px 3px -2px rgba(0, 0, 0, .2), 0 1px 8px 0 rgba(0, 0, 0, .12);
+    margin-bottom: 1.5em;
+}
+
+/* ==========================================================================
+   Home page navbar
+   ========================================================================== */
+
+
+/* ==========================================================================
+   Employee page navbar
+   ========================================================================== */
+.homeBtn {
+    display: flex;
+    justify-content: flex-start;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 1em;
+    background-color: #E6EBF2;
+    box-shadow: 0px 2px 3px 0px #e0dada;
+    color: #24292E;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    padding: 0.5em;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    margin-left: 0.5em;
+}
+
+.homeBtn:disabled {
+    background-color: #FAFBFC;
+    border-color: rgba(27, 31, 35, 0.15);
+    color: #959DA5;
+    cursor: default;
+}
+
+.homeBtn:active {
+    background-color: #EDEFF2;
+    box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+    transition: none 0s;
+}
+
+.icon {
+    width: 1.5em;
+    fill: #24292E;
+    stroke: #24292E;
+    rotate: 90deg;
+    aspect-ratio: 1/1;
+    margin-right: 1em;
+}
+
+.homeBtn h1 {
+    margin-right: 1.8em;
+}
+
+/* Content on the right side: Name, avatar, icons
+   ========================================================================== */
+.profileContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    margin-right: 1.5em;
+}
+
+.iconContainer {
+    display: flex;
+    margin-right: 2em;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.helpIcon {
+    width: 3.3em;
+    height: 3.5em;
+    stroke: #8282829a;
+    stroke-width: 1.5px;
+    aspect-ratio: 1/1;
+}
+
+.notifIcon {
+    width: 3.3em;
+    height: 3.5em;
+    stroke: #8282829a;
+    stroke-width: 1.7px;
+    aspect-ratio: 1/1;
+    margin-right: 1em;
+    margin-left: 1em;
+    padding-bottom: 0.3em;
+}
+
+.pinIcon {
+    width: 3.1em;
+    height: 3.2em;
+    fill: #8282829a;
+    aspect-ratio: 1/1;
+}
+
+.avatar {
+    width: 4.3em;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    margin-right: 1em;
+    border: 3px solid #fcfcfc;
+    box-shadow: 0px 1px 2px 0px #acacac;
+}
+
+.employeeName {
+    font-family: 'Public Sans', sans-serif;
+    font-size: 2.3rem;
+    font-weight: 700;
+    color: #212B36;
+}
+
+/* ==========================================================================
+   Crud-page navbar
+   ========================================================================== */

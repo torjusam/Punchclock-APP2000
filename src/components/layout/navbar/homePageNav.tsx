@@ -1,6 +1,6 @@
 // Author: Torjus A.M
 import React, { useState, ChangeEvent } from 'react';
-import styles from '../../styles/navbars.module.css'
+import styles from './navbars.module.css'
 
 const FrontPageNav: React.FC = () => {
     return (

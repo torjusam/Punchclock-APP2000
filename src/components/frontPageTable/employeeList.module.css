@@ -22,8 +22,6 @@
     justify-content: space-evenly;
     background-color: rgb(255, 255, 255);
     width: 100%;
-    /* Margin between navbar */
-    margin-top: 1.5rem;
 }
 
 /* Ruleset for adjusting the employee-cards based on width of the screen.

@@ -4,7 +4,7 @@
 */
 import React from 'react';
 import EmployeeListDisplay from './employeeTable';
-import FrontPageNav from './navBarFrontpage';
+import FrontPageNav from '../layout/navbar/homePageNav';
 
 const FrontPage: React.FC = () => {
     return (

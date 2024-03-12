@@ -1,5 +1,5 @@
 import React from 'react';
-import CrudPageNav from './navBarCrud';
+import CrudPageNav from '../layout/navbar/crudNav';
 import EmployeeForm from './employeeForm';
 
 const CrudPage: React.FC = () => {
