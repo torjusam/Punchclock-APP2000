@@ -31,7 +31,7 @@
 }
 
 .timeModules h1 {
-    color: #4E5052;
+    color: var(--light-text);
     font-family: var(--pSans);
 }
 
@@ -94,7 +94,7 @@
 .date h1 {
     font-family: var(--lato);
     font-weight: 600;
-    color: var(----dark-text);
+    color: var(--dark-text);
 }
 
 .date h2 {
@@ -106,7 +106,7 @@
 /* Column 3-4: Time */
 .rowItem h3 {
     font-family: var(--lato);
-    color: #4E5052;
+    color: var(--light-text);
 }
 
 /* Styles for subcontainer (Clockin/out times).
@@ -143,7 +143,7 @@
     font-weight: 400;
     font-family: var(--lato);
     margin-left: 0.25em;
-    color: #4E5052;
+    color: var(--light-text);
 }
 
 /* Remove border if its a subContainer to avoid overlapping borders */
@@ -159,9 +159,9 @@
 
 /* Wavy lines while data is fetched */
 .loading {
-    background: linear-gradient(to right, rgba(130, 130, 130, 0.2) 8%, rgba(130, 130, 130, 0.3) 18%, rgba(130, 130, 130, 0.2) 33%);
-    background-size: 800px 100px;
-    animation: wave-lines 0.5s infinite ease-out;
+    background: var(--loading-bg);
+    background-size: var(--loading-bg-size);
+    animation: var(--loading-effect);
 }
 
 /* For the timemodules */

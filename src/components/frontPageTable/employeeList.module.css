@@ -90,7 +90,7 @@
 }
 
 .lastCheckTime {
-    color: #4E5052;
+    color: var(--light-text);
     font-family: var(--lato);
     font-size: 1.88rem;
     margin-left: 0.1em;

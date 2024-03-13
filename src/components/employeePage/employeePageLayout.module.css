@@ -42,7 +42,7 @@
 .moduleHeader h1 {
   font-size: 1.7rem;
   font-weight: 800;
-  color: var(----dark-text);
+  color: var(--dark-text);
   line-height: 1em;
   font-family: var(--pSans);
 }
@@ -139,7 +139,7 @@
 .expandIcon {
   display: flex;
   justify-self: flex-end;
-  stroke: var(----dark-text);
+  stroke: var(--dark-text);
   width: 2.1em;
   stroke-width: 0.1em;
 }

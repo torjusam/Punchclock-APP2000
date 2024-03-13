@@ -3,13 +3,14 @@
     Searchbar to search employees for the navbar on the homepage.
 */
 import React from 'react';
+import Search from '../../../assets/search.svg';
 import styles from './searchbar.module.css';
 
-interface SearchBarProps {
+interface SearchBarFormProps {
 
 }
 
-const SearchBar: React.FC<SearchBarProps> = () => {
+const SearchBarForm: React.FC<SearchBarFormProps> = () => {
 
     const handleSubmit = (event: React.FormEvent) => {
         // Prevents the default form submission, which is a page refresh.
@@ -17,12 +18,12 @@ const SearchBar: React.FC<SearchBarProps> = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit} role="search">
-            <label htmlFor="search">Search for stuff</label>
-            <input id="search" type="search" placeholder="Search..." autoFocus required />
-            <button type="submit">Go</button>
+        <form onSubmit={handleSubmit} role="search" className={styles.form}>
+            <Search className={styles.icon}/>
+            <input id="search" type="search" placeholder="Søk ansatte..." autoFocus required className={styles.input} />
+            <button type="submit" className={styles.button}>Søk</button>
         </form>
     );
 };
 
-export default SearchBar;
+export default SearchBarForm;

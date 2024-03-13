@@ -1,58 +1,79 @@
-form {
-    position: relative;
-    width: 30rem;
-    background: var(--color-brand);
-    border-radius: var(--rad);
+/**
+ * Author: Torjus A.M
+ * Inspiration: https://codepen.io/liamj/pen/vYYLGZj
+ *
+ * The styles for the searchbar. The searchbar alters after beginning to type.
+ *
+ */
+
+.form {
+    display: flex;
+    width: 50%;
+    background: #18A0FB;
+    border-radius: 2rem;
+    border: 1px solid #6F6F6F;
+    margin-left: 1.5rem;
+    height: 90%;
 }
 
-input,
-button {
-    height: var(--height);
-    font-family: var(--font-fam);
-    border: 0;
-    color: var(--color-dark);
-    font-size: 1.8rem;
+.icon {
+    width: 2.8rem;
+    margin: 0 auto;
+    stroke: #ffffff;
+    fill: none;
+    stroke-width: 1.5;
+    margin: 0 1rem;
+    aspect-ratio: 1/1;
 }
 
-input[type="search"] {
+.input,
+.button {
+    font-family: var(--lato);
+    color: #6F6F6F;
+    font-size: 1.4rem;
+    height: 100%;
+}
+
+.input[type="search"] {
     outline: 0;
     width: 100%;
-    background: var(--color-light);
+    background: #fff;
     padding: 0 1.6rem;
-    border-radius: var(--rad);
-    appearance: none;
-    transition: all var(--dur) var(--bez);
+    border-radius: 0 2rem 2rem 0;
+    transition: all 0.4s cubic-bezier(0, 0, 0.43, 1.49);;
     transition-property: width, border-radius;
-    z-index: 1;
-    position: relative;
 }
 
-button {
+.button {
     display: none;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: var(--btn-width);
-    font-weight: bold;
-    background: var(--color-brand);
-    border-radius: 0 var(--rad) var(--rad) 0;
+    width: 6rem;
+    color: #fff;
+    font-weight: 700;
+    background: #18A0FB;
+    border-radius: 2rem;
 }
 
-input:not(:placeholder-shown) {
-    border-radius: var(--rad) 0 0 var(--rad);
-    width: calc(100% - var(--btn-width));
-
-    +button {
-        display: block;
+.input:not(:placeholder-shown)  {
+    border-radius: 0;
+    width: calc(100% - 8rem);
+    + .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 
-label {
-    position: absolute;
-    clip: rect(1px, 1px, 1px, 1px);
-    padding: 0;
-    border: 0;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
+@media (max-width: 1300px) {
+    .input:not(:placeholder-shown) {
+        width: calc(100% - 5rem);
+    }
+}
+
+@media (min-width: 1600px) {
+    .input:not(:placeholder-shown) {
+        width: calc(100% - 9rem);
+    }
+    .button {
+        width: 8rem;
+    }
 }

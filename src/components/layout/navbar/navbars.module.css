@@ -128,7 +128,7 @@
     font-family: var(--pSans);
     font-size: 2.13rem;
     font-weight: 700;
-    color: var(----dark-text);
+    color: var(--dark-text);
 }
 
 /* ==========================================================================
