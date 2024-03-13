@@ -7,7 +7,6 @@
 
 /* Google fonts: Lato & DM Sans */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
 /* Logo top left */
 .logo {
@@ -42,15 +41,15 @@
 .dateText {
     font-size: 3rem;
     color: #f2f2f2;
-    font-family: 'Lato', sans-serif;
-    text-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.1);
+    font-family: var(--lato);
+    text-shadow: 0.1rem 0.4rem 0.3rem rgba(0, 0, 0, 0.1);
 }
 
 .greetingText {
     font-size: 3.5rem;
     color: #f2f2f2;
-    font-family: 'Lato', sans-serif;
-    text-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.1);
+    font-family: var(--lato);
+    text-shadow: 0.1rem 0.4rem 0.3rem rgba(0, 0, 0, 0.1);
 }
 
 /* S resolution: tablet */
@@ -112,7 +111,7 @@
     color: #1C274C;
     opacity: 90%;
     font-size: 1.1rem;
-    font-family: 'Lato', sans-serif;
+    font-family: var(--lato);
     font-weight: bold;
     text-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.0);
 }

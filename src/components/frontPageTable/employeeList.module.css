@@ -10,10 +10,6 @@
  *   Handle too long of a employee name. (With ellipsis?)
  */
 
-/* Google fonts Public Sans & Lato*/
-@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
-
 /* Outer container */
 .EmployeeList {
     display: flex;
@@ -82,7 +78,7 @@
     font-size: 1.8rem;
     color: #121212;
     font-weight: bold;
-    font-family: 'Public Sans', sans-serif;
+    font-family: var(--pSans);
 }
 
 /* Container for arrow icon and last check time */
@@ -95,7 +91,7 @@
 
 .lastCheckTime {
     color: #4E5052;
-    font-family: 'Lato', sans-serif;
+    font-family: var(--lato);
     font-size: 1.88rem;
     margin-left: 0.1em;
 }

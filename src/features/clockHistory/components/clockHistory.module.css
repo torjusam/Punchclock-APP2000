@@ -5,10 +5,6 @@
  * The sizes of various elements in the table is adjusted by screen sized, and are not defined a default size.
  *
  */
-
-@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@500&display=swap');
-
 /* ==========================================================================
    Time modules styles
    ========================================================================== */
@@ -16,7 +12,7 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    width: 90%;
+    width: 75%;
     margin: 1em;
     margin-bottom: 0;
 }
@@ -25,24 +21,27 @@
     display: flex;
     flex-direction: column;
     padding: 1em;
+    padding-top: 0.6em;
+    padding-bottom: 0.6em;
     border-radius: 1em;
     box-shadow: 2px 4px 3px 0.2px #d5d5d5;
     border: #f6f6f6 0.5px solid;
     flex-grow: 1;
-    line-height: 2.3em;
+    line-height: 2.6em;
 }
 
 .timeModules h1 {
-    color: #212B36;
-    font-family: 'Public Sans', sans-serif;
+    color: #4E5052;
+    font-family: var(--pSans);
 }
 
 .timeModules h2 {
-    font-family: 'Lato', sans-serif;
-    font-weight: 600;
-    color: #212B36;
-    letter-spacing: 0.025em;
+    font-family: var(--lato);
+    font-weight: 700;
+    color: #343639;
+    letter-spacing: 0.04em;
     white-space: nowrap;
+    text-shadow: 0rem 0.08rem 1rem rgba(114, 114, 115, 0.1);
 }
 
 .salaryTextColor {
@@ -88,25 +87,25 @@
     flex: 1;
     font-size: 1.25rem;
     font-weight: 700;
-    font-family: 'Public Sans', sans-serif;
+    font-family: var(--pSans);
     color: #606266;
 }
 
 .date h1 {
-    font-family: 'Lato', sans-serif;
+    font-family: var(--lato);
     font-weight: 600;
-    color: #212B36;
+    color: var(----dark-text);
 }
 
 .date h2 {
-    font-family: 'Public Sans', sans-serif;
+    font-family: var(--pSans);
     font-weight: 400;
     color: #606266;
 }
 
 /* Column 3-4: Time */
 .rowItem h3 {
-    font-family: 'Lato', sans-serif;
+    font-family: var(--lato);
     color: #4E5052;
 }
 
@@ -142,7 +141,7 @@
     display: flex;
     justify-self: center;
     font-weight: 400;
-    font-family: 'Lato', sans-serif;
+    font-family: var(--lato);
     margin-left: 0.25em;
     color: #4E5052;
 }
@@ -153,13 +152,48 @@
     border-bottom: 0;
 }
 
-/* Media queries
+
+/* ==========================================================================
+   Loading styles
    ========================================================================== */
+
+/* Wavy lines while data is fetched */
+.loading {
+    background: linear-gradient(to right, rgba(130, 130, 130, 0.2) 8%, rgba(130, 130, 130, 0.3) 18%, rgba(130, 130, 130, 0.2) 33%);
+    background-size: 800px 100px;
+    animation: wave-lines 0.5s infinite ease-out;
+}
+
+/* For the timemodules */
+.timeModules .loading {
+    margin-top: 0.5rem;
+    width: 9rem;
+    height: 1.8rem;
+    border-radius: 0.7rem;
+}
+
+
+@keyframes wave-lines {
+    0% {
+        background-position: -468px 0;
+    }
+
+    100% {
+        background-position: 468px 0;
+    }
+}
+
+
+/* ==========================================================================
+   Table media queries
+   ========================================================================== */
+
 /* XS resolution */
 @media screen and (max-width: 1360px) {
     .timeModules {
         line-height: 2.2em;
     }
+
     .timeModules h1 {
         font-size: 1.3rem;
     }
@@ -216,6 +250,7 @@
     .timeModules {
         line-height: 2.1em;
     }
+
     .timeModules h1 {
         font-size: 1.3rem;
     }
@@ -361,20 +396,4 @@
     .rowItem h3 {
         font-size: 2.6rem;
     }
-}
-
-/* Loading styles. Scuffed but works(?)
-   ========================================================================== */
-.loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 70vh;
-}
-
-.noData {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 70vh;
 }

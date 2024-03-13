@@ -1,7 +1,24 @@
 /* Author: Torjus A.M */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Global css variables */
+:root {
+  --moduleBorder: 0 3px 4px 0 rgba(0, 0, 0, .14), 0 3px 3px -2px rgba(0, 0, 0, .2), 0 1px 8px 0 rgba(0, 0, 0, .12);
+  --icon: #8282829a;
+  /* Shared text styles*/
+  --lato: 'Lato', sans-serif;
+  --pSans: 'Public Sans', sans-serif;
+  --dark-text: #212B36;
+  --light-text: #4E5052;
+  /* Shared loading effects */
+  --loading-bg: linear-gradient(to right, rgba(130, 130, 130, 0.2) 8%, rgba(130, 130, 130, 0.3) 18%, rgba(130, 130, 130, 0.2) 33%);
+  --loading-bg-size: 800px 100px;
+  --loading-effect: wave-lines 0.5s infinite ease-out;
+}
 
 body {
   position: absolute;
@@ -15,3 +32,4 @@ html {
   margin: 0;
   padding: 0;
 }
+

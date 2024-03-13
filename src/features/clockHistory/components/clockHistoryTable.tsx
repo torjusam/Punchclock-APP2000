@@ -19,14 +19,37 @@ interface ClockHistoryTableProps {
 }
 
 const ClockHistoryTable: FC<ClockHistoryTableProps> = ({ data, isLoading }) => {
+    
+    const renderLoadingRows = () => {
+        let rows = [];
+        for (let i = 0; i < 7; i++) {
+            rows.push(
+                <div key={i} className={styles.tableRow}>
+                    <div className={`${styles.rowItem} ${styles.date}`}>
+                        <div className={styles.loading}></div>
+                        <div className={styles.loading}></div>
+                    </div>
+                    <div className={styles.rowSubContainer}>
+                        <div className={styles.rowItem}>
+                            <div className={styles.icon} />
+                            <h1>-</h1>
+                        </div>
+                        <div className={styles.rowItem}>
+                            <div className={styles.icon} />
+                            <h1>-</h1>
+                        </div>
+                    </div>
+                    <div className={styles.rowItem}> -- </div>
+                    <div className={styles.rowItem}> -- </div>
+                </div>
+            );
+        }
+        return rows;
+    };
     // Renders 7 rows.
     const renderRows = () => {
-        if (isLoading) {
-            return <div className={styles.loading}>Loading...</div>;
-        }
-
-        if (!data) {
-            return <div className={styles.noData}>No data available</div>;
+        if (isLoading || !data) {
+            return renderLoadingRows();
         }
 
         return data.map((entry, i) => (

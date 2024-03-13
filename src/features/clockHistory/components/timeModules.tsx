@@ -5,7 +5,7 @@
 */
 import React, { FC } from 'react';
 import { Employee } from '../../../lib/employee';
-import useWorkTime from '../../timeModules/hooks/useWorkTime';
+import useWorkTime from '../hooks/useWorkTime';
 import styles from './clockHistory.module.css';
 import moment from 'moment';
 import 'moment/locale/nb';
@@ -20,6 +20,7 @@ interface TimeModulesProps {
 const TimeModules: FC<TimeModulesProps> = ({ employee }) => {
     const { workTimedata, isLoading } = useWorkTime(employee);
     console.log(workTimedata);
+
     return (
         <div className={styles.timeModulesContainer}>
             <div className={`${styles.timeModules}`} style={{ marginRight: '1.5rem' }}>
@@ -29,8 +30,8 @@ const TimeModules: FC<TimeModulesProps> = ({ employee }) => {
                     padStart() is used for adding leading 0's to the numbers.
                 */}
                 <h2>
-                    {isLoading
-                        ? 'Henter..'
+                    {isLoading || !workTimedata
+                        ? <div className={styles.loading}></div>
                         : (workTimedata && workTimedata.length > 0 && workTimedata[0].sum
                             ? (workTimedata[0].sum.hours > 0
                                 ? `${workTimedata[0].sum.hours.toString().padStart(2, '0')}t ${workTimedata[0].sum.minutes ? workTimedata[0].sum.minutes.toString().padStart(2, '0') + 'm' : '00m'}`
