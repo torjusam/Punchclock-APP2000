@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app';
 import EmployeeContextProvider from '../context/employeeContext';
 import LeftContent from '../components/layout';
 import './globals.css';
+import '../features/keyboard/index.css'
 import styles from '../styles/layout.module.css';
 
 const App = ({ Component, pageProps }: AppProps) => {

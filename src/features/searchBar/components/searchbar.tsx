@@ -3,21 +3,28 @@
     Searchbar to search employees on the homepage. Updates the sortedEmployees array from the global context. 
     This array is the one used to display the employees on the frontpage: src/components/frontpageTable/employeeTable.tsx
 */
-import React, { ChangeEvent, FormEvent, useEffect, useState, FC } from 'react';
+import React, { ChangeEvent, Dispatch, SetStateAction, FormEvent, useEffect, useState, FC } from 'react';
 import Search from '../../../assets/search.svg';
 import { useEmployeeContext, sortEmployees } from '../../../context/employeeContext';
 import { Employee } from '../../../lib/employee';
 import styles from './searchbar.module.css';
 
-const SearchBarForm: FC = () => {
+interface Props {
+    onShowKeyboard: () => void;
+    onHideKeyboard: () => void;
+    searchInput: string;
+    setSearchInput: Dispatch<SetStateAction<string>>;
+    onChangeInput: (event: ChangeEvent<HTMLInputElement>) => void;
+}
+
+const SearchBarForm: FC<Props> = ({ onShowKeyboard, onHideKeyboard, searchInput, setSearchInput,  onChangeInput }) => {
     const { employees, setSortedEmployees } = useEmployeeContext();
-    const [searchInput, setSearchInput] = useState("");
     // Boolean to keep track of if search returns no results.
     const [emptySearch, setEmptySearch] = useState(false);
 
     // Hook updates the sortedEmployees array by filtering it on the search input.
     useEffect(() => {
-        if (searchInput.length > 0 || searchInput ) {
+        if (searchInput.length > 0 || searchInput) {
             const searchResults = employees.filter((employee: Employee) =>
                 employee.name.toLowerCase().includes(searchInput.toLowerCase())
             );
@@ -38,15 +45,22 @@ const SearchBarForm: FC = () => {
         event.preventDefault();
     };
 
-    // Updates search input state variable whenever change is registered.
-    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setSearchInput(event.target.value);
-    };
-
     return (
         <form onSubmit={handleSubmit} role="search" className={styles.form}>
-            <Search className={styles.icon}/>
-            <input id="search" type="search" placeholder="Søk ansatte..." autoFocus required className={styles.input} onChange={handleChange} value={searchInput} />
+            <Search className={styles.icon} />
+            <input
+                className={styles.input}
+                id="search"
+                type="search"
+                placeholder="Søk ansatte..."
+                autoFocus required
+                value={searchInput}
+                /* Throw event to parents method */
+                onChange={e => onChangeInput(e)}
+                /* Searchbar input is selected or not: update state and tell keyboard */
+                onFocus={onShowKeyboard}
+                onBlur={onHideKeyboard}
+            />
             <button type="submit" className={styles.button}>Søk</button>
         </form>
     );
