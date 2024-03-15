@@ -14,7 +14,6 @@ const useWorkTime = (employee) => {
             setIsLoading(true);
             const result = await performFetch(employee);
             setworkTimedata(result);
-            console.log(workTimedata);
             setIsLoading(false);
         };
 

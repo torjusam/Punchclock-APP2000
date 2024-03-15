@@ -13,7 +13,6 @@ const useClockHistory = (employee) => {
             setIsLoading(true);
             const result = await performFetch(employee);
             setData(result);
-            console.log(data);
             setIsLoading(false);
         };
 

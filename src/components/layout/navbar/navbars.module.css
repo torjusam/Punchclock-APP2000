@@ -15,8 +15,9 @@
     flex-direction: row;
     background-color: #FFFFFF;
     border-radius: 0.8em;
-    min-height: 9vh;    
-    max-height: 9vh;
+    /* Min & max to make sure theyre even across pages*/
+    min-height: 10vh;
+    max-height: 10vh;
     padding: 0.7em;
     box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .14), 0 3px 3px -2px rgba(0, 0, 0, .2), 0 1px 8px 0 rgba(0, 0, 0, .12);
     margin-bottom: 1.5em;
@@ -89,20 +90,20 @@
     align-items: center;
 }
 
-.helpIcon {
-    width: 3.3em;
-    height: 3.5em;
-    stroke: var(--icon);
-    stroke-width: 1.5px;
-    aspect-ratio: 1/1;
-}
-
+.helpIcon,
 .notifIcon {
     width: 3.3em;
     height: 3.5em;
     stroke: var(--icon);
-    stroke-width: 1.7px;
     aspect-ratio: 1/1;
+}
+
+.helpIcon {
+    stroke-width: 1.5px;
+}
+
+.notifIcon {
+    stroke-width: 1.7px;
     margin-right: 1em;
     margin-left: 1em;
     padding-bottom: 0.3em;
@@ -129,6 +130,35 @@
     font-size: 2.13rem;
     font-weight: 700;
     color: var(--dark-text);
+}
+
+@media (max-height: 900px) {
+    .homeBtn {
+        font-size: 1.4rem;
+    }
+
+    .icon {
+        width: 1.3em;
+    }
+
+    .avatar {
+        width: 4;
+    }
+
+    .employeeName {
+        font-size: 2rem
+    }
+
+    .helpIcon,
+    .notifIcon {
+        width: 3.1em;
+        height: 3.3em;
+    }
+
+    .pinIcon {
+        width: 3.1em;
+        height: 3.2em;
+    }
 }
 
 /* ==========================================================================
