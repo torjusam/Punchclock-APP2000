@@ -3,7 +3,7 @@
     Searchbar to search employees on the homepage. Updates the sortedEmployees array from the global context. 
     This array is the one used to display the employees on the frontpage: src/components/frontpageTable/employeeTable.tsx
 */
-import React, { ChangeEvent, Dispatch, SetStateAction, FormEvent, useEffect, useState, FC } from 'react';
+import React, { ChangeEvent, Dispatch, SetStateAction, FormEvent, useEffect, useState, useRef, FC } from 'react';
 import Search from '../../../assets/search.svg';
 import { useEmployeeContext, sortEmployees } from '../../../context/employeeContext';
 import { Employee } from '../../../lib/employee';
@@ -11,13 +11,11 @@ import styles from './searchbar.module.css';
 
 interface Props {
     onShowKeyboard: () => void;
-    onHideKeyboard: () => void;
     searchInput: string;
-    setSearchInput: Dispatch<SetStateAction<string>>;
     onChangeInput: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const SearchBarForm: FC<Props> = ({ onShowKeyboard, onHideKeyboard, searchInput, setSearchInput,  onChangeInput }) => {
+const SearchBarForm: FC<Props> = ({ onShowKeyboard, searchInput, onChangeInput }) => {
     const { employees, setSortedEmployees } = useEmployeeContext();
     // Boolean to keep track of if search returns no results.
     const [emptySearch, setEmptySearch] = useState(false);
@@ -53,13 +51,11 @@ const SearchBarForm: FC<Props> = ({ onShowKeyboard, onHideKeyboard, searchInput,
                 id="search"
                 type="search"
                 placeholder="Søk ansatte..."
-                autoFocus required
                 value={searchInput}
                 /* Throw event to parents method */
                 onChange={e => onChangeInput(e)}
-                /* Searchbar input is selected or not: update state and tell keyboard */
+                /* Searchbar input is selected: tell keyboard by updating state */
                 onFocus={onShowKeyboard}
-                onBlur={onHideKeyboard}
             />
             <button type="submit" className={styles.button}>Søk</button>
         </form>

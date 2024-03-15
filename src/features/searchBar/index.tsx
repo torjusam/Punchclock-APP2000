@@ -30,15 +30,15 @@ const SearchBar: FC = () => {
     <>
       <SearchBarForm
         onShowKeyboard={handleShowKeyboard}
-        onHideKeyboard={handleHideKeyboard}
         searchInput={searchInput}
-        setSearchInput={setSearchInput}
         onChangeInput={onChangeInput}
       />
       <KeyboardWrapper
         keyboardRef={keyboard}
         onChange={setSearchInput}
         showKeyboard={showKeyboard}
+        handleHideKeyboard={handleHideKeyboard}
+        searchInput={searchInput}
       />
     </>
   );
