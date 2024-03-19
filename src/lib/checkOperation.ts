@@ -16,14 +16,14 @@ const updateEmployeeStatus = (employees, employee) => {
   });
 };
 
-const performCheckOperation = async (employee) => {
+const performCheckOperation = async (employee, currentTime) => {
   const endpoint = employee.isClockedIn ? '/api/checkOut' : '/api/checkIn';
   const response = await fetch(endpoint, {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ employee }),
+      body: JSON.stringify({ employee, currentTime}),
   });
 
   if (!response.ok) {
@@ -31,14 +31,11 @@ const performCheckOperation = async (employee) => {
   }
 };
 
-// To-Do: Perform must update plannedwork, Balance, Fleksitid_Balance from employee
-
-
-
 export const checkOperation = async (employee, employees, setEmployees) => {
   try {
       if (employee) {
-          await performCheckOperation(employee);
+        const currentTime = new Date();
+          await performCheckOperation(employee, currentTime);
           const updatedEmployees = updateEmployeeStatus(employees, employee);
           setEmployees(updatedEmployees);
       } else {

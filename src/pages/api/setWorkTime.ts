@@ -8,9 +8,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         const text = (`
         UPDATE employee
-            SET fleksitid_balance = $2,
-            SET balance = $3,
-            WHERE Employee_id = $1;
+            SET fleksitid_balance = $1,
+            SET balance = $2,
+            WHERE Employee_id = $3;
         `);
         const values = [employeeId,];
 

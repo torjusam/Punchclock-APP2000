@@ -1,4 +1,8 @@
-// Author: Torjus A.M
+/* 
+    Author: Torjus A.M
+    Api route for fetching current weeks worktime for an employee.
+    The query filters by this calendar weeks monday - sunday total worktime.
+*/
 import { NextApiRequest, NextApiResponse } from 'next';
 import { pool } from '../../lib/dbIndex'
 

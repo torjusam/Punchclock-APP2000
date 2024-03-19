@@ -12,29 +12,31 @@ export class Employee {
     profilePictureUrl?: string;
     lastCheckIn?: Date;
     lastCheckOut?: Date;
-    PlannedWork?: String;
-    Balance?: Date;
-    Fleksitd_Balance?: String;
+    PlannedWork: string;
+    balance?: string;
+    Fleksitd_Balance?: string;
     isClockedIn: boolean;
+    dailyWorkTime?: number;
+    isWorkTimeReached? : boolean;
 
     constructor(
         id: number,
         name: string,
+        plannedwork: string,
         role?: string,
         pin?: number,
         profilePictureUrl?: string,
         lastCheckIn?: Date,
         lastCheckOut?: Date,
-        Balance?: Date,
-        Fleksitd_Balance?: String,
+        fleksitidBalance?: string
     ) {
         this.id = id;
         this.name = name;
+        this.PlannedWork = plannedwork;
         this.lastCheckIn = lastCheckIn;
         this.lastCheckOut = lastCheckOut;
         this.profilePictureUrl = profilePictureUrl;
-        this.Balance = Balance;
-        this.Fleksitd_Balance = Fleksitd_Balance;
+        this.Fleksitd_Balance = fleksitidBalance;
 
         // Sets isClockedIn to false if lastCheckOut is newer than lastCheckIn. Defaults to false
         if (this.lastCheckIn && this.lastCheckOut) {
@@ -42,11 +44,5 @@ export class Employee {
         } else {
             this.isClockedIn = false
         }
-
-        // Log for testing
-        console.log(
-            `${this.name}: isClockedIn: ${this.isClockedIn}. 
-            Last checkin: ${this.lastCheckIn}. Last checkout: ${this.lastCheckOut}`
-        );
     }
 }

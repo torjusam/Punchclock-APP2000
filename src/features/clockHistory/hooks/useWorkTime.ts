@@ -11,10 +11,8 @@ const useWorkTime = (employee) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            setIsLoading(true);
             const result = await performFetch(employee);
             setworkTimedata(result);
-            console.log(workTimedata);
             setIsLoading(false);
         };
 

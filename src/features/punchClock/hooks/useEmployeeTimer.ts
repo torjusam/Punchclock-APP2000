@@ -15,6 +15,7 @@ export const useEmployeeTimer = (employee) => {
         let interval: NodeJS.Timeout;
 
         if (employee.isClockedIn) {
+            setTimer(0);
             const startTime = moment(employee.lastCheckIn);
             interval = setInterval(() => {
                 setTimer(moment().diff(startTime, 'seconds'));

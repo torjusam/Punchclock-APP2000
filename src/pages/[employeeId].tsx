@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import EmployeePageData from '../components/employeePage';
 import { Employee } from '../lib/employee';
 import { useEmployeeContext } from '../context/employeeContext';
-import EmployeePageNav from '../components/layout/navbar/employeePageNav';
+import moment from 'moment';
 
 const EmployeePage: React.FC = () => {
   const { employees, setEmployees } = useEmployeeContext()
@@ -15,6 +15,11 @@ const EmployeePage: React.FC = () => {
   useEffect(() => {
     if (employeeId) {
       const foundEmployee = employees.find((employee) => employee.id === Number(employeeId));
+      // Initalizes employees dailyWorkTime ( 40 / 5 = 8 hours per day)
+      if (foundEmployee) {
+        const dailyWorkTime = moment.duration(foundEmployee.PlannedWork).asHours() / 5;
+        foundEmployee.dailyWorkTime = dailyWorkTime;
+      }
       setEmployeeData(foundEmployee);
     }
   }, [employeeId, employees]);
