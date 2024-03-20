@@ -7,6 +7,7 @@ import { Employee } from '../../lib/employee';
 import styles from './employeePageLayout.module.css';
 import EmployeePageNav from '../layout/navbar/employeePageNav';
 import PunchClock from '../../features/punchClock';
+import TimerProvider, { useTimerContext } from '../../context/timerContext';
 import ShiftList from './shiftList';
 import ClockHistory from '../../features/clockHistory';
 
@@ -16,16 +17,20 @@ interface employeePageProps {
 
 const EmployeePageData: React.FC<employeePageProps> = ({ employee }) => {
 
+
   return (
     <div className={styles.personalPageContainer}>
       <EmployeePageNav employee={employee} />
-      <div className={styles.personalPage}>
-        <div className={styles.outerModuleContainer}>
-          <PunchClock employee={employee} />
-          <ShiftList employee={employee} />
+      {/* Wrap the modules with the shared state of the timer (punchclock-timer must always match the latest row) */}
+      <TimerProvider>
+        <div className={styles.personalPage}>
+          <div className={styles.outerModuleContainer}>
+            <PunchClock employee={employee} />
+            <ShiftList employee={employee} />
+          </div>
+          <ClockHistory employee={employee} />
         </div>
-        <ClockHistory employee={employee} />
-      </div>
+      </TimerProvider>
     </div>
   );
 }

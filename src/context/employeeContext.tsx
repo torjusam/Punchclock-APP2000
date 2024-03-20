@@ -5,7 +5,7 @@
     The context is shared across the entire app, allowing any component to access and modify the list.
     Uses a custom provider, and a custom hook to access the context.
 */
-import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { Employee } from '../lib/employee';
 import { fetchEmployees } from '../lib/dataAccess';
 
@@ -20,7 +20,7 @@ interface EmployeeContextProps {
 export const EmployeeContext = createContext<EmployeeContextProps | null>(null);
 
 // Custom provider provides children components with state and updater function for the employee state.
-export default function EmployeeContextProvider({ children }: { children: React.ReactNode }) {
+export default function EmployeeContextProvider({ children }: { children: ReactNode }) {
     const [employees, setEmployees] = useState<Employee[]>([]);
     const [sortedEmployees, setSortedEmployees] = useState<Employee[]>([]);
 
