@@ -18,7 +18,6 @@ const useClockHistory = (employee) => {
             setIsLoading(false);
             // Set timer context variable to the latest workinterval fetched.
             if (result && result.length > 0) {
-                console.log("workinterval: " + result[0].workinterval);
                 setCurrentTime(result[0].workinterval);
             }
         };
@@ -30,7 +29,6 @@ const useClockHistory = (employee) => {
 };
 
 export default useClockHistory;
-
 
 const performFetch = async (employee) => {
     const employeeId = employee.id;

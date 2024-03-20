@@ -52,7 +52,6 @@ const ClockHistoryTable: FC<ClockHistoryTableProps> = ({ data, isLoading }) => {
         if (isLoading || !data) {
             return renderLoadingRows();
         }
-        console.log(data);
         return data.map((entry, i) => (
             <div key={i} className={styles.tableRow}>
                 <div className={`${styles.rowItem} ${styles.date}`}>

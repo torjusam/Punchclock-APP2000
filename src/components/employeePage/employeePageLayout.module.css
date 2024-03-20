@@ -9,7 +9,8 @@
  *  Make the arrow icon be at the right of the module
  *   - Header text responsiveness
  */
-
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 .personalPageContainer {
   display: flex;
   flex-direction: column;

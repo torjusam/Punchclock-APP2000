@@ -4,6 +4,8 @@
     When the employees are fetched from the database, they are constructed as Employee objects.
     This makes the employees reusable in the system without having to fetch over and over again.
 */
+import moment from 'moment';
+
 export class Employee {
     id: number;
     name: string;
@@ -16,7 +18,7 @@ export class Employee {
     balance?: string;
     Fleksitd_Balance?: string;
     isClockedIn: boolean;
-    dailyWorkTime?: number;
+    dailyWorkTime?: moment.Duration;
     isWorkTimeReached? : boolean;
 
     constructor(
@@ -37,7 +39,7 @@ export class Employee {
         this.lastCheckOut = lastCheckOut;
         this.profilePictureUrl = profilePictureUrl;
         this.Fleksitd_Balance = fleksitidBalance;
-
+        
         // Sets isClockedIn to false if lastCheckOut is newer than lastCheckIn. Defaults to false
         if (this.lastCheckIn && this.lastCheckOut) {
             this.isClockedIn = this.lastCheckIn > this.lastCheckOut;

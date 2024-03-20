@@ -6,17 +6,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const client = await pool.connect();
 
     try {
-        const { employee } = req.body;
+        const { employee, overtimeInterval } = req.body;
         const { id } = employee;
         const currentTimestamp = new Date();
 
         const text = (`
         UPDATE fleksitidBank
-            SET Checkout = $2
-            WHERE Employee_id = $1
-            AND Checkin = (SELECT MAX(Checkin) FROM fleksitidBank WHERE Employee_id = $1);
+        SET 
+            Checkout = $2,
+            overtimeinterval = $3
+        WHERE Employee_id = $1
+        AND Checkin = (SELECT MAX(Checkin) FROM fleksitidBank WHERE Employee_id = $1);
         `);
-        const values = [id, currentTimestamp];
+        const values = [id, currentTimestamp, overtimeInterval];
 
         await pool.query(text, values);
 

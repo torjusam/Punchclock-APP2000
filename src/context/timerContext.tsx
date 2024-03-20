@@ -1,4 +1,10 @@
-import React, { FC, createContext, useState, useContext, ReactNode } from 'react';
+/* 
+    Author: Torjus A.M
+    Context for for sharing the latest workInterval from the clockHistory hook.
+    Used in the punchclock module to set the timer to the latest workInterval after clocking out,
+    to prevent values not being in sync.
+*/
+import React, { createContext, useState, useContext, ReactNode } from 'react';
 
 interface TimerContextProps {
   currentTime: number;
@@ -17,6 +23,7 @@ export default function TimerProvider ({ children }: { children: ReactNode }) {
   );
 };
 
+// Custom context hook for accessing the timer context directly and avoid having to null check on each use.
 export const useTimerContext = () => {
   const context = useContext(TimerContext);
   if (context === undefined) {

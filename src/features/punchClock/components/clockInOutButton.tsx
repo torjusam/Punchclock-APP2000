@@ -1,11 +1,12 @@
 // Author: Torjus A.M
 import React, {useState} from 'react';
 import { Employee } from '../../../lib/employee';
+import { useWorkIntervalContext } from '../../../context/workIntervalContext';
 import { useEmployeeContext } from '../../../context/employeeContext';
 import ArrowOut from '../../../assets/arrowOut.svg';
 import ArrowIn from '../../../assets/arrowIn.svg';
 import styles from './punchClock.module.css'
-import { checkOperation } from '../../../lib/checkOperation';
+import { checkOperation } from '../services/checkOperation';
 
 interface ClockInOutButtonProps {
     employee: Employee;
@@ -15,11 +16,12 @@ interface ClockInOutButtonProps {
 // Updates employees status and perforsm check operation.
 const ClockInOutButton: React.FC<ClockInOutButtonProps> = ({ employee, setIsLoading }) => {
     const { employees, setEmployees } = useEmployeeContext();
+    const { workTimeData } = useWorkIntervalContext();
 
     const handleClick = async () => {
         if (employee) {
             setIsLoading(true);
-            const status = await checkOperation(employee, employees, setEmployees);
+            await checkOperation(employee, employees, setEmployees, workTimeData);
             setIsLoading(false);
         }
     };
