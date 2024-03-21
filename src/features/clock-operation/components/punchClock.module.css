@@ -55,13 +55,11 @@
 }
 
 /* Conditional stylign based on if iconcontainer is a child of .clockedOut or not */
-.clockedOut .iconContainer {
-
-}
+.clockedOut .iconContainer {}
 
 .clockedIn .iconContainer {
     background-color: #f74646;
-    box-shadow: 1px 1px 1px  rgba(120, 63, 63, 0.3);
+    box-shadow: 1px 1px 1px rgba(120, 63, 63, 0.3);
 }
 
 .icon {
@@ -87,6 +85,7 @@
     font-family: var(--lato);
     font-weight: 500;
 }
+
 /* Timer */
 .timeDisplay h1 {
     font-size: 3.2rem;
@@ -115,19 +114,21 @@
     background: var(--loading-bg);
     background-size: var(--loading-bg-size);
     animation: var(--loading-effect);
-  }
-  
+}
+
 .w2 {
     margin-top: 2.3em;
     margin-bottom: 0.6em;
     height: 1.2rem;
     width: 5.5em;
 }
-  @keyframes wave-lines {
+
+@keyframes wave-lines {
     0% {
-      background-position: -468px 0;
+        background-position: -468px 0;
     }
+
     100% {
-      background-position: 468px 0;
+        background-position: 468px 0;
     }
-  }
+}

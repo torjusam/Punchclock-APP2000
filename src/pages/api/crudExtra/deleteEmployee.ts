@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { pool } from '../../lib/dbIndex';
+import { pool } from '../../../lib/dbIndex';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const { employeeId } = req.body;

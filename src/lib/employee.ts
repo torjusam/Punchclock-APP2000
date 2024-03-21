@@ -16,7 +16,7 @@ export class Employee {
     lastCheckOut?: Date;
     PlannedWork: string;
     balance?: string;
-    Fleksitd_Balance?: string;
+    fleksitidBalance?: string;
     isClockedIn: boolean;
     dailyWorkTime?: moment.Duration;
     isWorkTimeReached? : boolean;
@@ -30,7 +30,6 @@ export class Employee {
         profilePictureUrl?: string,
         lastCheckIn?: Date,
         lastCheckOut?: Date,
-        fleksitidBalance?: string
     ) {
         this.id = id;
         this.name = name;
@@ -38,7 +37,6 @@ export class Employee {
         this.lastCheckIn = lastCheckIn;
         this.lastCheckOut = lastCheckOut;
         this.profilePictureUrl = profilePictureUrl;
-        this.Fleksitd_Balance = fleksitidBalance;
         
         // Sets isClockedIn to false if lastCheckOut is newer than lastCheckIn. Defaults to false
         if (this.lastCheckIn && this.lastCheckOut) {

@@ -4,6 +4,7 @@
 */
 import React, { createContext, useState, useEffect, useContext, ReactNode } from 'react';
 import { Employee } from '../lib/employee';
+import { performFetch, performPost } from '../lib/workIntervalsAPI';
 
 interface workIntervalContextProps {
     employee: Employee;
@@ -18,14 +19,25 @@ export default function WorkIntervalProvider({ children, employee }: { children:
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchBalance = async () => {
             const result = await performFetch(employee);
             setworkTimedata(result);
             setIsLoading(false);
         };
 
-        fetchData();
-    }, [employee.lastCheckIn, employee.lastCheckOut]);
+        fetchBalance();
+    }, [employee.lastCheckOut]);
+
+    // Post salary to the database after data is changed, which is after all other operations are done on a clock-out.
+    useEffect(() => {
+        if (!workTimeData) return;
+    
+        const postBalance = async (employee, workTimeData) => {
+            await performPost(employee, workTimeData);
+        };
+    
+        postBalance(employee, workTimeData);
+    }, [workTimeData]);
 
     return (
         <WorkIntervalContext.Provider value={{ employee, workTimeData, isLoading }}>
@@ -43,19 +55,3 @@ export const useWorkIntervalContext = () => {
     return context;
 }
 
-const performFetch = async (employee) => {
-    const employeeId = employee.id;
-    const response = await fetch('/api/getWorkTime', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ employeeId }),
-    });
-    if (response.ok) {
-        return await response.json();
-    } else {
-        console.error('Error:', response.status);
-        return [];
-    }
-};

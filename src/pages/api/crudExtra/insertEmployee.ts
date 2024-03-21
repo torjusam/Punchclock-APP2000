@@ -1,18 +1,13 @@
-// Author: Torjus A.M
+//Author: Torjus A.M
 import { NextApiRequest, NextApiResponse } from 'next';
-import { pool } from '../../lib/dbIndex';
+import { pool } from '../../../lib/dbIndex';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     try {
-        const { employeeId,  } = req.body;
+        const { firstName, lastName } = req.body;
 
-        const text = (`
-        UPDATE employee
-            SET fleksitid_balance = $1,
-            SET balance = $2,
-            WHERE Employee_id = $3;
-        `);
-        const values = [employeeId,];
+        const text = 'INSERT INTO employee (First_name, Surname) VALUES ($1, $2)'
+        const values = [firstName, lastName];
 
         await pool.query(text, values);
         res.status(200).json({ success: true });

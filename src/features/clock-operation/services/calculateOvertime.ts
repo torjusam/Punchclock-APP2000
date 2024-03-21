@@ -3,22 +3,18 @@
     Fujcnction to calculate overtime for an employee using moment.js library 
     to handle durations and time calculations. Includes a helper function to turn
     result (duration object) into a string that fits the PostgreSQL interval type.
-*/ 
+*/
 import moment from 'moment';
-import 'moment/locale/nb';
-
-// Moment library: NB = Norwegian Bokmål
-moment.locale('nb');
 
 // Starts by converting relevant times and intervals into ms, to accurately perform calculations.
-export function calculateOvertime(employee, workTimeData) {
+export function calculateOvertime(employee, workTimeData, currentTime) {
     const weeklyWorkTime = moment.duration(workTimeData[0].sum);
     const weeklyWorkTimeMs = weeklyWorkTime.asMilliseconds();
     const plannedWorkMs = moment.duration(employee.PlannedWork).asMilliseconds();
     // The employees daily worktime, anything above it will count as overtime.
     const dailyWorkTimeMs = employee.dailyWorkTime.asMilliseconds();
-    // Current working time is the interval between right now(moment()), and employees last checkin.
-    const workTimeMs = moment().diff(moment(employee.lastCheckIn));
+    // Current working time = interval between currentTime(converted to a moment object) and the employees last checkin.
+    const workTimeMs = moment(currentTime).diff(moment(employee.lastCheckIn));
 
     if (workTimeMs < 0) {
         throw new RangeError('Worktime is negative');
@@ -47,12 +43,4 @@ export function calculateOvertime(employee, workTimeData) {
     if (workTimeMs < dailyWorkTimeMs) {
         return moment.duration(0);
     }
-}
-
-// Helper function to convert a Moment.js duration object to a PostgreSQL interval string
-export function durationToPostgresInterval(duration) {
-    const hours = Math.floor(duration.asHours());
-    const minutes = duration.minutes();
-    const seconds = duration.seconds();
-    return `${hours} hours ${minutes} minutes ${seconds} seconds`;
 }

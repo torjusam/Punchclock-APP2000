@@ -5,7 +5,7 @@
 
 export const clockIn = async (employee, workTimeData) => {
     try {
-        const response = await fetch('/api/checkIn', {
+        const response = await fetch('/api/clockOperation/clockIn', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
