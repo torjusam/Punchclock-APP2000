@@ -24,6 +24,7 @@ const PunchClock: FC<PunchClockProps> = ({ employee }) => {
     /* Passes a shared loading state for a seamless transition to a skeleton-loading style
        after button press, indicating an ongoing check operation. */
     const [isLoading, setIsLoading] = useState(false);
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
     return (
         <div className={`${styles.module} ${styles.h2}`}>
@@ -35,9 +36,9 @@ const PunchClock: FC<PunchClockProps> = ({ employee }) => {
             </div>
             <hr />
             <div className={styles.moduleContent}>
-                <PunchClockTimeDisplay timer={timer} employee={employee} isLoading={isLoading} />
+                <PunchClockTimeDisplay timer={timer} employee={employee} isLoading={isLoading} errorMessage={errorMessage} />
             </div>
-            <ClockInOutButton employee={employee} setIsLoading={setIsLoading} />
+            <ClockInOutButton employee={employee} isLoading={isLoading} setIsLoading={setIsLoading} setErrorMessage={setErrorMessage} />
         </div>
     );
 };

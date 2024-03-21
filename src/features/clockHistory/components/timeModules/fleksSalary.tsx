@@ -23,7 +23,7 @@ const FleksSalary: FC<FleksSalaryProps> = ({ employee, data }) => {
     const [totalTime, setTotalTime] = useState<Interval | null>(null);
 
     // Data fetched from the database is displayed at first.
-
+    console.log("Salary data: ", employee.Fleksitd_Balance);
     // Update totalTime by adding the overtime interval from the latest clock in/out row after an operation is performed.
     useEffect(() => {
         if (data && data.length > 0) {

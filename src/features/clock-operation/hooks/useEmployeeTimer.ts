@@ -1,6 +1,7 @@
 /*
     Author: Torjus A.M
     This hook is used to calculate the time elapsed since last check-in and the last checkout time.
+    Used to display in the punchClock module.
 */
 import { useState, useEffect } from 'react';
 import { useTimerContext } from '../../../context/timerContext';

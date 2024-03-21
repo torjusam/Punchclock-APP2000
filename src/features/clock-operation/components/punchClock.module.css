@@ -16,7 +16,6 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    border: 1px solid #000;
     padding: 0.2em;
     border-radius: 0.5em;
     /* Text styles */
@@ -26,9 +25,14 @@
     font-weight: 700;
 }
 
-
 .buttonContainer:active {
-    box-shadow: 2px 4px 6px 0px rgba(79, 83, 85, 0.5);
+    box-shadow: inset 3px 4px 6px 0px rgba(79, 83, 85, 0.75);
+    transform: scale(0.95);
+}
+
+.buttonContainer:disabled {
+    opacity: 50%;
+    box-shadow: inset 3px 4px 6px 0px rgba(79, 83, 85, 0.75);
 }
 
 .clockedIn {
@@ -92,6 +96,13 @@
 .timeDisplay h2 {
     margin-top: 0.5em;
     font-size: 1.5rem;
+}
+
+.errorMessage {
+    word-wrap: break-word;
+    margin: 0em auto;
+    overflow: hidden;
+    font-size: 1.3rem;
 }
 
 /* Timer loading styles

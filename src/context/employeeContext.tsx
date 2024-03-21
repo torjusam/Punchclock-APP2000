@@ -14,6 +14,7 @@ interface EmployeeContextProps {
     setEmployees: React.Dispatch<React.SetStateAction<Employee[]>>;
     sortedEmployees: Employee[];
     setSortedEmployees: React.Dispatch<React.SetStateAction<Employee[]>>;
+    updateEmployeeStatus: (employee: Employee) => void;
 }
 
 // Shared context for the employee state (initalized with empty placeholder props)
@@ -33,18 +34,51 @@ export default function EmployeeContextProvider({ children }: { children: ReactN
         };
         initializeEmployees();
     }, []);
-    
+
     // Sorts employee array when its updated.
     useEffect(() => {
         const sortedArray = sortEmployees(employees);
         setSortedEmployees(sortedArray);
     }, [employees]);
 
+
+    const updateEmployeeStatus = (employee) => {
+        setEmployees(employees.map(emp => {
+            if (emp.id !== employee.id) {
+                return emp;
+            }
+            return {
+                ...emp,
+                isClockedIn: !employee.isClockedIn,
+                lastCheckIn: employee.isClockedIn ? emp.lastCheckIn : new Date(),
+                lastCheckOut: employee.isClockedIn ? new Date() : emp.lastCheckOut,
+            };
+        }));
+    };
+
+    /*
+    const updateEmployeeStatus = (employee) => {
+    const updatedEmployees = [...employees];
+    const index = updatedEmployees.findIndex(emp => emp.id === employee.id);
+    if (index !== -1) {
+        const updatedEmployee = {
+            ...updatedEmployees[index],
+            isClockedIn: !employee.isClockedIn,
+            lastCheckIn: employee.isClockedIn ? updatedEmployees[index].lastCheckIn : new Date(),
+            lastCheckOut: employee.isClockedIn ? new Date() : updatedEmployees[index].lastCheckOut,
+        };
+        updatedEmployees[index] = updatedEmployee;
+        setEmployees(updatedEmployees);
+    }
+};
+    */
+
     const value = {
         employees,
         setEmployees,
         sortedEmployees,
         setSortedEmployees,
+        updateEmployeeStatus,
     };
 
     // Wraps children so that any child component can access the employee state.
@@ -65,7 +99,7 @@ export function useEmployeeContext() {
 }
 
 // Function to sort the employees array by 1: status and 2: recency of clock-operations.
-export function sortEmployees (employees: Employee[]) {
+export function sortEmployees(employees: Employee[]) {
     // Copy of employees array to avoid mutating the original.
     return [...employees].sort((a, b) => {
         if (a.isClockedIn && !b.isClockedIn) {

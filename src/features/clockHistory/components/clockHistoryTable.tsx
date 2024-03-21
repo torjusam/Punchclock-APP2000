@@ -72,7 +72,7 @@ const ClockHistoryTable: FC<ClockHistoryTableProps> = ({ data, isLoading }) => {
                     <h3>{formatInterval(entry.workinterval)}</h3>
                 </div>
                 <div className={styles.rowItem}>
-                    <h3 style={{ color: '#0DB714' }}>{entry.overtimeinterval ? formatInterval(entry.overtimeinterval) : '+00t 00m'}</h3>
+                    <h3 style={{ color: '#0DB714' }}>{entry.overtimeinterval ? '+' + formatInterval(entry.overtimeinterval) : '+00t 00m'}</h3>
                 </div>
             </div>
         ));

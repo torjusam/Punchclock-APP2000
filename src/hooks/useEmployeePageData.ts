@@ -22,7 +22,7 @@ export const useEmployeePageData = () => {
             const foundEmployee = employees.find((employee) => employee.id === Number(employeeId));
             if (foundEmployee) {
                 /* 
-                    Sets employees plannedwork as a duration in minutes, then divides them by 5. 
+                    Sets employees plannedwork as a duration in milliseconds, then divides them by 5. 
                     e.g: 40 hours = 2400 mins, 2400/5 = 480 mins (8 hours a day).
                     Using minutes for more accurate time, but is less readable. 
                 */

@@ -6,7 +6,6 @@
 import React, { FC, useEffect } from 'react';
 import { Employee } from '../../../../lib/employee';
 import FleksSalary from './fleksSalary';
-import useWorkTime from '../../../../hooks/useWorkTime';
 import { useWorkIntervalContext } from '../../../../context/workIntervalContext';
 import { formatInterval } from '../../services/formatInterval';
 import { ClockHistoryData } from '../../../../lib/types';

@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 import { Employee } from '../../lib/employee';
 import styles from './employeePageLayout.module.css';
 import EmployeePageNav from '../layout/navbar/employeePageNav';
-import PunchClock from '../../features/punchClock';
+import PunchClock from '../../features/clock-operation';
 import TimerProvider, { useTimerContext } from '../../context/timerContext';
 import WorkIntervalProvider from '../../context/workIntervalContext';
 import ShiftList from './shiftList';
