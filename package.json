@@ -12,6 +12,7 @@
     "@heroicons/react": "^2.1.1",
     "@material-tailwind/react": "^2.1.8",
     "@svgr/webpack": "^8.1.0",
+    "@types/react-toastify": "^4.1.0",
     "@vercel/postgres": "^0.7.2",
     "moment": "^2.30.1",
     "next": "^14.1.0",
@@ -20,6 +21,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-simple-keyboard": "latest",
+    "react-toastify": "^10.0.5",
     "simple-keyboard": "^3.7.65"
   },
   "devDependencies": {

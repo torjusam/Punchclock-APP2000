@@ -29,7 +29,7 @@ const ClockHistory: FC<ClockHistoryProps> = ({ employee }) => {
                 <h1>Stemplingshistorikk</h1>
             </div>
             <hr />
-            <TimeModules employee={employee} data={data} />
+            <TimeModules employee={employee} />
             <ClockHistoryTable data={data} isLoading={isLoading} />
         </div>
     );
