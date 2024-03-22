@@ -1,6 +1,7 @@
 /* 
     Author: Torjus A.M
-    Responsible for performing the clock in/out operation, and calling on notification toasts to display.
+    Responsible for performing the clock in/out operation.
+    Handles errors, and displays toast-notifications to the user.
 */
 import { Employee } from '../../../lib/employee';
 import { clockIn, clockOut } from '../services/';
@@ -27,13 +28,15 @@ export const clockInOutOperation = async (
     } catch (error) {
         if (error instanceof RangeError) {
             // If it's a RangeError, do nothing. Error is thrown if worktime is negative, just needs to try again.
-            toast.error("Ugyldig utstempling, prøv igjen.");
+            toast.error(error.message);
             return;
-        } else {
-            // To-Do: Do something with error, make button unpressable and ask user to get an admin? 
+        } else if (error instanceof TypeError) {
+            // To-Do: Handle error. Likely something wrong with the app-layer.
             console.error(error);
-            toast.error('Feil ved stempling, prøv igjen senere.');
-            return;
+            toast.error(error.message), { autoClose: 10000 };
+        } else {
+            // Crash as its probably an error with the server.
+            console.error(error);
         }
     } finally {
         setIsLoading(false);

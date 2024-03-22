@@ -16,8 +16,13 @@ export function calculateOvertime(employee, workTimeData, currentTime) {
     // Current working time = interval between currentTime(converted to a moment object) and the employees last checkin.
     const workTimeMs = moment(currentTime).diff(moment(employee.lastCheckIn));
 
-    if (workTimeMs < 0) {
-        throw new RangeError('Worktime is negative');
+    // Validate before posting to server.
+    if (isNaN(workTimeMs) || !workTimeMs) {
+        throw new TypeError('Ugyldig utstempling!');
+    }
+
+    if (workTimeMs <= 0) {
+        throw new RangeError('Ugylidg arbeidstid, prøv igjen.');
     }
 
     // If plannedwork is reached, all worktime is overtime.

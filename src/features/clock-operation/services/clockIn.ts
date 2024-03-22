@@ -2,8 +2,9 @@
     Author: Torjus A.M
     API call to perform check-in operation on employee.
 */
-
 export const clockIn = async (employee, workTimeData, currentTime) => {
+    if (employee.isClockedIn)
+        return Promise.reject(new TypeError(employee.name + ' er ikke utstemplet!'));
     try {
         const response = await fetch('/api/clockOperation/clockIn', {
             method: 'POST',
@@ -13,7 +14,7 @@ export const clockIn = async (employee, workTimeData, currentTime) => {
             body: JSON.stringify({ employee, workTimeData, currentTime }),
         });
         if (!response.ok) {
-            throw new Error('Failed to perform check operation');
+            throw new Error('Feil ved utstempling!');
         }
         return true; // Tell the caller that the operation was successful.
     } catch (error) {
