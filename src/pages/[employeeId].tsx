@@ -1,5 +1,5 @@
 // Author: Torjus A.M
-import EmployeePageData from '../components/employeePage';
+import EmployeePageData from '../components/employeePageData';
 import { useEmployeePageData } from '../hooks/useEmployeePageData';
 import useAutoCloseTimer from '../hooks/useAutoClosePage';
 
