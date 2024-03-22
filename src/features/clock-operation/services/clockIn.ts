@@ -3,14 +3,14 @@
     API call to perform check-in operation on employee.
 */
 
-export const clockIn = async (employee, workTimeData) => {
+export const clockIn = async (employee, workTimeData, currentTime) => {
     try {
         const response = await fetch('/api/clockOperation/clockIn', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ employee, workTimeData }),
+            body: JSON.stringify({ employee, workTimeData, currentTime }),
         });
         if (!response.ok) {
             throw new Error('Failed to perform check operation');

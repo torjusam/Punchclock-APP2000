@@ -3,10 +3,9 @@ import { calculateOvertime } from './calculateOvertime';
 import { durationToPostgresInterval } from '../../../lib/durationToPGInterval';
 
 // workTimeData is an array of object with one object containing the sum of all worktime for this calenderweek.
-export const clockOut = async (employee, workTimeData) => {
+export const clockOut = async (employee, workTimeData, currentTime) => {
     try {
         // Create a new date object to get the current time. Passed to the calculateOvertime function to make sure they are in sync.
-        const currentTime = new Date();
         const overtime = await calculateOvertime(employee, workTimeData, currentTime);
         const overtimeInterval = durationToPostgresInterval(overtime);
         const response = await fetch('/api/clockOperation/clockOut', {

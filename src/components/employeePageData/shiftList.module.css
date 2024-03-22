@@ -6,19 +6,16 @@
  * TODO: 
  *   Responsive: make the module content overflow properly like the clock history module
  */
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 
-/* Override padding for this module*/
+/* Header and seperators
+   ========================================================================== */
 .moduleHeader {
   padding-bottom: 0.3rem;
 }
 
-.module {
-  margin-bottom: 0.3rem;
-  overflow: scroll;
-  overflow-y: auto;
-}
 
-/* Seperator below header: lines with the month inbetween */
 .monthContainer {
   display: flex;
   flex-direction: row;
@@ -26,7 +23,7 @@
 }
 
 .monthText {
-  font-family: var(--lato);
+  font-family: 'Lato', sans-serif;
   font-size: 0.8rem;
   font-weight: 400;
   color: #C9CBD0;
@@ -34,53 +31,99 @@
   margin-left: 1.5em;
 }
 
-.moduleContent {
-  padding-top: 0.5rem;
+/* Module content
+   ========================================================================== */
+
+/* Override standard module styles */
+.module {
+  margin-bottom: 0.3rem;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
-/* Container for each shift item */
-.shiftItem {
-  display: flex;
+.moduleContent {
+  padding-top: 0.2rem;
   justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
 }
 
-/* Container for dato / dag */
+/* Outer container for shifts and date */
+.shiftItemContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.6em;
+  margin-bottom: 0.6em;
+}
+
 .shiftDateContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  line-height: 1.7rem;
+  font-family: 'Lato', sans-serif;
+  background-color: #fff;
+  margin-right: 1.5em;
+  width: min-content;
 }
 
-.shiftDate {
-  font-size: 1.8em;
-  font-weight: bold;
-  line-height: 1;
+.shiftDateContainer h1 {
+  font-family: 'Lato', sans-serif;
+  color: var(--dark-text);
+  color: #212B36;
+  font-weight: 700;
+  font-size: 1.65rem;
+}
+
+.shiftDateContainer h2 {
+  font-family: 'Lato', sans-serif;
+  color: #606266;
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+
+/* Container for each shift item (start - end, icon) */
+.shiftItem {
+  display: flex;
+  justify-content: space-between;
+  background-color: #F5F6F8;
+  width: 100%;
+  align-items: center;
+  padding: 0.7em;
+  border-radius: 0.25rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
 }
 
 .shiftTime {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.3rem;
   color: #4E5052;
 }
 
 .expandIcon {
   display: flex;
   justify-self: flex-end;
-  stroke: var(--dark-text);
-  width: 2.1em;
+  width: 2.4em;
   stroke-width: 0.1em;
 }
 
+.shiftExpandIcon>.expandIcon {
+  width: 1.8em;
+}
 
-@media screen and (max-width: 1300px), (max-height: 1000px) {
+@media screen and (max-width: 1300px),
+(max-height: 1000px) {
   .moduleHeader {
     padding-bottom: 0.05rem;
   }
+
   .monthText {
     font-size: 0.75rem;
+  }
+
+  .shiftItemContainer {
+    margin-top: 0.45em;
+    margin-bottom: 0.45em;
   }
 }

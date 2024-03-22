@@ -4,6 +4,7 @@
 */
 import { Employee } from '../../../lib/employee';
 import { clockIn, clockOut } from '../services/';
+import moment from 'moment';
 import { toast } from 'react-toastify';
 
 export const clockInOutOperation = async (
@@ -16,11 +17,12 @@ export const clockInOutOperation = async (
     setIsLoading(true);
     setErrorMessage(null); // Reset error message at the start of the operation
     try {
+        const currentTime = new Date();
         const checkFunction = employee.isClockedIn ? clockOut : clockIn;
-        const result = await checkFunction(employee, workTimeData);
+        const result = await checkFunction(employee, workTimeData, currentTime);
         if (result) {
-            toast.success('Stemplet ' + (employee.isClockedIn ? 'ut ' : 'inn ') + employee.name);
-            updateEmployeeStatus(employee);
+            await updateEmployeeStatus(employee);
+            toast.success('Stemplet ' + (employee.isClockedIn ? 'ut ' : 'inn ') + employee.name + ' Kl. ' + moment(currentTime).format('HH:mm'));
         }
     } catch (error) {
         if (error instanceof RangeError) {

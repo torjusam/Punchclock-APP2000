@@ -3,11 +3,10 @@
  *
  * Styles for the PunchClock module (Stemplingsklokke).
  *
- *
- * TODO:
- *   
  */
 
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap');
 
 /* ==========================================================================
   Button styles
@@ -54,9 +53,6 @@
     margin-right: 0.5em;
 }
 
-/* Conditional stylign based on if iconcontainer is a child of .clockedOut or not */
-.clockedOut .iconContainer {}
-
 .clockedIn .iconContainer {
     background-color: #f74646;
     box-shadow: 1px 1px 1px rgba(120, 63, 63, 0.3);
@@ -97,13 +93,6 @@
     font-size: 1.5rem;
 }
 
-.errorMessage {
-    word-wrap: break-word;
-    margin: 0em auto;
-    overflow: hidden;
-    font-size: 1.3rem;
-}
-
 /* Timer loading styles
    ========================================================================== */
 .line {
@@ -130,5 +119,37 @@
 
     100% {
         background-position: 468px 0;
+    }
+}
+
+@media screen and (max-width: 1300px),
+(max-height: 1000px) {
+    .timeDisplay {
+        margin: 0.3em;
+        margin-top: 0em;
+    }
+
+    .timeDisplay h1 {
+        font-size: 2.9rem;
+    }
+
+    /* Time between check-times */
+    .timeDisplay h2 {
+        margin-top: 0.5em;
+        font-size: 1.35em;
+    }
+
+    .line {
+        margin-top: 1em;
+        height: 2.3rem;
+        width: 15.9em;
+        border-radius: 4em;
+    }
+
+    .w2 {
+        margin-top: 2.1em;
+        margin-bottom: 0.45em;
+        height: 1.2rem;
+        width: 5.5em;
     }
 }
