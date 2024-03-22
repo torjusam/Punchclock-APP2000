@@ -1,7 +1,12 @@
 /* 
     Author: Torjus A.M
-    Hook to go to the employees personal page, by finding them in the context.
-    Calculates and sets the selected employees dailyworktime, used in calculating overtime.
+
+    Hook to go to the employees personal page, by finding them in the global employee context. The selected employee
+    is passed down to the pagaData component, which passes it down to the children components and their children etc.
+
+    In react, the objects passed to children are read-only, and cannot be modified directly, therefore we need to 
+    find the employee, calculate and set its dailyworktime, then pass that employee down to the children. 
+    This way the children can use this value directly, without having to calculate it themselves.
 */
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
@@ -23,8 +28,8 @@ export const useEmployeePageData = () => {
             if (foundEmployee) {
                 /* 
                     Sets employees plannedwork as a duration in milliseconds, then divides them by 5. 
-                    e.g: 40 hours = 2400 mins, 2400/5 = 480 mins (8 hours a day).
-                    Using minutes for more accurate time, but is less readable. 
+                    e.g: 40 hours = 2,400,000 milliseconds, 2,400,000 / 5 = 480,000 milliseconds (8 hours a day).
+                    Using milliseconds for accurate calculations, though it's less readable.
                 */
                 const totalMilliseconds = moment.duration(foundEmployee.PlannedWork).asMilliseconds();
                 const dailyWorkTimeInMilliseconds = totalMilliseconds / 5;

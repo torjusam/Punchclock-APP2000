@@ -9,7 +9,7 @@ import ClockCheck from '../../assets/clockCheck.svg';
 import ClockHistoryTable from './components/clockHistoryTable';
 import useClockHistory from './hooks/useClockHistory';
 import TimeModules from './components/timeModules';
-import styles from '../../components/employeePage/employeePageLayout.module.css';
+import styles from '../../components/employeePageData/employeePageLayout.module.css';
 
 interface ClockHistoryProps {
     employee: Employee;

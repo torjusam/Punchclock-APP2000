@@ -6,9 +6,9 @@
 import React, { useEffect, FC, useState } from 'react';
 import { Employee } from '../../lib/employee';
 import Clock from '../../assets/clock.svg';
-import styles from '../../components/employeePage/employeePageLayout.module.css';
+import styles from '../../components/employeePageData/employeePageLayout.module.css';
 import ClockInOutButton from './components/clockInOutButton';
-import PunchClockTimeDisplay from './components/punchClockTimeDisplay';
+import PunchClockTimeDisplay from './components/punchClockModule';
 import { useEmployeeTimer } from './hooks/useEmployeeTimer';
 import moment from 'moment';
 import 'moment/locale/nb';
@@ -32,7 +32,7 @@ const PunchClock: FC<PunchClockProps> = ({ employee }) => {
                 <div className={`${styles.iconContainer}`} style={{ background: '#1BDA0A' }}>
                     <Clock className={styles.icon} />
                 </div>
-                <h1 className={styles.headerText}>Stemplingsklokke</h1>
+                <h1>Stemplingsklokke</h1>
             </div>
             <hr />
             <div className={styles.moduleContent}>
