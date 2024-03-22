@@ -40,6 +40,10 @@
   padding: 1em;
 }
 
+.moduleHeader svg {
+  margin-left: auto;
+}
+
 .moduleHeader h1 {
   font-size: 1.7rem;
   font-weight: 800;
@@ -110,7 +114,7 @@
 
 .module {
   display: flex;
-  height: 100%;
+  height: 50%;
   flex-direction: column;
   border-radius: 0.5em;
   background-color: #FFFFFF;
@@ -131,8 +135,35 @@
   display: flex;
   flex-direction: column;
   padding: 1em;
-  height: 100%;
-  overflow: auto;
+  overflow-y: auto;
+}
+
+/* Container for content innen vaktliste modul */
+.shiftItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
+}
+
+/* Container for dato / dag */
+.shiftDateContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.shiftDate {
+  font-size: 1.8em;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.shiftTime {
+  color: #4E5052;
 }
 
 /* ShiftList: Vaktliste
