@@ -1,0 +1,155 @@
+/**
+ * Author: Torjus A.M
+ *
+ * Styles for the PunchClock module (Stemplingsklokke).
+ *
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap');
+
+/* ==========================================================================
+  Button styles
+  ========================================================================== */
+.buttonContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.2em;
+    border-radius: 0.5em;
+    /* Text styles */
+    font-family: var(--pSans);
+    color: white;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.buttonContainer:active {
+    box-shadow: inset 3px 4px 6px 0px rgba(79, 83, 85, 0.75);
+    transform: scale(0.95);
+}
+
+.buttonContainer:disabled {
+    opacity: 50%;
+    box-shadow: inset 3px 4px 6px 0px rgba(79, 83, 85, 0.75);
+}
+
+.clockedIn {
+    background-color: #F42B2B;
+}
+
+.clockedOut {
+    background-color: #008A06;
+}
+
+.iconContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.7em;
+    aspect-ratio: 1/1;
+    border-radius: 0.8em;
+    padding: 0.4em;
+    margin-right: 0.5em;
+}
+
+.clockedIn .iconContainer {
+    background-color: #f74646;
+    box-shadow: 1px 1px 1px rgba(120, 63, 63, 0.3);
+}
+
+.icon {
+    display: flex;
+    stroke: white;
+    fill: white;
+    stroke-width: 0.1em;
+}
+
+
+/* ==========================================================================
+   Timer styles
+   ========================================================================== */
+.timeDisplay {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 0.2em auto;
+    overflow: hidden;
+    /* Text styles */
+    color: var(--light-text);
+    font-family: var(--lato);
+    font-weight: 500;
+}
+
+/* Timer */
+.timeDisplay h1 {
+    font-size: 3.2rem;
+}
+
+/* Time between check-times */
+.timeDisplay h2 {
+    margin-top: 0.5em;
+    font-size: 1.5rem;
+}
+
+/* Timer loading styles
+   ========================================================================== */
+.line {
+    margin-top: 1.3em;
+    height: 2.4rem;
+    width: 18em;
+    border-radius: 5em;
+    background: var(--loading-bg);
+    background-size: var(--loading-bg-size);
+    animation: var(--loading-effect);
+}
+
+.w2 {
+    margin-top: 2.3em;
+    margin-bottom: 0.6em;
+    height: 1.2rem;
+    width: 5.5em;
+}
+
+@keyframes wave-lines {
+    0% {
+        background-position: -468px 0;
+    }
+
+    100% {
+        background-position: 468px 0;
+    }
+}
+
+@media screen and (max-width: 1300px),
+(max-height: 1000px) {
+    .timeDisplay {
+        margin: 0.3em;
+        margin-top: 0em;
+    }
+
+    .timeDisplay h1 {
+        font-size: 2.9rem;
+    }
+
+    /* Time between check-times */
+    .timeDisplay h2 {
+        margin-top: 0.5em;
+        font-size: 1.35em;
+    }
+
+    .line {
+        margin-top: 1em;
+        height: 2.3rem;
+        width: 15.9em;
+        border-radius: 4em;
+    }
+
+    .w2 {
+        margin-top: 2.1em;
+        margin-bottom: 0.45em;
+        height: 1.2rem;
+        width: 5.5em;
+    }
+}

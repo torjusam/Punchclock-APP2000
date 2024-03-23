@@ -6,6 +6,7 @@ import React, { FC } from 'react';
 import ArrowIn from '../../../assets//arrowIn.svg';
 import ArrowOut from '../../../assets//arrowOut.svg';
 import { ClockHistoryData } from '../../../lib/types';
+import { formatInterval } from '../services/formatInterval';
 import styles from './clockHistory.module.css';
 import moment from 'moment';
 import 'moment/locale/nb';
@@ -19,7 +20,7 @@ interface ClockHistoryTableProps {
 }
 
 const ClockHistoryTable: FC<ClockHistoryTableProps> = ({ data, isLoading }) => {
-    
+
     const renderLoadingRows = () => {
         let rows = [];
         for (let i = 0; i < 7; i++) {
@@ -51,7 +52,6 @@ const ClockHistoryTable: FC<ClockHistoryTableProps> = ({ data, isLoading }) => {
         if (isLoading || !data) {
             return renderLoadingRows();
         }
-
         return data.map((entry, i) => (
             <div key={i} className={styles.tableRow}>
                 <div className={`${styles.rowItem} ${styles.date}`}>
@@ -69,20 +69,10 @@ const ClockHistoryTable: FC<ClockHistoryTableProps> = ({ data, isLoading }) => {
                     </div>
                 </div>
                 <div className={styles.rowItem}>
-                    {/* Checks for defined values, and displays either minutes, hours or seconds depending on whats defined
-                    For example: undefined hours, but defined minutes and seconds outputs: '03m 33s', 
-                    instead of 'undefined 03m 33s' */}
-                    <h3>
-                        {entry.workinterval
-                            ? (entry.workinterval.hours || entry.workinterval.minutes
-                                ? `${entry.workinterval.hours ? entry.workinterval.hours.toString().padStart(2, '0') + 't' : '00t'} ${entry.workinterval.minutes ? entry.workinterval.minutes.toString().padStart(2, '0') + 'm' : '00m'}`
-                                : `00m ${entry.workinterval.seconds ? entry.workinterval.seconds.toString().padStart(2, '0') : '00'}s`)
-                            : '-'
-                        }
-                    </h3>
+                    <h3>{formatInterval(entry.workinterval)}</h3>
                 </div>
                 <div className={styles.rowItem}>
-                    <h3 style={{ color: '#0DB714' }}>{entry.overtimeinterval ? `${entry.overtimeinterval.hours}t ${entry.overtimeinterval.minutes}m` : '+00t 00m'}</h3>
+                    <h3 style={{ color: '#0DB714' }}>{entry.overtimeinterval ? '+' + formatInterval(entry.overtimeinterval) : '+00t 00m'}</h3>
                 </div>
             </div>
         ));

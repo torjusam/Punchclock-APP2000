@@ -1,38 +1,33 @@
 /*
     Author: Torjus A.M
-    Custom hook for accessing the employees time clock history, and setting a state variable with it.
+    Custom hook for fetching the fleks salary for an employee.
+    Updates independently of the clock history table, whenever the employee checks out.
 */
 import { useState, useEffect } from 'react';
-import { useTimerContext } from '../../../context/timerContext';
 
-const useClockHistory = (employee) => {
-    const [data, setData] = useState(null);
+const useFleksSalary = (employee) => {
+    const [fleksSalary, setfleksSalary] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-    const { setCurrentTime } = useTimerContext();
 
     useEffect(() => {
         const fetchData = async () => {
             setIsLoading(true);
             const result = await performFetch(employee);
-            setData(result);
+            setfleksSalary(result);
             setIsLoading(false);
-            // Set timer context variable to the latest workinterval fetched.
-            if (result && result.length > 0) {
-                setCurrentTime(result[0].workinterval);
-            }
         };
 
         fetchData();
-    }, [employee.lastCheckIn, employee.lastCheckOut]);
+    }, [employee.lastCheckOut]);
 
-    return { data, isLoading };
+    return { fleksSalary, isLoading };
 };
 
-export default useClockHistory;
+export default useFleksSalary;
 
 const performFetch = async (employee) => {
     const employeeId = employee.id;
-    const response = await fetch('/api/getClockHistory', {
+    const response = await fetch('/api/workIntervals/getFleksBalance', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

@@ -1,0 +1,168 @@
+/**
+ * Author: Torjus A.M, Thomas H
+ *
+ * Styles for the employee-page and its modules. (Nav bar styling is in .src/styles/navbars.module.css).
+ * Starts by defining shared styles for all containers, then specific styles for the modules.
+ * 
+ * 
+ * To-Do: 
+ *   Header text responsiveness
+ */
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+.personalPageContainer {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 87%;
+  padding: 2.3rem;
+}
+
+/* Outer for modules container */
+.personalPage {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+/* Header container */
+.moduleHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1em;
+}
+
+.moduleHeader svg {
+  margin-left: auto;
+}
+
+.moduleHeader h1 {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: var(--dark-text);
+  line-height: 1em;
+  font-family: var(--pSans);
+}
+
+.clockHistoryContainer>.moduleHeader h1 {
+  font-size: 1.9rem;
+}
+
+.iconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0A98FF;
+  width: 3em;
+  aspect-ratio: 1/1;
+  border-radius: 0.8em;
+  padding: 0.4em;
+  margin-right: 1em;
+}
+
+.icon {
+  display: flex;
+  stroke: white;
+  fill: none;
+  stroke-width: 0.12em;
+}
+
+/* Media queries to change the header content by screen-size */
+@media screen and (max-width: 1300px),
+(max-height: 1000px) {
+  .personalPageContainer {
+    padding: 1.5rem;
+  }
+
+  .moduleHeader {
+    padding: 0.6em;
+  }
+
+  .moduleHeader h1 {
+    font-size: 1.5rem;
+  }
+
+  .clockHistoryContainer>.moduleHeader h1 {
+    font-size: 1.68rem;
+  }  
+
+  .iconContainer {
+    width: 2.6em;
+  }
+}
+
+/* Line seperators below header */
+.personalPage hr {
+  height: 0.05em;
+  width: 100%;
+  background-color: #b9bbc0;
+}
+
+/* ==========================================================================
+   Shared styles for modules on left side (ShiftList and PunchClock)
+   ========================================================================== */
+
+/* Holds both modules on the left, stacks them ontop of eachother evenly spaced */
+.outerModuleContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.module {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  border-radius: 0.5em;
+  background-color: #FFFFFF;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .14), 0 3px 3px -2px rgba(0, 0, 0, .2), 0 1px 8px 0 rgba(0, 0, 0, .12);
+  margin-bottom: 2rem;
+  border: #eeeeee 1px solid;
+  margin-bottom: 0.3rem;
+  margin-top: 1.5rem;
+}
+
+.h2 {
+  height: fit-content;
+  margin-top: 0rem;
+}
+
+/* Container for content inside modules, below the header and seperator. */
+.moduleContent {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  overflow-y: auto;
+}
+
+/* ==========================================================================
+   Clock History layout: Stemplingshistorikk
+   ========================================================================== */
+.outerClockHistoryContainer {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin-left: 1.5rem;
+}
+
+.clockHistoryContainer {
+  margin-left: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background-color: #FFFFFF;
+  border-radius: 0.5em;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .14), 0 3px 3px -2px rgba(0, 0, 0, .2), 0 1px 8px 0 rgba(0, 0, 0, .12);
+  margin-bottom: 0.3rem;
+}
+
+.clockHistoryIcon {
+  fill: white;
+  stroke-width: 0.25;
+  aspect-ratio: 1/1;
+}

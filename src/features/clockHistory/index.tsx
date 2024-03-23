@@ -3,23 +3,23 @@
     Responsible for defining the layout and content of 
     the "Stemplingshistorikk" module.
 */
-import React from 'react';
+import React, { FC, useState } from 'react';
 import { Employee } from '../../lib/employee';
 import ClockCheck from '../../assets/clockCheck.svg';
 import ClockHistoryTable from './components/clockHistoryTable';
 import useClockHistory from './hooks/useClockHistory';
 import TimeModules from './components/timeModules';
-import styles from '../../components/employeePage/employeePageLayout.module.css';
+import styles from '../../components/employeePageData/employeePageLayout.module.css';
 
 interface ClockHistoryProps {
     employee: Employee;
 }
 
-const ClockHistory: React.FC<ClockHistoryProps> = ({ employee }) => {
+const ClockHistory: FC<ClockHistoryProps> = ({ employee }) => {
     /* Uses the custom hook to fetch the employees clock history, 
     then passes it to both children that need it */
     const { data, isLoading } = useClockHistory(employee);
-
+    
     return (
         <div className={styles.clockHistoryContainer}>
             <div className={styles.moduleHeader}>

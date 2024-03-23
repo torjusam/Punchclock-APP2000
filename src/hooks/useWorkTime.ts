@@ -1,38 +1,33 @@
 /*
     Author: Torjus A.M
-    Custom hook for accessing the employees time clock history, and setting a state variable with it.
+    This hook is used to fetch the employees worktime and fleksitidSaldo from the database, 
+    and calculate fleksitid_salary and worktime.
 */
 import { useState, useEffect } from 'react';
-import { useTimerContext } from '../../../context/timerContext';
 
-const useClockHistory = (employee) => {
-    const [data, setData] = useState(null);
+const useWorkTime = (employee) => {
+    const [workTimedata, setworkTimedata] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-    const { setCurrentTime } = useTimerContext();
 
     useEffect(() => {
         const fetchData = async () => {
-            setIsLoading(true);
             const result = await performFetch(employee);
-            setData(result);
+            setworkTimedata(result);
             setIsLoading(false);
-            // Set timer context variable to the latest workinterval fetched.
-            if (result && result.length > 0) {
-                setCurrentTime(result[0].workinterval);
-            }
         };
 
         fetchData();
     }, [employee.lastCheckIn, employee.lastCheckOut]);
 
-    return { data, isLoading };
+    return { workTimedata, isLoading };
 };
 
-export default useClockHistory;
+export default useWorkTime;
+
 
 const performFetch = async (employee) => {
     const employeeId = employee.id;
-    const response = await fetch('/api/getClockHistory', {
+    const response = await fetch('/api/getWorkTime', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
