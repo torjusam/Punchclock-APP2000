@@ -13,25 +13,23 @@ import CustomToastContainer from '../lib/toastContainer';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from '../styles/layout.module.css';
 
-export default function App({
-  Component,
-  pageProps: { session, ...pageProps } }: AppProps
-) {
+export default function App({ Component, pageProps }: AppProps) {
+
   return (
     <div className={styles.veryOuterContainer}>
       <div className={styles.leftContainer}>
         <LeftContent />
       </div>
-      <div className={styles.rightContainer}>
-        {/* SessionProvider wraps all of app to keep session data and status synced */}
-        <SessionProvider session={session}>
+      {/* SessionProvider wraps all of app to keep session data and status synced */}
+      <SessionProvider session={pageProps.session}>
+        <div className={styles.rightContainer}>
           {/* Custom ContextProvider around the pagecontent, so every component has access to employees state */}
           <EmployeeContextProvider>
             <Component {...pageProps} />
             <CustomToastContainer /> {/* Toast container for notifications */}
-        </EmployeeContextProvider>
-        </SessionProvider >
-      </div>
+          </EmployeeContextProvider>
+        </div>
+      </SessionProvider >
     </div>
   );
 };

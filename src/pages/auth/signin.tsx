@@ -1,8 +1,13 @@
-import LoginPage from "../../features/login"
+/* 
+    Author: Torjus A.M
+    This is the signin page for the application. Redirects to this page if the user is not authenticated.
+*/
 
-export default function Signin() {
+import React from 'react';
+import SignInPage from "../../components/authentication/signInPage"
 
+export default function SignIn() {
   return (
-    <LoginPage />
-  )
+    <SignInPage />
+  );
 }
