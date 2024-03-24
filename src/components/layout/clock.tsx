@@ -1,5 +1,5 @@
 /* 
-  Authors: Thomas H, Torjus A.M, Ask A
+  Authors: Thomas H, Torjus A.M, Ask I.P Aspholm
   Hook for setting and displaying the greeting, time and date.
 */
 import React, { useState, useEffect } from 'react';
