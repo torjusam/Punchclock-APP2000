@@ -15,9 +15,9 @@ const LoginFields: React.FC = () => {
 
     const handleLogin = (): void => {
         if (mail === 'test@test.com' && password === 'test'){
-            alert("yay")
+            alert("Login successfull")
         } else{
-            setErrorMsg("blyat")
+            setErrorMsg("ivalid username or password")
         }
     };
 
