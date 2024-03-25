@@ -6,10 +6,9 @@
  */
 
 
-import React, { useState } from 'react';
+import React from 'react';
 import  Styles  from './error.module.css';
 import { useRouter } from 'next/router';
-import tempImg from 'public\vismalogo.png' // TODO replace with proper image
 
 
 const FrontError: React.FC =() =>{
@@ -17,7 +16,7 @@ const FrontError: React.FC =() =>{
     return(
         <div className={Styles.frontErrorContainer}>
             <div className={Styles.errorImager}>
-                <img className={Styles.forntErrorImg} src="/vismalogo.png" alt="sorry we could not load this image"/>
+                <img className={Styles.frontErrorImg} src="/errorWarning.png" alt="sorry we could not load this image"/>
             </div>
             <div className={Styles.errorText1}> Error 404 </div>
             <div className={Styles.errorText2}> an error occurred whilst trying to find employees</div>
