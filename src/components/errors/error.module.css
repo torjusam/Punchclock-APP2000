@@ -1,0 +1,44 @@
+/**
+ * Author: Ask I.P Aspholm
+ *
+ * css for error modules
+ */
+
+.frontErrorContainer{
+    
+    font-size: 1.5rem;
+    color: black;
+    background-color: rgba(165, 42, 42, 0.781);
+    font-family: 'Public Sans', sans-serif;
+    font-weight: bold;
+    text-shadow: 0.06rem 0.2rem 0.1rem rgba(0, 0, 0, 0.2);
+    line-height: 4rem;
+    padding: 2.3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 3rem;
+    height: 50%;
+    width: 50%;
+}
+
+.frontErrorImg{
+    width: 5rem;
+    height: auto;
+}
+
+.frontErrorBtn{
+        font-size: 1.5rem;
+        background-color: transparent; /*#E6EBF2;*/
+        text-decoration:underline;
+        color: black;
+        
+        font-weight: 700;
+        font-family: 'Public Sans', sans-serif;
+        height: 4rem;
+        /*border-radius: 6px;*/
+        /*border: 1px solid rgba(27, 31, 35, 0.15);*/
+}
+.frontErrorBtn:hover{
+    color:#2b3035;
+}

@@ -5,7 +5,7 @@
  * adds two input fields, one is for mail the other for passwords
  */
 import React, { useState } from 'react';
-import  Styles  from './layout.module.css';
+import  Styles  from './login.module.css';
 
 
 const LoginFields: React.FC = () => {
