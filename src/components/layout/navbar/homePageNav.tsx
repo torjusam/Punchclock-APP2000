@@ -4,7 +4,7 @@ import SearchBar from '../../../features/searchBar';
 import Notif from '../../../assets/notif.svg';
 import Helpico from '../../../assets/helpIco.svg';
 import styles from './navbars.module.css'
-import SignOutBtn from '../../Buttons/signOutBtn';
+import SignOutBtn from '../../authentication/signOutBtn';
 
 const FrontPageNav: React.FC = () => {
     return (

@@ -1,8 +1,15 @@
 // Author: Torjus A.M
 import { NextApiRequest, NextApiResponse } from 'next';
-import { pool } from '../../lib/dbIndex'
+import { authOptions} from "./auth/[...nextauth]";
+import { getServerSession } from "next-auth/next";
+import { pool } from '../../lib/dbIndex';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+    const session = await getServerSession(req, res, authOptions);
+    if (!session) {
+        res.status(401).json({error: 'Unauthorized API request'});
+        return;
+    }
     try {
         const { employeeId } = req.body;
 

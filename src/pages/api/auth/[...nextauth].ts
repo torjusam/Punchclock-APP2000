@@ -45,7 +45,7 @@ export const authOptions: NextAuthOptions = {
                             role: "admin"
                         } as User;
                     } else {
-                        throw new Error("Brukernavn eller passord er feil")
+                        throw new Error("Brukernavn eller passord er feil. Prøv igjen.")
                     }
                 } else {
                     // If user or password is missing, return null indicating authentication failure
