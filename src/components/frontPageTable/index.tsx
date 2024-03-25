@@ -14,7 +14,7 @@ const FrontPage: React.FC = () => {
         <div style={{ display: 'flex', flexDirection: 'column', width: '100%', padding: '2.3rem'}}>
                 <FrontPageNav />
             <ErrorBoundary fallback={<FrontError/>}>
-                <EmployeeListDisplay />
+                <EmployeeListDisplay/>
             </ErrorBoundary>
         </div>
     );
