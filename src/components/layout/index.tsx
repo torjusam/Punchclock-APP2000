@@ -13,7 +13,8 @@ const LeftContent: FC = () => {
     const router = useRouter();
 
     // Help button goes to CRUD page
-    const handleHelpClick = () => { router.push('/pin') };
+    // må oppdateres for å bruke server side authentication for å bli redirected til CRUD side via authorization token - midlertidig løsning for å accesse pin siden
+    const handleHelpClick = () => { router.push('/auth/pin') };
 
     // Logo goes to index page
     const handleLogoClick = () => { router.push('/') };

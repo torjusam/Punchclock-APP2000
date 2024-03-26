@@ -41,6 +41,9 @@ const PinCode = ({ onSuccess }) => {
    };
     return (
         <div className={styles.keypad}>
+            <div className={styles.errorMessageContainer}>
+                {pinError && <p className={styles.errorMessage}>{pinError}</p>}
+            </div>
             <div className={styles.pinDisplay}>{pin.replace(/./g, '•')}</div>
             <div className={styles.numberGrid}>
                 {[1,2,3,4,5,6,7,8,9].map((number) => (
@@ -50,7 +53,6 @@ const PinCode = ({ onSuccess }) => {
                 <KeyPad key="0" number="0" onClick={() => addDigittoPin("0")}/>
                 <KeyPad key="confirm" number="✓" onClick={validatePin} className={styles.confirmButton}/>
             </div>
-            {pinError && <p className={styles.errorMessage}>{pinError}</p>}
         </div>
     );
 
