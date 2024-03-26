@@ -16,15 +16,3 @@ class RateLimitError extends Error {
         Object.setPrototypeOf(this, RateLimitError.prototype);
     }
 }
-
-class NetworkError extends Error {
-    statusCode: number;
-
-    constructor(message = 'Kan ikke koble til databasen eller utføre spørringen.', statusCode = 503) {
-        super(message);
-        this.statusCode = statusCode;
-
-        // Set the prototype explicitly.
-        Object.setPrototypeOf(this, RateLimitError.prototype);
-    }
-}

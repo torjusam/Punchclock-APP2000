@@ -1,19 +1,20 @@
 // Author: Torjus A.M
-import { NextApiRequest, NextApiResponse } from 'next';
-import { pool } from '../../../lib/dbIndex';
+import {NextApiRequest, NextApiResponse} from 'next';
+import {pool} from '../../../lib/dbIndex';
 import {getServerSession} from "next-auth/next";
 import {authOptions} from "../auth/[...nextauth]";
+import handleAPICall from "../config/handleAPICall";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    const session = await getServerSession(req, res, authOptions);
-    if (!session) {
-        res.status(401).json({error: 'Unauthorized API request'});
-        return;
+    const {success, res: response} = await handleAPICall(req, res, authOptions);
+    if (!success) {
+        return response;
     }
+
     try {
-        const { employee, overtimeInterval } = req.body;
-        const { id } = employee;
-        
+        const {employee, overtimeInterval} = req.body;
+        const {id} = employee;
+
         // Query adds the overtime interval to the existing fleks balance.
         const text = (`
         UPDATE employee
@@ -23,9 +24,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const values = [overtimeInterval, id];
         await pool.query(text, values);
 
-        res.status(200).json({ success: true });
+        res.status(200).json({success: true});
     } catch (error) {
-        console.error('Feil under innsetting av fleksitid-saldo i DB:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        res.status(500).json({error: 'Internal Server Error'});
+        throw error;
     }
 };
