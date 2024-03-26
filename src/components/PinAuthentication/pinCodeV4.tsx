@@ -1,5 +1,5 @@
 import React, { useState, useCallback, } from 'react';
-import styles from './pinCodeV4.module.css';
+import styles from './pinCodeV4.module.css'
 
 interface KeyPadProps {
     number: string;

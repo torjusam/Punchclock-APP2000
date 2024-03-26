@@ -1,5 +1,5 @@
 /**
- * Author: Torjus A.M
+ * Author: Torjus A.M, Ask I.P Aspholm
  *
  * CSS module for the sign in page.
  */
@@ -12,10 +12,9 @@
     flex-grow: 1;
 }
 
-.formContainer{
+.formContainer {
     display: flex;
     align-items: center;
-    width: max-content;
     flex-direction: column;
     background: #FFF;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -45,7 +44,7 @@
 }
 
 .strongText {
-    color:#d9534f;
+    color: #d9534f;
     font-weight: bold;
 }
 
@@ -89,7 +88,7 @@
     border-radius: 0.5rem;
     width: 100%;
     transition: background-color 0.3s ease;
-    box-shadow: 0 0.2rem  #0056b3;
+    box-shadow: 0 0.2rem #0056b3;
 }
 
 .submitBtn:hover {

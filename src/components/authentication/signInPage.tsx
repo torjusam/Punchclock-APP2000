@@ -1,11 +1,6 @@
 /* 
-    Author: Torjus A.M
+    Author: Torjus A.M, Ask I.P Aspholm
     This is the signin page for the application. Redirects to this page if the user is not authenticated.
-    To-Do:
-        Update vercel url
-        Remove console.log around the app
-        Protect api routes
-        Github provider
 */
 import React, {useState} from 'react'
 import {useRouter} from 'next/router'

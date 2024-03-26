@@ -1,5 +1,5 @@
 import React from 'react';
-import PinCode from '../components/PinAuthentication/pinCodeV4';
+import PinCode from '../../components/PinAuthentication/pinCodeV4';
 
 const PinEntryPage = () => {
   return (

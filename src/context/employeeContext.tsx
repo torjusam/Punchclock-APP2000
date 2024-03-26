@@ -5,9 +5,10 @@
     The context is shared across the entire app, allowing any component to access and modify the list.
     Uses a custom provider, and a custom hook to access the context.
 */
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { Employee } from '../lib/employee';
-import { fetchEmployees } from '../lib/dataAccess';
+import React, {createContext, useContext, useState, useEffect, ReactNode} from 'react';
+import {Employee} from '../lib/employee';
+import {fetchEmployees} from '../lib/dataAccess';
+import {useSession} from "next-auth/react";
 
 interface EmployeeContextProps {
     employees: Employee[];
@@ -21,9 +22,10 @@ interface EmployeeContextProps {
 export const EmployeeContext = createContext<EmployeeContextProps | null>(null);
 
 // Custom provider provides children components with state and updater function for the employee state.
-export default function EmployeeContextProvider({ children }: { children: ReactNode }) {
+export default function EmployeeContextProvider({children}: { children: ReactNode }) {
     const [employees, setEmployees] = useState<Employee[]>([]);
     const [sortedEmployees, setSortedEmployees] = useState<Employee[]>([]);
+    const {data: session} = useSession();
 
     // Initialize the employees array when the component mounts.
     useEffect(() => {
@@ -33,7 +35,8 @@ export default function EmployeeContextProvider({ children }: { children: ReactN
             setEmployees(fetchedEmployees);
         };
         initializeEmployees();
-    }, []);
+        // Re-fetch after session is updated (login/logout).
+    }, [session]);
 
     // Sorts employee array when its updated.
     useEffect(() => {
@@ -112,4 +115,4 @@ export function sortEmployees(employees: Employee[]) {
             return bLastCheckTime - aLastCheckTime;
         }
     });
-};
+}
