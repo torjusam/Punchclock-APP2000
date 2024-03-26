@@ -4,12 +4,37 @@
 
     Code taken from: https://github.com/nextauthjs/next-auth/discussions/4136
 */
-import { withAuth } from "next-auth/middleware";
+import {withAuth} from "next-auth/middleware";
+import {NextResponse, NextRequest} from "next/server";
+import {limiter} from "./pages/api/config/limiter";
+import {getServerSession} from "next-auth/next";
 
-export default withAuth({
-	pages: {
-		signIn: '/auth/signin',
-		error: '/auth/error',
-		verifyRequest: '/',
-	},
+async function middleware(request: Request) {
+
+    const regex = new RegExp('/api/*');
+
+    if (regex.test(request.url)) {
+        const allowedOrigins = process.env.NODE_ENV === 'production' ? ['https://www.google.com'] : ['http://localhost:3000'];
+        const origin = request.headers.get('origin');
+        console.log(origin);
+
+        // Block requests from origins not in the allowedOrigins array.
+        if (origin && !allowedOrigins.includes(origin)) {
+            return new NextResponse(null, {
+                status: 400,
+                statusText: 'Bad request',
+                headers: {
+                    'Content-Type': 'text/plain',
+                },
+            });
+        }
+    }
+}
+
+export default withAuth(middleware, {
+    pages: {
+        signIn: '/auth/signin',
+        error: '/auth/error',
+        verifyRequest: '/',
+    },
 });
