@@ -1,6 +1,7 @@
 /*
     Taken from: https://dev.to/rashed_iqbal/how-to-handle-outside-clicks-in-react-with-typescript-4lmc
-    Registers click outside of component using useRef and useEffect hook. Used in the keyboard.
+    Modified to use touchstart aswell as mouseevents, to make it work on touchscreens.
+    Registers click outside of a component using useRef and useEffect hook.
 */
 import { useEffect, useRef } from 'react';
 
@@ -8,16 +9,18 @@ export const useOutsideClick = (callback: () => void) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    const handleOutsideEvent = (event: MouseEvent | TouchEvent) => {
       if (ref.current && !ref.current.contains(event.target as Node)) {
         callback();
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('mousedown', handleOutsideEvent);
+    document.addEventListener('touchstart', handleOutsideEvent);
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('mousedown', handleOutsideEvent);
+      document.removeEventListener('touchstart', handleOutsideEvent);
     };
   }, [callback]);
 

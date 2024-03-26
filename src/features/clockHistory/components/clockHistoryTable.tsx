@@ -5,7 +5,7 @@
 import React, { FC } from 'react';
 import ArrowIn from '../../../assets//arrowIn.svg';
 import ArrowOut from '../../../assets//arrowOut.svg';
-import { ClockHistoryData } from '../../../lib/types';
+import { ClockHistoryData } from '../../../lib/types/types';
 import { formatInterval } from '../services/formatInterval';
 import styles from './clockHistory.module.css';
 import moment from 'moment';

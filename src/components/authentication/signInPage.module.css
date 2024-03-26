@@ -1,0 +1,102 @@
+/**
+ * Author: Torjus A.M
+ *
+ * CSS module for the sign in page.
+ */
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap');
+
+.outerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.formContainer{
+    display: flex;
+    align-items: center;
+    width: max-content;
+    flex-direction: column;
+    background: #FFF;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 0.7rem;
+    padding: 1.5rem;
+    width: 20vw;
+}
+
+.formContainer form {
+    width: 100%;
+}
+
+.formContainer h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 1rem;
+    font-family: 'Public Sans', sans-serif;
+}
+
+.errorMsg {
+    background-color: rgba(217, 83, 79, 0.1);
+    border-left-color: #d9534f;
+    border-left-width: 5px;
+    padding: 0.7rem;
+    border-radius: 0.3rem;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.strongText {
+    color:#d9534f;
+    font-weight: bold;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.inputGroup h2 {
+    color: #4E5052;
+    margin-bottom: 0.15rem;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 0.9rem;
+}
+
+.inputGroup input {
+    width: 100%;
+    padding: 0.9rem;
+    border-radius: 0.4rem;
+    border: 1px solid;
+    font-size: 1.1rem;
+    border: 1px solid #dcdcde;
+    transition: border-color 0.3s ease;
+    width: 100%;
+}
+
+/* Override browsers default styles for when inputs are focused */
+.inputGroup input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.submitBtn {
+    background-color: #007bff;
+    color: #FFF;
+    padding: 0.7rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    width: 100%;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 0.2rem  #0056b3;
+}
+
+.submitBtn:hover {
+    background-color: #0056b3;
+}
+
+.submitBtn:active {
+    box-shadow: none;
+    transform: translateY(0.2rem);
+}

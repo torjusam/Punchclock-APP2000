@@ -5,7 +5,7 @@
     Normally if any value is undefined it would say: undefined undefined 30s.
     padStart() is used for adding leading 0's to the numbers.
 */
-import { Interval } from '../../../lib/types';
+import { Interval } from '../../../lib/types/types';
 
 export function formatInterval(interval: Interval) {
     if (!interval) return '-';
