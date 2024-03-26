@@ -30,6 +30,9 @@ export const authOptions: NextAuthOptions = {
                     },
                     body: JSON.stringify({email}),
                 });
+                if (response.status === 429) {
+                    throw new RateLimitError();
+                }
                 const users = await response.json(); // Parse response to JSON
 
                 if (users.length > 0) {

@@ -38,6 +38,9 @@ export default function SignInPage() {
                 setStatusText(status.error);
             }
         } catch (error) {
+            if (error instanceof RateLimitError) {
+                setStatusText(error.message);
+            }
             setStatusText(error.message);
         }
     }
