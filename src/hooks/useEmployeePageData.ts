@@ -8,18 +8,18 @@
     find the employee, calculate and set its dailyworktime, then pass that employee down to the children. 
     This way the children can use this value directly, without having to calculate it themselves.
 */
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import {useState, useEffect} from 'react';
+import {useRouter} from 'next/router';
 import moment from 'moment';
-import { Employee } from '../lib/employee';
-import { useEmployeeContext } from '../context/employeeContext';
+import {Employee} from '../lib/employee';
+import {useEmployeeContext} from '../context/employeeContext';
 
 export const useEmployeePageData = () => {
     const [employeePageData, setEmployeeData] = useState<Employee | undefined>();
-    const { employees } = useEmployeeContext();
+    const {employees} = useEmployeeContext();
     // Uses router to go to the url/employeeId (The employees personal page).
     const router = useRouter();
-    const { employeeId } = router.query;
+    const {employeeId} = router.query;
 
     useEffect(() => {
         if (employeeId) {

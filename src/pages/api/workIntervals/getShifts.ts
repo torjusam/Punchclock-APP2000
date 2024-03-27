@@ -12,14 +12,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     try {
         const {employeeId} = req.body;
-
+        // Fetch shifts where the employee is scheduled.
         const text = (`
-        SELECT
-            fleksitid_balance
-        FROM
-            employee 
-        WHERE
-            id = $1;
+            SELECT 
+                s.description, s.start, s."end"
+            FROM shift s
+            INNER JOIN 
+                shift_employee se ON s.id = se.shift_id
+            WHERE 
+                se.employee_id = $1
+                AND s.start > NOW(); -- Fetch only shifts that have a start time in the future
       `);
         const result = await pool.query(text, [employeeId]);
         res.status(200).json(result.rows);

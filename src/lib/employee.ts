@@ -9,7 +9,6 @@ import moment from 'moment';
 export class Employee {
     id: number;
     name: string;
-    role: string;
     pin?: number;
     profilePictureUrl?: string;
     lastCheckIn?: Date;
@@ -25,7 +24,6 @@ export class Employee {
         id: number,
         name: string,
         plannedwork: string,
-        role?: string,
         pin?: number,
         profilePictureUrl?: string,
         lastCheckIn?: Date,

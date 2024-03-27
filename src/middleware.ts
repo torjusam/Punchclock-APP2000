@@ -5,9 +5,7 @@
     Code taken from: https://github.com/nextauthjs/next-auth/discussions/4136
 */
 import {withAuth} from "next-auth/middleware";
-import {NextResponse, NextRequest} from "next/server";
-import {limiter} from "./pages/api/config/limiter";
-import {getServerSession} from "next-auth/next";
+import {NextResponse} from "next/server";
 
 async function middleware(request: Request) {
 
@@ -16,7 +14,6 @@ async function middleware(request: Request) {
     if (regex.test(request.url)) {
         const allowedOrigins = process.env.NODE_ENV === 'production' ? ['https://www.google.com'] : ['http://localhost:3000'];
         const origin = request.headers.get('origin');
-        console.log(origin);
 
         // Block requests from origins not in the allowedOrigins array.
         if (origin && !allowedOrigins.includes(origin)) {
