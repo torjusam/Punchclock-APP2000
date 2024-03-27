@@ -1,7 +1,6 @@
 // Author: Torjus A.M
 import { NextApiRequest, NextApiResponse } from 'next';
 import { pool } from '../../lib/dbIndex'
-import {getServerSession} from "next-auth/next";
 import {authOptions} from "./auth/[...nextauth]";
 import handleAPICall from "./config/handleAPICall";
 
@@ -15,7 +14,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         SELECT
             e.ID,
             e.name,
-            e.role,
             e.pin,
             e.profilepictureurl,
             e.plannedwork,
@@ -26,7 +24,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         LEFT JOIN
             fleksitidbank fb ON e.ID = fb.Employee_ID
         GROUP BY
-            e.ID, e.name, e.role, e.pin, e.profilepictureurl;
+            e.ID, e.name, e.pin, e.profilepictureurl;
       `);
         res.status(200).json(result.rows);
     } catch (error) {

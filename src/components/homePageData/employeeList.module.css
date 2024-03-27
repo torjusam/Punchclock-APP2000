@@ -54,7 +54,7 @@
     padding: 0.8em;
     border: 2px solid #F33161;
     border-radius: 5em;
-    box-shadow: 0em 0.2em 0.2em rgba(0, 0, 0, 0.2);
+    box-shadow: 0rem 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
 }
 
 .profilePicture {
