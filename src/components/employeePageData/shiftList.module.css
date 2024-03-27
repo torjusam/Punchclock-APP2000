@@ -15,7 +15,6 @@
   padding-bottom: 0.3rem;
 }
 
-
 .monthContainer {
   display: flex;
   flex-direction: row;
@@ -50,11 +49,9 @@
 .shiftItemContainer {
   display: flex;
   flex-direction: row;
-  width: 100%;
   align-items: center;
   justify-content: center;
-  margin-top: 0.6em;
-  margin-bottom: 0.6em;
+  margin: 0.6em;
 }
 
 .shiftDateContainer {
@@ -64,8 +61,8 @@
   line-height: 1.7rem;
   font-family: 'Lato', sans-serif;
   background-color: #fff;
-  margin-right: 1.5em;
-  width: min-content;
+  margin-right: 1.4em;
+  padding-top: 0.2em;
 }
 
 .shiftDateContainer h1 {

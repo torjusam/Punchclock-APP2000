@@ -20,3 +20,11 @@ export interface ClockHistoryData {
     workinterval: Interval;
     overtimeinterval: Interval;
 }
+
+// Type for the employees shift.
+export interface Shift {
+    id: number;
+    description: string;
+    start: string;
+    end: string;
+}
