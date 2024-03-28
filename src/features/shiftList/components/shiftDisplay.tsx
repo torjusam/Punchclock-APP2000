@@ -4,12 +4,12 @@
   To-Do: Implement a way to expand the shift card to show more details. Selection logic.
 */
 import React, {FC} from 'react';
-import {Shift} from "../../lib/types/types";
+import {Shift} from "../../../lib/types/types";
 import styles from './shiftList.module.css';
 import moment from "moment/moment";
-import Expand from "../../assets/expand.svg";
+import Expand from "../../../assets/expand.svg";
 
-// Takes a type employee as parameter
+// Takes a type shift as parameter
 interface ShiftProps {
     shift: Shift;
 }

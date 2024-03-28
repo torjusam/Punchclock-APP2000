@@ -1,12 +1,12 @@
 // Author: Torjus A.M
-import React, { useState, ChangeEvent, FC } from 'react';
+import React, {FC } from 'react';
 import styles from './navbars.module.css'
+import HomeButton from "./homeButton";
 
 const CrudPageNav: FC = () => {
     return (
         <nav className={styles.navBarContainer}>
-            <h1>NavBarCrud</h1>
-            {/*<SearchInput value={searchTerm} onChange={handleSearchChange} />*/}
+            <HomeButton />
         </nav>
     );
 };

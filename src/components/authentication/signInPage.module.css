@@ -99,3 +99,13 @@
     box-shadow: none;
     transform: translateY(0.2rem);
 }
+
+.submitBtn:disabled {
+    background-color: #6699cc;
+    cursor: not-allowed;
+}
+
+.submitBtn:disabled:hover {
+    background-color: #6699cc;
+    cursor: not-allowed;
+}

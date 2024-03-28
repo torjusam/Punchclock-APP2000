@@ -7,14 +7,14 @@ import {useEmployeeContext} from "../../context/employeeContext";
 
 const CrudPage: FC = () => {
     // Placeholder to pass an employee
-    const {employees} = useEmployeeContext();
-    const employee = employees[1];
+    // const {employees} = useEmployeeContext();
+    // const employee = employees[1];
 
     return (
         <div style={{display: 'flex', flexDirection: 'column', width: '100%', padding: '2.3rem'}}>
             <CrudPageNav/>
             <EmployeeForm/>
-            <CreateShift employee={employee}/>
+            <CreateShift/>
         </div>
     );
 };
