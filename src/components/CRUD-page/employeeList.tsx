@@ -1,6 +1,7 @@
 import React from 'react';
 import EmployeeListItem from './employeeListItem';
 import {Employee} from '../../lib/employee';
+import styles from './employeeList.module.css';
 
 interface EmployeeListProps {
     employees: Employee[];
@@ -10,8 +11,9 @@ interface EmployeeListProps {
 
 const EmployeeList: React.FC<EmployeeListProps> = ({ employees, onEdit, onDelete }) => {
     return (
-      <div>
-        <h2>Ansatt Liste</h2>
+      <div className={styles.employeeList}>
+        <h2>Liste Over Ansatt</h2>
+        <hr className={styles.separator} />
         {employees.map(employee => (
           <EmployeeListItem
             key={employee.id}

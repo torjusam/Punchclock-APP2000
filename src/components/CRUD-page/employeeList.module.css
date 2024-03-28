@@ -1,0 +1,32 @@
+.employeeList {
+    height: 70vh;
+    margin-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    background-color: #FFFFFF;
+    border-radius: 0.5em;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .14), 0 3px 3px -2px rgba(0, 0, 0, .2), 0 1px 8px 0 rgba(0, 0, 0, .12);
+    margin-bottom: 0.3rem;
+    overflow-y: auto;
+}
+
+.employeeList h2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1em;
+
+    font-size: 1.7rem;
+    font-weight: 800;
+    color: var(--dark-text);
+    line-height: 1em;
+    font-family: var(--pSans);
+}
+
+.separator {
+    height: 0.05em;
+    width: 100%;
+    background-color: #b9bbc0;
+}
