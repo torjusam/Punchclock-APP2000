@@ -10,7 +10,7 @@ import EmployeePageNav from '../layout/navbar/employeePageNav';
 import PunchClock from '../../features/clock-operation';
 import TimerProvider from '../../context/timerContext';
 import WorkIntervalProvider from '../../context/workIntervalContext';
-import ShiftList from './shiftList';
+import ShiftList from '../../features/shiftList'
 import ClockHistory from '../../features/clockHistory';
 
 interface employeePageProps {

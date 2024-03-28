@@ -1,7 +1,7 @@
 /**
  * Author: Torjus A.M
  *
- * CSS module for the sign in page.
+ * CSS module for the create-shift module.
  */
 @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap');
 
@@ -24,14 +24,15 @@
     font-size: 1.8rem;
     font-weight: 700;
     margin: 1rem;
+    margin-top: 0.1rem;
     font-family: 'Public Sans', sans-serif;
-    line-height: 1.5rem;
+    line-height: 1.7rem;
 }
 
 .container h2 {
     align-self: center;
     color: #4E5052;
-    margin-bottom: 0.15rem;
+    margin-bottom: 0.5rem;
     font-family: 'Public Sans', sans-serif;
     font-size: 0.9rem;
 }

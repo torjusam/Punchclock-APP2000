@@ -28,7 +28,7 @@ const DatePickers: FC<datePickersProps> = ({
                                                setEnd,
                                            }) => {
     return (
-        <div style={{ display: 'flex', flexDirection: 'row' }}>
+        <div style={{display: 'flex', flexDirection: 'row'}}>
             <div className={styles.contentContainer} style={{marginRight: '0.4rem'}}>
                 <h2>Start</h2>
                 <DatePicker
