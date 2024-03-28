@@ -31,9 +31,10 @@ const CreateShift: FC<createShiftProps> = ({employee}) => {
     useEffect(() => {
         if (employee) {
             setIsDisabled(false);
+        } else {
+            setIsDisabled(true);
         }
     }, [employee]);
-
     const onClick = async () => {
         try {
             setIsDisabled(true);
@@ -54,10 +55,9 @@ const CreateShift: FC<createShiftProps> = ({employee}) => {
     };
 
     return (
-        <div className={isDisabled ? styles.container : styles.containerDisabled}>
-            <h1>
-                {employee && isDisabled ? `Lag skift for ${employee.name}` : 'Lag skift'}
-            </h1>
+        <div className={styles.container}>
+            <h1>Opprett vakt</h1>
+            <h2>{employee ? `For ${employee.name}` : 'Velg en ansatt'}</h2>
             {/* Displays error message if it exists */}
             {errorMsg &&
                 <div className={styles.errorMsg}>
@@ -83,7 +83,7 @@ const CreateShift: FC<createShiftProps> = ({employee}) => {
                 className={styles.createShiftBtn}
                 onClick={onClick}
                 disabled={isDisabled}>
-                Lag skift
+                Opprett vakt
             </button>
         </div>
     );

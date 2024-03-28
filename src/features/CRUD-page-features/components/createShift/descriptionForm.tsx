@@ -27,19 +27,16 @@ const DescriptionForm: FC<DescriptionFormProps> = ({
             }}
         >
             <Form>
-                <div className={isDisabled ? styles.container : styles.containerDisabled}>
-                    <div className={styles.textFieldContainer}>
-                        <label>
-                            <h2>Description</h2>
-                            <input
-                                name="description"
-                                type="text"
-                                maxLength={254}
-                                disabled={isDisabled}
-                                onChange={(event) => setDescription(event.target.value)}
-                            />
-                        </label>
-                    </div>
+                <div className={styles.contentContainer}>
+                    <h2>Beskrivelse</h2>
+                    <input
+                        className={styles.contentField}
+                        name="description"
+                        type="text"
+                        maxLength={254}
+                        disabled={isDisabled}
+                        onChange={(event) => setDescription(event.target.value)}
+                    />
                 </div>
             </Form>
         </Formik>

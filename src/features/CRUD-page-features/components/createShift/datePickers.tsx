@@ -28,10 +28,11 @@ const DatePickers: FC<datePickersProps> = ({
                                                setEnd,
                                            }) => {
     return (
-        <>
-            <div className={styles.datePickerContainer}>
+        <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <div className={styles.contentContainer} style={{marginRight: '0.4rem'}}>
                 <h2>Start</h2>
                 <DatePicker
+                    className={styles.datePickerField}
                     locale="nb"
                     selected={start}
                     onChange={date => setStart(date)}
@@ -39,9 +40,10 @@ const DatePickers: FC<datePickersProps> = ({
                     shouldCloseOnSelect={true}
                     disabled={isDisabled}/>
             </div>
-            <div className={styles.datePickerContainer}>
+            <div className={styles.contentContainer} style={{marginLeft: '0.4rem'}}>
                 <h2>Slutt</h2>
                 <DatePicker
+                    className={styles.datePickerField}
                     locale="nb"
                     selected={end}
                     onChange={date => setEnd(date)}
@@ -51,7 +53,7 @@ const DatePickers: FC<datePickersProps> = ({
                     showTimeSelect
                     disabled={isDisabled}/>
             </div>
-        </>
+        </div>
     );
 };
 
