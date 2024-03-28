@@ -31,6 +31,7 @@ const ShiftList: FC<ShiftListProps> = ({employee}) => {
     const {shifts, isLoading} = useShifts(employee);
 
     // Group shifts by month
+    // To-Do: Sort by closest month. Bit of padding on the hrs.
     const shiftsByMonth: { [month: string]: Shift[] } = {};
     if (shifts) {
         shifts.forEach(shift => {

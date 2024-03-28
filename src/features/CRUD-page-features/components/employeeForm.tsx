@@ -2,7 +2,7 @@
 //Prototype placeholder
 import React from 'react';
 import { useState } from 'react';
-import { createEmployee } from '../../lib/dataAccess';
+import { createEmployee } from '../../../lib/dataAccess';
 
 const EmployeeForm: React.FC = () => {
   const [firstName, setFirstName] = useState('');
