@@ -1,13 +1,13 @@
 import React from 'react';
 import CrudPageNav from '../layout/navbar/crudNav';
-import EmployeeForm from './employeeForm';
+import EmployeeForm from './employeeManagement';
 
 const CrudPage: React.FC = () => {
     return (
         <div style={{ display: 'flex', flexDirection: 'column', width: '100%', padding: '2.3rem'}}>
             <CrudPageNav />
             <EmployeeForm />
-        </div>
+        </div>     
     );
 };
 
