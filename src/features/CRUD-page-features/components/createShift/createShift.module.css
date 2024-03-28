@@ -1,0 +1,121 @@
+/**
+ * Author: Torjus A.M
+ *
+ * CSS module for the sign in page.
+ */
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap');
+
+.container {
+    display: flex;
+    flex-direction: column;
+    background: #FFF;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 0.7rem;
+    padding: 1.5rem;
+    width: min-content;
+}
+
+.containerDisabled {
+    border: 1px dotted red;
+}
+
+.container h1 {
+    align-self: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 1rem;
+    font-family: 'Public Sans', sans-serif;
+    line-height: 1.5rem;
+}
+
+.container h2 {
+    align-self: center;
+    color: #4E5052;
+    margin-bottom: 0.15rem;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 0.9rem;
+}
+
+.errorMsg {
+    background-color: rgba(217, 83, 79, 0.1);
+    border-left-color: #d9534f;
+    border-left-width: 5px;
+    padding: 0.7rem;
+    border-radius: 0.3rem;
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.strongText {
+    color: #d9534f;
+    font-weight: bold;
+}
+
+/* Date picker and description form styles
+   ========================================================================== */
+.contentContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+}
+
+.contentContainer h2 {
+    margin-bottom: 0.15rem;
+    align-self: flex-start;
+    font-size: 1.05rem;
+    font-weight: bold;
+}
+
+.contentField {
+    padding: 0.6rem;
+    border-radius: 0.4rem;
+    font-size: 1.1rem;
+    border: 1px solid #dcdcde;
+}
+
+.contentContainer input {
+    padding: 0.6rem;
+    border-radius: 0.4rem;
+    font-size: 1.1rem;
+    border: 1px solid #dcdcde;
+    transition: border-color 0.3s ease;
+}
+
+/* Override browsers default styles for when inputs are focused */
+.contentContainer input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.createShiftBtn {
+    background-color: #007bff;
+    color: #FFF;
+    padding: 0.7rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    width: 100%;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 0.2rem #0056b3;
+    font-size: 1.1rem;
+}
+
+.createShiftBtn:hover {
+    background-color: #0056b3;
+}
+
+.submitBtn:active {
+    box-shadow: none;
+    transform: translateY(0.2rem);
+}
+
+.createShiftBtn:disabled {
+    background-color: #6699cc;
+    cursor: not-allowed;
+}
+
+.createShiftBtn:disabled:hover {
+    background-color: #6699cc;
+    cursor: not-allowed;
+}

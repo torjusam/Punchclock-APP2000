@@ -20,3 +20,12 @@ export interface ClockHistoryData {
     workinterval: Interval;
     overtimeinterval: Interval;
 }
+
+// Type for the employees shift.
+export interface Shift {
+    // To-Do: Use the id from the fetched shift to find everyone else assigned to the same shift.
+    id?: number;
+    description?: string;
+    start: string;
+    end: string;
+}

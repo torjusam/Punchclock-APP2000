@@ -23,7 +23,7 @@ async function handleAPICall(req: NextApiRequest, res: NextApiResponse, authOpti
     const session = await getServerSession(req, res, authOptions);
     if (!session) {
         res.status(401).json({error: 'Unauthorized API request'});
-        return {success: false};
+        return {success: false, res};
     }
 
     return {success: true, res};
