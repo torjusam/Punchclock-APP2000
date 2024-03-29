@@ -3,7 +3,7 @@
     Context for sharing the worktimedata this current week between components.
 */
 import React, { createContext, useState, useEffect, useContext, ReactNode } from 'react';
-import { Employee } from '../lib/employee';
+import { Employee } from '../lib/types/employee';
 import { performFetch, performPost } from '../lib/workIntervalsAPI';
 
 interface workIntervalContextProps {
@@ -34,9 +34,9 @@ export default function WorkIntervalProvider({ children, employee }: { children:
     
         const postBalance = async (employee, workTimeData) => {
             await performPost(employee, workTimeData);
+            await postBalance(employee, workTimeData);
         };
-    
-        postBalance(employee, workTimeData);
+
     }, [workTimeData]);
 
     return (

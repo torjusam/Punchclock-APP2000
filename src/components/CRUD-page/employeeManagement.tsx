@@ -2,7 +2,7 @@
 //Prototype placeholder
 import React, { useState, useEffect } from 'react';
 import { fetchEmployees, createEmployee, deleteEmployee } from '../../lib/dataAccess';
-import {Employee} from '../../lib/employee';
+import {Employee} from '../../lib/types/employee';
 import EmployeeList from './employeeList';
 
 

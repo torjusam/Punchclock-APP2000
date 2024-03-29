@@ -3,10 +3,10 @@
     Searchbar to search employees on the homepage. Updates the sortedEmployees array from the global context. 
     This array is the one used to display the employees on the frontpage: src/components/frontpageTable/employeeTable.tsx
 */
-import React, { ChangeEvent, Dispatch, SetStateAction, FormEvent, useEffect, useState, useRef, FC } from 'react';
+import React, {ChangeEvent, FormEvent, useEffect, useState, FC} from 'react';
 import Search from '../../../assets/search.svg';
-import { useEmployeeContext, sortEmployees } from '../../../context/employeeContext';
-import { Employee } from '../../../lib/employee';
+import {useEmployeeContext, sortEmployees} from '../../../context/employeeContext';
+import {Employee} from '../../../lib/types/employee';
 import styles from './searchbar.module.css';
 
 interface Props {
@@ -15,8 +15,8 @@ interface Props {
     onChangeInput: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const SearchBarForm: FC<Props> = ({ onShowKeyboard, searchInput, onChangeInput }) => {
-    const { employees, setSortedEmployees } = useEmployeeContext();
+const SearchBarForm: FC<Props> = ({onShowKeyboard, searchInput, onChangeInput}) => {
+    const {employees, setSortedEmployees} = useEmployeeContext();
     // Boolean to keep track of if search returns no results.
     const [emptySearch, setEmptySearch] = useState(false);
 
@@ -45,7 +45,7 @@ const SearchBarForm: FC<Props> = ({ onShowKeyboard, searchInput, onChangeInput }
 
     return (
         <form onSubmit={handleSubmit} role="search" className={styles.form}>
-            <Search className={styles.icon} />
+            <Search className={styles.icon}/>
             <input
                 className={styles.input}
                 id="search"

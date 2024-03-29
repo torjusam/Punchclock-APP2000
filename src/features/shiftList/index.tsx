@@ -7,7 +7,7 @@ import styles from "./components/shiftList.module.css";
 import Shifts from "../../assets/shifts.svg";
 import Expand from "../../assets/expand.svg";
 import React, {FC} from "react";
-import {Employee} from "../../lib/employee";
+import {Employee} from "../../lib/types/employee";
 import RenderShiftList from "./components/shiftList";
 
 interface ShiftListProps {

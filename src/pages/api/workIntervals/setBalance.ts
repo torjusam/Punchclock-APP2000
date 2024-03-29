@@ -1,15 +1,13 @@
 // Author: Torjus A.M
 import {NextApiRequest, NextApiResponse} from 'next';
 import {pool} from '../../../lib/dbIndex';
-import {getServerSession} from "next-auth/next";
 import {authOptions} from "../auth/[...nextauth]";
 import handleAPICall from "../config/handleAPICall";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const {success, res: response} = await handleAPICall(req, res, authOptions);
-    if (!success) {
+    if (!success)
         return response;
-    }
 
     try {
         const {employee, workInterval} = req.body;

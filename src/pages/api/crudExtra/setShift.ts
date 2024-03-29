@@ -4,7 +4,7 @@ import {pool} from '../../../lib/dbIndex';
 import {authOptions} from "../auth/[...nextauth]";
 import handleAPICall from "../config/handleAPICall";
 import {Shift} from "../../../lib/types/types";
-import {Employee} from "../../../lib/employee";
+import {Employee} from "../../../lib/types/employee";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 

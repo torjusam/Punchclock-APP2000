@@ -5,7 +5,7 @@
     and displays them in a list.
 */
 import React, {FC} from 'react';
-import {Employee} from '../../../lib/employee';
+import {Employee} from '../../../lib/types/employee';
 import styles from './shiftList.module.css';
 import 'moment/locale/nb';
 import useShifts from "../../../hooks/useShifts";

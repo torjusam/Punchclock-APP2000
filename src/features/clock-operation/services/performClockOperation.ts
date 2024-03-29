@@ -3,10 +3,10 @@
     Responsible for performing the clock in/out operation.
     Handles errors, and displays toast-notifications to the user.
 */
-import { Employee } from '../../../lib/employee';
-import { clockIn, clockOut } from '../services/';
+import {Employee} from '../../../lib/types/employee';
+import {clockIn, clockOut} from '../services/';
 import moment from 'moment';
-import { toast } from 'react-toastify';
+import {toast} from 'react-toastify';
 
 export const clockInOutOperation = async (
     employee: Employee,
@@ -33,7 +33,7 @@ export const clockInOutOperation = async (
         } else if (error instanceof TypeError) {
             // To-Do: Handle error. Likely something wrong with the app-layer.
             console.error(error);
-            toast.error(error.message), { autoClose: 10000 };
+            toast.error(error.message), {autoClose: 10000};
         } else {
             // Crash as its probably an error with the server.
             console.error(error);

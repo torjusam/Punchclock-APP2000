@@ -3,9 +3,10 @@
     Custom hook for fetching the fleks salary for an employee.
     Updates independently of the clock history table, whenever the employee checks out.
 */
-import { useState, useEffect } from 'react';
+import {useState, useEffect} from 'react';
+import {Employee} from "../../../lib/types/employee";
 
-const useFleksSalary = (employee) => {
+const useFleksSalary = (employee: Employee) => {
     const [fleksSalary, setfleksSalary] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -20,19 +21,19 @@ const useFleksSalary = (employee) => {
         fetchData();
     }, [employee.lastCheckOut]);
 
-    return { fleksSalary, isLoading };
+    return {fleksSalary, isLoading};
 };
 
 export default useFleksSalary;
 
-const performFetch = async (employee) => {
+export const performFetch = async (employee: Employee) => {
     const employeeId = employee.id;
     const response = await fetch('/api/workIntervals/getFleksBalance', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ employeeId }),
+        body: JSON.stringify({employeeId}),
     });
     if (response.ok) {
         return await response.json();

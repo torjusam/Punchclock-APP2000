@@ -1,4 +1,4 @@
-import { FormikErrors } from 'formik';
+import {FormikErrors} from 'formik';
 
 export interface FormValues {
     email: string;

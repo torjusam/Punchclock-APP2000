@@ -6,7 +6,7 @@ import React, {useState} from 'react'
 import {useRouter} from 'next/router'
 import {signIn} from 'next-auth/react'
 import {useFormik} from 'formik';
-import login_validate, {FormValues} from "../../lib/validate"
+import login_validate, {FormValues} from "../../utils/validateSignin"
 import styles from './signInPage.module.css'
 
 
@@ -51,8 +51,11 @@ export default function SignInPage() {
                 <h1>Logg inn</h1>
                 {/* Error message */}
                 {statusText &&
-                    <div className={styles.errorMsg}><h2><span className={styles.strongText}>Feil - </span>{statusText}
-                    </h2></div>}
+                    <div className={styles.errorMsg}>
+                        <h2>
+                            <span className={styles.strongText}>Feil - </span>{statusText}
+                        </h2>
+                    </div>}
                 <form onSubmit={formik.handleSubmit}>
                     <div className={styles.inputGroup}>
                         <h2>Brukernavn</h2>

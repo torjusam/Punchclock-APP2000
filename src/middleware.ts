@@ -1,4 +1,5 @@
 /* 
+    Author: Torjus A.M
     Uses Next.js Middleware pattern with NextAuth to protect the site.
     Only lets you go to sign in page if you session is unauthenticated.
 

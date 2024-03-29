@@ -1,6 +1,6 @@
 // Sets up custom toastContainer for notifications. What's custom about is the  poositioning and initalization of the container.
 import React from 'react';
-import { ToastContainer } from 'react-toastify';
+import {ToastContainer} from 'react-toastify';
 
 const CustomToastContainer: React.FC = () => {
 

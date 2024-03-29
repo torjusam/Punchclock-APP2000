@@ -4,7 +4,7 @@
     of type "Shift", and a boolean for loading state.
 */
 import {useState, useEffect} from 'react';
-import {Employee} from "../lib/employee";
+import {Employee} from "../lib/types/employee";
 import {Shift} from "../lib/types/types";
 
 const useShifts = (employee: Employee) => {

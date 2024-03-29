@@ -7,7 +7,7 @@ import styles from "./createShift.module.css";
 import DatePicker from "react-datepicker";
 import {addDays, addHours} from "date-fns";
 import React, {FC} from "react";
-import {Employee} from "../../../../lib/employee";
+import {Employee} from "../../../../lib/types/employee";
 import "react-datepicker/dist/react-datepicker.css";
 
 interface datePickersProps {

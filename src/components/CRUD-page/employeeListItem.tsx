@@ -1,5 +1,5 @@
 import React from 'react';
-import {Employee} from '../../lib/employee';
+import {Employee} from '../../lib/types/employee';
 
 interface EmployeeListItemProps {
     employee: Employee;

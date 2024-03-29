@@ -4,7 +4,7 @@
 */
 import React from 'react';
 import moment from 'moment';
-import { Employee } from '../../../lib/employee';
+import {Employee} from '../../../lib/types/employee';
 import styles from './punchClock.module.css';
 
 interface PunchClockTimeDisplayProps {
@@ -23,7 +23,7 @@ const formatTime = (seconds: number) => {
     return `${hours}t ${minutes}m ${secs}s`;
 };
 
-const PunchClockTimeDisplay: React.FC<PunchClockTimeDisplayProps> = ({ timer, employee, isLoading, errorMessage }) => {
+const PunchClockTimeDisplay: React.FC<PunchClockTimeDisplayProps> = ({timer, employee, isLoading, errorMessage}) => {
 
     return (
         <div className={styles.timeDisplay}>

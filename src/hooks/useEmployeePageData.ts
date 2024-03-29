@@ -11,7 +11,7 @@
 import {useState, useEffect} from 'react';
 import {useRouter} from 'next/router';
 import moment from 'moment';
-import {Employee} from '../lib/employee';
+import {Employee} from '../lib/types/employee';
 import {useEmployeeContext} from '../context/employeeContext';
 
 export const useEmployeePageData = () => {

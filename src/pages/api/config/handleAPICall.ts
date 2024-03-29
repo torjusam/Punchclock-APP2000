@@ -1,8 +1,8 @@
 /*
-* Author: Torjus A.M
-* This function is used to before each API call. It's used to check if the user is authorized,
-* and check the rate limit before performing the API call.
-* */
+    Author: Torjus A.M
+    This function is used to before each API call. It's used to check if the user is authorized,
+    and check the rate limit before performing the API call.
+*/
 import {getServerSession} from "next-auth/next";
 import {limiter} from "./limiter";
 import {NextApiRequest, NextApiResponse} from "next";

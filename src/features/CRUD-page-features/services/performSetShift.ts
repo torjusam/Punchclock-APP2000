@@ -4,7 +4,7 @@
     Used to display in the punchClock module.
 */
 
-import {Employee} from "../../../lib/employee";
+import {Employee} from "../../../lib/types/employee";
 import {differenceInHours} from "date-fns";
 import {Shift} from "../../../lib/types/types";
 

@@ -7,7 +7,7 @@ import React, {FC, useEffect, useState} from 'react';
 import {addDays} from 'date-fns';
 import {registerLocale} from "react-datepicker";
 import {nb} from 'date-fns/locale/nb';
-import {Employee} from "../../../../lib/employee";
+import {Employee} from "../../../../lib/types/employee";
 import {setShift} from "../../services/performSetShift";
 import {toast} from 'react-toastify';
 import moment from "moment";
