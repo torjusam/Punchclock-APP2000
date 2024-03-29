@@ -13,6 +13,12 @@ export interface Interval {
     milliseconds?: number;
 }
 
+// Errors from NextApiResponse set to their status and text
+export interface ResError {
+    status: number;
+    message: string;
+}
+
 // Interface for the data to be used in the clock history table
 export interface ClockHistoryData {
     checkin: Date;

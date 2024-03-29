@@ -6,9 +6,10 @@
     Uses a custom provider, and a custom hook to access the context.
 */
 import React, {createContext, useContext, useState, useEffect, ReactNode} from 'react';
-import {Employee} from '../lib/employee';
+import {Employee} from '../lib/types/employee';
 import {fetchEmployees} from '../lib/dataAccess';
 import {useSession} from "next-auth/react";
+import {ResError} from "../lib/types/types";
 
 interface EmployeeContextProps {
     employees: Employee[];
@@ -16,36 +17,42 @@ interface EmployeeContextProps {
     sortedEmployees: Employee[];
     setSortedEmployees: React.Dispatch<React.SetStateAction<Employee[]>>;
     updateEmployeeStatus: (employee: Employee) => void;
+    error?: ResError;
+    loading: boolean;
 }
 
-// Shared context for the employee state (initalized with empty placeholder props)
 export const EmployeeContext = createContext<EmployeeContextProps | null>(null);
 
-// Custom provider provides children components with state and updater function for the employee state.
 export default function EmployeeContextProvider({children}: { children: ReactNode }) {
     const [employees, setEmployees] = useState<Employee[]>([]);
     const [sortedEmployees, setSortedEmployees] = useState<Employee[]>([]);
+    const [error, setError] = useState<ResError | null>(null);
+    const [loading, setLoading] = useState<boolean>(true);
     const {data: session} = useSession();
 
-    // Initialize the employees array when the component mounts.
-    useEffect(() => {
-        const initializeEmployees = async () => {
+    const fetchData = async () => {
+        try {
             const fetchedEmployees = await fetchEmployees();
-
             setEmployees(fetchedEmployees);
-        };
-        initializeEmployees();
-        // Re-fetch after session is updated (login/logout).
+        } catch (error) {
+            setError({status: error.status, message: error.message});
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+        // Updated on login/logout
     }, [session]);
 
-    // Sorts employee array when its updated.
+    // Creates a sorted copy of the original list. Avoids mutating original list.
     useEffect(() => {
         const sortedArray = sortEmployees(employees);
         setSortedEmployees(sortedArray);
     }, [employees]);
 
-
-    const updateEmployeeStatus = (employee) => {
+    const updateEmployeeStatus = async (employee: Employee) => {
         setEmployees(employees.map(emp => {
             if (emp.id !== employee.id) {
                 return emp;
@@ -59,29 +66,14 @@ export default function EmployeeContextProvider({children}: { children: ReactNod
         }));
     };
 
-    /*
-    const updateEmployeeStatus = (employee) => {
-    const updatedEmployees = [...employees];
-    const index = updatedEmployees.findIndex(emp => emp.id === employee.id);
-    if (index !== -1) {
-        const updatedEmployee = {
-            ...updatedEmployees[index],
-            isClockedIn: !employee.isClockedIn,
-            lastCheckIn: employee.isClockedIn ? updatedEmployees[index].lastCheckIn : new Date(),
-            lastCheckOut: employee.isClockedIn ? new Date() : updatedEmployees[index].lastCheckOut,
-        };
-        updatedEmployees[index] = updatedEmployee;
-        setEmployees(updatedEmployees);
-    }
-};
-    */
-
     const value = {
         employees,
         setEmployees,
         sortedEmployees,
         setSortedEmployees,
         updateEmployeeStatus,
+        loading,
+        error,
     };
 
     // Wraps children so that any child component can access the employee state.

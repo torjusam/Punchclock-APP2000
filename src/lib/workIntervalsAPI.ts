@@ -3,8 +3,10 @@
     Logic for performing fetch and posts on the workTime intervals from the datbabase.
     Used in the workIntervalContext.
 */
-import { durationToPostgresInterval } from './durationToPGInterval';
+import {durationToPostgresInterval} from './durationToPGInterval';
 import moment from 'moment';
+import {Employee} from "./types/employee";
+
 export const performFetch = async (employee) => {
     try {
         const employeeId = employee.id;
@@ -13,7 +15,7 @@ export const performFetch = async (employee) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ employeeId }),
+            body: JSON.stringify({employeeId}),
         });
         if (!response.ok) {
             throw new Error('Failed to fetch work intervals');
@@ -25,22 +27,23 @@ export const performFetch = async (employee) => {
     }
 };
 
-export const performPost = async (employee, workTimeData) => {
+export const performPost = async (employee: Employee, workTimeData) => {
     try {
         // This is so stupid but it works. 
-        const workInterval = durationToPostgresInterval(moment.duration(workTimeData[0].sum));
+        const workInterval = durationToPostgresInterval(moment.duration(workTimeData[0]));
+
         const response = await fetch('/api/workIntervals/setBalance', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ workInterval, employee }),
+            body: JSON.stringify({workInterval, employee}),
         });
         if (!response.ok) {
             throw new Error('Failed to post balance to database');
         }
         return true;
     } catch (error) {
-        return Promise.reject(error);
+        throw error
     }
 };

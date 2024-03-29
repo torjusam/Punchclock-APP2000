@@ -18,7 +18,7 @@ export class Employee {
     fleksitidBalance?: string;
     isClockedIn: boolean;
     dailyWorkTime?: moment.Duration;
-    isWorkTimeReached? : boolean;
+    isWorkTimeReached?: boolean;
 
     constructor(
         id: number,
@@ -35,7 +35,7 @@ export class Employee {
         this.lastCheckIn = lastCheckIn;
         this.lastCheckOut = lastCheckOut;
         this.profilePictureUrl = profilePictureUrl;
-        
+
         // Sets isClockedIn to false if lastCheckOut is newer than lastCheckIn. Defaults to false
         if (this.lastCheckIn && this.lastCheckOut) {
             this.isClockedIn = this.lastCheckIn > this.lastCheckOut;

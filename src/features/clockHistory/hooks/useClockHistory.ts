@@ -2,13 +2,13 @@
     Author: Torjus A.M
     Custom hook for accessing the employees time clock history, and setting a state variable with it.
 */
-import { useState, useEffect } from 'react';
-import { useTimerContext } from '../../../context/timerContext';
+import {useState, useEffect} from 'react';
+import {useTimerContext} from '../../../context/timerContext';
 
 const useClockHistory = (employee) => {
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-    const { setCurrentTime } = useTimerContext();
+    const {setCurrentTime} = useTimerContext();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -25,7 +25,7 @@ const useClockHistory = (employee) => {
         fetchData();
     }, [employee.lastCheckIn, employee.lastCheckOut]);
 
-    return { data, isLoading };
+    return {data, isLoading};
 };
 
 export default useClockHistory;
@@ -37,7 +37,7 @@ const performFetch = async (employee) => {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ employeeId }),
+        body: JSON.stringify({employeeId}),
     });
     if (response.ok) {
         return await response.json();

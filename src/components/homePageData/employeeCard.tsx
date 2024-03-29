@@ -5,7 +5,7 @@
 */
 import React, {FC} from 'react';
 import {useRouter} from 'next/router';
-import {Employee} from '../../lib/employee';
+import {Employee} from '../../lib/types/employee';
 import LastCheckTime from './lastCheckTime';
 import styles from './employeeList.module.css';
 
@@ -14,7 +14,7 @@ interface EmployeeCardProps {
     employee: Employee;
 }
 
-export const EmployeeCard: FC<EmployeeCardProps> = ({employee}) => {
+const EmployeeCard: FC<EmployeeCardProps> = ({employee}) => {
     const router = useRouter();
     // Use either employees profile picture or a default avatar.
     const avatar = employee.profilePictureUrl ? employee.profilePictureUrl : './avatar.svg';
