@@ -7,6 +7,7 @@ import styles from './layout.module.css'
 import moment from 'moment';
 import 'moment/locale/nb';
 import '@fontsource/lato';
+import '@fontsource/dm-sans';
 
 // Moment library: NB = Norwegian Bokmål
 moment.locale('nb');

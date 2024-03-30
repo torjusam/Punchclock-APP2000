@@ -8,6 +8,8 @@ import {useRouter} from 'next/router';
 import HelpIco from '../../assets//helpIco.svg'
 import Clock from "./clock"
 import styles from "./layout.module.css"
+import Image from "next/image";
+import vismaLogo from "../../../public/vismaLogo.png";
 
 const LeftContent: FC = () => {
     const router = useRouter();
@@ -25,10 +27,14 @@ const LeftContent: FC = () => {
 
     return (
         <>
-            <img src="/vismalogo.png" alt="logo" className={styles.logo} onClick={handleLogoClick}/>
+            <Image className={styles.logo}
+                   src={vismaLogo}
+                   alt={"logo"}
+                   onClick={handleLogoClick}
+            />
             <Clock/>
             <div className={styles.helpContainer} onClick={handleHelpClick}>
-                <HelpIco className={styles.helpIco} alt="help"/>
+                <HelpIco className={styles.helpIco}/>
                 <div className={styles.helpText}>Hjelp</div>
             </div>
         </>

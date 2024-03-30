@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fontsource/dm-sans": "^5.0.19",
     "@fontsource/lato": "^5.0.20",
     "@fontsource/public-sans": "^5.0.17",
     "@heroicons/react": "^2.1.1",

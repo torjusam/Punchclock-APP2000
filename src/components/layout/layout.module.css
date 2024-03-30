@@ -5,9 +5,6 @@
  * Changes the size of the clock, date and greeting based on the screen width.
  */
 
-/* Google fonts: Lato & DM Sans */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
-
 /* Logo top left */
 .logo {
     display: flex;
@@ -31,6 +28,7 @@
 .clock {
     font-size: 10rem;
     color: white;
+    color: var(--red);
     font-family: 'DM Sans', sans-serif;
     font-weight: bold;
     text-shadow: 0.1rem 0.4rem 0.3rem rgba(0, 0, 0, 0.2);
