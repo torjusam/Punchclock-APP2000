@@ -41,14 +41,14 @@
 .dateText {
     font-size: 3rem;
     color: #f2f2f2;
-    font-family: var(--lato);
+    font-family: 'Lato', sans-serif;
     text-shadow: 0.1rem 0.4rem 0.3rem rgba(0, 0, 0, 0.1);
 }
 
 .greetingText {
     font-size: 3.5rem;
     color: #f2f2f2;
-    font-family: var(--lato);
+    font-family: 'Lato', sans-serif;
     text-shadow: 0.1rem 0.4rem 0.3rem rgba(0, 0, 0, 0.1);
 }
 

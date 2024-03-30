@@ -3,8 +3,8 @@
     Main component for all pages. This component is the layout of the app, and is used in every page.
     It contains all the content on the left side of the screen.
 */
-import React, { FC } from "react"
-import { useRouter } from 'next/router';
+import React, {FC} from "react"
+import {useRouter} from 'next/router';
 import HelpIco from '../../assets//helpIco.svg'
 import Clock from "./clock"
 import styles from "./layout.module.css"
@@ -14,17 +14,21 @@ const LeftContent: FC = () => {
 
     // Help button goes to CRUD page
     // må oppdateres for å bruke server side authentication for å bli redirected til CRUD side via authorization token - midlertidig løsning for å accesse pin siden
-    const handleHelpClick = () => { router.push('/auth/pin') };
+    const handleHelpClick = () => {
+        router.push('/auth/pin')
+    };
 
     // Logo goes to index page
-    const handleLogoClick = () => { router.push('/') };
+    const handleLogoClick = () => {
+        router.push('/')
+    };
 
     return (
         <>
-            <img src="/vismalogo.png" alt="logo" className={styles.logo} onClick={handleLogoClick} />
-            <Clock />
+            <img src="/vismalogo.png" alt="logo" className={styles.logo} onClick={handleLogoClick}/>
+            <Clock/>
             <div className={styles.helpContainer} onClick={handleHelpClick}>
-                <HelpIco className={styles.helpIco} alt="help" />
+                <HelpIco className={styles.helpIco} alt="help"/>
                 <div className={styles.helpText}>Hjelp</div>
             </div>
         </>
