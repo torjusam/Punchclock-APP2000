@@ -7,11 +7,12 @@ import EmployeeList from './employeeList';
 import FrontPageNav from '../layout/navbar/homePageNav';
 import FrontError from '../errors/frontError';
 import ErrorBoundary from '../errors/ErrorBoundary';
+import styles from './employeeList.module.css';
 
 
 const FrontPage: FC = () => {
     return (
-        <div style={{display: 'flex', flexDirection: 'column', width: '100%', padding: '2.3rem'}}>
+        <div className={styles.homePageContainer}>
             <FrontPageNav/>
             <ErrorBoundary fallback={<FrontError/>}>
                 <EmployeeList/>

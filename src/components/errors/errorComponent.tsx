@@ -1,14 +1,14 @@
 // ErrorComponent.tsx
-import React from 'react';
+import React, {FC} from 'react';
 import {useRouter} from "next/router";
-import Styles from "./errors/error.module.css";
-import {ResError} from "../lib/types/types";
+import Styles from "./error.module.css";
+import {ResError} from "../../lib/types/types";
 
 interface ErrorComponentProps {
     error: ResError;
 }
 
-const ErrorComponent: React.FC<ErrorComponentProps> = ({error}) => {
+const ErrorComponent: FC<ErrorComponentProps> = ({error}) => {
     const router = useRouter()
     return (
         <div className={Styles.frontErrorContainer}>
