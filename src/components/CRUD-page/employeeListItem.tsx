@@ -1,6 +1,7 @@
 import React from 'react';
-import {Employee} from '../../lib/employee';
+
 import styles from './employeeListItem.module.css';
+import {Employee} from "../../lib/types/employee";
 
 interface EmployeeListItemProps {
     employee: Employee;
@@ -8,15 +9,16 @@ interface EmployeeListItemProps {
     onDelete: (id: number) => void;
 }
 
-const EmployeeListItem: React.FC<EmployeeListItemProps> = ({ employee, onEdit, onDelete}) => {
+const EmployeeListItem: React.FC<EmployeeListItemProps> = ({employee, onEdit, onDelete}) => {
     return (
         <div className={styles.employeeListItem}>
             <div className={styles.employeeDetails}>
-            <span className={styles.employeeName}>{employee.name}</span>
+                <span className={styles.employeeName}>{employee.name}</span>
             </div>
             {/* Add mer info hvis nødvendig*/}
             <button className={`${styles.button} ${styles.editButton}`} onClick={() => onEdit(employee)}>Edit</button>
-            <button className={`${styles.button} ${styles.deleteButton}`} onClick={() => onDelete(employee.id)}>Delete</button>
+            <button className={`${styles.button} ${styles.deleteButton}`} onClick={() => onDelete(employee.id)}>Delete
+            </button>
         </div>
     );
 };
