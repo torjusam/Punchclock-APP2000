@@ -19,11 +19,9 @@
 .rightContainer {
     display: flex;
     background: #F8F8F8;
-    /* Take up all available space, but dont exceed 67% of the viewport*/
     width: 67vw;
     height: 100vh;
     margin: 0;
-    /* Grow automatically to take up any remaining space*/
     /* Rounded edges only on left side */
     border-top-left-radius: 3rem;
     border-bottom-left-radius: 3rem;

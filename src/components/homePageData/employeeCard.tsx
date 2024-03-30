@@ -8,6 +8,7 @@ import {useRouter} from 'next/router';
 import {Employee} from '../../lib/types/employee';
 import LastCheckTime from './lastCheckTime';
 import styles from './employeeList.module.css';
+import '@fontsource/public-sans';
 
 // Takes a type employee as parameter
 interface EmployeeCardProps {

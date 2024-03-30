@@ -67,7 +67,7 @@
     font-size: 1.8rem;
     color: #121212;
     font-weight: bold;
-    font-family: var(--pSans);
+    font-family: 'Public Sans', sans-serif;
 }
 
 /* Container for arrow icon and last check time */
@@ -79,8 +79,8 @@
 }
 
 .lastCheckTime {
-    color: var(--light-text);
-    font-family: var(--lato);
+    color: var(--red);
+    font-family: 'Lato', sans-serif;
     font-size: 1.88rem;
     margin-left: 0.1em;
 }

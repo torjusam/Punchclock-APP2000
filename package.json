@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fontsource/lato": "^5.0.20",
+    "@fontsource/public-sans": "^5.0.17",
     "@heroicons/react": "^2.1.1",
     "@material-tailwind/react": "^2.1.8",
     "@svgr/webpack": "^8.1.0",
