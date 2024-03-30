@@ -40,6 +40,7 @@ export default function SignInPage() {
         } catch (error) {
             if (error instanceof RateLimitError) {
                 setStatusText(error.message);
+                // Disable submit button for 5 seconds
             }
             setStatusText(error.message);
         }

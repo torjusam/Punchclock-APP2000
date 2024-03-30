@@ -18,20 +18,20 @@
     padding: 0.2em;
     border-radius: 0.5em;
     /* Text styles */
-    font-family: var(--pSans);
+    font-family: 'Public Sans', sans-serif;
     color: white;
     font-size: 2rem;
     font-weight: 700;
 }
 
 .buttonContainer:active {
-    box-shadow: inset 3px 4px 6px 0px rgba(79, 83, 85, 0.75);
+    box-shadow: inset 3px 4px 6px 0 rgba(79, 83, 85, 0.75);
     transform: scale(0.95);
 }
 
 .buttonContainer:disabled {
     opacity: 50%;
-    box-shadow: inset 3px 4px 6px 0px rgba(79, 83, 85, 0.75);
+    box-shadow: inset 3px 4px 6px 0 rgba(79, 83, 85, 0.75);
 }
 
 .clockedIn {
@@ -78,7 +78,7 @@
     overflow: hidden;
     /* Text styles */
     color: var(--light-text);
-    font-family: var(--lato);
+    font-family: 'Lato', sans-serif;
     font-weight: 500;
 }
 
@@ -126,7 +126,7 @@
 (max-height: 1000px) {
     .timeDisplay {
         margin: 0.3em;
-        margin-top: 0em;
+        margin-top: 0;
     }
 
     .timeDisplay h1 {

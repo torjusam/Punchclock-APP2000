@@ -1,12 +1,10 @@
 /*
     Author: Torjus A.M
-    Defines the layout of the personalPage, and exports it.
-    Responsible for wrapping data on the page with context providers.
+    Helper functions used in the shiftList. Function names are self-explanatory
 */
 import moment from 'moment';
 import {Shift} from "../../../lib/types/types";
 
-// Function to group shifts by month
 export function groupShiftsByMonth(shifts: Shift[]): { [month: string]: Shift[] } {
     const shiftsByMonth: { [month: string]: Shift[] } = {};
     shifts.forEach(shift => {

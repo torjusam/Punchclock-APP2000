@@ -94,7 +94,7 @@
 .shiftTime {
     font-family: 'Lato', sans-serif;
     font-size: 1.3rem;
-    color: #4E5052;
+    color: var(--dark-text);
 }
 
 .expandIcon {
@@ -129,10 +129,11 @@
     padding-right: 1rem;
     margin-bottom: 0.8rem;
 }
+
 .noShiftsContainer h2 {
     font-family: 'Lato', sans-serif;
     font-size: 1.1rem;
-    color: #212B36;
+    color: var(--dark-text);
 }
 
 @media screen and (max-width: 1300px),

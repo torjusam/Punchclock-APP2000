@@ -31,7 +31,7 @@
 
 .container h2 {
     align-self: center;
-    color: #4E5052;
+    color: var(--light-text);
     margin-bottom: 0.5rem;
     font-family: 'Public Sans', sans-serif;
     font-size: 0.9rem;

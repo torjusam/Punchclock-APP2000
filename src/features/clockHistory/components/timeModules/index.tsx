@@ -6,6 +6,8 @@ import React, {FC} from 'react';
 import {Employee} from '../../../../lib/types/employee';
 import FleksSalary from './fleksSalary';
 import WorkTimeSalary from './workTimeSalary';
+import '@fontsource/lato';
+import '@fontsource/public-sans';
 import styles from '../clockHistory.module.css';
 
 interface TimeModulesProps {

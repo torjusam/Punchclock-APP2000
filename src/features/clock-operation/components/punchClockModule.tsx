@@ -6,6 +6,9 @@ import React from 'react';
 import moment from 'moment';
 import {Employee} from '../../../lib/types/employee';
 import styles from './punchClock.module.css';
+import '@fontsource/lato';
+import '@fontsource/public-sans';
+import {formatTimer} from "../services/formatTimer";
 
 interface PunchClockTimeDisplayProps {
     timer: number;
@@ -13,15 +16,6 @@ interface PunchClockTimeDisplayProps {
     isLoading: boolean;
     errorMessage: string | null;
 }
-
-// Helper function to format timer to a human readable format.
-const formatTime = (seconds: number) => {
-    const duration = moment.duration(seconds, 'seconds');
-    const hours = duration.hours().toString().padStart(2, '0');
-    const minutes = duration.minutes().toString().padStart(2, '0');
-    const secs = duration.seconds().toString().padStart(2, '0');
-    return `${hours}t ${minutes}m ${secs}s`;
-};
 
 const PunchClockTimeDisplay: React.FC<PunchClockTimeDisplayProps> = ({timer, employee, isLoading, errorMessage}) => {
 
@@ -38,7 +32,7 @@ const PunchClockTimeDisplay: React.FC<PunchClockTimeDisplayProps> = ({timer, emp
                     timer >= 0 && (
                         <>
                             {/* Display timer since clocking in, and when it was started */}
-                            <h1>{formatTime(timer)}</h1>
+                            <h1>{formatTimer(timer)}</h1>
                             <h2>
                                 {moment(employee.lastCheckIn).format('LT')} -
                                 {/* Shows the time between clock operations, after clocking out: '19:00 - 23:00' / '19:00 - ?' */}

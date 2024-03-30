@@ -2,9 +2,10 @@
     Author Torjus A.M
     Context for sharing the worktimedata this current week between components.
 */
-import React, { createContext, useState, useEffect, useContext, ReactNode } from 'react';
-import { Employee } from '../lib/types/employee';
-import { performFetch, performPost } from '../lib/workIntervalsAPI';
+import React, {createContext, ReactNode, useContext, useEffect, useState} from 'react';
+import {Employee} from '../lib/types/employee';
+import {performFetch, performPost} from '../lib/workIntervalsAPI';
+import {objectToPostgresInterval} from "../lib/durationToPGInterval";
 
 interface workIntervalContextProps {
     employee: Employee;
@@ -14,33 +15,27 @@ interface workIntervalContextProps {
 
 const WorkIntervalContext = createContext<workIntervalContextProps | undefined>(undefined);
 
-export default function WorkIntervalProvider({ children, employee }: { children: ReactNode, employee: Employee }) {
-    const [workTimeData, setworkTimedata] = useState(null);
+export default function WorkIntervalProvider({children, employee}: { children: ReactNode, employee: Employee }) {
+    const [workTimeData, setWorkTimedata] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const fetchBalance = async () => {
             const result = await performFetch(employee);
-            setworkTimedata(result);
+            setWorkTimedata(result);
             setIsLoading(false);
+            // After data is calculated in the query, post it to the DB. Do not await it.
+            if (result) {
+                const postgresIntervalString = objectToPostgresInterval(result[0].sum);
+                performPost(employee, postgresIntervalString);
+            }
         };
 
         fetchBalance();
     }, [employee.lastCheckOut]);
 
-    // Post salary to the database after data is changed, which is after all other operations are done on a clock-out.
-    useEffect(() => {
-        if (!workTimeData) return;
-    
-        const postBalance = async (employee, workTimeData) => {
-            await performPost(employee, workTimeData);
-            await postBalance(employee, workTimeData);
-        };
-
-    }, [workTimeData]);
-
     return (
-        <WorkIntervalContext.Provider value={{ employee, workTimeData, isLoading }}>
+        <WorkIntervalContext.Provider value={{employee, workTimeData, isLoading}}>
             {children}
         </WorkIntervalContext.Provider>
     );

@@ -18,7 +18,6 @@
 
 .icon {
     width: 2.8rem;
-    margin: 0 auto;
     stroke: #ffffff;
     fill: none;
     stroke-width: 1.5;
@@ -28,7 +27,7 @@
 
 .input,
 .button {
-    font-family: var(--lato);
+    font-family: 'Lato', sans-serif;
     color: #6F6F6F;
     font-size: 1.4rem;
     height: 100%;
@@ -53,9 +52,10 @@
     border-radius: 2rem;
 }
 
-.input:not(:placeholder-shown)  {
+.input:not(:placeholder-shown) {
     border-radius: 0;
     width: calc(100% - 8rem);
+
     + .button {
         display: flex;
         justify-content: center;
@@ -73,6 +73,7 @@
     .input:not(:placeholder-shown) {
         width: calc(100% - 9rem);
     }
+
     .button {
         width: 8rem;
     }

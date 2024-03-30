@@ -12,6 +12,7 @@ import useShifts from "../../../hooks/useShifts";
 import ShiftDisplay from "./shiftDisplay";
 import {groupShiftsByMonth, sortMonths} from "../services/sortShifts";
 import NoShifts from "./noShifts";
+import '@fontsource/lato';
 
 interface RenderShiftListProps {
     employee: Employee;

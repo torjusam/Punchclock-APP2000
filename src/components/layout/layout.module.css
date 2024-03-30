@@ -28,7 +28,6 @@
 .clock {
     font-size: 10rem;
     color: white;
-    color: var(--red);
     font-family: 'DM Sans', sans-serif;
     font-weight: bold;
     text-shadow: 0.1rem 0.4rem 0.3rem rgba(0, 0, 0, 0.2);
@@ -50,11 +49,11 @@
     text-shadow: 0.1rem 0.4rem 0.3rem rgba(0, 0, 0, 0.1);
 }
 
-/* S resolution: tablet */
-@media screen and (max-width: 1250px) {
+/* S to M resolution: Small to medium devices */
+@media screen and (max-width: 1110px) {
     .clock {
-        font-size: 8rem;
-        line-height: 10rem;
+        font-size: 7rem;
+        line-height: 11rem;
     }
 
     .dateText {
@@ -63,6 +62,22 @@
 
     .greetingText {
         font-size: 2.7rem;
+    }
+}
+
+/* S resolution: tablet */
+@media screen and (min-width: 1111px) and (max-width: 1340px) {
+    .clock {
+        font-size: 8.5rem;
+        line-height: 12rem;
+    }
+
+    .dateText {
+        font-size: 2.9rem;
+    }
+
+    .greetingText {
+        font-size: 2.9rem;
     }
 }
 
@@ -109,7 +124,7 @@
     color: #1C274C;
     opacity: 90%;
     font-size: 1.1rem;
-    font-family: var(--lato);
+    font-family: 'Lato', sans-serif;
     font-weight: bold;
     text-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.0);
 }

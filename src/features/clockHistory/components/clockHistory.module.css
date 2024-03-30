@@ -32,11 +32,11 @@
 
 .timeModules h1 {
     color: var(--light-text);
-    font-family: var(--pSans);
+    font-family: 'Public Sans', sans-serif;
 }
 
 .timeModules h2 {
-    font-family: var(--lato);
+    font-family: 'Lato', sans-serif;
     font-weight: 700;
     color: #343639;
     letter-spacing: 0.04em;
@@ -83,29 +83,29 @@
     background-color: #F5F7FA;
 }
 
-.heading>.rowItem {
+.heading > .rowItem {
     flex: 1;
     font-size: 1.25rem;
     font-weight: 700;
-    font-family: var(--pSans);
+    font-family: 'Public Sans', sans-serif;
     color: #606266;
 }
 
 .date h1 {
-    font-family: var(--lato);
+    font-family: 'Lato', sans-serif;
     font-weight: 600;
     color: var(--dark-text);
 }
 
 .date h2 {
-    font-family: var(--pSans);
+    font-family: 'Lato', sans-serif;
     font-weight: 400;
     color: #606266;
 }
 
 /* Column 3-4: Time */
 .rowItem h3 {
-    font-family: var(--lato);
+    font-family: 'Lato', sans-serif;
     color: var(--light-text);
 }
 
@@ -118,11 +118,11 @@
 
 /* Width of column and its heading */
 .rowSubContainer,
-.heading>.rowItem:nth-child(2) {
+.heading > .rowItem:nth-child(2) {
     flex: 0 0 8rem;
 }
 
-.rowSubContainer>.rowItem {
+.rowSubContainer > .rowItem {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -140,10 +140,10 @@
 .rowSubContainer h1 {
     display: flex;
     justify-self: center;
-    font-weight: 400;
-    font-family: var(--lato);
     margin-left: 0.25em;
+    font-family: 'Lato', sans-serif;
     color: var(--light-text);
+    font-weight: 400;
 }
 
 /* Remove border if its a subContainer to avoid overlapping borders */
@@ -202,18 +202,18 @@
         font-size: 1.8rem;
     }
 
-    .heading>.rowItem {
+    .heading > .rowItem {
         font-size: 1.1rem;
     }
 
     /* Date column and header width */
     .date,
-    .heading>.rowItem:nth-child(1) {
+    .heading > .rowItem:nth-child(1) {
         flex: 0 0 3.3rem;
     }
 
     .rowSubContainer,
-    .heading>.rowItem:nth-child(2) {
+    .heading > .rowItem:nth-child(2) {
         flex: 0 0 6rem;
     }
 
@@ -234,7 +234,7 @@
         font-size: 1.35rem;
     }
 
-    .rowSubContainer>.rowItem {
+    .rowSubContainer > .rowItem {
         padding: 0.1em;
     }
 
@@ -261,12 +261,12 @@
 
     /* Date column and header width */
     .date,
-    .heading>.rowItem:nth-child(1) {
+    .heading > .rowItem:nth-child(1) {
         flex: 0 0 4.8rem;
     }
 
     .rowSubContainer,
-    .heading>.rowItem:nth-child(2) {
+    .heading > .rowItem:nth-child(2) {
         flex: 0 0 7rem;
     }
 
@@ -283,7 +283,7 @@
         font-size: 1.5rem;
     }
 
-    .rowSubContainer>.rowItem {
+    .rowSubContainer > .rowItem {
         padding: 0.05em;
     }
 
@@ -308,13 +308,13 @@
 
     /* Date column and header width */
     .date,
-    .heading>.rowItem:nth-child(1) {
+    .heading > .rowItem:nth-child(1) {
         flex: 0 0 5.5rem;
         padding: 0.3em;
     }
 
     .rowSubContainer,
-    .heading>.rowItem:nth-child(2) {
+    .heading > .rowItem:nth-child(2) {
         flex: 0 0 7.5rem;
     }
 
@@ -331,7 +331,7 @@
         font-size: 1.7rem;
     }
 
-    .rowSubContainer>.rowItem {
+    .rowSubContainer > .rowItem {
         padding: 0.01em;
     }
 
@@ -354,19 +354,19 @@
         font-size: 2.2rem;
     }
 
-    .heading>.rowItem {
+    .heading > .rowItem {
         font-size: 1.5rem;
     }
 
     /* Date column and header width */
     .date,
-    .heading>.rowItem:nth-child(1) {
+    .heading > .rowItem:nth-child(1) {
         flex: 0 0 7.3rem;
         padding: 0.3em;
     }
 
     .rowSubContainer,
-    .heading>.rowItem:nth-child(2) {
+    .heading > .rowItem:nth-child(2) {
         flex: 0 0 9rem;
     }
 
@@ -384,7 +384,7 @@
         font-size: 1.9rem;
     }
 
-    .rowSubContainer>.rowItem {
+    .rowSubContainer > .rowItem {
         padding: 0.01em;
     }
 

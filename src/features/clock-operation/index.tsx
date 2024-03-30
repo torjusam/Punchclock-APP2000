@@ -10,6 +10,7 @@ import styles from '../../components/employeePageData/employeePageLayout.module.
 import ClockInOutButton from './components/clockInOutButton';
 import PunchClockTimeDisplay from './components/punchClockModule';
 import {useEmployeeTimer} from './hooks/useEmployeeTimer';
+import '@fontsource/public-sans';
 import moment from 'moment';
 import 'moment/locale/nb';
 // Moment library: NB = Norwegian Bokmål
@@ -20,7 +21,7 @@ interface PunchClockProps {
 }
 
 const PunchClock: FC<PunchClockProps> = ({employee}) => {
-    const {timer, lastCheckOut} = useEmployeeTimer(employee);
+    const {timer} = useEmployeeTimer(employee);
     /* Passes a shared loading state for a seamless transition to a skeleton-loading style
        after button press, indicating an ongoing check operation. */
     const [isLoading, setIsLoading] = useState(false);

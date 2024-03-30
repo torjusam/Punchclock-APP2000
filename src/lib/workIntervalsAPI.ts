@@ -3,8 +3,6 @@
     Logic for performing fetch and posts on the workTime intervals from the datbabase.
     Used in the workIntervalContext.
 */
-import {durationToPostgresInterval} from './durationToPGInterval';
-import moment from 'moment';
 import {Employee} from "./types/employee";
 
 export const performFetch = async (employee) => {
@@ -27,11 +25,8 @@ export const performFetch = async (employee) => {
     }
 };
 
-export const performPost = async (employee: Employee, workTimeData) => {
+export const performPost = async (employee: Employee, workInterval: string) => {
     try {
-        // This is so stupid but it works. 
-        const workInterval = durationToPostgresInterval(moment.duration(workTimeData[0]));
-
         const response = await fetch('/api/workIntervals/setBalance', {
             method: 'POST',
             headers: {

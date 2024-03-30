@@ -33,6 +33,7 @@
     "react-dom": "^18",
     "react-simple-keyboard": "latest",
     "react-toastify": "^10.0.5",
+    "sharp": "^0.33.3",
     "simple-keyboard": "^3.7.65"
   },
   "devDependencies": {

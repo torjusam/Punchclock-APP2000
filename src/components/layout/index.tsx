@@ -9,7 +9,8 @@ import HelpIco from '../../assets//helpIco.svg'
 import Clock from "./clock"
 import styles from "./layout.module.css"
 import Image from "next/image";
-import vismaLogo from "../../../public/vismaLogo.png";
+import vismaLogo from "../../assets/vismalogo.png";
+import '@fontsource/dm-sans';
 
 const LeftContent: FC = () => {
     const router = useRouter();

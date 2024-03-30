@@ -6,7 +6,7 @@ import {useEmployeeContext} from '../../../context/employeeContext';
 import {clockInOutOperation} from '../services/performClockOperation';
 import ArrowOut from '../../../assets/arrowOut.svg';
 import ArrowIn from '../../../assets/arrowIn.svg';
-
+import '@fontsource/public-sans';
 import Toast from '../../../components/toastContainer';
 import styles from './punchClock.module.css'
 

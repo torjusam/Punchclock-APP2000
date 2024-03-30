@@ -9,6 +9,8 @@ import ClockCheck from '../../assets/clockCheck.svg';
 import ClockHistoryTable from './components/clockHistoryTable';
 import useClockHistory from './hooks/useClockHistory';
 import TimeModules from './components/timeModules';
+import '@fontsource/lato';
+import '@fontsource/public-sans';
 import styles from '../../components/employeePageData/employeePageLayout.module.css';
 
 interface ClockHistoryProps {
