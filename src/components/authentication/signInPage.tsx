@@ -3,7 +3,6 @@
     This is the signin page for the application. Redirects to this page if the user is not authenticated.
 */
 import React, {useState} from 'react'
-import {useRouter} from 'next/router'
 import {signIn} from 'next-auth/react'
 import {useFormik} from 'formik';
 import login_validate, {FormValues} from "../../utils/validateSignin"
@@ -11,7 +10,6 @@ import styles from './signInPage.module.css'
 
 
 export default function SignInPage() {
-    const router = useRouter()
     const [statusText, setStatusText] = useState('')
     // formik hook
     const formik = useFormik({
@@ -28,19 +26,15 @@ export default function SignInPage() {
             const status = await signIn("credentials", {
                 email: values.email,
                 password: values.password,
-                redirect: false
+                redirect: true
             })
-
-            // If the user is authenticated, redirect to the home page
-            if (status.ok) {
-                await router.push('/');
-            } else {
+            if (!status.ok)
                 setStatusText(status.error);
-            }
+
         } catch (error) {
             if (error instanceof RateLimitError) {
                 setStatusText(error.message);
-                // Disable submit button for 5 seconds
+                // TODO: Disable form
             }
             setStatusText(error.message);
         }

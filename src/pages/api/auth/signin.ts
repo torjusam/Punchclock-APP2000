@@ -20,7 +20,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         const text = (`
         SELECT *
-        FROM accounts
+        FROM account
         WHERE email = $1
        `);
         const values = [email];

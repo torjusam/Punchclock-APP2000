@@ -7,6 +7,7 @@ import {getServerSession} from "next-auth/next";
 import {limiter} from "./limiter";
 import {NextApiRequest, NextApiResponse} from "next";
 import {NextAuthOptions} from "next-auth";
+import {logUserActivity} from "../auth/[...nextauth]";
 
 interface HandleAPICallResponse {
     success: boolean;
@@ -14,18 +15,21 @@ interface HandleAPICallResponse {
 }
 
 async function handleAPICall(req: NextApiRequest, res: NextApiResponse, authOptions: NextAuthOptions): Promise<HandleAPICallResponse> {
-    const remaining = await limiter.removeTokens(1);
-    if (remaining < 0) {
-        res.status(429).json({error: 'For mange forespørsler!'});
-        // TODO: Log rate limit
-        return {success: false, res};
-    }
-
     const session = await getServerSession(req, res, authOptions);
     if (!session) {
         res.status(401).json({error: 'Unauthorized API request'});
+        // TODO: Log unuathorized api requests, redirect to error page.
         return {success: false, res};
     }
+
+    const remaining = await limiter.removeTokens(10);
+    if (remaining < 0) {
+        res.status(429).json({error: 'For mange forespørsler!'});
+        // TODO: Log rate limit, redirect to error page
+        // logUserActivity('rate_limit', session.user.id, 'Too many requests');
+        return {success: false, res};
+    }
+
 
     return {success: true, res};
 }
