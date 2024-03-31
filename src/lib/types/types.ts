@@ -29,7 +29,7 @@ export interface ClockHistoryData {
 
 // Type for the employees shift.
 export interface Shift {
-    // To-Do: Use the id from the fetched shift to find everyone else assigned to the same shift.
+    // TODO: Use the ID to find other employees assigned to the shift.
     id?: number;
     description?: string;
     start: string;

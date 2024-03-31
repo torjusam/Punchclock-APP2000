@@ -17,6 +17,7 @@ async function handleAPICall(req: NextApiRequest, res: NextApiResponse, authOpti
     const remaining = await limiter.removeTokens(1);
     if (remaining < 0) {
         res.status(429).json({error: 'For mange forespørsler!'});
+        // TODO: Log rate limit
         return {success: false, res};
     }
 

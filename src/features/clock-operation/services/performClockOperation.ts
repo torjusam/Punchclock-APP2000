@@ -31,7 +31,7 @@ export const clockInOutOperation = async (
             toast.error(error.message);
             return;
         } else if (error instanceof TypeError) {
-            // To-Do: Handle error. Likely something wrong with the app-layer.
+            // TODO: Handle error. Likely something wrong with app-layer
             console.error(error);
             toast.error(error.message), {autoClose: 10000};
         } else {

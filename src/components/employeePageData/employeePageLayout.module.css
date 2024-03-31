@@ -4,12 +4,8 @@
  * Styles for the employee-page and its modules. (Nav bar styling is in .src/styles/navbars.module.css).
  * Starts by defining shared styles for all containers, then specific styles for the modules.
  * 
- * 
- * To-Do: 
- *   Header text responsiveness
+ *
  */
-@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 
 .personalPageContainer {
     display: flex;
@@ -74,7 +70,7 @@
 
 /* Media queries to change the header content by screen-size */
 @media screen and (max-width: 1300px),
-(max-height: 1000px) {
+(max-height: 800px) {
     .personalPageContainer {
         padding: 1.5rem;
     }

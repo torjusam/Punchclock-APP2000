@@ -13,6 +13,7 @@ interface FleksSalaryProps {
 }
 
 const FleksSalary: FC<FleksSalaryProps> = ({employee}) => {
+    // TODO: Error, loading
     const {fleksSalary, isLoading} = useFleksSalary(employee);
 
     return (

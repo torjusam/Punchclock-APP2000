@@ -9,10 +9,11 @@ import {Employee} from '../../../lib/types/employee';
 import styles from './shiftList.module.css';
 import 'moment/locale/nb';
 import useShifts from "../../../hooks/useShifts";
-import ShiftDisplay from "./shiftDisplay";
+import ShiftDisplay from "./shiftCard";
 import {groupShiftsByMonth, sortMonths} from "../services/sortShifts";
 import NoShifts from "./noShifts";
 import '@fontsource/lato';
+import Loading from "./shiftListLoading";
 
 interface RenderShiftListProps {
     employee: Employee;
@@ -22,9 +23,9 @@ const RenderShiftList: FC<RenderShiftListProps> = ({employee}) => {
     const {shifts, isLoading} = useShifts(employee);
 
     if (isLoading)
-        return <div>Loading...</div>;
+        return <Loading/>
 
-    if (!isLoading && !shifts || shifts.length === 0)
+    else if (!shifts || shifts.length === 0)
         return <NoShifts/>
 
     const shiftsByMonth = groupShiftsByMonth(shifts);
@@ -33,7 +34,7 @@ const RenderShiftList: FC<RenderShiftListProps> = ({employee}) => {
     return (
         <>
             {sortedMonths.map(month => (
-                <div key={month}>
+                <div key={month} style={{paddingBottom: '0.5rem'}}>
                     <div className={styles.monthContainer}>
                         <hr/>
                         <h2 className={styles.monthText}>

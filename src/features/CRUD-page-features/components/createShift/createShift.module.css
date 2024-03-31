@@ -1,10 +1,4 @@
-/**
- * Author: Torjus A.M
- *
- * CSS module for the create-shift module.
- */
-@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap');
-
+/* Author: Torjus A.M */
 .container {
     display: flex;
     flex-direction: column;

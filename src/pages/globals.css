@@ -1,7 +1,8 @@
-/* Author: Torjus A.M */
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap');
-
+/*
+    Author: Torjus A.M
+    Only css file that is not a module. Global css file for the entire project.
+    Must be defined in the pages folder.
+*/
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

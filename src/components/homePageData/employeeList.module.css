@@ -5,9 +5,8 @@
  * of employees on the frontpage, inidividual employee cards and conditional
  * styling for selecting and clocked in employees.
  * 
- * To-Do: 
- *   Update borders on the profile pictures. 
- *   Handle too long of a employee name. (With ellipsis?)
+ * TODO:
+ *   Update borders on the profile pictures.
  */
 
 .homePageContainer {
@@ -124,7 +123,7 @@
 /* Media query to change layout by viewport size
    ========================================================================== */
 @media screen and (max-width: 1300px),
-(max-height: 1000px) {
+(max-height: 800px) {
     .homePageContainer {
         padding: 1.5rem;
     }

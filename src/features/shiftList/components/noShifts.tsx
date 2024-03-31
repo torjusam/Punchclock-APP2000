@@ -1,7 +1,4 @@
-/*
-    Author: Torjus A.M
-    Small component for when the employee has no upcoming shifts.
-*/
+// Author: Torjus A.M
 import React, {FC} from "react";
 import Umbrella from "../../../assets/umbrella.svg";
 import styles from './shiftList.module.css';
@@ -10,8 +7,8 @@ const NoShifts: FC = () => {
 
     return (
         <>
-            <hr/>
-            <div className={styles.noShiftsContainer}>
+            <hr style={{marginTop: '0.5rem'}}/>
+            <div className={styles.temporaryContainer}>
                 <div className={styles.iconContainer}>
                     <Umbrella className={styles.relaxIcon}/>
                 </div>

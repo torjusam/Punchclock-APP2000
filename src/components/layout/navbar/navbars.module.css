@@ -1,11 +1,7 @@
-/**
- * Author: Torjus A.M
- *
- *  CSS module for all the navbars.
- *
- *  To-Do:
- *    Media queries for text and icon size.
- */
+/*
+    Author: Torjus A.M
+    TODO: Simplify this module
+*/
 
 /* Parent of all nav bars*/
 .navBarContainer {
@@ -38,7 +34,7 @@
     border: 1px solid rgba(27, 31, 35, 0.15);
     border-radius: 1em;
     background-color: #E6EBF2;
-    box-shadow: 0px 2px 3px 0px #e0dada;
+    box-shadow: 0 2px 3px 0 #e0dada;
     color: #24292E;
     font-family: 'Public Sans', sans-serif;
     font-size: 1.6rem;
@@ -119,12 +115,12 @@
 }
 
 .avatar {
-    width: 1em;
+    width: 4.2rem;
     border-radius: 50%;
     aspect-ratio: 1/1;
     margin-right: 1em;
     border: 3px solid #fcfcfc;
-    box-shadow: 0px 1px 2px 0px #acacac;
+    box-shadow: 0 1px 2px 0 #acacac;
 }
 
 .employeeName {
@@ -145,7 +141,7 @@
     }
 
     .avatar {
-        width: 4.2rem;
+        width: 3.9rem;
     }
 
     .employeeName {

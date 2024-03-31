@@ -1,12 +1,7 @@
-/**
+/*
  * Author: Torjus A.M
- *
- * Styles for the PunchClock module (Stemplingsklokke).
- *
+ * Styles for the PunchClock (Stemplingsklokke).
  */
-
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap');
 
 /* ==========================================================================
   Button styles
@@ -65,7 +60,6 @@
     stroke-width: 0.1em;
 }
 
-
 /* ==========================================================================
    Timer styles
    ========================================================================== */
@@ -93,7 +87,7 @@
     font-size: 1.5rem;
 }
 
-/* Timer loading styles
+/* Timer loading styles TODO: Update loading to use react-loader-spinner
    ========================================================================== */
 .line {
     margin-top: 1.3em;
@@ -123,7 +117,7 @@
 }
 
 @media screen and (max-width: 1300px),
-(max-height: 1000px) {
+(max-height: 900px) {
     .timeDisplay {
         margin: 0.3em;
         margin-top: 0;
