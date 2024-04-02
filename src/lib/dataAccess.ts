@@ -7,11 +7,18 @@ export async function fetchEmployees(): Promise<Employee[]> {
         const response = await fetch('/api/getEmployees');
         if (response.ok) {
             const result = await response.json();
+            // Maps over json to create employee objects with the results from api
             return result.map((row: any) => {
-                // Creates employee object with results from api
-                return new Employee(row.id, row.name, row.plannedwork, row.pin, row.profilepictureurl, row.lastcheckin, row.lastcheckout);
+                return new Employee(
+                    row.id,
+                    row.name,
+                    row.plannedwork,
+                    row.pin,
+                    row.profilepictureurl,
+                    row.lastcheckin,
+                    row.lastcheckout
+                );
             });
-            // Error: return empty employee-array
         } else {
             console.error('Error:', response.status);
             throw {status: response.status, message: response.statusText};

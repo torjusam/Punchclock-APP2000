@@ -1,57 +1,42 @@
 /* 
     Author: Torjus A.M
-    Main entry point of NextAuth.js. This file is used to configure the authentication providers and options.
-    The credentials provider is used to authenticate users with a self-defined username and password.
+    Main entry point of NextAuth.js. This file is used to configure the authentication providers and security configuration.
+
+    Session is set to JWT, which is JSON Web Token. This is a stateless authentication method, which means that the server
+    doesn't need to store the session state, but instead the client will store the session state.
+
+    The credentials provider is used to authenticate users with our custom defined username and password.
     In this case it was set as an email, even though it could just be a username and password.
+
+    This config also includes a callback function that will add the user id to the session object,
+    so that we can use it to log errors, and other information worth storing.
 */
 import NextAuth, {NextAuthOptions, User} from "next-auth"
 import CredentialsProvider from 'next-auth/providers/credentials'
 import bcrypt from "bcrypt";
-import {getSession} from "next-auth/react";
-
-// Function to log user activity
-export async function logUserActivity(eventType: string, accountId?: string, details?: string) {
-
-    const session = await getSession()
-    if (session && !accountId) {
-        accountId = session.user.id
-        console.log("session user: ", session.user.id);
-    }
-    console.log('Logging event:', eventType, details, accountId)
-
-    await fetch('http://localhost:3000/api/auth/setLog', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            event_type: eventType,
-            account_id: accountId,
-            details: details
-        }),
-    }).catch(error => {
-        console.error('Feil i loggføring:', error);
-        throw new Error('Feil under loggføring, kontakt en administrator.');
-    });
-}
+import {getServerSession} from "next-auth/next";
+import {GetServerSidePropsContext, NextApiRequest, NextApiResponse} from "next";
+import {logUserActivity} from "../serverUtilts/logUserActivity";
+import RateLimitError from "../../../utils/errors";
 
 export const authOptions: NextAuthOptions = {
     session: {
         strategy: 'jwt',
-        maxAge: 2 * 24 * 60 * 60, // Session expires after 2 days (in seconds)
+        maxAge: 2 * 24 * 60 * 60, // Session expires after 2 days (in seconds). Normally quite a long time for a token.
         updateAge: 24 * 60 * 60, // Update session age every day (in seconds)
     },
     providers: [
+        // Custom provider for authenticating with an email and password.
         CredentialsProvider({
             type: "credentials",
             credentials: {},
-            // Function to validate credentials
+            // Provider's authorization method, used to validate information to authenticate user.
             async authorize(credentials, req) {
                 const {email, password} = credentials as {
                     email: string
                     password: string
                 };
-                // Fetch account data from API endpoint
+                // Fetch account data from DB using email.
                 const response = await fetch('http://localhost:3000/api/auth/signin', {
                     method: 'POST',
                     headers: {
@@ -61,19 +46,29 @@ export const authOptions: NextAuthOptions = {
                 });
 
                 if (response.status === 429) {
-                    logUserActivity('ratelimit_reached', undefined, '15 unsuccessful login attempts in the last hour.');
+                    logUserActivity(
+                        'ratelimit_reached',
+                        undefined,
+                        '15 unsuccessful signin attempts in the span of one hour.'
+                    );
                     throw new RateLimitError();
                 }
 
                 const users = await response.json(); // Parse response to JSON
 
                 if (users.length > 0) {
-                    const user = users[0]; // Get the first user object from the array
+                    const user = users[0]; // Get the first user object from the json array
+                    /*
+                        Compare the password from the form, with the hashed password from the DB using bcrypt.
+                        The password was created with bcrypt, and since the salt is stored in the hashed password,
+                        bcrypt can use the same salt to hash the password and compare.
+                        basically, the saltedHash = salt string + hashedPassword
+                    */
                     const isValid = await bcrypt.compare(password, user.password_hash);
 
+                    // Return the user if the password matches and log the event.
                     if (isValid) {
                         logUserActivity('login', user.id, 'Successful login');
-                        // Return the user if the password matches
                         return {
                             id: user.id,
                             email: user.email,
@@ -108,6 +103,11 @@ export const authOptions: NextAuthOptions = {
             },
         }),
     },
-};
+} satisfies NextAuthOptions;
+
+// Helper function for fetching the serverSession (avoid passing AuthOptions to each function)
+export function auth(...args: [GetServerSidePropsContext["req"], GetServerSidePropsContext["res"]] | [NextApiRequest, NextApiResponse] | []) {
+    return getServerSession(...args, authOptions)
+}
 
 export default NextAuth(authOptions);

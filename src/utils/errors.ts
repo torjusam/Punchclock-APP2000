@@ -1,10 +1,9 @@
 /*
-* Author: Torjus A.M
-* Custom errors for the application, extends Error.
-* Illicits different responses.
+    Author: Torjus A.M
+    Custom errors for the application, extends Error.
+    Illicits different responses.
 * */
 
-// When theres too many requests
 class RateLimitError extends Error {
     statusCode: number;
 
@@ -16,3 +15,5 @@ class RateLimitError extends Error {
         Object.setPrototypeOf(this, RateLimitError.prototype);
     }
 }
+
+export default RateLimitError;

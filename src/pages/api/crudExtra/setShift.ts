@@ -1,17 +1,13 @@
 // Author: Torjus A.M
 import {NextApiRequest, NextApiResponse} from 'next';
 import {pool} from '../../../lib/dbIndex';
-import {authOptions} from "../auth/[...nextauth]";
-import handleAPICall from "../config/handleAPICall";
 import {Shift} from "../../../lib/types/types";
 import {Employee} from "../../../lib/types/employee";
+import {handler, Middleware} from "../../../middleware/handler";
+import {allowMethods} from "../../../middleware/method";
+import {middleware_1, middleware_2} from "../../../middleware/middlewares";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-
-    const {success, res: response} = await handleAPICall(req, res, authOptions);
-    if (!success)
-        return response;
-
+const setShift: Middleware = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
         const {employee, shift}: { employee: Employee, shift: Shift } = req.body;
         const {id} = employee;
@@ -38,3 +34,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         res.status(500).json({error: 'Internal Server Error'});
     }
 }
+export default handler(
+    allowMethods(['POST']), // Use the method middleware to allow only POST requests
+    middleware_1,
+    middleware_2,
+    setShift,
+);

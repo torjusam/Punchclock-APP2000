@@ -5,16 +5,29 @@
 */
 import {NextApiRequest, NextApiResponse} from 'next';
 import {pool} from '../../../lib/dbIndex';
-import {signinLimiter} from "../config/limiter";
+import {handler, Middleware, NextFunction} from "../../../middleware/handler";
+import {allowMethods} from "../../../middleware/method";
+import {signinLimiter} from "../serverUtilts/rateLimiter";
+import {logUserActivity} from "../serverUtilts/logUserActivity";
+import RateLimitError from "../../../utils/errors";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    // Rate limiter for the signin route. Prevents brute force attacks.
+const middleware_1: Middleware = async (req: NextApiRequest, res: NextApiResponse, next: NextFunction) => {
     const remaining = await signinLimiter.removeTokens(1);
+
     if (remaining < 0) {
         res.status(429).json({error: 'For mange forespørsler!'});
-        return;
+        // TODO: Alert admin
+        logUserActivity(
+            'ratelimit_reached',
+            undefined,
+            '15 unsuccessful signin attempts in the span of one hour.'
+        );
+        throw new RateLimitError();
     }
+    next();
+}
 
+const signIn: Middleware = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
         const {email} = req.body;
 
@@ -31,4 +44,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         res.status(500).json({error: 'Internal Server Error'});
         throw error;
     }
+}
+
+export default handler(
+    allowMethods(['POST']),
+    middleware_1,
+    signIn,
+);
+
+/* Avoid false-positive warning "API resolved without sending a response":
+Code taken from forum post answer: https://github.com/vercel/next.js/discussions/40270#discussioncomment-3571223 */
+export const config = {
+    api: {
+        externalResolver: true,
+    },
 }

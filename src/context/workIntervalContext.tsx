@@ -26,7 +26,8 @@ export default function WorkIntervalProvider({children, employee}: { children: R
             setIsLoading(false);
             // After data is calculated in the query, post it to the DB. Do not await it.
             if (result) {
-                const postgresIntervalString = objectToPostgresInterval(result[0].sum);
+                const sum = result[0].sum;
+                const postgresIntervalString = objectToPostgresInterval(sum);
                 performPost(employee, postgresIntervalString);
             }
         };

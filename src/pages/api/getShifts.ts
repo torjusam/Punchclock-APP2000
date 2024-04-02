@@ -1,18 +1,13 @@
 // Author: Torjus A.M
 import {NextApiRequest, NextApiResponse} from 'next';
 import {pool} from '../../lib/dbIndex'
-import {authOptions} from "./auth/[...nextauth]";
-import handleAPICall from "./config/handleAPICall";
+import {handler, Middleware} from "../../middleware/handler";
+import {allowMethods} from "../../middleware/method";
+import {middleware_1, middleware_2} from "../../middleware/middlewares";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-
-    const {success, res: response} = await handleAPICall(req, res, authOptions);
-    if (!success)
-        return response;
-
+const getShifts: Middleware = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
         const {employeeId} = req.body;
-        // Fetch shifts where the employee is scheduled.
         const text = (`
             SELECT 
                 s.id, s.description, s.start, s."end"
@@ -30,4 +25,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         res.status(500).json({error: 'Internal Server Error'});
         throw error;
     }
+}
+
+export default handler(
+    allowMethods(['POST']), // Use the method middleware to allow only POST requests
+    middleware_1,
+    middleware_2,
+    getShifts,
+);
+
+/* Avoid false-positive warning "API resolved without sending a response":
+Code taken from forum post answer: https://github.com/vercel/next.js/discussions/40270#discussioncomment-3571223 */
+export const config = {
+    api: {
+        externalResolver: true,
+    },
 }

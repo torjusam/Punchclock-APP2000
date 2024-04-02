@@ -2,7 +2,6 @@ import {NextApiRequest, NextApiResponse} from "next";
 import {pool} from "../../../lib/dbIndex";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-
     try {
         const {event_type, account_id, details} = req.body;
 

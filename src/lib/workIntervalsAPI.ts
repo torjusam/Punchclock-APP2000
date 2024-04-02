@@ -8,7 +8,7 @@ import {Employee} from "./types/employee";
 export const performFetch = async (employee) => {
     try {
         const employeeId = employee.id;
-        const response = await fetch('/api/workIntervals/getWorkTime', {
+        const response = await fetch('/api/workIntervals/getBalance', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

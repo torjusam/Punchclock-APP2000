@@ -1,19 +1,15 @@
 // Author: Torjus A.M
 import {NextApiRequest, NextApiResponse} from 'next';
 import {pool} from '../../../lib/dbIndex';
-import {authOptions} from "../auth/[...nextauth]";
-import handleAPICall from "../config/handleAPICall";
+import {Middleware, handler} from "../../../middleware/handler";
+import {allowMethods} from "../../../middleware/method";
+import {middleware_1, middleware_2} from "../../../middleware/middlewares";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    const {success, res: response} = await handleAPICall(req, res, authOptions);
-    if (!success)
-        return response;
-
+const setBalance: Middleware = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
         const {employee, workInterval} = req.body;
         const {id} = employee;
 
-        // Query adds the overtime interval to the existing fleks balance.
         const text = (`
         UPDATE employee
             SET balance = $1
@@ -29,3 +25,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         throw error;
     }
 };
+export default handler(
+    allowMethods(['POST']), // Use the method middleware to allow only POST requests
+    middleware_1,
+    middleware_2,
+    setBalance,
+);
+
+/* Avoid false-positive warning "API resolved without sending a response":
+Code taken from forum post answer: https://github.com/vercel/next.js/discussions/40270#discussioncomment-3571223 */
+export const config = {
+    api: {
+        externalResolver: true,
+    },
+}
