@@ -1,7 +1,6 @@
 /*
     Author: Torjus A.M
-    This hook is used to calculate the time elapsed since last check-in and the last checkout time.
-    Used to display in the punchClock module.
+    This file sets shift for the employee.
 */
 
 import {Employee} from "../../../lib/types/employee";
@@ -11,8 +10,8 @@ import {Shift} from "../../../lib/types/types";
 export const setShift = async (employee: Employee, description: string, start: Date, end: Date, setErrorMsg) => {
     if (start > end) {
         throw new RangeError("Start dato kan ikke være før sluttdato!");
-    } else if (differenceInHours(end, start) > 20) {
-        throw new RangeError("Vakt kan ikke vare mer enn 20 timer!");
+    } else if (differenceInHours(end, start) > 24) {
+        throw new RangeError("Vakt kan ikke vare mer enn 24 timer!");
     }
     const shift: Shift = {
         description: description,

@@ -7,6 +7,8 @@
     border-radius: 0.7rem;
     padding: 1.5rem;
     width: min-content;
+    margin-bottom: 0.3rem;
+    margin-top: 0.5rem;
 }
 
 .containerDisabled {

@@ -163,3 +163,11 @@
 /* ==========================================================================
    Crud-page navbar
    ========================================================================== */
+.navBarContainer h3 {
+    font-family: 'Public Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--dark-text);
+    margin: 0.2rem;
+    margin-left: 3rem;
+    overflow-wrap: break-word;
+}

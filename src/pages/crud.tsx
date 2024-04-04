@@ -1,12 +1,10 @@
 // Author: Torjus A.M
-import React from "react";
+import React, {FC} from "react";
 import CrudPage from "../components/CRUD-page";
 
-
-const Crud: React.FC = () => {
-
+const Crud: FC = () => {
     return (
-        <CrudPage />
+        <CrudPage/>
     );
 }
 

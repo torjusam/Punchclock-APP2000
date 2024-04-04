@@ -19,23 +19,31 @@ interface EmployeeCardProps {
 const EmployeeCard: FC<EmployeeCardProps> = ({employee}) => {
     const router = useRouter();
 
-    // When a card is selected, the user is redirected to their page. The employees ID is the page url path.
+    // Author: Thomas H. When a card is selected, the user is redirected to their page. The employees ID is the page url path.
     const onSelect = () => {
         router.push(`/${employee.id}`);
-    };
+    }
 
+    // Author: Torjus A.M, Thomas H
     return (
-        // Outer div is styled conditionally based on if the employee is clocked in or not.
+        // Border styled conditionally, based on employees clocked in status.
         <div className={`${styles.employeeCardContainer} ${employee.isClockedIn && styles.isClockedIn}`}
              onClick={onSelect}>
+            {/* Render either employees profile pic, or the stock avatar icon */}
             {employee.profilePictureUrl ? (
-                // Render either employees profile picture or default avatar icon
-                <img className={styles.profilePicture} src={employee.profilePictureUrl} alt="Profile Avatar"/>
+                <img
+                    className={styles.profilePicture}
+                    src={employee.profilePictureUrl}
+                    alt="Profile Avatar"
+                />
             ) : (
                 <Avatarico className={styles.profilePicture}/>
             )}
             <div className={styles.infoContainer}>
-                <span className={styles.employeeName}>{employee.name}</span>
+                <span
+                    className={styles.employeeName}>
+                    {employee.name}
+                </span>
                 <LastCheckTime employee={employee}/>
             </div>
         </div>

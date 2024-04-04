@@ -8,9 +8,7 @@ import {addDays} from 'date-fns';
 import {registerLocale} from "react-datepicker";
 import {nb} from 'date-fns/locale/nb';
 import {Employee} from "../../../../lib/types/employee";
-import {setShift} from "../../services/performSetShift";
-import {toast} from 'react-toastify';
-import moment from "moment";
+import CreateShiftButton from "./createShiftBtn";
 import DatePickers from "./datePickers";
 import DescriptionForm from "./descriptionForm";
 import styles from "./createShift.module.css";
@@ -29,30 +27,8 @@ const CreateShift: FC<createShiftProps> = ({employee}) => {
     const [isDisabled, setIsDisabled] = useState(true);
 
     useEffect(() => {
-        if (employee) {
-            setIsDisabled(false);
-        } else {
-            setIsDisabled(true);
-        }
+        setIsDisabled(!employee);
     }, [employee]);
-    const onClick = async () => {
-        try {
-            setIsDisabled(true);
-            await setShift(employee, description, start, end, setErrorMsg);
-
-            toast.success(`
-                Opprettet skift for ${employee.name}, 
-                fra ${moment(start).format('LTS')} - ${moment(end).format('LTS')} 
-                den ${moment(start).format('DD.MM')}
-                `, {
-                    autoClose: 10000
-                }
-            );
-        } catch (error) {
-            setErrorMsg(error.message);
-        }
-        setIsDisabled(false);
-    };
 
     return (
         <div className={styles.container}>
@@ -71,7 +47,6 @@ const CreateShift: FC<createShiftProps> = ({employee}) => {
                 end={end}
                 setStart={setStart}
                 setEnd={setEnd}
-                onClick={onClick}
             />
             <DescriptionForm
                 isDisabled={isDisabled}
@@ -79,12 +54,15 @@ const CreateShift: FC<createShiftProps> = ({employee}) => {
                 description={description}
                 setDescription={setDescription}
             />
-            <button
-                className={styles.createShiftBtn}
-                onClick={onClick}
-                disabled={isDisabled}>
-                Opprett vakt
-            </button>
+            <CreateShiftButton
+                isDisabled={isDisabled}
+                setIsDisabled={setIsDisabled}
+                employee={employee}
+                start={start}
+                end={end}
+                description={description}
+                setErrorMsg={setErrorMsg}
+            />
         </div>
     );
 };

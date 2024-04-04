@@ -1,0 +1,7 @@
+/*
+    Author: Thomas H, Torjus A.M
+*/
+.container {
+    overflow-y: auto;
+    overflow-x: hidden;
+}

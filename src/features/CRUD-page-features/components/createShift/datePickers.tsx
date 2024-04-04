@@ -17,7 +17,6 @@ interface datePickersProps {
     end: Date;
     setStart: (date: Date) => void;
     setEnd: (date: Date) => void;
-    onClick: () => void;
 }
 
 const DatePickers: FC<datePickersProps> = ({

@@ -9,7 +9,7 @@ import {RateLimiter} from "limiter";
 export const limiter = new RateLimiter({
     tokensPerInterval: 40,
     interval: 'minute',
-    fireImmediately: false,
+    fireImmediately: true,
 });
 
 // Signin limiter has a lower limit than the general limiter to prevent brute force attacks.

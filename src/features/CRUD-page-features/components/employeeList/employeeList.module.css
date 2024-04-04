@@ -1,14 +1,46 @@
+/*
+    Author: Thomas H, Torjus A.M
+*/
+.employeeList {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    border-radius: 0.5em;
+    box-shadow: var(--moduleBorder);
+    padding: 1rem;
+    margin-bottom: 0.3rem;
+    overflow-y: auto;
+}
+
+.employeeList h2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1em;
+    font-size: 1.7rem;
+    font-weight: 800;
+    color: var(--dark-text);
+    line-height: 1em;
+    font-family: 'Public Sans', sans-serif;
+}
+
 .employeeListItem {
     display: flex;
-    height: 15%;
-    justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: 0.7rem;
     background-color: #fff;
     border: 1px solid #aaa7a79f;
-    border-radius: 6px;
-    transition: backgrounmd-color 0.2s ease-in-out;
+    border-radius: 0.3rem;
+    margin-bottom: 0.25rem;
+    margin-top: 0.25rem;
+    transition: background-color 0.2s ease-in-out;
 }
+
+.selected {
+    background-color: #f3f3f3;
+}
+
 
 .employeeListItem:hover {
     background-color: #f3f3f3;
@@ -65,14 +97,14 @@
     cursor: pointer;
     font-size: 1rem;
     transition: background-color 0.2s;
-  }
-  
-  .createButton:hover {
-    background-color: #45a049; /* Darker shade on hover */
-  }
+}
 
-  .createButtonContainer {
+.createButton:hover {
+    background-color: #45a049; /* Darker shade on hover */
+}
+
+.createButtonContainer {
     width: 100%;
     display: flex;
-    justify-content: center; 
-  }
+    justify-content: center;
+}

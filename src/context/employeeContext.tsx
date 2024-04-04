@@ -4,6 +4,10 @@
     This component is responsible for providing a context for managing the array of employees.
     The context is shared across the entire app, allowing any component to access and modify the list.
     Uses a custom provider, and a custom hook to access the context.
+
+    TODO:
+     - Cleanup this file.
+     - Add state for the currently selected employee. Add null logic to rest of files. if null, redirect. Middleware?
 */
 import React, {createContext, useContext, useState, useEffect, ReactNode} from 'react';
 import {Employee} from '../lib/types/employee';

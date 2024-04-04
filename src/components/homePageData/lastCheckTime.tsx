@@ -2,6 +2,7 @@
     Author: Torjus A.M
     This component is used to display the last check time of an employee
     along with an icon indicating the action (checked in / out).
+    TODO: Fix this? Need for state?
 */
 import React, {useState, useEffect, FC} from 'react';
 import {Employee} from '../../lib/types/employee';
