@@ -10,7 +10,6 @@ import CreateShift from "./components/createShift";
 import styles from './components/crudPagaData.module.css';
 
 const CrudPageData: FC = () => {
-
     const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(null);
 
     return (

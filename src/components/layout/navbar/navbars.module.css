@@ -171,3 +171,17 @@
     margin-left: 3rem;
     overflow-wrap: break-word;
 }
+
+.signOutBtn {
+    display: flex;
+    justify-content: flex-start;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 1em;
+    background-color: #E6EBF2;
+    box-shadow: 0 2px 3px 0 #e0dada;
+    color: #24292E;
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 700;
+    padding: 0.5em;
+    margin-left: 0.5em;
+}
