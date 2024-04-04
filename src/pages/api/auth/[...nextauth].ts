@@ -22,8 +22,8 @@ import RateLimitError from "../../../utils/errors";
 export const authOptions: NextAuthOptions = {
     session: {
         strategy: 'jwt',
-        maxAge: 2 * 24 * 60 * 60, // Session expires after 2 days (in seconds). Normally quite a long time for a token.
-        updateAge: 24 * 60 * 60, // Update session age every day (in seconds)
+        maxAge: 24 * 60 * 60, // Session expires after 24 hours (in seconds)
+        updateAge: 24 * 60 * 60, // Update session age every 24 hours (in seconds)
     },
     providers: [
         // Custom provider for authenticating with an email and password.
@@ -36,8 +36,12 @@ export const authOptions: NextAuthOptions = {
                     email: string
                     password: string
                 };
-                // Fetch account data from DB using email.
-                const response = await fetch('http://localhost:3000/api/auth/signin', {
+                // NODE_ENV to determine which envirnoment the application is running (development, production, etc)
+                const baseUrl =
+                    process.env.NODE_ENV === 'production' ? 'https://app-2000-gruppe20.vercel.app' : 'http://localhost:3000';
+
+                // Fetch account data from DB using the email provided on signin.
+                const response = await fetch(`${baseUrl}/api/auth/signin`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
