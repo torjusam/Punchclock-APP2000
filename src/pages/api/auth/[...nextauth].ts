@@ -30,7 +30,7 @@ export const authOptions: NextAuthOptions = {
         CredentialsProvider({
             type: "credentials",
             credentials: {},
-            // Provider's authorization method, used to validate information to authenticate user.
+            // Authorization function, used to validate information to authenticate user.
             async authorize(credentials, req) {
                 const {email, password} = credentials as {
                     email: string
@@ -65,7 +65,6 @@ export const authOptions: NextAuthOptions = {
                         basically, the saltedHash = salt string + hashedPassword
                     */
                     const isValid = await bcrypt.compare(password, user.password_hash);
-
                     // Return the user if the password matches and log the event.
                     if (isValid) {
                         logUserActivity('login', user.id, 'Successful login');
@@ -89,6 +88,7 @@ export const authOptions: NextAuthOptions = {
     // Redirects to custom signin page, instead of NextAuths default page.
     pages: {
         signIn: '/auth/signin',
+        error: '/auth/signin',
     },
     callbacks: {
         async redirect({url, baseUrl}) {

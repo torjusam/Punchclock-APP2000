@@ -31,7 +31,7 @@ async function middleware(request: Request) {
 export default withAuth(middleware, {
     pages: {
         signIn: '/auth/signin',
-        error: '/auth/error',
+        error: '/auth/signin',
         verifyRequest: '/',
     },
 });
