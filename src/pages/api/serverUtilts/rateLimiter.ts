@@ -5,9 +5,9 @@
 */
 import {RateLimiter} from "limiter";
 
-// General limiter for most requests
+// General limiter for most requests. Set to 80 requests per minute, can be altered
 export const limiter = new RateLimiter({
-    tokensPerInterval: 40,
+    tokensPerInterval: 80,
     interval: 'minute',
     fireImmediately: true,
 });

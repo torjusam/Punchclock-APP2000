@@ -1,6 +1,7 @@
 /*
     Author: Torjus A.M, Thomas H
     Responsible for displaying the shifts of a specific employee.
+    TODO: Hook for updating shifts?
 */
 import React, {FC} from "react";
 import {Employee} from "../../lib/types/employee";

@@ -4,45 +4,42 @@
 */
 import {useState, useEffect} from 'react';
 import {useTimerContext} from '../../../context/timerContext';
+import {Employee} from "../../../lib/types/employee";
+import {ClockHistoryData} from "../../../lib/types/types";
+import {intervalToDuration} from "../../../utils/intervalToDuration";
 
-const useClockHistory = (employee) => {
-    const [data, setData] = useState(null);
+const useClockHistory = (employee: Employee) => {
+    const [clockHistoryData, setClockHistoryData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const {setCurrentTime} = useTimerContext();
 
     useEffect(() => {
-        const fetchData = async () => {
-            setIsLoading(true);
-            const result = await performFetch(employee);
-            setData(result);
-            setIsLoading(false);
-            // Set timer context variable to the latest workinterval fetched.
-            if (result && result.length > 0) {
-                setCurrentTime(result[0].workinterval);
-            }
-        };
+        setIsLoading(true);
+        fetchClockHistoryData(employee);
+    }, [employee]);
 
-        fetchData();
-    }, [employee.lastCheckIn, employee.lastCheckOut]);
+    const fetchClockHistoryData = async (employee: Employee) => {
+        const result = await performFetch(employee);
+        setClockHistoryData(result);
+        setIsLoading(false);
+        // Cast to seconds using moment and set to the punchclock-timer, using the context.
+        if (result && result.length > 0) {
+            const duration = intervalToDuration(result[0].workinterval);
+            setCurrentTime(duration.asSeconds());
+        }
+    };
+    return {clockHistoryData, isLoading};
+};
 
-    return {data, isLoading};
+const performFetch = async (employee: Employee): Promise<ClockHistoryData[]> => {
+    const response = await fetch('/api/getClockHistory', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        // TODO: use this to send the employee id to the server where needed
+        body: JSON.stringify({employeeId: employee.id}),
+    });
+    // Expected to be an array that fits type ClockHistoryData. Empty array if HTTP response is in 200-299 range.
+    return response.ok ? await response.json() : [];
 };
 
 export default useClockHistory;
-
-const performFetch = async (employee) => {
-    const employeeId = employee.id;
-    const response = await fetch('/api/getClockHistory', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({employeeId}),
-    });
-    if (response.ok) {
-        return await response.json();
-    } else {
-        console.error('Error:', response.status);
-        return [];
-    }
-};

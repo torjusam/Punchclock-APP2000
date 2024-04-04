@@ -1,38 +1,31 @@
 /*
     Author: Torjus A.M
-    Responsible for defining the layout and content of 
-    the "Stemplingshistorikk" module.
+    Responsible for defining the layout and content of the "Stemplingshistorikk" module.
 */
 import React, {FC} from 'react';
 import {Employee} from '../../lib/types/employee';
 import ClockCheck from '../../assets/clockCheck.svg';
-import ClockHistoryTable from './components/clockHistoryTable';
-import useClockHistory from './hooks/useClockHistory';
 import TimeModules from './components/timeModules';
-import '@fontsource/lato';
-import '@fontsource/public-sans';
-import styles from '../../components/employeePageData/employeePageLayout.module.css';
+import ClockHistoryTable from "./components/clockHistoryTable";
+import layout from '../../components/employeePageData/employeePageLayout.module.css';
 
 interface ClockHistoryProps {
     employee: Employee;
 }
 
 const ClockHistory: FC<ClockHistoryProps> = ({employee}) => {
-    /* Uses the custom hook to fetch the employees clock history, 
-    then passes it to both children that need it */
-    const {data, isLoading} = useClockHistory(employee);
-
     return (
-        <div className={styles.clockHistoryContainer}>
-            <div className={styles.moduleHeader}>
-                <div className={`${styles.iconContainer}`} style={{padding: '0.57em'}}>
-                    <ClockCheck className={`${styles.icon} ${styles.clockHistoryIcon}`}/>
+        // Module layout
+        <div className={layout.clockHistoryContainer}>
+            <div className={layout.moduleHeader}>
+                <div className={`${layout.iconContainer}`} style={{padding: '0.57em'}}>
+                    <ClockCheck className={`${layout.icon} ${layout.clockHistoryIcon}`}/>
                 </div>
                 <h1>Stemplingshistorikk</h1>
             </div>
             <hr/>
             <TimeModules employee={employee}/>
-            <ClockHistoryTable data={data} isLoading={isLoading}/>
+            <ClockHistoryTable employee={employee}/>
         </div>
     );
 };

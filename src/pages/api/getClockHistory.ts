@@ -11,16 +11,17 @@ const getClockHistory: Middleware = async (req: NextApiRequest, res: NextApiResp
 
         const text = (`
             SELECT
-                fb.Checkin,
-                fb.Checkout,
-                fb.WorkInterval,
-                fb.OvertimeInterval
+                id,
+                checkin,
+                checkout,
+                workInterval,
+                overtimeInterval
             FROM
-                fleksitidBank fb
+                fleksitidBank
             WHERE
-                fb.Employee_ID = $1
+                employee_id = $1
             ORDER BY
-                fb.Checkin DESC
+                checkin DESC
             LIMIT 7;
         `);
 
