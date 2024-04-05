@@ -1,23 +1,24 @@
-// Sets up custom toastContainer for notifications. What's custom about is the  poositioning and initalization of the container.
-import React from 'react';
+// Sets up the toastContainer for notifications, uses the toastify library.
+import React, {FC} from 'react';
 import {ToastContainer} from 'react-toastify';
 
-const CustomToastContainer: React.FC = () => {
+const CustomToastContainer: FC = () => {
 
     return (
         <>
-            <ToastContainer style={{ width: '25rem', padding: '20px' }}
+            <ToastContainer
+                style={{width: '25rem', padding: '20px'}}
                 position="bottom-left"
-                autoClose={4000}
+                autoClose={4000} // Four seconds
                 hideProgressBar={false}
                 newestOnTop={false}
                 closeOnClick
                 rtl={false}
                 pauseOnFocusLoss={false}
-                draggable
+                draggable={false}
                 pauseOnHover
                 theme="light"
-                limit={3}
+                limit={3} // Max 3 at a time
             />
         </>
     );

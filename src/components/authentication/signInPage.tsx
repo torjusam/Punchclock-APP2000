@@ -19,7 +19,7 @@ export default function SignInPage() {
             try {
                 const result = await signIn("credentials", {...values, redirect: false});
                 // Window.location.replace is used to redirect AND refresh main page
-                result.ok ? window.location.replace('/') : setStatusText(result.error);
+                result.ok ? (toast.success("Logget inn!"), window.location.replace('/')) : setStatusText(result.error);
             } catch (error) {
                 setStatusText(error.message);
                 toast.error(error.message);
@@ -33,19 +33,29 @@ export default function SignInPage() {
         <div className={styles.outerContainer}>
             <div className={styles.formContainer}>
                 <h1>Logg inn</h1>
+                {/* Feilmelding */}
                 {statusText &&
-                    <div className={styles.errorMsg}><h2><span className={styles.strongText}>Feil - </span>{statusText}
-                    </h2></div>}
+                    <div className={styles.errorMsg}>
+                        <h2>
+                            <span className={styles.strongText}>Feil -</span>{statusText}
+                        </h2>
+                    </div>}
                 <form onSubmit={formik.handleSubmit}>
                     <div className={styles.inputGroup}>
                         <h2>Brukernavn</h2>
-                        <input type="email" {...formik.getFieldProps('email')} required
-                               style={{borderColor: formik.errors.email && formik.touched.email ? 'red' : undefined}}/>
+                        <input
+                            type="email" {...formik.getFieldProps('email')}
+                            required
+                            style={{borderColor: formik.errors.email && formik.touched.email ? 'red' : undefined}}
+                        />
                     </div>
                     <div className={styles.inputGroup}>
                         <h2>Passord</h2>
-                        <input type="password" {...formik.getFieldProps('password')} required
-                               style={{borderColor: formik.errors.password && formik.touched.password ? 'red' : undefined}}/>
+                        <input
+                            type="password" {...formik.getFieldProps('password')}
+                            required
+                            style={{borderColor: formik.errors.password && formik.touched.password ? 'red' : undefined}}
+                        />
                     </div>
                     <button type="submit" className={styles.submitBtn}>Login</button>
                 </form>

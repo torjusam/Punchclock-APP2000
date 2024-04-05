@@ -12,6 +12,7 @@ import {Middleware, handler} from "../../../middleware/handler";
 const getBalance: Middleware = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
         const {employeeId} = req.body;
+        // Sum this calendar weeks worktime for the employee
         const text = (`
             SELECT
                 SUM(workInterval)
