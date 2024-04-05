@@ -9,7 +9,7 @@ import {SessionProvider} from "next-auth/react"
 import LeftContent from '../components/layout';
 import './globals.css';
 import '../features/keyboard/index.css'
-import CustomToastContainer from '../components/toastContainer';
+import CustomToastContainer from '../lib/toastContainer';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from '../styles/layout.module.css';
 

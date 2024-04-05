@@ -1,20 +1,17 @@
 // Author: Torjus A.M
 import EmployeePageData from '../components/employeePageData';
-import {useEmployeePageData} from '../hooks/useEmployeePageData';
-import useAutoCloseTimer from '../hooks/useAutoClosePage';
+import {FC} from "react";
+import SelectedEmployeeProvider from "../context/selectedEmployeeContext";
+import useAutoCloseTimer from "../hooks/useAutoClosePage";
 
-const EmployeePage: React.FC = () => {
-    const employeePageData = useEmployeePageData();
-    useAutoCloseTimer();
-
-    if (!employeePageData) {
-        return <p style={{color: 'white'}}>Loading...</p>;
-    }
+const EmployeePage: FC = () => {
+    // Close page after 35 seconds
+    useAutoCloseTimer(35)
 
     return (
-        <>
-            <EmployeePageData employee={employeePageData}/>
-        </>
+        <SelectedEmployeeProvider>
+            <EmployeePageData/>
+        </SelectedEmployeeProvider>
     );
 }
 

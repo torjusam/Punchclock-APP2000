@@ -4,23 +4,19 @@
     This component is responsible for providing a context for managing the array of employees.
     The context is shared across the entire app, allowing any component to access and modify the list.
     Uses a custom provider, and a custom hook to access the context.
-
-    TODO:
-     - Cleanup this file.
-     - Add state for the currently selected employee. Add null logic to rest of files. if null, redirect. Middleware?
 */
 import React, {createContext, useContext, useState, useEffect, ReactNode} from 'react';
 import {Employee} from '../lib/types/employee';
 import {fetchEmployees} from '../lib/dataAccess';
 import {useSession} from "next-auth/react";
 import {ResError} from "../lib/types/types";
+import moment from "moment";
 
 interface EmployeeContextProps {
     employees: Employee[];
     setEmployees: React.Dispatch<React.SetStateAction<Employee[]>>;
     sortedEmployees: Employee[];
     setSortedEmployees: React.Dispatch<React.SetStateAction<Employee[]>>;
-    updateEmployeeStatus: (employee: Employee) => void;
     error?: ResError;
     loading: boolean;
 }
@@ -34,20 +30,19 @@ export default function EmployeeContextProvider({children}: { children: ReactNod
     const [loading, setLoading] = useState<boolean>(true);
     const {data: session} = useSession();
 
-    const fetchData = async () => {
-        try {
-            const fetchedEmployees = await fetchEmployees();
-            setEmployees(fetchedEmployees);
-        } catch (error) {
-            setError({status: error.status, message: error.message});
-        } finally {
-            setLoading(false);
-        }
-    };
-
     useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const fetchedEmployees = await fetchEmployees();
+                setEmployees(fetchedEmployees);
+            } catch (error) {
+                setError({status: error.status, message: error.message});
+            } finally {
+                setLoading(false);
+            }
+        };
         fetchData();
-        // Updated on login/logout
+        // Update on login
     }, [session]);
 
     // Creates a sorted copy of the original list. Avoids mutating original list.
@@ -56,33 +51,10 @@ export default function EmployeeContextProvider({children}: { children: ReactNod
         setSortedEmployees(sortedArray);
     }, [employees]);
 
-    const updateEmployeeStatus = async (employee: Employee) => {
-        setEmployees(employees.map(emp => {
-            if (emp.id !== employee.id) {
-                return emp;
-            }
-            return {
-                ...emp,
-                isClockedIn: !employee.isClockedIn,
-                lastCheckIn: employee.isClockedIn ? emp.lastCheckIn : new Date(),
-                lastCheckOut: employee.isClockedIn ? new Date() : emp.lastCheckOut,
-            };
-        }));
-    };
-
-    const value = {
-        employees,
-        setEmployees,
-        sortedEmployees,
-        setSortedEmployees,
-        updateEmployeeStatus,
-        loading,
-        error,
-    };
-
     // Wraps children so that any child component can access the employee state.
     return (
-        <EmployeeContext.Provider value={value}>
+        <EmployeeContext.Provider
+            value={{employees, setEmployees, sortedEmployees, setSortedEmployees, loading, error}}>
             {children}
         </EmployeeContext.Provider>
     );
@@ -106,9 +78,9 @@ export function sortEmployees(employees: Employee[]) {
         } else if (!a.isClockedIn && b.isClockedIn) {
             return 1;
         } else {
-            const aLastCheckTime = a.isClockedIn ? new Date(a.lastCheckIn).getTime() : new Date(a.lastCheckOut).getTime();
-            const bLastCheckTime = b.isClockedIn ? new Date(b.lastCheckIn).getTime() : new Date(b.lastCheckOut).getTime();
-            return bLastCheckTime - aLastCheckTime;
+            const aLastCheckTime = a.isClockedIn ? moment(a.lastCheckIn) : moment(a.lastCheckOut);
+            const bLastCheckTime = b.isClockedIn ? moment(b.lastCheckIn) : moment(b.lastCheckOut);
+            return bLastCheckTime.diff(aLastCheckTime);
         }
     });
 }

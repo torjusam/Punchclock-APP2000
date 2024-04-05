@@ -1,8 +1,8 @@
 /* 
-    Author: Torjus A.M
+    Author: Thomas H
     API call to perform check-in operation on employee.
 */
-export const clockIn = async (employee, workTimeData, currentTime) => {
+export const clockIn = async (employee, balance, currentTime) => {
     if (employee.isClockedIn)
         return Promise.reject(new TypeError(employee.name + ' er ikke utstemplet!'));
     try {
@@ -11,7 +11,7 @@ export const clockIn = async (employee, workTimeData, currentTime) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ employee, workTimeData, currentTime }),
+            body: JSON.stringify({employee, currentTime}),
         });
         if (!response.ok) {
             throw new Error('Feil ved utstempling!');

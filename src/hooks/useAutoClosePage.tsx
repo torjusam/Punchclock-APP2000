@@ -1,34 +1,35 @@
 /* 
-    Author: Torjus A.M
+    Author: Torjus A.M, Thomas H
     This hook is used to automatically go to the homepage after a certain amount of time.
-    Starts a countdown of 30s, and after 20s it will display a toast warning message. If the user interacts with the page, the timers will reset.
-    It is used on the employee page, so that if the user forgets to close the page, it will automatically close.
+    Starts a countdown to close, and 10s before it display a warning toast.
+    If the user interacts with the page, the timers will reset.
 */
-import { useEffect, useRef } from 'react';
-import { toast } from 'react-toastify';
-import { useRouter } from 'next/router';
+import {useEffect} from 'react';
+import {toast} from 'react-toastify';
+import {useRouter} from 'next/router';
 
-const useAutoCloseTimer = () => {
+// Author: Torjus A.M
+const useAutoCloseTimer = (secondsToClose: number) => {
     // useRouter to navigate to a different page.
     const router = useRouter();
     // Two timers, one for the warning and one for the actual redirect.
     let closeTimer: NodeJS.Timeout | null = null;
-    let toastTimer: NodeJS.Timeout | null = null;
+    let warningTimer: NodeJS.Timeout | null = null;
     // 35 seconds of inactivity before redirecting.
-    let timeout = 35000;
+    let timeout = secondsToClose * 1000;
 
     // Clears both timers, and the toast warning if its being displayed.
     const resetTimers = () => {
         clearTimeout(closeTimer);
-        clearTimeout(toastTimer);
+        clearTimeout(warningTimer);
         toast.dismiss();
         startTimers();
     };
 
     const startTimers = () => {
-        toastTimer = setTimeout(() => {
-            // Toast warning message, closes after 9s.
-            toast.warning("Siden blir snart lukket automatisk...", { autoClose: 10000 });
+        // warningTimer 10 seconds before close
+        warningTimer = setTimeout(() => {
+            toast.warning("Siden blir snart lukket automatisk...", {autoClose: 10000});
         }, timeout - 10000);
 
         closeTimer = setTimeout(() => {
@@ -37,7 +38,7 @@ const useAutoCloseTimer = () => {
         }, timeout);
     };
 
-    // When component mounts (employee page), start the timers and setup eventlisteners.
+    // Thomas H: When component mounts (employee page), start the timers and setup eventlisteners.
     useEffect(() => {
         startTimers();
 
@@ -49,13 +50,11 @@ const useAutoCloseTimer = () => {
             window.removeEventListener('mousedown', resetTimers);
             window.removeEventListener('touchstart', resetTimers);
 
-            if (closeTimer !== null) {
+            if (closeTimer !== null)
                 clearTimeout(closeTimer);
-            }
 
-            if (toastTimer !== null) {
-                clearTimeout(toastTimer);
-            }
+            if (warningTimer !== null)
+                clearTimeout(warningTimer);
         };
     }, [timeout, router]);
 };

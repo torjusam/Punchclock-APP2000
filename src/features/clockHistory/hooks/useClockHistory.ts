@@ -3,15 +3,15 @@
     Custom hook for accessing the employees time clock history, and setting a state variable with it.
 */
 import {useState, useEffect} from 'react';
-import {useTimerContext} from '../../../context/timerContext';
 import {Employee} from "../../../lib/types/employee";
 import {ClockHistoryData} from "../../../lib/types/types";
 import {intervalToDuration} from "../../../utils/intervalToDuration";
+import {useEmployeeWorkDataContext} from "../../../context/employeeWorkDataContext";
 
 const useClockHistory = (employee: Employee) => {
     const [clockHistoryData, setClockHistoryData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-    const {setCurrentTime} = useTimerContext();
+    const {setTimer} = useEmployeeWorkDataContext();
 
     useEffect(() => {
         setIsLoading(true);
@@ -25,7 +25,7 @@ const useClockHistory = (employee: Employee) => {
         // Cast to seconds using moment and set to the punchclock-timer, using the context.
         if (result && result.length > 0) {
             const duration = intervalToDuration(result[0].workinterval);
-            setCurrentTime(duration.asSeconds());
+            setTimer(duration.asSeconds());
         }
     };
     return {clockHistoryData, isLoading};

@@ -1,43 +1,47 @@
-// Author: Torjus A.M
-import React, {FC} from 'react';
-import {Employee} from '../../../lib/types/employee';
-import {useWorkIntervalContext} from '../../../context/workIntervalContext';
-import {useEmployeeContext} from '../../../context/employeeContext';
+/*
+    Author: Torjus A.M, Thomas H
+    Component responsible for rendering a button conditionally, and calling on the clock-operation function
+*/
+import React, {FC, useState} from 'react';
 import {clockInOutOperation} from '../services/performClockOperation';
 import ArrowOut from '../../../assets/arrowOut.svg';
 import ArrowIn from '../../../assets/arrowIn.svg';
 import '@fontsource/public-sans';
-import Toast from '../../../components/toastContainer';
+import Toast from '../../../lib/toastContainer';
 import styles from './punchClock.module.css'
+import {useSelectedEmployeeContext} from "../../../context/selectedEmployeeContext";
+import {useEmployeeWorkDataContext} from "../../../context/employeeWorkDataContext";
 
-interface ClockInOutButtonProps {
-    employee: Employee;
-    isLoading: boolean;
-    setIsLoading: (isLoading: boolean) => void;
-    setErrorMessage: (errorMessage: string | null) => void;
-}
-
-// Updates employees status and perform check operation.
-const ClockInOutButton: FC<ClockInOutButtonProps> = ({employee, isLoading, setIsLoading, setErrorMessage}) => {
-    const {updateEmployeeStatus} = useEmployeeContext();
-    const {workTimeData} = useWorkIntervalContext();
+const ClockInOutButton: FC = () => {
+    const {selectedEmployee, updateEmployeeStatus} = useSelectedEmployeeContext();
+    const {balance} = useEmployeeWorkDataContext();
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleClick = async () => {
-        await clockInOutOperation(employee, workTimeData, setIsLoading, setErrorMessage, updateEmployeeStatus);
+        await clockInOutOperation(
+            selectedEmployee,
+            balance,
+            setIsLoading,
+            updateEmployeeStatus
+        );
     };
-
-    const status = employee.isClockedIn ? styles.clockedIn : styles.clockedOut;
-    const Arrow = employee.isClockedIn ? ArrowOut : ArrowIn;
+    // Which style and icon to use
+    const status = selectedEmployee.isClockedIn ? styles.clockedIn : styles.clockedOut;
+    const Arrow = selectedEmployee.isClockedIn ? ArrowOut : ArrowIn;
 
     return (
         <>
-            <button onClick={handleClick} className={`${styles.buttonContainer} ${status}`} disabled={isLoading}>
+            <button
+                className={`${styles.buttonContainer} ${status}`}
+                onClick={handleClick}
+                disabled={isLoading} // Disabled while loading
+            >
                 <div className={styles.iconContainer}>
                     <Arrow className={styles.icon}/>
                 </div>
-                {employee.isClockedIn ? 'Stemple ut' : 'Stemple inn'}
+                {selectedEmployee.isClockedIn ? 'Stemple ut' : 'Stemple inn'}
             </button>
-            <Toast/>
+            <Toast/> {/* Toast notification can be called from here */}
         </>
     );
 };
