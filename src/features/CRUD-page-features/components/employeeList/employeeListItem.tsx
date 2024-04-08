@@ -3,11 +3,12 @@
     This component is responsible for rendering each employee in the list of employees.
     It also handles logic for selecting, de-selecting and deleting employees.
 */
-import React, {Dispatch, FC, SetStateAction, useEffect, useState} from 'react';
+import React, {Dispatch, FC, SetStateAction} from 'react';
 import styles from './employeeList.module.css';
 import {Employee} from "../../../../lib/types/employee";
 import {deleteEmployee} from "../../services/deleteEmployee";
 import {useEmployeeContext} from "../../../../context/employeeContext";
+import ExtraPageButton from "./goToExtraPageBtn";
 
 interface EmployeeListItemProps {
     employee: Employee;
@@ -36,6 +37,7 @@ const EmployeeListItem: FC<EmployeeListItemProps> = ({employee, setSelectedEmplo
             <div className={styles.employeeDetails}>
                 <span className={styles.employeeName}>{employee.name}</span>
             </div>
+            <ExtraPageButton employee={employee}/>
             <button
                 className={`${styles.button} ${styles.deleteButton}`}
                 onClick={onDelete}>Delete

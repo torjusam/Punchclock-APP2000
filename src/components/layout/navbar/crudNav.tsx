@@ -10,8 +10,7 @@ const CrudPageNav: FC = () => {
             <HomeButton/>
             {/* Typically using h3 is not recommended because of screen readers, but its used here to target this text exclusively with style */}
             <h3 className={styles.pageName}>
-                Dette er bare en testside som oppfyller innleveringskravene, og er ikke en del av det endelige
-                produktet.
+                Dette er bare en testside, og er ikke en del av det endelige produktet som skal leveres til Visma.
             </h3>
             <SignOutBtn/>
         </nav>

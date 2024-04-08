@@ -18,7 +18,7 @@ const LeftContent: FC = () => {
     // Help button goes to CRUD page
     // må oppdateres for å bruke server side authentication for å bli redirected til CRUD side via authorization token - midlertidig løsning for å accesse pin siden
     const handleHelpClick = () => {
-        router.push('/crud')
+        router.push('/extras/crud')
     };
 
     // Logo goes to index page
@@ -28,10 +28,11 @@ const LeftContent: FC = () => {
 
     return (
         <>
-            <Image className={styles.logo}
-                   src={vismaLogo}
-                   alt={"logo"}
-                   onClick={handleLogoClick}
+            <Image
+                className={styles.logo}
+                src={vismaLogo}
+                alt={"logo"}
+                onClick={handleLogoClick}
             />
             <Clock/>
             <div className={styles.helpContainer} onClick={handleHelpClick}>

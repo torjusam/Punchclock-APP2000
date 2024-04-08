@@ -25,7 +25,7 @@ const EmployeeList: FC<EmployeeListProps> = ({setSelectedEmployee}) => {
                     setSelectedEmployee={setSelectedEmployee}
                 />
             ))}
-            <CreateEmployee/>
+            {/*<CreateEmployee/>*/}
         </div>
     );
 };
