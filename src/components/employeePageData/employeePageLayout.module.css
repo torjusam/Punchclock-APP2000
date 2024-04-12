@@ -3,8 +3,8 @@
  *
  * Styles for the employee-page and its modules. (Nav bar styling is in .src/styles/navbars.module.css).
  * Starts by defining shared styles for all containers, then specific styles for the modules.
- * 
  *
+ * TODO: Simplify
  */
 
 .personalPageContainer {
@@ -15,7 +15,7 @@
     overflow-x: hidden;
 }
 
-/* Outer for modules container */
+/* Container for the three main modules */
 .personalPage {
     display: flex;
     flex-direction: row;
@@ -24,7 +24,8 @@
     flex-grow: 1;
 }
 
-/* Header container */
+/* Module headers
+   ========================================================================== */
 .moduleHeader {
     display: flex;
     flex-direction: row;
@@ -92,7 +93,7 @@
     }
 }
 
-/* Line seperators below header */
+/* Line seperators */
 .personalPage hr {
     height: 0.05em;
     width: 100%;

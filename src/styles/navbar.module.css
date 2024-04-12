@@ -1,0 +1,51 @@
+/* Author: Torjus A.M */
+
+/* Parent of all navbars */
+.navBarContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    background-color: #FFFFFF;
+    border-radius: 0.8em;
+    /* Min & max to make sure theyre even across pages*/
+    min-height: 10vh;
+    max-height: 10vh;
+    padding: 0.7em;
+    box-shadow: var(--moduleBorder);
+    margin-bottom: 1.5em;
+    overflow: hidden;
+}
+
+/* Icons (employee-page and homepage) */
+.iconContainer {
+    display: flex;
+    margin-right: 2em;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.helpIcon, .notifIcon {
+    width: 3.3em;
+    height: 3.5em;
+    stroke: var(--icon);
+    aspect-ratio: 1/1;
+}
+
+.helpIcon {
+    stroke-width: 1.5px;
+}
+
+.notifIcon {
+    stroke-width: 1.7px;
+    margin-right: 1em;
+    margin-left: 1em;
+    padding-bottom: 0.3em;
+}
+
+@media (max-height: 900px), (max-width: 1280px) {
+    .helpIcon, .notifIcon {
+        width: 3.1em;
+        height: 3.3em;
+    }
+}

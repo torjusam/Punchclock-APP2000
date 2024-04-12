@@ -1,14 +1,13 @@
 /*
     Author: Torjus A.M
     Main component for the two time modules above the clockhistorytable.
+    TODO: use selectedEmployee context > prop passing
 */
 import React, {FC} from 'react';
 import {Employee} from '../../../../lib/types/employee';
 import FleksSalary from './fleksSalary';
 import WorkTimeSalary from './workTimeSalary';
-import '@fontsource/lato';
-import '@fontsource/public-sans';
-import styles from '../clockHistory.module.css';
+import styles from './timeModules.module.css';
 
 interface TimeModulesProps {
     employee: Employee;

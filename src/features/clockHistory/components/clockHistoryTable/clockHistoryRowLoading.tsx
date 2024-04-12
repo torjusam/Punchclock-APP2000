@@ -1,10 +1,9 @@
 /*
     Author: Torjus A.M, Thomas H
     Loading rows for the clock history table. 7 empty rows.
-    TODO: Loading animations
 */
 import React from "react";
-import styles from "../clockHistory.module.css";
+import styles from './clockHistoryTable.module.css';
 
 const LoadingRows = () => {
     // Array fill creates an array with 7 identical elements

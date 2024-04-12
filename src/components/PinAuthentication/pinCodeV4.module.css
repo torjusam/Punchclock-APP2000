@@ -1,3 +1,4 @@
+/* Author: Thomas H */
 .keypad {
     display: flex;
     flex-direction: column;
@@ -9,10 +10,9 @@
     padding: 2rem;
     width: 50%;
     height: 70%;
-  
-  }
-  
-  .pinDisplay {
+}
+
+.pinDisplay {
     font-size: 2rem;
     letter-spacing: 0.3rem;
     margin-bottom: 2rem;
@@ -21,19 +21,18 @@
     min-height: 4rem;
     width: 50%;
     border-radius: 30px;
-    color: black; 
+    color: black;
     display: flex;
     justify-content: center;
-    
-  }
+}
 
-  .numberGrid {
+.numberGrid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
-  }
+}
 
-  .keypadButton {
+.keypadButton {
     width: 5.5rem;
     height: 5.5rem;
     border-radius: 50%;
@@ -46,33 +45,33 @@
     justify-content: center;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
-  }
+}
 
-  .keypadButton:active {
+.keypadButton:active {
     transform: scale(0.9);
-  }
+}
 
-  .cancelButton {
+.cancelButton {
     background: linear-gradient(to bottom, #ff6b6b, #ff8787);
-  }
+}
 
-  .confirmButton {
+.confirmButton {
     background: linear-gradient(to bottom, #4caf50, #66bb6a);
-  }
+}
 
-  .errorMessageContainer {
+.errorMessageContainer {
     height: 2rem;
-    margin-bottom: 1rem; 
+    margin-bottom: 1rem;
     text-align: center;
     width: 100%;
-  }
-  
-  .errorMessage {
+}
+
+.errorMessage {
     color: red;
     font-size: 1.3rem;
     font-family: 'Open Sans', sans-serif;
-  }
+}
 
-  /*****************************
-  Knapp animasjon
-  *****************************/
+/*****************************
+Knapp animasjon
+*****************************/

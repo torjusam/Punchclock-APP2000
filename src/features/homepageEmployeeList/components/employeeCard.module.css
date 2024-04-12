@@ -1,0 +1,67 @@
+/* Author: Torjus A.M, Thomas H */
+.employeeCardContainer {
+    display: flex;
+    align-items: center;
+    max-height: 7em;
+    margin-bottom: 1rem;
+    padding: 0.8em;
+    border: 2px solid #F33161;
+    border-radius: 5em;
+    box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.profilePicture {
+    max-width: 4.8em;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    border: 2px solid #000;
+}
+
+/* Container for employees name and last check time */
+.infoContainer {
+    display: flex;
+    line-height: 2rem;
+    margin-left: 0.7rem;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 100%;
+}
+
+.employeeName {
+    font-size: 1.8rem;
+    color: #121212;
+    font-weight: bold;
+    font-family: 'Public Sans', sans-serif;
+}
+
+/*  Author: Torjus
+    Container for arrow icon and last check time */
+.lastCheckContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.lastCheckTime {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.88rem;
+    margin-left: 0.1em;
+}
+
+.icon {
+    width: 1.3rem;
+}
+
+/*  Author: Thomas
+    Conditional styling for selecting employees and clocked in employees border
+   ========================================================================== */
+.selected {
+    box-shadow: inset 0 10px 10px rgba(169, 214, 229, 10);
+    background-color: rgba(38, 191, 147, 0.15);
+}
+
+.isClockedIn {
+    border: 2px solid #26BF93;
+}

@@ -2,7 +2,7 @@
     Author: Torjus A.M
 */
 import React, {FC} from 'react';
-import CrudPageNav from '../layout/navbar/crudNav';
+import CrudPageNav from './crudNav';
 import CrudPageData from "../../features/CRUD-page-features";
 
 const CrudPage: FC = () => {

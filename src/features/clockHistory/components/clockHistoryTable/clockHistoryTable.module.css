@@ -1,56 +1,12 @@
-/**
- * Author: Torjus A.M
+/*
+ * Author: Torjus A.M, Thomas H
  *
- * CSS module to style the table aswell as the time modules of the clock history module. "Stemplingshistorikk". 
- * The sizes of various elements in the table is adjusted by screen sized, and are not defined a default size.
+ * Styles for the table, as well as media queries responsive to the viewport width
+ * for the clock history table. "Stemplingshistorikk" module.
  *
  */
-/* ==========================================================================
-   Time modules styles
-   ========================================================================== */
-.timeModulesContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    width: 75%;
-    margin: 1em;
-    margin-bottom: 0;
-}
 
-.timeModules {
-    display: flex;
-    flex-direction: column;
-    padding: 1em;
-    padding-top: 0.6em;
-    padding-bottom: 0.6em;
-    border-radius: 1em;
-    box-shadow: 2px 4px 3px 0.2px #d5d5d5;
-    border: #f6f6f6 0.5px solid;
-    flex-grow: 1;
-    line-height: 2.6em;
-}
-
-.timeModules h1 {
-    color: var(--light-text);
-    font-family: 'Public Sans', sans-serif;
-}
-
-.timeModules h2 {
-    font-family: 'Lato', sans-serif;
-    font-weight: 700;
-    color: #343639;
-    letter-spacing: 0.04em;
-    white-space: nowrap;
-    text-shadow: 0rem 0.08rem 1rem rgba(114, 114, 115, 0.1);
-}
-
-.salaryTextColor {
-    color: #0DB714;
-}
-
-/* ==========================================================================
-   Table styles
-   ========================================================================== */
+/* Author: Thomas H */
 .tableContainer {
     display: flex;
     flex-flow: column nowrap;
@@ -59,7 +15,7 @@
     box-shadow: 1px 3px 4px rgba(0, 0, 0, .08);
     overflow: auto;
     overflow-x: hidden;
-    margin: 1em;
+    margin: 0 1em 1em 1em;
 }
 
 .tableRow {
@@ -91,6 +47,7 @@
     color: #606266;
 }
 
+/* Column 1: date */
 .date h1 {
     font-family: 'Lato', sans-serif;
     font-weight: 600;
@@ -109,7 +66,8 @@
     color: var(--light-text);
 }
 
-/* Styles for subcontainer (Clockin/out times).
+/* Author: Torjus A.M
+    Column 2: stempling
    ========================================================================== */
 .rowSubContainer {
     display: flex;
@@ -152,56 +110,13 @@
     border-bottom: 0;
 }
 
-
 /* ==========================================================================
-   Loading styles
-   ========================================================================== */
-
-/* Wavy lines while data is fetched */
-.loading {
-    background: var(--loading-bg);
-    background-size: var(--loading-bg-size);
-    animation: var(--loading-effect);
-}
-
-/* For the timemodules */
-.timeModules .loading {
-    margin-top: 0.5rem;
-    width: 9rem;
-    height: 1.8rem;
-    border-radius: 0.7rem;
-}
-
-
-@keyframes wave-lines {
-    0% {
-        background-position: -468px 0;
-    }
-
-    100% {
-        background-position: 468px 0;
-    }
-}
-
-
-/* ==========================================================================
-   Table media queries
+   Media queries for the table. Responsive to viewport width.
+   Author: Torjus
    ========================================================================== */
 
 /* XS resolution */
 @media screen and (max-width: 1360px) {
-    .timeModules {
-        line-height: 2.2em;
-    }
-
-    .timeModules h1 {
-        font-size: 1.3rem;
-    }
-
-    .timeModules h2 {
-        font-size: 1.8rem;
-    }
-
     .heading > .rowItem {
         font-size: 1.1rem;
     }
@@ -247,18 +162,6 @@
 
 /* S resolution */
 @media screen and (min-width: 1360px) and (max-width: 1580px) {
-    .timeModules {
-        line-height: 2.1em;
-    }
-
-    .timeModules h1 {
-        font-size: 1.3rem;
-    }
-
-    .timeModules h2 {
-        font-size: 1.9rem;
-    }
-
     /* Date column and header width */
     .date,
     .heading > .rowItem:nth-child(1) {
@@ -346,13 +249,6 @@
 
 /* L resolution */
 @media screen and (min-width: 1700px) {
-    .timeModules h1 {
-        font-size: 1.5rem;
-    }
-
-    .timeModules h2 {
-        font-size: 2.2rem;
-    }
 
     .heading > .rowItem {
         font-size: 1.5rem;

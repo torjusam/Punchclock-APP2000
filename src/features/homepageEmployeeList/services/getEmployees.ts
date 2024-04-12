@@ -1,8 +1,9 @@
-// Author: Torjus A.M
-//TODO: change name (and location?)
-import {Employee} from './types/employee';
+/*
+    Author: Torjus A.M
+    Fetches all the employees from the database and returns a list of Employee objects.
+*/
+import {Employee} from '../../../lib/types/employee';
 
-// Fetches list of employees from api handler and returns a Employee array
 export async function fetchEmployees(): Promise<Employee[]> {
     try {
         const response = await fetch('/api/getEmployees');
@@ -21,7 +22,6 @@ export async function fetchEmployees(): Promise<Employee[]> {
                 );
             });
         } else {
-            console.error('Error:', response.status);
             throw {status: response.status, message: response.statusText};
         }
     } catch (error) {

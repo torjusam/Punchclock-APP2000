@@ -2,7 +2,6 @@
     Author: Torjus A.M
     Api route for fetching the id, email and password matching the specified email given in the input.
     Returns a hashed password.
-    TODO: Fix build
 */
 import {NextApiRequest, NextApiResponse} from 'next';
 import {pool} from '../../../lib/dbIndex';

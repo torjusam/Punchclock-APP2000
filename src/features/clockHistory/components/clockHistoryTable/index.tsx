@@ -1,13 +1,13 @@
 /*
     Author: Torjus A.M, Thomas H
-    Main file for the clock-history table. Responsible for seatting up the header, th
+    Main file for the clock-history table. Responsible for setting up the header, and rendering the rows.
 */
 import React, {FC} from 'react';
-import styles from '../clockHistory.module.css';
 import useClockHistory from "../../hooks/useClockHistory";
 import {Employee} from "../../../../lib/types/employee";
 import ClockHistoryRow from "./clockHistoryRow";
 import LoadingRows from "./clockHistoryRowLoading";
+import styles from './clockHistoryTable.module.css';
 
 interface ClockHistoryTableProps {
     employee: Employee;

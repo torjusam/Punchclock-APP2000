@@ -1,0 +1,44 @@
+/*
+ * Author: Thomas H, Torjus A.M
+ *
+ * Styles for the list of employees on the homepage
+ *
+ */
+
+.employeeList {
+    background-color: #FFF;
+    box-shadow: var(--moduleBorder);
+    border-radius: 1rem;
+    padding: 1rem;
+    flex-grow: 1;
+    overflow: auto;
+    /* Layout of content of list  */
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: space-evenly;
+}
+
+/* Author: Torjus A.M
+    Ruleset for adjusting the employee-cards based on width of the screen
+   ========================================================================== */
+
+/* M resolution, default. Display 2 cards pr row */
+.employeeList > div {
+    /* -1rem takes into account 50% including a margin between cards */
+    flex-basis: calc(50% - 1rem);
+}
+
+/* S resolution. Display 1 card per row. */
+@media screen and (max-width: 1000px) {
+    .employeeList > div {
+        flex-basis: 100%;
+    }
+}
+
+/* L resolution. Display 3 cards per row. */
+@media screen and (min-width: 1700px) {
+    .employeeList > div {
+        flex-basis: calc(33.33% - 1rem);
+    }
+}

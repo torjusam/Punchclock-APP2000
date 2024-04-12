@@ -1,10 +1,10 @@
-/**
- * Author: Torjus A.M
+/*
+ * Author: Torjus A.M, Thomas H
  *
- *  CSS module for main shared layout of all pages. 
- *  Divided into two main containers in a parent container.
- *  Responsive design: Left (34%) and right (67%) of viewport.
- *  Primarly aimed at tablets and touchscreens. 
+ *  CSS module for the main layout containers.
+ *  The page is divided into two main containers, left(34%) and right(67%).
+ *  Primarily aimed at tablets and touchscreens.
+ *  This module also includes the container for the navbars, and the container for the homepage
  */
 
 .veryOuterContainer {
@@ -35,4 +35,19 @@
     height: 100vh;
     width: 100%;
     max-width: 33vw;
+}
+
+.homePageContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 2.3rem;
+    overflow: auto;
+    min-width: 100%;
+}
+
+/* Media query to change the homepage's padding by viewport size */
+@media screen and (max-width: 1300px), (max-height: 800px) {
+    .homePageContainer {
+        padding: 1.5rem;
+    }
 }

@@ -1,7 +1,7 @@
 // Author: Torjus A.M
 import React, {FC, ReactNode} from 'react';
 import {signOut, useSession} from 'next-auth/react';
-import styles from '../layout/navbar/navbars.module.css';
+import styles from '../CRUD-page/crudNav.module.css';
 
 interface SignOutBtnProps {
     children?: ReactNode;
@@ -16,7 +16,7 @@ const SignOutBtn: FC = () => {
             onClick={status ? () => signOut() : undefined}
             disabled={!status}
         >
-            {status ? 'Sign out' : 'Disabled Button'}
+            {status ? 'Sign out' : 'Disabled'}
         </button>
     );
 };

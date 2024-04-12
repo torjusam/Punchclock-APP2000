@@ -1,0 +1,48 @@
+/* Author: Torjus A.M, Thomas H */
+.profileContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    margin-right: 1.5em;
+    overflow: hidden;
+}
+
+.avatar {
+    width: 4.2rem;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    margin-right: 1em;
+    border: 3px solid #fcfcfc;
+    box-shadow: 0 1px 2px 0 #acacac;
+}
+
+.employeeName {
+    font-family: 'Public Sans', sans-serif;
+    font-size: 2.13rem;
+    font-weight: 700;
+    color: var(--dark-text);
+    overflow: hidden;
+}
+
+.pinIcon {
+    width: 3.1em;
+    height: 3.2em;
+    fill: var(--icon);
+    aspect-ratio: 1/1;
+}
+
+@media (max-height: 900px), (max-width: 1280px) {
+    .avatar {
+        width: 3.9rem;
+    }
+
+    .employeeName {
+        font-size: 2rem
+    }
+
+    .pinIcon {
+        width: 3.1em;
+        height: 3.2em;
+    }
+}

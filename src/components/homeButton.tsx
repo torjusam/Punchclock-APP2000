@@ -1,10 +1,11 @@
 // Author: Torjus A.M
-import React from 'react';
+import React, {FC} from 'react';
 import {useRouter} from 'next/router';
-import Expand from '../../../assets/expand.svg';
-import styles from './navbars.module.css';
+import Expand from '../assets/expand.svg';
+import styles from './homeButton.module.css';
 
-const HomeButton: React.FC = () => {
+// Button to redirect to the homepage
+const HomeButton: FC = () => {
     const router = useRouter();
 
     // Goes to the homepage using an empty router: '/ '
@@ -13,7 +14,7 @@ const HomeButton: React.FC = () => {
     };
 
     return (
-        <button onClick={handleClick} className={styles.homeBtn}>
+        <button className={styles.homeBtn} onClick={handleClick}>
             <Expand className={styles.icon}/>
             <h1>Tilbake</h1>
         </button>

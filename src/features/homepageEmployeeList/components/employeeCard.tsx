@@ -5,11 +5,10 @@
 */
 import React, {FC} from 'react';
 import {useRouter} from 'next/router';
-import {Employee} from '../../lib/types/employee';
+import {Employee} from '../../../lib/types/employee';
 import LastCheckTime from './lastCheckTime';
-import styles from './employeeList.module.css';
-import '@fontsource/public-sans';
-import Avatarico from "../../assets/avatar.svg";
+import AvatarIcon from "../../../assets/avatar.svg";
+import styles from './employeeCard.module.css';
 
 // Takes a type employee as parameter
 interface EmployeeCardProps {
@@ -34,10 +33,10 @@ const EmployeeCard: FC<EmployeeCardProps> = ({employee}) => {
                 <img
                     className={styles.profilePicture}
                     src={employee.profilePictureUrl}
-                    alt="Profile Avatar"
+                    alt="Avatar"
                 />
             ) : (
-                <Avatarico className={styles.profilePicture}/>
+                <AvatarIcon className={styles.profilePicture}/>
             )}
             <div className={styles.infoContainer}>
                 <span

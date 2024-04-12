@@ -6,14 +6,13 @@ import React, {FC} from 'react';
 import {Employee} from '../../../../lib/types/employee';
 import {formatInterval} from '../../services/formatInterval';
 import useFleksSalary from '../../hooks/useFleksSalary';
-import styles from '../clockHistory.module.css';
+import styles from './timeModules.module.css';
 
 interface FleksSalaryProps {
     employee: Employee;
 }
 
 const FleksSalary: FC<FleksSalaryProps> = ({employee}) => {
-    // TODO: Error, loading
     const {fleksSalary, isLoading} = useFleksSalary(employee);
 
     return (

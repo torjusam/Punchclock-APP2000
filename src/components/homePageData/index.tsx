@@ -1,16 +1,15 @@
 /* 
     Author: Torjus A.M, Ask I.P Aspholm
-    Responsible for setting up the layout of the frontpage and exports it.
+    Responsible for setting up the layout of the homepage, and export it.
 */
 import React, {FC} from 'react';
-import EmployeeList from './employeeList';
-import FrontPageNav from '../layout/navbar/homePageNav';
+import EmployeeList from '../../features/homepageEmployeeList';
+import FrontPageNav from './homePageNav';
 import FrontError from '../errors/frontError';
 import ErrorBoundary from '../errors/ErrorBoundary';
-import styles from './employeeList.module.css';
+import styles from '../../styles/layout.module.css';
 
-
-const FrontPage: FC = () => {
+const HomepageData: FC = () => {
     return (
         <div className={styles.homePageContainer}>
             <FrontPageNav/>
@@ -21,4 +20,4 @@ const FrontPage: FC = () => {
     );
 };
 
-export default FrontPage;
+export default HomepageData;

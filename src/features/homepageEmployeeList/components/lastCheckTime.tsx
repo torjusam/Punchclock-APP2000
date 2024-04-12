@@ -4,12 +4,12 @@
     along with an icon indicating the action (checked in / out).
     TODO: Fix this? Need for state?
 */
-import React, {useState, useEffect, FC} from 'react';
-import {Employee} from '../../lib/types/employee';
-import ArrowIn from '../../assets//arrowIn.svg';
-import ArrowOut from '../../assets/arrowOut.svg';
+import React, {FC, useEffect, useState} from 'react';
+import {Employee} from '../../../lib/types/employee';
+import ArrowIn from '../../../assets/arrowIn.svg';
+import ArrowOut from '../../../assets/arrowOut.svg';
 import moment from 'moment';
-import styles from './employeeList.module.css';
+import styles from './employeeCard.module.css';
 
 const LastCheckTime: FC<{ employee: Employee }> = ({employee}) => {
     // Two states are defined, one for the formatted time and one for the last action (in/out).

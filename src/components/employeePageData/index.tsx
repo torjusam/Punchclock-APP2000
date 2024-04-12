@@ -6,7 +6,7 @@
 */
 import React, {FC} from 'react';
 import styles from './employeePageLayout.module.css';
-import EmployeePageNav from '../layout/navbar/employeePageNav';
+import EmployeePageNav from './employeePageNav';
 import PunchClock from '../../features/clock-operation';
 import ShiftList from '../../features/shiftList'
 import ClockHistory from '../../features/clockHistory';

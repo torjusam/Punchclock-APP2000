@@ -3,12 +3,10 @@
     Component displaying the weekly worktime module. Arbeidstid Uke 1-52, 10m 00s.
 */
 import React from 'react';
-import {formatInterval} from '../../services/formatInterval';
-import styles from '../clockHistory.module.css';
-import '@fontsource/lato';
-import '@fontsource/public-sans';
-import moment from 'moment';
 import {useEmployeeWorkDataContext} from "../../../../context/employeeWorkDataContext";
+import {formatInterval} from '../../services/formatInterval';
+import moment from 'moment';
+import styles from './timeModules.module.css';
 
 const WorkTimeSalary = () => {
     const {balance} = useEmployeeWorkDataContext();

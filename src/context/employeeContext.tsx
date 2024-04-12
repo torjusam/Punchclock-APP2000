@@ -5,9 +5,9 @@
     The context is shared across the entire app, allowing any component to access and modify the list.
     Uses a custom provider, and a custom hook to access the context.
 */
-import React, {createContext, useContext, useState, useEffect, ReactNode} from 'react';
+import React, {createContext, ReactNode, useContext, useEffect, useState} from 'react';
 import {Employee} from '../lib/types/employee';
-import {fetchEmployees} from '../lib/dataAccess';
+import {fetchEmployees} from '../features/homepageEmployeeList/services/getEmployees';
 import {useSession} from "next-auth/react";
 import {ResError} from "../lib/types/types";
 import moment from "moment";

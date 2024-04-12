@@ -10,9 +10,9 @@ import React from 'react';
 import ArrowIn from '../../../../assets/arrowIn.svg';
 import ArrowOut from '../../../../assets/arrowOut.svg';
 import {formatInterval} from '../../services/formatInterval';
-import styles from '../clockHistory.module.css';
-import moment from 'moment';
 import {ClockHistoryData} from "../../../../lib/types/types";
+import moment from 'moment';
+import styles from './clockHistoryTable.module.css';
 
 interface ClockHistoryRowProps {
     clockHistoryData: ClockHistoryData;

@@ -1,8 +1,7 @@
+// Author: Torjus A.M
 import React from 'react';
-import FrontPage from '../components/homePageData';
+import HomepageData from '../components/homePageData';
 
 export default function Page() {
-  return (
-    <FrontPage />
-  );
+    return <HomepageData/>
 }
