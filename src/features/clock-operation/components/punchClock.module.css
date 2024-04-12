@@ -116,18 +116,20 @@
     }
 }
 
-@media screen and (max-width: 1300px),
-(max-height: 900px) {
+/* Media queries for responsiveness based on viewport size
+   ========================================================================== */
+
+
+/* When between 1123px - 1300px width, or 701px - 900px height */
+@media screen and (min-width: 1123px) and (max-width: 1300px), screen and (max-height: 900px) {
     .timeDisplay {
-        margin: 0.3em;
-        margin-top: 0;
+        margin: 0 0.3em;
     }
 
     .timeDisplay h1 {
         font-size: 2.9rem;
     }
 
-    /* Time between check-times */
     .timeDisplay h2 {
         margin-top: 0.5em;
         font-size: 1.35em;
@@ -145,5 +147,17 @@
         margin-bottom: 0.45em;
         height: 1.2rem;
         width: 5.5em;
+    }
+}
+
+/* When below 1123px width */
+@media screen and (max-width: 1123px) {
+    .timeDisplay h1 {
+        font-size: 2.5rem;
+    }
+
+    .timeDisplay h2 {
+        margin-top: 0.45em;
+        font-size: 1.3em;
     }
 }

@@ -4,9 +4,9 @@
  * Styles for the employee-page and its modules. (Nav bar styling is in .src/styles/navbars.module.css).
  * Starts by defining shared styles for all containers, then specific styles for the modules.
  *
- * TODO: Simplify
  */
 
+/* Container holding navbar and the personalpage-data */
 .personalPageContainer {
     display: flex;
     flex-direction: column;

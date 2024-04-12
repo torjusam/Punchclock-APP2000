@@ -3,11 +3,11 @@
     Component responsible for displaying the timer on the punchClock module.
 */
 import React, {FC} from 'react';
-import moment from 'moment';
-import styles from './punchClock.module.css';
-import {formatTimer} from "../services/formatTimer";
 import {useSelectedEmployeeContext} from "../../../context/selectedEmployeeContext";
 import {useEmployeeWorkDataContext} from "../../../context/employeeWorkDataContext";
+import {formatTimer} from "../services/formatTimer";
+import moment from 'moment';
+import styles from './punchClock.module.css';
 
 const PunchClockTimer: FC = () => {
     const {selectedEmployee} = useSelectedEmployeeContext();
@@ -27,7 +27,11 @@ const PunchClockTimer: FC = () => {
                         <h1>{formatTimer(timer)}</h1>
                         <h2>
                             {moment(selectedEmployee.lastCheckIn).format('LT')} -
-                            {selectedEmployee.isClockedIn ? ' ?' : moment(selectedEmployee.lastCheckOut).format(' LT')}
+                            {/* Either "?" while clockin is active, or last checkout */}
+                            {selectedEmployee.isClockedIn ?
+                                ' ?' :
+                                moment(selectedEmployee.lastCheckOut).format(' LT')
+                            }
                         </h2>
                     </>
                 )

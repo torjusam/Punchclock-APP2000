@@ -3,7 +3,7 @@
     This context is responsible for providing information for various working-time for a specific employee.
     It is responsible for setting the timer, and setting and getting the balance for the employee.
 */
-import React, {createContext, useState, useContext, useEffect} from 'react';
+import React, {createContext, useContext, useEffect, useState} from 'react';
 import {Employee} from '../lib/types/employee';
 import {performFetch, performPost} from '../lib/workIntervalsAPI';
 import {objectToPostgresInterval} from "../lib/durationToPGInterval";
@@ -32,6 +32,7 @@ export default function EmployeeWorkDataProvider({children, employee}: {
 
     useEffect(() => {
         // Fetch and update workTimeData when the employee clocks out
+        // TODO: Fix
         const fetchBalance = async () => {
             const result = await performFetch(employee);
             setBalance(result);

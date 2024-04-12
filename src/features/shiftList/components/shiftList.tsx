@@ -5,22 +5,17 @@
     and displays them in a list.
 */
 import React, {FC} from 'react';
-import {Employee} from '../../../lib/types/employee';
-import styles from './shiftList.module.css';
-import 'moment/locale/nb';
-import useShifts from "../../../hooks/useShifts";
-import ShiftDisplay from "./shiftCard";
+import {useSelectedEmployeeContext} from "../../../context/selectedEmployeeContext";
 import {groupShiftsByMonth, sortMonths} from "../services/sortShifts";
+import ShiftCard from "./shiftCard";
+import useShifts from "../hooks/useShifts";
 import NoShifts from "./noShifts";
-import '@fontsource/lato';
 import Loading from "./shiftListLoading";
+import styles from './shiftList.module.css';
 
-interface RenderShiftListProps {
-    employee: Employee;
-}
-
-const RenderShiftList: FC<RenderShiftListProps> = ({employee}) => {
-    const {shifts, isLoading} = useShifts(employee);
+const RenderShiftList: FC = () => {
+    const {selectedEmployee} = useSelectedEmployeeContext();
+    const {shifts, isLoading} = useShifts(selectedEmployee);
 
     if (isLoading)
         return <Loading/>
@@ -33,6 +28,7 @@ const RenderShiftList: FC<RenderShiftListProps> = ({employee}) => {
 
     return (
         <>
+            {/* Separate by month, with a separator showing month in text */}
             {sortedMonths.map(month => (
                 <div key={month} style={{paddingBottom: '0.5rem'}}>
                     <div className={styles.monthContainer}>
@@ -43,7 +39,7 @@ const RenderShiftList: FC<RenderShiftListProps> = ({employee}) => {
                         <hr/>
                     </div>
                     {shiftsByMonth[month].map((shift) => (
-                        <ShiftDisplay
+                        <ShiftCard
                             key={shift.id}
                             shift={shift}
                         />

@@ -22,14 +22,15 @@ const EmployeePageData: FC = () => {
     return (
         <div className={styles.personalPageContainer}>
             <EmployeePageNav/>
-            {/* Context for employee's work-related data*/}
+            {/* Context for employee's work-related data,
+            needs to be passed an employee as its used on the extra-page aswell */}
             <EmployeeWorkDataProvider employee={selectedEmployee}>
                 <div className={styles.personalPage}>
                     <div className={styles.outerModuleContainer}>
                         <PunchClock/>
-                        <ShiftList employee={selectedEmployee}/>
+                        <ShiftList/>
                     </div>
-                    <ClockHistory employee={selectedEmployee}/>
+                    <ClockHistory/>
                 </div>
             </EmployeeWorkDataProvider>
         </div>

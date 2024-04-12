@@ -8,13 +8,18 @@ import {Employee} from "../../../../lib/types/employee";
 import ClockHistoryRow from "./clockHistoryRow";
 import LoadingRows from "./clockHistoryRowLoading";
 import styles from './clockHistoryTable.module.css';
+import {useSelectedEmployeeContext} from "../../../../context/selectedEmployeeContext";
 
 interface ClockHistoryTableProps {
-    employee: Employee;
+    employee?: Employee;
 }
 
 const ClockHistoryTable: FC<ClockHistoryTableProps> = ({employee}) => {
-    const {clockHistoryData, isLoading} = useClockHistory(employee);
+    const {selectedEmployee} = useSelectedEmployeeContext();
+    /* Either use the employee passed as a prop, or use the
+    selectedEmployee from context. This is so the extra-page can use the table */
+    const employeeToUse = employee || selectedEmployee;
+    const {clockHistoryData, isLoading} = useClockHistory(employeeToUse);
 
     return (
         <div className={styles.tableContainer}>

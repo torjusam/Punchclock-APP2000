@@ -3,9 +3,9 @@
     This hook fetches the shifts for a given employee. Returns an array
     of type "Shift", and a boolean for loading state.
 */
-import {useState, useEffect} from 'react';
-import {Employee} from "../lib/types/employee";
-import {Shift} from "../lib/types/types";
+import {useEffect, useState} from 'react';
+import {Employee} from "../../../lib/types/employee";
+import {Shift} from "../../../lib/types/types";
 
 const useShifts = (employee: Employee) => {
     const [shifts, setShifts] = useState<Shift[] | null>(null);

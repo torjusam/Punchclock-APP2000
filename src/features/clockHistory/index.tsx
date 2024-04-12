@@ -3,17 +3,12 @@
     Responsible for defining the layout and content of the "Stemplingshistorikk" module.
 */
 import React, {FC} from 'react';
-import {Employee} from '../../lib/types/employee';
 import ClockCheck from '../../assets/clockCheck.svg';
 import TimeModules from './components/timeModules';
 import ClockHistoryTable from "./components/clockHistoryTable";
 import layout from '../../components/employeePageData/employeePageLayout.module.css';
 
-interface ClockHistoryProps {
-    employee: Employee;
-}
-
-const ClockHistory: FC<ClockHistoryProps> = ({employee}) => {
+const ClockHistory: FC = () => {
     return (
         // Module layout
         <div className={layout.clockHistoryContainer}>
@@ -24,8 +19,8 @@ const ClockHistory: FC<ClockHistoryProps> = ({employee}) => {
                 <h1>Stemplingshistorikk</h1>
             </div>
             <hr/>
-            <TimeModules employee={employee}/>
-            <ClockHistoryTable employee={employee}/>
+            <TimeModules/>
+            <ClockHistoryTable/>
         </div>
     );
 };
