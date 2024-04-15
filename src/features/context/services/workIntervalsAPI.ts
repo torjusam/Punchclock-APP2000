@@ -1,9 +1,9 @@
-/* 
-    Author Torjus A.M
-    Logic for performing fetch and posts on the workTime intervals from the datbabase.
-    Used in the workIntervalContext.
-*/
-import {Employee} from "./types/employee";
+/**
+ * @file Logic for performing fetch and posts on the workTime intervals from the database.
+ * Used in the workIntervalContext.
+ * @Author Torjus A.M
+ */
+import {Employee} from "../../../lib/types/employee";
 
 export const performFetch = async (employee: Employee) => {
     try {
@@ -24,6 +24,7 @@ export const performFetch = async (employee: Employee) => {
     }
 };
 
+//TODO: use
 export const performPost = async (employee: Employee, workInterval: string) => {
     try {
         const response = await fetch('/api/workIntervals/setBalance', {
