@@ -5,15 +5,14 @@
 */
 import {Employee} from "./types/employee";
 
-export const performFetch = async (employee) => {
+export const performFetch = async (employee: Employee) => {
     try {
-        const employeeId = employee.id;
         const response = await fetch('/api/workIntervals/getBalance', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({employeeId}),
+            body: JSON.stringify({employeeId: employee.id}),
         });
         if (!response.ok) {
             throw new Error('Failed to fetch work intervals');

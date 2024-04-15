@@ -5,7 +5,7 @@ import Notif from '../../assets/notif.svg';
 import Helpico from '../../assets/helpIco.svg';
 import Avatarico from '../../assets/avatar.svg';
 import HomeButton from '../homeButton';
-import {useSelectedEmployeeContext} from "../../context/selectedEmployeeContext";
+import {useSelectedEmployeeContext} from "../../features/context/selectedEmployeeContext";
 import layout from '../../styles/navbar.module.css'
 import styles from './employeePageNav.module.css'
 

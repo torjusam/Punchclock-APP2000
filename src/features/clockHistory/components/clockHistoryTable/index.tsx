@@ -8,7 +8,7 @@ import {Employee} from "../../../../lib/types/employee";
 import ClockHistoryRow from "./clockHistoryRow";
 import LoadingRows from "./clockHistoryRowLoading";
 import styles from './clockHistoryTable.module.css';
-import {useSelectedEmployeeContext} from "../../../../context/selectedEmployeeContext";
+import {useSelectedEmployeeContext} from "../../../context/selectedEmployeeContext";
 
 interface ClockHistoryTableProps {
     employee?: Employee;

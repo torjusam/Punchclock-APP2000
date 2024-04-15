@@ -6,10 +6,9 @@
     Uses a custom provider, and a custom hook to access the context.
 */
 import React, {createContext, ReactNode, useContext, useEffect, useState} from 'react';
-import {Employee} from '../lib/types/employee';
-import {fetchEmployees} from '../features/homepageEmployeeList/services/getEmployees';
-import {useSession} from "next-auth/react";
-import {ResError} from "../lib/types/types";
+import {Employee} from '../../lib/types/employee';
+import {ResError} from "../../lib/types/types";
+import useFetchEmployees from "./hooks/useFetchEmployees";
 import moment from "moment";
 
 interface EmployeeContextProps {
@@ -24,28 +23,10 @@ interface EmployeeContextProps {
 export const EmployeeContext = createContext<EmployeeContextProps | null>(null);
 
 export default function EmployeeContextProvider({children}: { children: ReactNode }) {
-    const [employees, setEmployees] = useState<Employee[]>([]);
+    const {employees, error, loading, setEmployees} = useFetchEmployees();
     const [sortedEmployees, setSortedEmployees] = useState<Employee[]>([]);
-    const [error, setError] = useState<ResError | null>(null);
-    const [loading, setLoading] = useState<boolean>(true);
-    const {data: session} = useSession();
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const fetchedEmployees = await fetchEmployees();
-                setEmployees(fetchedEmployees);
-            } catch (error) {
-                setError({status: error.status, message: error.message});
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetchData();
-        // Update on login
-    }, [session]);
-
-    // Creates a sorted copy of the original list. Avoids mutating original list.
+    // Hook to create sorted copy of the original list, to avoid mutating original
     useEffect(() => {
         const sortedArray = sortEmployees(employees);
         setSortedEmployees(sortedArray);
@@ -54,7 +35,14 @@ export default function EmployeeContextProvider({children}: { children: ReactNod
     // Wraps children so that any child component can access the employee state.
     return (
         <EmployeeContext.Provider
-            value={{employees, setEmployees, sortedEmployees, setSortedEmployees, loading, error}}>
+            value={{
+                employees,
+                setEmployees,
+                sortedEmployees,
+                setSortedEmployees,
+                loading,
+                error
+            }}>
             {children}
         </EmployeeContext.Provider>
     );
@@ -69,7 +57,7 @@ export function useEmployeeContext() {
     return context;
 }
 
-// Function to sort the employees array by 1: status and 2: recency of clock-operations.
+// Function to sort the employees array by 1: status, 2: recency of clock-operations.
 export function sortEmployees(employees: Employee[]) {
     // Copy of employees array to avoid mutating the original.
     return [...employees].sort((a, b) => {

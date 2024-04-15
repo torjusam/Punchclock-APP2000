@@ -3,12 +3,15 @@
     Fujcnction to calculate overtime for an employee using moment.js library 
     to handle durations and time calculations. Includes a helper function to turn
     result (duration object) into a string that fits the PostgreSQL interval type.
+    TODO: Cleanup?
 */
 import moment from 'moment';
+import {Employee} from "../../../lib/types/employee";
 
 // Starts by converting relevant times and intervals into ms, to accurately perform calculations.
-export function calculateOvertime(employee, balance, currentTime) {
-    const weeklyWorkTime = moment.duration(balance[0].sum);
+export function calculateOvertime(employee: Employee, balance, currentTime: Date) {
+    // Sets balance to 0 if no balance is found.
+    const weeklyWorkTime = balance && balance[0] && balance[0].sum ? moment.duration(balance[0].sum) : moment.duration(0);
     const weeklyWorkTimeMs = weeklyWorkTime.asMilliseconds();
     // const weeklyWorkTimeMs = moment.duration(balance[0].sum).asMilliseconds();
 

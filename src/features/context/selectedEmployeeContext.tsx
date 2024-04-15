@@ -1,5 +1,9 @@
+/*
+    Author: Torjus A.M
+    TODO: Description
+*/
 import React, {createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState} from 'react';
-import {Employee} from '../lib/types/employee';
+import {Employee} from '../../lib/types/employee';
 import moment from 'moment';
 import {useRouter} from "next/router";
 import {useEmployeeContext} from './employeeContext';

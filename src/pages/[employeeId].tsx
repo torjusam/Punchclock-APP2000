@@ -1,7 +1,7 @@
 // Author: Torjus A.M
 import EmployeePageData from '../components/employeePageData';
 import {FC} from "react";
-import SelectedEmployeeProvider from "../context/selectedEmployeeContext";
+import SelectedEmployeeProvider from "../features/context/selectedEmployeeContext";
 import useAutoCloseTimer from "../hooks/useAutoClosePage";
 
 const EmployeePage: FC = () => {

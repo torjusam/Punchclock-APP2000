@@ -4,9 +4,8 @@
     It is responsible for setting the timer, and setting and getting the balance for the employee.
 */
 import React, {createContext, useContext, useEffect, useState} from 'react';
-import {Employee} from '../lib/types/employee';
-import {performFetch, performPost} from '../lib/workIntervalsAPI';
-import {objectToPostgresInterval} from "../lib/durationToPGInterval";
+import {Employee} from '../../lib/types/employee';
+import {performFetch} from '../../lib/workIntervalsAPI';
 import moment from "moment";
 
 interface EmployeeWorkDataContextProps {
@@ -17,6 +16,7 @@ interface EmployeeWorkDataContextProps {
     timerLimit: boolean;
     setTimerLimit: (isOver15Hours: boolean) => void;
     isTimerLoading: boolean;
+    isBalanceLoading: boolean;
 }
 
 const EmployeeWorkDataContext = createContext<EmployeeWorkDataContextProps | undefined>(undefined);
@@ -28,22 +28,23 @@ export default function EmployeeWorkDataProvider({children, employee}: {
     const [timer, setTimer] = useState(0);
     const [balance, setBalance] = useState(null);
     const [isTimerLoading, setIsTimerLoading] = useState(false);
+    const [isBalanceLoading, setIsBalanceLoading] = useState(false);
     const [timerLimit, setTimerLimit] = useState(false);
 
     useEffect(() => {
-        // Fetch and update workTimeData when the employee clocks out
-        // TODO: Fix
         const fetchBalance = async () => {
+            setIsBalanceLoading(true);
             const result = await performFetch(employee);
-            setBalance(result);
-            // After data is calculated in the query, post it to the DB. Do not await it.
-            if (result)
-                performPost(employee, objectToPostgresInterval(result[0].sum));
+            console.log(result);
+            if (!result) {
+                setBalance(0);
+            } else {
+                setBalance(result);
+            }
+            setIsBalanceLoading(false);
         };
         if (employee?.lastCheckOut)
             fetchBalance();
-
-        // Rerun when employee checks out. Probably not optimal in regards to performance but it works.
     }, [employee?.lastCheckOut]);
 
     useEffect(() => {
@@ -73,7 +74,7 @@ export default function EmployeeWorkDataProvider({children, employee}: {
 
     return (
         <EmployeeWorkDataContext.Provider
-            value={{timer, setTimer, balance, setBalance, timerLimit, setTimerLimit, isTimerLoading}}>
+            value={{timer, setTimer, balance, setBalance, timerLimit, setTimerLimit, isTimerLoading, isBalanceLoading}}>
             {children}
         </EmployeeWorkDataContext.Provider>
     );

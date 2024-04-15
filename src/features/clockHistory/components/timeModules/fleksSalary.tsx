@@ -6,7 +6,7 @@ import React, {FC} from 'react';
 import {formatInterval} from '../../services/formatInterval';
 import useFleksSalary from '../../hooks/useFleksSalary';
 import styles from './timeModules.module.css';
-import {useSelectedEmployeeContext} from '../../../../context/selectedEmployeeContext';
+import {useSelectedEmployeeContext} from '../../../context/selectedEmployeeContext';
 
 const FleksSalary: FC = () => {
     const {selectedEmployee} = useSelectedEmployeeContext();

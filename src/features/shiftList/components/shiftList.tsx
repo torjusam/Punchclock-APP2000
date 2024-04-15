@@ -5,7 +5,7 @@
     and displays them in a list.
 */
 import React, {FC} from 'react';
-import {useSelectedEmployeeContext} from "../../../context/selectedEmployeeContext";
+import {useSelectedEmployeeContext} from "../../context/selectedEmployeeContext";
 import {groupShiftsByMonth, sortMonths} from "../services/sortShifts";
 import ShiftCard from "./shiftCard";
 import useShifts from "../hooks/useShifts";

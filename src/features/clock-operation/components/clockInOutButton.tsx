@@ -9,8 +9,8 @@ import ArrowIn from '../../../assets/arrowIn.svg';
 import '@fontsource/public-sans';
 import Toast from '../../../lib/toastContainer';
 import styles from './punchClock.module.css'
-import {useSelectedEmployeeContext} from "../../../context/selectedEmployeeContext";
-import {useEmployeeWorkDataContext} from "../../../context/employeeWorkDataContext";
+import {useSelectedEmployeeContext} from "../../context/selectedEmployeeContext";
+import {useEmployeeWorkDataContext} from "../../context/employeeWorkDataContext";
 
 const ClockInOutButton: FC = () => {
     const {selectedEmployee, updateEmployeeStatus} = useSelectedEmployeeContext();

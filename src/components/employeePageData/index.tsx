@@ -10,8 +10,8 @@ import EmployeePageNav from './employeePageNav';
 import PunchClock from '../../features/clock-operation';
 import ShiftList from '../../features/shiftList'
 import ClockHistory from '../../features/clockHistory';
-import {useSelectedEmployeeContext} from "../../context/selectedEmployeeContext";
-import EmployeeWorkDataProvider from "../../context/employeeWorkDataContext";
+import {useSelectedEmployeeContext} from "../../features/context/selectedEmployeeContext";
+import EmployeeWorkDataProvider from "../../features/context/employeeWorkDataContext";
 
 const EmployeePageData: FC = () => {
     const {selectedEmployee} = useSelectedEmployeeContext();

@@ -4,9 +4,9 @@
     It uses the employee-context to access the array of employees, map over it, rendering each employee as an employee card.
 */
 import React, {FC} from 'react';
-import EmployeeCard from './components/employeeCard';
-import {useEmployeeContext} from '../../context/employeeContext';
-import ErrorComponent from "../../components/errors/errorComponent";
+import EmployeeCard from './employeeCard/';
+import {useEmployeeContext} from '../../../features/context/employeeContext';
+import ErrorComponent from "../../errors/errorComponent";
 import styles from './employeeList.module.css';
 
 const EmployeeList: FC = () => {

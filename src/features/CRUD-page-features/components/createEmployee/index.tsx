@@ -1,9 +1,7 @@
 import React, {FC} from "react";
 import styles from "../employeeList/employeeList.module.css";
-import {useEmployeeContext} from "../../../../context/employeeContext";
 
 const CreateEmployee: FC = () => {
-    const {setEmployees} = useEmployeeContext();
     const handleClick = () => {
         // TODO: Create employee
         // setEmployees(prevEmployees => [...prevEmployees, {}]);

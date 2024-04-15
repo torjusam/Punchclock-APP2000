@@ -7,7 +7,7 @@ import React, {Dispatch, FC, SetStateAction} from 'react';
 import styles from './employeeList.module.css';
 import {Employee} from "../../../../lib/types/employee";
 import {deleteEmployee} from "../../services/deleteEmployee";
-import {useEmployeeContext} from "../../../../context/employeeContext";
+import {useEmployeeContext} from "../../../context/employeeContext";
 import ExtraPageButton from "./goToExtraPageBtn";
 
 interface EmployeeListItemProps {

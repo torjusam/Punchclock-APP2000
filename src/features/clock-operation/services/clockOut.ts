@@ -4,7 +4,7 @@ import {durationToPostgresInterval} from '../../../lib/durationToPGInterval';
 import {Employee} from "../../../lib/types/employee";
 
 // Balance is the total working time this calender week.
-export const clockOut = async (employee: Employee, balance, currentTime) => {
+export const clockOut = async (employee: Employee, balance, currentTime: Date) => {
     // Prevent invalid clock operation
     if (!employee.isClockedIn)
         return Promise.reject(new TypeError(employee.name + ' is not clocked in!'));
@@ -27,11 +27,11 @@ export const clockOut = async (employee: Employee, balance, currentTime) => {
         setFleksiBalance(employee, overtimeInterval);
         return true; // True for success
     } catch (error) {
-        return Promise.reject(error);
+        throw error;
     }
 };
 
-const setFleksiBalance = async (employee: Employee, overtimeInterval) => {
+const setFleksiBalance = async (employee: Employee, overtimeInterval: string) => {
     try {
         const response = await fetch('/api/workIntervals/setFleksBalance', {
             method: 'POST',

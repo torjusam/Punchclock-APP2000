@@ -4,10 +4,10 @@
 */
 import React, {FC} from "react";
 import ExtraPageData from "../../extra-Magnus_Ask_Kriss";
-import EmployeeWorkDataProvider from "../../context/employeeWorkDataContext";
+import EmployeeWorkDataProvider from "../../features/context/employeeWorkDataContext";
 import {Employee} from "../../lib/types/employee";
 import {useRouter} from "next/router";
-import {useEmployeeContext} from "../../context/employeeContext";
+import {useEmployeeContext} from "../../features/context/employeeContext";
 
 const ExtraPage: FC = () => {
     const {employees} = useEmployeeContext();

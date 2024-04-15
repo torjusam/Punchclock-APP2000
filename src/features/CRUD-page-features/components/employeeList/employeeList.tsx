@@ -6,8 +6,7 @@ import React, {Dispatch, FC, SetStateAction} from 'react';
 import EmployeeListItem from './employeeListItem';
 import styles from './employeeList.module.css';
 import {Employee} from "../../../../lib/types/employee";
-import CreateEmployee from "../createEmployee";
-import {useEmployeeContext} from "../../../../context/employeeContext";
+import {useEmployeeContext} from "../../../context/employeeContext";
 
 interface EmployeeListProps {
     setSelectedEmployee: Dispatch<SetStateAction<Employee | null>>;

@@ -4,7 +4,7 @@
   Only file where global styles can be imported, and context providers can be wrapped around the page-content component.
 */
 import type {AppProps} from 'next/app';
-import EmployeeContextProvider from '../context/employeeContext';
+import EmployeeContextProvider from '../features/context/employeeContext';
 import {SessionProvider} from "next-auth/react"
 import LeftContent from '../components/layout';
 import './globals.css';
