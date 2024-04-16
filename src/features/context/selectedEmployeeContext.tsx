@@ -4,8 +4,6 @@
  */
 import React, {createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState} from 'react';
 import {Employee} from '../../lib/types/employee';
-import moment from 'moment';
-import {useRouter} from "next/router";
 import {useEmployeeContext} from './employeeContext';
 
 interface SelectedEmployeeContextProps {
@@ -16,6 +14,11 @@ interface SelectedEmployeeContextProps {
 
 export const SelectedEmployeeContext = createContext<SelectedEmployeeContextProps | undefined>(undefined);
 
+interface SelectedEmployeeProviderProps {
+    children: ReactNode;
+    employee: Employee;
+}
+
 /**
  * The SelectedEmployeeProvider component is a context provider that manages the state of the selected employee.
  * It provides the selected employee state, and functions to update this state to its child components.
@@ -24,36 +27,13 @@ export const SelectedEmployeeContext = createContext<SelectedEmployeeContextProp
  * @param {ReactNode} props.children - The child components of this provider.
  * @returns {React.Element} A context provider component.
  */
-export default function SelectedEmployeeProvider({children}: { children: ReactNode }) {
-    const [selectedEmployee, setSelectedEmployee] = useState<Employee | undefined>(undefined);
-    const {employees, setEmployees, loading} = useEmployeeContext();
-    const router = useRouter();
-    const {employeeId} = router.query;
+export default function SelectedEmployeeProvider({children, employee}: SelectedEmployeeProviderProps) {
+    const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(employee);
+    const {setEmployees} = useEmployeeContext();
 
-    /**
-     * Hook that updates the selected employee when mounted or when relevant states change.
-     * Finds and sets the daily work time for the employee.
-     */
     useEffect(() => {
-        // If loading is true, return early.
-        if (loading) return;
-
-        if (employeeId && employees) {
-            // Maps over and finds the specific employee from the employees context.
-            const employeesMap = new Map(employees.map(employee => [employee.id, employee]));
-            const foundEmployee = employeesMap.get(Number(employeeId));
-
-            if (foundEmployee) {
-                // Calculates the daily work time for the employee by dividing the planned work time by 5.
-                const dailyWorkTime = moment.duration(
-                    moment.duration(foundEmployee.PlannedWork).asMilliseconds() / 5,
-                    'milliseconds'
-                );
-                foundEmployee.dailyWorkTime = dailyWorkTime;
-                setSelectedEmployee(foundEmployee);
-            }
-        }
-    }, [selectedEmployee, employeeId, loading]);
+        setSelectedEmployee(employee);
+    }, [employee]);
 
     /**
      * Toggles clock-in/clock-out status of an employee.

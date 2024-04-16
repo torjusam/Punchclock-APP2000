@@ -3,6 +3,7 @@
  * @Author Torjus A.M
  */
 import moment from 'moment';
+import {Interval} from "./types";
 
 /**
  * @class Employee
@@ -27,8 +28,7 @@ export class Employee {
     lastCheckIn?: Date;
     lastCheckOut?: Date;
     PlannedWork: string;
-    balance?: string;
-    fleksitidBalance?: string;
+    balance?: Interval;
     isClockedIn: boolean;
     dailyWorkTime?: moment.Duration;
     isWorkTimeReached?: boolean;

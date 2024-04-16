@@ -22,7 +22,7 @@ export const clockInOutOperation = async (
         const currentTime = new Date();
         // Determine the function to use based on the employee's clocked in status
         const checkFunction = employee.isClockedIn ? clockOut : clockIn;
-        const result = await checkFunction(employee, balance, currentTime);
+        const result = await checkFunction(employee, currentTime);
 
         // Author: Thomas H
         if (result) {
