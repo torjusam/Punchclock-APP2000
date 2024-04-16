@@ -1,11 +1,24 @@
-/* 
-    Author: Torjus A.M
-    Defines the Employee class, which is used to represent an employee in the system.
-    When the employees are fetched from the database, they are constructed as Employee objects.
-    This makes the employees reusable in the system without having to fetch over and over again.
-*/
+/**
+ * @file Defines the Employee class
+ * @Author Torjus A.M
+ */
 import moment from 'moment';
 
+/**
+ * @class Employee
+ * @classdesc Represents a single employee object.
+ * @property {number} id
+ * @property {string} name
+ * @property {number} pin - The employee's pin. Would be used for personal-page authentication.
+ * @property {string} profilePictureUrl - The employee's profile picture url.
+ * @property {Date} lastCheckIn - The employee's last check in.
+ * @property {Date} lastCheckOut - The employee's last check out.
+ * @property {string} PlannedWork - The employee's planned work hours.
+ * @property {string} balance - The employee's balance.
+ * @property {boolean} isClockedIn - Boolean indicating if the employee is clocked in.
+ * @property {moment.Duration} dailyWorkTime - The employee's daily work time.
+ * @property {boolean} isWorkTimeReached - Boolean indicating if the employee's work time has been reached.
+ */
 export class Employee {
     id: number;
     name: string;
@@ -37,10 +50,6 @@ export class Employee {
         this.profilePictureUrl = profilePictureUrl;
 
         // Sets isClockedIn to false if lastCheckOut is newer than lastCheckIn. Defaults to false
-        if (this.lastCheckIn && this.lastCheckOut) {
-            this.isClockedIn = this.lastCheckIn > this.lastCheckOut;
-        } else {
-            this.isClockedIn = false
-        }
+        this.isClockedIn = this.lastCheckIn > (this.lastCheckOut || 0);
     }
 }

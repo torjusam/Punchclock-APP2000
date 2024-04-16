@@ -1,12 +1,17 @@
-/*
-    Author: Torjus A.M
-    Custom hook for fetching the fleks salary for an employee.
-    Updates independently of the clock history table, whenever the employee checks out.
-*/
+/**
+ * @file Fetches fleks salary, updates independently of the clock history table, whenever the employee checks out.
+ * @Author Torjus A.M, Thomas H
+ */
 import {useState, useEffect} from 'react';
 import {Employee} from "../../../lib/types/employee";
 import {defaultInterval, Interval} from "../../../lib/types/types";
 
+/**
+ * Custom Hook to fetch and manage the state of an employee's fleks salary.
+ * @Author Torjus A.M
+ * @param {Employee} employee - The employee object for which the fleks salary is to be fetched.
+ * @returns {Object} An object containing the fleks salary as an Interval and a loading state.
+ */
 const useFleksSalary = (employee: Employee) => {
     const [fleksSalary, setfleksSalary] = useState(defaultInterval());
     const [isLoading, setIsLoading] = useState(true);
@@ -42,7 +47,13 @@ const useFleksSalary = (employee: Employee) => {
 
 export default useFleksSalary;
 
-export const fetchFleksSalary = async (employee: Employee) => {
+/**
+ * Performs the actual fetch from the server.
+ * @Author Thomas H
+ * @param {Employee} employee - The employee object for which the fleks salary is to be fetched.
+ * @returns {Promise<Array>} A promise that resolves to an array containing the fleks salary data.
+ */
+const fetchFleksSalary = async (employee: Employee) => {
     const employeeId = employee.id;
     const response = await fetch('/api/workIntervals/getFleksBalance', {
         method: 'POST',

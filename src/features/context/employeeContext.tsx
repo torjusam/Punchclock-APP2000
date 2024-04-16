@@ -68,7 +68,7 @@ export function useEmployeeContext() {
 }
 
 /**
- * Sorts a list of employees by 1: their clock-in status, and 2: the recency of their clock operations.
+ * Sorts a list of employees by their clock-in status, and the recency of their clock operations.
  * @param {Employee[]} employees - The list of employees to sort.
  * @returns {Employee[]} The sorted list.
  */
