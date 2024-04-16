@@ -18,11 +18,9 @@ const FleksSalary: FC = () => {
             {isLoading ? (
                 <h2 style={{color: '#0DB714'}}>00m 00s</h2>
             ) : (
-                fleksSalary.map((item, index) => (
-                    <h2 key={index} style={{color: '#0DB714'}}>
-                        {formatInterval(item.fleksitid_balance)}
-                    </h2>
-                ))
+                <h2 style={{color: '#0DB714'}}>
+                    {formatInterval(fleksSalary)}
+                </h2>
             )}
         </div>
     );

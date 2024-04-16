@@ -5,7 +5,7 @@
  */
 import {Employee} from "../../../lib/types/employee";
 
-export const performFetch = async (employee: Employee) => {
+export const fetchBalance = async (employee: Employee) => {
     try {
         const response = await fetch('/api/workIntervals/getBalance', {
             method: 'POST',
@@ -25,7 +25,7 @@ export const performFetch = async (employee: Employee) => {
 };
 
 //TODO: use
-export const performPost = async (employee: Employee, workInterval: string) => {
+export const postBalance = async (employee: Employee, workInterval: string) => {
     try {
         const response = await fetch('/api/workIntervals/setBalance', {
             method: 'POST',

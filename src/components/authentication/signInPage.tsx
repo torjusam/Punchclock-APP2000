@@ -19,7 +19,7 @@ export default function SignInPage() {
             try {
                 const result = await signIn("credentials", {...values, redirect: false});
                 // Window.location.replace is used to redirect AND refresh main page
-                result.ok ? (toast.success("Logget inn!"), window.location.replace('/')) : setStatusText(result.error);
+                result.ok ? window.location.replace('/') : setStatusText(result.error);
             } catch (error) {
                 setStatusText(error.message);
                 toast.error(error.message);
