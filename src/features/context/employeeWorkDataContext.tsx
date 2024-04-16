@@ -2,10 +2,12 @@
  * @file Context provider for the employee work data context. Provides the timer, balance, and timer limit for the employee.
  * @author Torjus A.M
  */
-import React, {createContext, useContext, useEffect, useState} from 'react';
+import React, {createContext, useContext} from 'react';
 import {Employee} from '../../lib/types/employee';
 import {useFetchBalance} from "./hooks/useFetchBalance";
 import {useEmployeeTimer} from "./hooks/usePunchTimer";
+import {useCheckTimerLimit} from "../clock-operation/hooks/timerLimitReached";
+import {Interval} from "../../lib/types/types";
 
 /**
  * Interface for the context properties of the EmployeeWorkDataContext.
@@ -21,7 +23,7 @@ import {useEmployeeTimer} from "./hooks/usePunchTimer";
 interface EmployeeWorkDataContextProps {
     timer: number;
     setTimer: (time: number) => void;
-    balance: any;
+    balance: Interval;
     timerLimit: boolean;
     setTimerLimit: (isOver15Hours: boolean) => void;
     isTimerLoading: boolean;
@@ -42,6 +44,9 @@ export default function EmployeeWorkDataProvider({children, employee}: {
         setTimerLimit,
         isTimerLoading
     } = useEmployeeTimer(employee);
+
+    // Start hook to check if the timer limit has been reached.
+    useCheckTimerLimit(employee, balance, new Date(), timerLimit);
 
     return (
         <EmployeeWorkDataContext.Provider

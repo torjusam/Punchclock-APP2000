@@ -5,10 +5,26 @@
 
 // Interface for postgre interval type
 export interface Interval {
-    hours: number;
-    minutes: number;
-    seconds: number;
+    years?: number;
+    months?: number;
+    days?: number;
+    hours?: number;
+    minutes?: number;
+    seconds?: number;
     milliseconds?: number;
+}
+
+// Default interval used when no interval is provided, or all values are 0 (to avoid errors)
+export function defaultInterval(): Interval {
+    return {
+        years: 0,
+        months: 0,
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+        milliseconds: 0
+    };
 }
 
 // Interface for the data to be used in the clock history table

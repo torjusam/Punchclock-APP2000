@@ -1,9 +1,14 @@
-/*
-    Author: Torjus A.M
+/**
+ * @file This is the function for logging important events to the database.
+ * @Author Torjus A.M, Thomas H
+ * @param eventType - String representation of an event
+ * @param accountId - ID of the logged in service-account
+ * @param details - Additional details
+ */
 
-*/
 export async function logUserActivity(eventType: string, accountId?: string, details?: string) {
     console.log('logUserActivity:', eventType, accountId, details);
+
     await fetch('http://localhost:3000/api/auth/setLog', {
         method: 'POST',
         headers: {

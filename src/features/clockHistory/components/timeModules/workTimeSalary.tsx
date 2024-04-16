@@ -17,8 +17,8 @@ const WorkTimeSalary = () => {
             {/* If loading, display loading div, else display either '00m 00s' or the formatted balance */}
             {isBalanceLoading ? (
                 <div className={styles.loading}/>
-            ) : balance && balance[0].sum ? (
-                <h2>{formatInterval(balance[0].sum)}</h2>
+            ) : balance && balance ? (
+                <h2>{formatInterval(balance)}</h2>
             ) : (
                 <h2>00m 00s</h2>
             )}
