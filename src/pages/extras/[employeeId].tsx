@@ -1,5 +1,5 @@
 /*
-    Author: Torjus A.M
+    Author: Torjus A.M, Magnus A, Ask I.P.A
     Used to set a dynamic url (employee's id), wrap the context, and display the page content
 */
 import React, {FC} from "react";
@@ -8,6 +8,7 @@ import EmployeeWorkDataProvider from "../../features/context/employeeWorkDataCon
 import {Employee} from "../../lib/types/employee";
 import {useRouter} from "next/router";
 import {useEmployeeContext} from "../../features/context/employeeContext";
+import SelectedEmployeeProvider from "../../features/context/selectedEmployeeContext";
 
 const ExtraPage: FC = () => {
     const {employees} = useEmployeeContext();
@@ -28,7 +29,9 @@ const ExtraPage: FC = () => {
     // Render the ExtraPageData component with the found employee
     return (
         <EmployeeWorkDataProvider employee={foundEmployee}>
-            <ExtraPageData employee={foundEmployee}/>
+            <SelectedEmployeeProvider>
+                <ExtraPageData employee={foundEmployee}/>
+            </SelectedEmployeeProvider>
         </EmployeeWorkDataProvider>
     );
 };
