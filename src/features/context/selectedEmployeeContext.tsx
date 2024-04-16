@@ -1,15 +1,32 @@
 /**
- * @file Context provider for the selected employee.
+ * @file This file provides the context for the selected employee in the application.
+ * It includes the context provider and a custom hook for accessing the context.
  * @author Torjus A.M
  */
-import React, {createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState} from 'react';
+import React, {createContext, ReactNode, useContext, useEffect, useState} from 'react';
 import {Employee} from '../../lib/types/employee';
 import {useEmployeeContext} from './employeeContext';
+import {useTimerLimit} from "../clock-operation/hooks/useTimerLimit";
+import {usePunchClockTimer} from "./hooks/usePunchClockTimer";
 
+/**
+ * @typedef SelectedEmployeeContextProps
+ * @property {Employee | null} selectedEmployee - The currently selected employee.
+ * @property {(employee: Employee | null) => void} setSelectedEmployee - Function to set the selected employee.
+ * @property {(employee: Employee) => void} updateEmployeeStatus - Function to update the status of the selected employee.
+ * @property {number} timer - The current timer value.
+ * @property {(time: number) => void} setTimer - Function to set the timer value.
+ * @property {boolean} timerLimit - Whether the timer limit has been reached.
+ * @property {boolean} isTimerLoading - Whether the timer is currently loading.
+ */
 interface SelectedEmployeeContextProps {
     selectedEmployee: Employee | null;
-    setSelectedEmployee: Dispatch<SetStateAction<Employee>>;
+    setSelectedEmployee: (employee: Employee | null) => void;
     updateEmployeeStatus: (employee: Employee) => void;
+    timer: number;
+    setTimer: (time: number) => void;
+    timerLimit: boolean;
+    isTimerLoading: boolean;
 }
 
 export const SelectedEmployeeContext = createContext<SelectedEmployeeContextProps | undefined>(undefined);
@@ -23,21 +40,24 @@ interface SelectedEmployeeProviderProps {
  * The SelectedEmployeeProvider component is a context provider that manages the state of the selected employee.
  * It provides the selected employee state, and functions to update this state to its child components.
  *
- * @param {Object} props - The props for the component.
- * @param {ReactNode} props.children - The child components of this provider.
+ * @param {SelectedEmployeeProviderProps} props The props for the component.
  * @returns {React.Element} A context provider component.
  */
 export default function SelectedEmployeeProvider({children, employee}: SelectedEmployeeProviderProps) {
     const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(employee);
     const {setEmployees} = useEmployeeContext();
+    const {timer, setTimer, timerLimit, isTimerLoading} = usePunchClockTimer(employee);
 
     useEffect(() => {
         setSelectedEmployee(employee);
     }, [employee]);
 
+    // Start hook to check if the timer limit has been reached.
+    useTimerLimit(employee, new Date(), timerLimit);
+
     /**
-     * Toggles clock-in/clock-out status of an employee.
-     * Updates check-in/out times and employee states.
+     * Toggles clock-in/clock-out status of an employee by updating the isClockedIn property,
+     * then updating the employee list with the new employee object.
      *
      * @param {Employee} selectedEmployee - The employee object whose status needs to be updated.
      * @returns {Promise<void>} - A promise that resolves when the employee status has been updated.
@@ -59,7 +79,15 @@ export default function SelectedEmployeeProvider({children, employee}: SelectedE
     };
 
     return (
-        <SelectedEmployeeContext.Provider value={{selectedEmployee, setSelectedEmployee, updateEmployeeStatus}}>
+        <SelectedEmployeeContext.Provider value={{
+            selectedEmployee,
+            setSelectedEmployee,
+            updateEmployeeStatus,
+            timer,
+            setTimer,
+            timerLimit,
+            isTimerLoading,
+        }}>
             {children}
         </SelectedEmployeeContext.Provider>
     );

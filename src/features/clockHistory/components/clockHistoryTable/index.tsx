@@ -1,25 +1,16 @@
-/*
-    Author: Torjus A.M, Thomas H
-    Main file for the clock-history table. Responsible for setting up the header, and rendering the rows.
-*/
+/**
+ * @file Responsible for setting up table, the header, and rendering the rows.
+ * @module ClockHistory
+ * @Author Torjus A.M, Thomas H
+ */
 import React, {FC} from 'react';
 import useClockHistory from "../../hooks/useClockHistory";
-import {Employee} from "../../../../lib/types/employee";
 import ClockHistoryRow from "./clockHistoryRow";
 import LoadingRows from "./clockHistoryRowLoading";
 import styles from './clockHistoryTable.module.css';
-import {useSelectedEmployeeContext} from "../../../context/selectedEmployeeContext";
 
-interface ClockHistoryTableProps {
-    employee?: Employee;
-}
-
-const ClockHistoryTable: FC<ClockHistoryTableProps> = ({employee}) => {
-    const {selectedEmployee} = useSelectedEmployeeContext();
-    /* Either use the employee passed as a prop, or use the
-    selectedEmployee from context. This is so the extra-page can use the table */
-    const employeeToUse = employee || selectedEmployee;
-    const {clockHistoryData, isLoading} = useClockHistory(employeeToUse);
+const ClockHistoryTable: FC = () => {
+    const {clockHistoryData, isLoading} = useClockHistory();
 
     return (
         <div className={styles.tableContainer}>

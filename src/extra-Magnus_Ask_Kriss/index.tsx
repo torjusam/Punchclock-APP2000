@@ -1,22 +1,19 @@
-/*
-  Author:
-  Description:
-*/
+/**
+ * @file blablabla
+ * @module Extra
+ * @Author
+ */
 import React, {FC} from "react";
 import '@fontsource/lato';
 import '@fontsource/public-sans';
-import {Employee} from "../lib/types/employee";
 import ClockHistoryTable from "../features/clockHistory/components/clockHistoryTable";
 
-interface ExtraPageDataProps {
-    employee: Employee;
-}
 
-const ExtraPageData: FC<ExtraPageDataProps> = ({employee}) => {
+const ExtraPageData: FC = () => {
 
     return (
         <>
-            <ClockHistoryTable employee={employee}/>
+            <ClockHistoryTable/>
         </>
     )
 };

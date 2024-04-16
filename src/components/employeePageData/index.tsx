@@ -1,9 +1,7 @@
-/*  
-    Author: Torjus A.M
-    Responsible for defining the layout of the employees personal page,
-    aswell as wrapping the data with context providers.
-
-*/
+/**
+ * @file Defines layout of the employees personal page, and dictates wether to load or not.
+ * @Author Torjus A.M
+ */
 import React, {FC} from 'react';
 import styles from './employeePageLayout.module.css';
 import EmployeePageNav from './employeePageNav';
@@ -11,7 +9,6 @@ import PunchClock from '../../features/clock-operation';
 import ShiftList from '../../features/shiftList'
 import ClockHistory from '../../features/clockHistory';
 import {useSelectedEmployeeContext} from "../../features/context/selectedEmployeeContext";
-import EmployeeWorkDataProvider from "../../features/context/employeeWorkDataContext";
 
 const EmployeePageData: FC = () => {
     const {selectedEmployee} = useSelectedEmployeeContext();
@@ -22,17 +19,13 @@ const EmployeePageData: FC = () => {
     return (
         <div className={styles.personalPageContainer}>
             <EmployeePageNav/>
-            {/* Context for employee's work-related data,
-            needs to be passed an employee as its used on the extra-page aswell */}
-            <EmployeeWorkDataProvider employee={selectedEmployee}>
-                <div className={styles.personalPage}>
-                    <div className={styles.outerModuleContainer}>
-                        <PunchClock/>
-                        <ShiftList/>
-                    </div>
-                    <ClockHistory/>
+            <div className={styles.personalPage}>
+                <div className={styles.outerModuleContainer}>
+                    <PunchClock/>
+                    <ShiftList/>
                 </div>
-            </EmployeeWorkDataProvider>
+                <ClockHistory/>
+            </div>
         </div>
     );
 }

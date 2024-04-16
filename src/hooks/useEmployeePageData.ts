@@ -1,28 +1,26 @@
-/* 
-    Author: Torjus A.M
-
-    Hook to go to the employees personal page, by finding them in the global employee context. The selected employee
-    is passed down to the pagaData component, which passes it down to the children components and their children etc.
-
-    In react, the objects passed to children are read-only, and cannot be modified directly, therefore we need to 
-    find the employee, calculate and set its dailyworktime, then pass that employee down to the children. 
-    This way the children can use this value directly, without having to calculate it themselves.
-    TODO: CLEANUP, COMMENTS
-*/
 /**
- *
+ * @file Sets the employee before going to their page. Finds them in the global employee context,
+ * then sets their values before returning a new employee object.
+ * @description In react, the objects passed to children are read-only, and cannot be modified directly, therefore we need to
+ * find the employee, calculate and set its dailyworktime & balance, before using this employee in the context.
+ * This way the children can use these values directly using employee.balance etc. without having to calculate it themselves.
+ * @Author Torjus A.M
  */
 import {useState, useEffect} from 'react';
 import {useRouter} from 'next/router';
 import moment from 'moment';
 import {Employee} from '../lib/types/employee';
 import {useEmployeeContext} from '../features/context/employeeContext';
-import {useFetchBalance} from "../features/context/hooks/useFetchBalance";
+import {fetchBalance} from "../features/context/services/workIntervalsAPI";
 
+/**
+ * Custom hook for fetching and setting the data for an employee's page.
+ *
+ * @returns {Employee | undefined} The data for the employee's page, or undefined if the data could not be fetched.
+ */
 export const useEmployeePageData = () => {
     const [employeePageData, setEmployeeData] = useState<Employee | undefined>();
     const {employees} = useEmployeeContext();
-    const {balance, isBalanceLoading} = useFetchBalance(employeePageData);
     // Uses router to go to the url/employeeId (The employees personal page).
     const router = useRouter();
     const {employeeId} = router.query;
@@ -31,17 +29,17 @@ export const useEmployeePageData = () => {
         if (employeeId) {
             // Maps over and finds the specific employee from the employees array context.
             const foundEmployee = employees.find((employee) => employee.id === Number(employeeId));
-            if (foundEmployee && !isBalanceLoading) {
-                /* 
-                    Sets employees plannedwork as a duration in milliseconds, then divides them by 5. 
-                    e.g: 40 hours = 2,400,000 milliseconds, 2,400,000 / 5 = 480,000 milliseconds (8 hours a day).
-                    Using milliseconds for accurate calculations, though it's less readable.
-                */
-                const totalMilliseconds = moment.duration(foundEmployee.PlannedWork).asMilliseconds();
-                const dailyWorkTimeInMilliseconds = totalMilliseconds / 5;
-                const dailyWorkTime = moment.duration(dailyWorkTimeInMilliseconds, 'milliseconds');
-                foundEmployee.dailyWorkTime = dailyWorkTime;
-                foundEmployee.balance = balance;
+            if (foundEmployee) {
+                // Convert the employee's planned work-time to a daily duration in milliseconds
+                // by dividing weekly plannedwork by 5 (days in a week), then to a moment duration.
+                foundEmployee.dailyWorkTime = moment.duration(
+                    moment.duration(foundEmployee.PlannedWork).asMilliseconds() / 5
+                );
+
+                // Fetch the employee's balance and set it
+                fetchBalance(foundEmployee).then(interval => {
+                    foundEmployee.balance = interval;
+                });
             }
             setEmployeeData(foundEmployee);
         }

@@ -1,8 +1,8 @@
-/* 
-  Author: Torjus A.M
-  In next.js, _app.tsx functions as a wrapper for all pages, and is used to define the layout of the application.
-  Only file where global styles can be imported, and context providers can be wrapped around the page-content component.
-*/
+/**
+ * @file _app.tsx functions as a wrapper for all pages, and is used to define the layout of the application.
+ * @description Only file where global styles can be imported and global context can be wrapped around the content.
+ * @Author Torjus A.M
+ */
 import type {AppProps} from 'next/app';
 import EmployeeContextProvider from '../features/context/employeeContext';
 import {SessionProvider} from "next-auth/react"
@@ -11,6 +11,8 @@ import './globals.css';
 import '../features/keyboard/index.css'
 import CustomToastContainer from '../lib/toastContainer';
 import 'react-toastify/dist/ReactToastify.css';
+import '@fontsource/public-sans';
+import '@fontsource/lato'
 import styles from '../styles/layout.module.css';
 
 export default function App({Component, pageProps}: AppProps) {

@@ -1,27 +1,22 @@
-/*
-    Author: Torjus A.M
-    Component displaying the weekly worktime module. Arbeidstid Uke 1-52, 10m 00s.
-*/
+/**
+ * @file Component displaying the weekly worktime module. E.G: Arbeidstid Uke 1-52, 10m 00s.
+ * @module ClockHistory
+ * @Author Torjus A.M
+ */
 import React from 'react';
-import {useEmployeeWorkDataContext} from "../../../context/employeeWorkDataContext";
 import {formatInterval} from '../../services/formatInterval';
 import moment from 'moment';
 import styles from './timeModules.module.css';
+import {useSelectedEmployeeContext} from "../../../context/selectedEmployeeContext";
 
 const WorkTimeSalary = () => {
-    const {balance, isBalanceLoading} = useEmployeeWorkDataContext();
+    const {selectedEmployee: {balance}} = useSelectedEmployeeContext();
+    const displayBalance = balance ? formatInterval(balance) : '00m 00s';
 
     return (
-        <div className={`${styles.timeModules}`} style={{marginRight: '1.5rem'}}>
+        <div className={styles.timeModules} style={{marginRight: '1.5rem'}}>
             <h1>Arbeidstid Uke {moment().week()}</h1>
-            {/* If loading, display loading div, else display either '00m 00s' or the formatted balance */}
-            {isBalanceLoading ? (
-                <div className={styles.loading}/>
-            ) : balance && balance ? (
-                <h2>{formatInterval(balance)}</h2>
-            ) : (
-                <h2>00m 00s</h2>
-            )}
+            <h2>{displayBalance}</h2>
         </div>
     );
 };

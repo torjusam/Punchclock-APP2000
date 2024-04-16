@@ -6,30 +6,30 @@ import {useState, useEffect} from 'react';
 import {Employee} from "../../../lib/types/employee";
 import {ClockHistoryData} from "../../../lib/types/types";
 import {intervalToDuration} from "../../../utils/intervalToDuration";
-import {useEmployeeWorkDataContext} from "../../context/employeeWorkDataContext";
+import {useSelectedEmployeeContext} from "../../context/selectedEmployeeContext";
 
 /**
  * Custom Hook to fetch and manage the state of an employee's clock-history data.
  * @Author Torjus A.M
- * @param {Employee} employee - The employee object for which the fleks salary is to be fetched.
  * @returns {Object} An object containing the fleks salary as an Interval and a loading state.
  */
-const useClockHistory = (employee: Employee) => {
+const useClockHistory = () => {
     const [clockHistoryData, setClockHistoryData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-    const {setTimer} = useEmployeeWorkDataContext();
+    const {selectedEmployee, setTimer} = useSelectedEmployeeContext();
 
     useEffect(() => {
+        if (!selectedEmployee) return;
         setIsLoading(true);
-        fetchClockHistoryData(employee);
-    }, [employee]);
+        fetchClockHistoryData(selectedEmployee);
+    }, [selectedEmployee]);
 
     const fetchClockHistoryData = async (employee: Employee) => {
         const result = await performFetch(employee);
         setClockHistoryData(result);
         setIsLoading(false);
         // Cast to seconds using moment and set to the punchclock-timer, using the context.
-        if (result && result.length > 0) {
+        if (result.length > 0) {
             const duration = intervalToDuration(result[0].workinterval);
             setTimer(duration.asSeconds());
         }

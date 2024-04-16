@@ -1,5 +1,6 @@
 /**
- * @file Context provider for the employee work data context. Provides the timer, balance, and timer limit for the employee.
+ * @file Provides a hook to manage the timer for an employee. This timer is used to keep track of the time since the last check-in.
+ * @module ClockOperation
  * @author Torjus A.M
  */
 import {useState, useEffect} from 'react';
@@ -17,7 +18,7 @@ import moment from 'moment';
  *   - setTimerLimit: Function to set the timer limit.
  *   - isTimerLoading: Boolean indicating if the timer data is loading.
  */
-export const useEmployeeTimer = (employee: Employee) => {
+export const usePunchClockTimer = (employee: Employee) => {
     const [timer, setTimer] = useState(0);
     const [isTimerLoading, setIsTimerLoading] = useState(false);
     const [timerLimit, setTimerLimit] = useState(false);
@@ -25,7 +26,7 @@ export const useEmployeeTimer = (employee: Employee) => {
     useEffect(() => {
         let interval: NodeJS.Timeout;
 
-        if (employee.isClockedIn) {
+        if (employee && employee.isClockedIn) {
             setIsTimerLoading(true);
             interval = setInterval(() => {
                 // Calculate time difference between now and the last check-in time in seconds

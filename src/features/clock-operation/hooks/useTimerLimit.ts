@@ -1,9 +1,7 @@
 /**
- * @file If timer-limit has been reached, aka if the employee forgot to clock out,
- * this hook will clock out the employee, and log it.
+ * @file Clocks employee out automatically after a set timerLimit has been passed. In this case 15 hours.
  * @module ClockOperation
  * @Author: Torjus A.M, Thomas H
- * TODO: Rename
  */
 import {useEffect} from 'react';
 import {clockOut} from "../services";
@@ -17,12 +15,12 @@ import {Employee} from "../../../lib/types/employee";
  * @param currentTime - Used in the clockOut function.
  * @param timerLimit - Boolean indicating if the timer limit has been reached.
  */
-export const useCheckTimerLimit = (employee: Employee, currentTime: Date, timerLimit: boolean) => {
+export const useTimerLimit = (employee: Employee, currentTime: Date, timerLimit: boolean) => {
     // Gets the currently logged-in user id for logging.
     const {data: session} = useSession();
 
     useEffect(() => {
-        if (timerLimit) {
+        if (timerLimit && employee) {
             const logActivity = (eventType: string, error?) => logUserActivity(
                 eventType,
                 session.user.id,

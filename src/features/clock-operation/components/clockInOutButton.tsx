@@ -1,26 +1,24 @@
-/*
-    Author: Torjus A.M, Thomas H
-    Component responsible for rendering a button conditionally, and calling on the clock-operation function
-*/
+/**
+ * @file Renders a button with conditional styling, that calls on the clock-operation.
+ * @module ClockOperation
+ * @Author Torjus A.M, Thomas H
+ */
 import React, {FC, useState} from 'react';
 import {clockInOutOperation} from '../services/performClockOperation';
 import ArrowOut from '../../../assets/arrowOut.svg';
 import ArrowIn from '../../../assets/arrowIn.svg';
-import '@fontsource/public-sans';
+
 import Toast from '../../../lib/toastContainer';
 import styles from './punchClock.module.css'
 import {useSelectedEmployeeContext} from "../../context/selectedEmployeeContext";
-import {useEmployeeWorkDataContext} from "../../context/employeeWorkDataContext";
 
 const ClockInOutButton: FC = () => {
     const {selectedEmployee, updateEmployeeStatus} = useSelectedEmployeeContext();
-    const {balance} = useEmployeeWorkDataContext();
     const [isLoading, setIsLoading] = useState(false);
 
     const handleClick = async () => {
         await clockInOutOperation(
             selectedEmployee,
-            balance,
             setIsLoading,
             updateEmployeeStatus
         );
