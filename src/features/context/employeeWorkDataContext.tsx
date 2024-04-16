@@ -4,10 +4,8 @@
  */
 import React, {createContext, useContext} from 'react';
 import {Employee} from '../../lib/types/employee';
-import {useFetchBalance} from "./hooks/useFetchBalance";
 import {useEmployeeTimer} from "./hooks/usePunchTimer";
 import {useCheckTimerLimit} from "../clock-operation/hooks/timerLimitReached";
-import {Interval} from "../../lib/types/types";
 
 /**
  * Interface for the context properties of the EmployeeWorkDataContext.
@@ -23,11 +21,9 @@ import {Interval} from "../../lib/types/types";
 interface EmployeeWorkDataContextProps {
     timer: number;
     setTimer: (time: number) => void;
-    balance: Interval;
     timerLimit: boolean;
     setTimerLimit: (isOver15Hours: boolean) => void;
     isTimerLoading: boolean;
-    isBalanceLoading: boolean;
 }
 
 const EmployeeWorkDataContext = createContext<EmployeeWorkDataContextProps | undefined>(undefined);
@@ -36,7 +32,6 @@ export default function EmployeeWorkDataProvider({children, employee}: {
     children: React.ReactNode,
     employee: Employee
 }) {
-    const {balance, isBalanceLoading} = useFetchBalance(employee);
     const {
         timer,
         setTimer,
@@ -46,18 +41,16 @@ export default function EmployeeWorkDataProvider({children, employee}: {
     } = useEmployeeTimer(employee);
 
     // Start hook to check if the timer limit has been reached.
-    useCheckTimerLimit(employee, balance, new Date(), timerLimit);
+    useCheckTimerLimit(employee, new Date(), timerLimit);
 
     return (
         <EmployeeWorkDataContext.Provider
             value={{
                 timer,
                 setTimer,
-                balance,
                 timerLimit,
                 setTimerLimit,
                 isTimerLoading,
-                isBalanceLoading
             }}>
             {children}
         </EmployeeWorkDataContext.Provider>

@@ -35,7 +35,9 @@ export const useFetchBalance = (employee: Employee) => {
                     setBalance(defaultInterval());
                 }
             })
-            .finally(() => setIsBalanceLoading(false));
+            .finally(() =>
+                setIsBalanceLoading(false)
+            );
     }, [employee?.lastCheckOut]);
 
     return {balance, isBalanceLoading};

@@ -34,7 +34,6 @@ const useFleksSalary = (employee: Employee) => {
                         milliseconds: fSalary.milliseconds
                     } as Interval;
                     setfleksSalary(interval);
-                    console.log(fleksSalary)
                 } else {
                     setfleksSalary(defaultInterval());
                 }

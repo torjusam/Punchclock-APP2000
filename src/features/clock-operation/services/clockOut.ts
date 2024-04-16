@@ -1,18 +1,30 @@
-// Author: Torjus A.M
+/**
+ * @file Two main functions for performing clock-out operations, and setting the flekstid-balance.
+ * @module ClockOperation
+ * @Author Torjus A.M
+ */
 import {calculateOvertime} from './calculateOvertime';
 import {durationToPostgresInterval} from '../../../lib/durationToPGInterval';
 import {Employee} from "../../../lib/types/employee";
 
-// Balance is the total working time this calender week.
-export const clockOut = async (employee: Employee, balance, currentTime: Date) => {
-    // Prevent invalid clock operation
+/**
+ * Performs a clock-out operation for an employee by sending a request to the api endpoint.
+ *
+ * @param {Employee} employee - The employee who is clocking out.
+ * @param {Date} currentTime - The current time of the clock-out operation.
+ * @returns {Promise<boolean>} - Returns a promise that resolves to true if the operation was successful.
+ * @throws {TypeError} - Throws a TypeError if the employee is not clocked in.
+ * @throws {Error} - Throws an Error if the response from the server is not ok.
+ */
+export const clockOut = async (employee: Employee, currentTime: Date): Promise<boolean> => {
     if (!employee.isClockedIn)
         return Promise.reject(new TypeError(employee.name + ' is not clocked in!'));
 
-    // Calculate overtime, then call on API route with it.
     try {
-        const overtime = calculateOvertime(employee, balance, currentTime);
-        const overtimeInterval = durationToPostgresInterval(overtime);
+        // Caluclates the overtime, then converts it to a string that fits the PostgreSQL interval type.
+        const overtimeInterval = durationToPostgresInterval(
+            calculateOvertime(employee, currentTime)
+        );
         const response = await fetch('/api/clockOperation/clockOut', {
             method: 'POST',
             headers: {
@@ -31,7 +43,15 @@ export const clockOut = async (employee: Employee, balance, currentTime: Date) =
     }
 };
 
-const setFleksiBalance = async (employee: Employee, overtimeInterval: string) => {
+/**
+ * Sets the balance of fleksitid for an employee by sending a request to the api endpoint.
+ *
+ * @param {Employee} employee - The employee whose flexitime balance is being set.
+ * @param {string} overtimeInterval - The overtime interval to be added to the employee's flexitime balance.
+ * @returns {Promise<void>} - Returns a promise that resolves when the operation is complete.
+ * @throws {Error} - Throws an Error if the response from the server is not ok.
+ */
+const setFleksiBalance = async (employee: Employee, overtimeInterval: string): Promise<void> => {
     try {
         const response = await fetch('/api/workIntervals/setFleksBalance', {
             method: 'POST',
@@ -44,6 +64,6 @@ const setFleksiBalance = async (employee: Employee, overtimeInterval: string) =>
             throw new Error("Kunne ikke sette flekksisaldo: " + response.statusText);
         }
     } catch (error) {
-        return Promise.reject(error);
+        throw error;
     }
 };

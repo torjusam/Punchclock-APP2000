@@ -1,8 +1,20 @@
-/* 
-    Author: Thomas H
-    API call to perform check-in operation on employee.
-*/
-export const clockIn = async (employee, balance, currentTime) => {
+/**
+ * @file Function for performing a clock-in operation.
+ * @module ClockOperation
+ * @Author Thomas H
+ */
+import {Employee} from "../../../lib/types/employee";
+
+/**
+ * Performs a clock-in operation for an employee.
+ *
+ * @param {Employee} employee - The employee who is clocking in.
+ * @param {Date} currentTime - The current time of the clock-in operation.
+ * @returns {Promise<boolean>} - Returns a promise that resolves to true if the operation was successful.
+ * @throws {TypeError} - Throws a TypeError if the employee is already clocked in.
+ * @throws {Error} - Throws an Error if the response from the server is not ok.
+ */
+export const clockIn = async (employee: Employee, currentTime: Date) => {
     if (employee.isClockedIn)
         return Promise.reject(new TypeError(employee.name + ' er ikke utstemplet!'));
     try {
