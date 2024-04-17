@@ -13,7 +13,7 @@ const ExtraPage: FC = () => {
 
     return (
         <SelectedEmployeeProvider employee={employee}>
-            <ExtraPageData/>
+            <ExtraPageData employee={employee}/>
         </SelectedEmployeeProvider>
     );
 };

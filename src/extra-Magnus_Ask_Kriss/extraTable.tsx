@@ -17,7 +17,7 @@ interface ClockHistoryTableProps {
 }
 
 const ExtraTable: FC<ClockHistoryTableProps> = ({employee}) => {
-    const {clockHistoryData, isLoading} = useClockHistory(employee);
+    const {clockHistoryData, isLoading} = useClockHistory();
 
     return (
         <div className={styles.tableContainer}>
