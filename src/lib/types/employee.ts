@@ -48,8 +48,6 @@ export class Employee {
         this.lastCheckIn = lastCheckIn;
         this.lastCheckOut = lastCheckOut;
         this.profilePictureUrl = profilePictureUrl;
-
-        // Sets isClockedIn to false if lastCheckOut is newer than lastCheckIn. Defaults to false
-        this.isClockedIn = this.lastCheckIn > (this.lastCheckOut || 0);
+        this.isClockedIn = (this.lastCheckIn && this.lastCheckOut && this.lastCheckIn > this.lastCheckOut);
     }
 }

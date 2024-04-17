@@ -26,10 +26,15 @@ export default function calculateTime(employee: Employee, currentTime: Date) {
     const plannedWork = duration(employee.PlannedWork).asMilliseconds();
     const plannedDailyWork = employee.dailyWorkTime.asMilliseconds();
     // Calculate this shifts working-time as the difference between right now and last check-in.
+
+    if (!employee.lastCheckIn || !moment(employee.lastCheckIn, moment.ISO_8601, true).isValid()) {
+        throw new Error('lastCheckIn er ikke gyldig');
+    }
     const thisWorkingTime = moment(currentTime).diff(moment(employee.lastCheckIn));
+
     // Validate the working-time interval.
     if (isNaN(thisWorkingTime) || !thisWorkingTime) throw new TypeError('Ugyldig utstempling!');
-    if (weekBalance <= 0) throw new RangeError('Ugylidg arbeidstid, prøv igjen.');
+    if (thisWorkingTime <= 0) throw new RangeError('Ugylidg arbeidstid, prøv igjen.');
 
     // The overtime to be returned. If none of the conditions below match, return 0 (no overtime)
     let overtimeInterval = duration(0);

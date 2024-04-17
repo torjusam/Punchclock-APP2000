@@ -7,7 +7,7 @@ import React, {createContext, ReactNode, useContext, useEffect, useState} from '
 import {Employee} from '../../lib/types/employee';
 import {ResError} from "../../lib/types/types";
 import useFetchEmployees from "./hooks/useFetchEmployees";
-import moment from "moment";
+import {sortEmployees} from "./services/sortEmployees";
 
 interface EmployeeContextProps {
     employees: Employee[];
@@ -65,24 +65,4 @@ export function useEmployeeContext() {
         throw new Error('useEmployeeContext must be used within a EmployeeContextProvider');
     }
     return context;
-}
-
-/**
- * Sorts a list of employees by their clock-in status, and the recency of their clock operations.
- * @param {Employee[]} employees - The list of employees to sort.
- * @returns {Employee[]} The sorted list.
- */
-export function sortEmployees(employees: Employee[]) {
-    // Copy of employees array to avoid mutating the original.
-    return [...employees].sort((a, b) => {
-        if (a.isClockedIn && !b.isClockedIn) {
-            return -1;
-        } else if (!a.isClockedIn && b.isClockedIn) {
-            return 1;
-        } else {
-            const aLastCheckTime = a.isClockedIn ? moment(a.lastCheckIn) : moment(a.lastCheckOut);
-            const bLastCheckTime = b.isClockedIn ? moment(b.lastCheckIn) : moment(b.lastCheckOut);
-            return bLastCheckTime.diff(aLastCheckTime);
-        }
-    });
 }

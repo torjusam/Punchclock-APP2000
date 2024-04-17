@@ -47,20 +47,28 @@ const PunchClockTimer = () => {
 
     return (
         <div className={styles.timeDisplay}>
-            {/* Make sure to either display loading or timer */}
-            {isTimerLoading || timer === 0 || !timer ? (
+            {isTimerLoading ? (
                 <>
                     <div className={styles.line}></div>
                     <div className={`${styles.line} ${styles.w2}`}></div>
                 </>
             ) : (
-                // If timer is valid and above 0, display the timer and check-in/out times
-                timer > 0 && (
-                    <>
-                        <h1>{formatTimer(timer)}</h1>
-                        <h2>{formattedCheckIn} - {formattedCheckOut}</h2>
-                    </>
-                )
+                <>
+                    {/* If the employee is not clocked in, and the timer is 0 or null, display "00t 00m 00s" */}
+                    {timer === 0 || (!isClockedIn && (timer === 0 || !timer)) && (
+                        <>
+                            <h1>00t 00m 00s</h1>
+                            <h2>Stemple Inn</h2>
+                        </>
+                    )}
+                    {/* If timer is valid and above 0, display the timer and check-in/out times */}
+                    {timer >= 0 && (
+                        <>
+                            <h1>{formatTimer(timer)}</h1>
+                            <h2>{formattedCheckIn} - {formattedCheckOut}</h2>
+                        </>
+                    )}
+                </>
             )}
         </div>
     );
