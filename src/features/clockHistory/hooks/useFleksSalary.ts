@@ -1,6 +1,7 @@
 /**
  * @file Fetches fleks salary, updates independently of the clock history table, whenever the employee checks out.
- * @Author Torjus A.M, Thomas H
+ * @module ClockHistory
+ * @Author Torjus A.M
  */
 import {useState, useEffect} from 'react';
 import {Employee} from "../../../lib/types/employee";
@@ -23,17 +24,21 @@ const useFleksSalary = (employee: Employee) => {
             .then(result => {
                 if (result && result[0]) {
                     const fSalary = result[0].fleksitid_balance;
-                    // Cast the result (first row) to the Interval type
-                    const interval = {
-                        years: fSalary.years,
-                        months: fSalary.months,
-                        days: fSalary.days,
-                        hours: fSalary.hours,
-                        minutes: fSalary.minutes,
-                        seconds: fSalary.seconds,
-                        milliseconds: fSalary.milliseconds
-                    } as Interval;
-                    setfleksSalary(interval);
+                    if (fSalary) {
+                        // Cast the result (first row) to the Interval type
+                        const interval = {
+                            years: fSalary.years,
+                            months: fSalary.months,
+                            days: fSalary.days,
+                            hours: fSalary.hours,
+                            minutes: fSalary.minutes,
+                            seconds: fSalary.seconds,
+                            milliseconds: fSalary.milliseconds
+                        } as Interval;
+                        setfleksSalary(interval);
+                    } else {
+                        setfleksSalary(defaultInterval());
+                    }
                 } else {
                     setfleksSalary(defaultInterval());
                 }

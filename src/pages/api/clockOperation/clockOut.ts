@@ -7,22 +7,27 @@ import {middleware_1, middleware_2} from "../../../middleware/middlewares";
 
 const clockOut: Middleware = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
-        const {employee, overtimeInterval} = req.body;
+        const {employee, currentTime, thisWorkingTime, overtimeInterval} = req.body;
         const {id} = employee;
-        const currentTimestamp = new Date();
 
         const text = (`
         UPDATE fleksitidBank
         SET 
             Checkout = $2,
-            overtimeinterval = $3
+            workinterval = $3,
+            overtimeinterval = $4
         WHERE Employee_id = $1
         AND Checkin = (SELECT MAX(Checkin) FROM fleksitidBank WHERE Employee_id = $1);
         `);
-        const values = [id, currentTimestamp, overtimeInterval];
+
+        const values = [
+            id,
+            currentTime,
+            thisWorkingTime,
+            overtimeInterval
+        ];
 
         await pool.query(text, values);
-
         res.status(200).json({success: true});
     } catch (error) {
         res.status(500).json({error: 'Internal Server Error'});

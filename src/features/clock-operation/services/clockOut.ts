@@ -3,8 +3,7 @@
  * @module ClockOperation
  * @Author Torjus A.M
  */
-import {calculateOvertime} from './calculateOvertime';
-import {durationToPostgresInterval} from '../../../lib/durationToPGInterval';
+import calculateTime from './calculateIntervals/calculateOvertime';
 import {Employee} from "../../../lib/types/employee";
 
 /**
@@ -21,16 +20,13 @@ export const clockOut = async (employee: Employee, currentTime: Date): Promise<b
         return Promise.reject(new TypeError(employee.name + ' is not clocked in!'));
 
     try {
-        // Caluclates the overtime, then converts it to a string that fits the PostgreSQL interval type.
-        const overtimeInterval = durationToPostgresInterval(
-            calculateOvertime(employee, currentTime)
-        );
+        const {overtimeInterval, thisWorkingTime} = calculateTime(employee, currentTime);
         const response = await fetch('/api/clockOperation/clockOut', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({employee, currentTime, overtimeInterval}),
+            body: JSON.stringify({employee, currentTime, thisWorkingTime, overtimeInterval}),
         });
         // Server error: HTTP 200-299
         if (!response.ok) return Promise.reject(new Error(response.statusText));
