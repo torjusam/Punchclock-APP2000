@@ -1,11 +1,8 @@
-/*
-    Author: Torjus A.M, Thomas H
-    This component is responsible for rendering a single row in the clock-history table.
-    It receives a clockHistoryData object as a prop, which contains information about the check-in and check-out times,
-    the work interval, and the overtime interval for a specific date.
-    This data is then formatted and displayed in the appropriate columns of the row.
-*/
-
+/**
+ * @file Responsible for defining the layout of a row in the clock-history table.
+ * @module ClockHistory
+ * @Author Torjus A.M, Thomas H
+ */
 import React from 'react';
 import ArrowIn from '../../../../assets/arrowIn.svg';
 import ArrowOut from '../../../../assets/arrowOut.svg';
@@ -18,6 +15,11 @@ interface ClockHistoryRowProps {
     clockHistoryData: ClockHistoryData;
 }
 
+/**
+ * Component for a row in the clock-history table. Formats and displays data.
+ * @param clockHistoryData Object containing information about the check-in and check-out times,
+ * working interval and overtimeinterval.
+ */
 const ClockHistoryRow = ({clockHistoryData}: ClockHistoryRowProps) => {
     // Destructs the object to get the specific values
     const {checkin, checkout, workinterval, overtimeinterval} = clockHistoryData;

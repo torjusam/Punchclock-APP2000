@@ -1,14 +1,15 @@
-/*
-    Author: Torjus A.M, Thomas H, Magnus A, Ask I.P.A
-    Main file for the clock-history table. Responsible for setting up the header, and rendering the rows.
-*/
+/**
+ * @file Copied from original component and altered to remove two columns, and use the altered row item component.
+ * @description original component: .src/features/clockHistory/components/clockHistoryTable/index.tsx
+ * @module Extra
+ * @Author Torjus A.M, Thomas H
+ * @Editor Magnus A, Ask I.P.A
+ */
 import React, {FC} from 'react';
 import useClockHistory from '../features/clockHistory/hooks/useClockHistory';
 import {Employee} from "../lib/types/employee";
-import ClockHistoryRow from '../features/clockHistory/components/clockHistoryTable/clockHistoryRow';
 import LoadingRows from '../features/clockHistory/components/clockHistoryTable/clockHistoryRowLoading';
-import styles from './extra.module.css';
-import {useSelectedEmployeeContext} from '../features/context/selectedEmployeeContext'
+import styles from '../features/clockHistory/components/clockHistoryTable/clockHistoryTable.module.css';
 import ExtraTableRow from './extraTableRow';
 
 interface ClockHistoryTableProps {
@@ -16,15 +17,10 @@ interface ClockHistoryTableProps {
 }
 
 const ExtraTable: FC<ClockHistoryTableProps> = ({employee}) => {
-    const {selectedEmployee} = useSelectedEmployeeContext();
-    /* Either use the employee passed as a prop, or use the
-    selectedEmployee from context. This is so the extra-page can use the table */
-    const employeeToUse = employee || selectedEmployee;
-    const {clockHistoryData, isLoading} = useClockHistory(employeeToUse);
+    const {clockHistoryData, isLoading} = useClockHistory(employee);
 
     return (
         <div className={styles.tableContainer}>
-            {/* Table header row */}
             <div className={`${styles.tableRow} ${styles.heading}`}>
                 <div className={styles.rowItem}>Dato</div>
                 <div className={styles.rowItem}>Stempling</div>

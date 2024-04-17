@@ -1,8 +1,10 @@
-/*
-    Author: Torjus A.M
-    Parent component responsible for putting together the module for creating shifts.
-    Sets up shared states passed down to each child and puts together child components.
-*/
+/**
+ * @file Copied from original component and altered to edit existing shift.
+ * @description original component: .src/features/CRUD-page-features/components/createShift/index.tsx
+ * @module Extra
+ * @Author Torjus A.M
+ * @Editors Magnus A, Ask I.P.A
+ */
 import React, {FC, useEffect, useState} from 'react';
 import {addDays} from 'date-fns';
 import {registerLocale} from "react-datepicker";
