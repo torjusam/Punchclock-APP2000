@@ -4,7 +4,7 @@
  * @Author: Torjus A.M, Thomas H
  */
 import {useEffect} from 'react';
-import {clockOut} from "../services";
+import {clockOut} from "../services/clockOut";
 import {logUserActivity} from "../../../pages/api/serverUtilts/logUserActivity";
 import {useSession} from "next-auth/react";
 import {Employee} from "../../../lib/types/employee";
@@ -14,6 +14,7 @@ import {Employee} from "../../../lib/types/employee";
  * @param employee - The employee who is being clocked out.
  * @param currentTime - Used in the clockOut function.
  * @param timerLimit - Boolean indicating if the timer limit has been reached.
+ * @description Logs the automatic clockout to the server.
  */
 export const useTimerLimit = (employee: Employee, currentTime: Date, timerLimit: boolean) => {
     // Gets the currently logged-in user id for logging.
@@ -27,7 +28,7 @@ export const useTimerLimit = (employee: Employee, currentTime: Date, timerLimit:
                 `employeeId: ${employee.id}${error ? ` error: ${error.message}` : ''}`
             );
 
-            // Return promise of clockOut with either error or success log.
+            // Return promise of clockOut-operation by either logging the error, or success.
             clockOut(employee, currentTime)
                 .then(() => {
                     logActivity("auto_clockOut");

@@ -4,7 +4,8 @@
  * @Author Torjus A.M, Thomas H
  */
 import {Employee} from '../../../lib/types/employee';
-import {clockIn, clockOut} from '../services/';
+import {clockIn} from './clockIn';
+import {clockOut} from "./clockOut";
 import moment from 'moment';
 import {toast} from 'react-toastify';
 

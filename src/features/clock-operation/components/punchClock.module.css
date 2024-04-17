@@ -27,6 +27,7 @@
 .buttonContainer:disabled {
     opacity: 50%;
     box-shadow: inset 3px 4px 6px 0 rgba(79, 83, 85, 0.75);
+    pointer-events: none; /* Make button not pressable on disabled */
 }
 
 .clockedIn {

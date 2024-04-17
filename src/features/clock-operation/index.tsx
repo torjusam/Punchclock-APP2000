@@ -1,12 +1,13 @@
-/*
-    Author: Torjus A.M
-    This component is the "Stemplingsklokke" module on the personal page.
-*/
+/**
+ * @file ClockHistory - "Stemplingsklokke" module on the personal page.
+ * @module ClockOperation
+ * @Author Torjus A.M
+ */
 import React, {FC} from 'react';
-import Clock from '../../assets/clock.svg';
-import styles from '../../components/employeePageData/employeePageLayout.module.css';
+import ClockIcon from '../../assets/clock.svg';
 import ClockInOutButton from './components/clockInOutButton';
-import PunchClockTimer from "./components";
+import PunchClockTimer from "./components/punchClockTimer";
+import styles from '../../components/employeePageData/employeePageLayout.module.css';
 
 
 const PunchClock: FC = () => {
@@ -14,7 +15,7 @@ const PunchClock: FC = () => {
         <div className={`${styles.module} ${styles.h2}`}>
             <div className={styles.moduleHeader}>
                 <div className={`${styles.iconContainer}`} style={{background: '#1BDA0A'}}>
-                    <Clock className={styles.icon}/>
+                    <ClockIcon className={styles.icon}/>
                 </div>
                 <h1>Stemplingsklokke</h1>
             </div>

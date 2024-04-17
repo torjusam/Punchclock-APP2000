@@ -46,6 +46,7 @@ export const usePunchClockTimer = (employee: Employee) => {
         // Cleanup function to clear the interval when the component unmounts, or before the effect runs again
         return () => {
             if (interval) clearInterval(interval);
+            setIsTimerLoading(false);
         };
     }, [employee]);
 

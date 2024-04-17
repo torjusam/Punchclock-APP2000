@@ -1,18 +1,29 @@
 /**
- * @file Renders and formats the punchclock-timer: "stemplingsklokke".
+ * @file Renders and formats the punchclock-timer for the selected employee.
  * @module ClockOperation
  * @Author Torjus A.M
  */
 import React from 'react';
 import {useSelectedEmployeeContext} from "../../context/selectedEmployeeContext";
-import {formatTimer} from "../services/formatTimer";
 import moment from 'moment';
 import styles from './punchClock.module.css';
 
 /**
- * This component displays the punchclock-timer for the selected employee.
+ * Helper function to format given time into a string representation of hours, minutes, and seconds.
+ * @param {number} seconds - The time in seconds to be formatted.
+ * @returns {string} A string representing the formatted time. The format is "`"00t 00m 00s".
+ */
+function formatTimer(seconds: number) {
+    const duration = moment.duration(seconds, 'seconds');
+    const hours = duration.hours().toString().padStart(2, '0');
+    const minutes = duration.minutes().toString().padStart(2, '0');
+    const secs = duration.seconds().toString().padStart(2, '0');
+    return `${hours}t ${minutes}m ${secs}s`;
+}
+
+/**
+ * Component displays the punchclock-timer for the selected employee.
  * It also shows the check-in and check-out times of the employee.
- *
  * @returns {ReactNode} The PunchClockTimer component.
  */
 const PunchClockTimer = () => {
@@ -24,10 +35,8 @@ const PunchClockTimer = () => {
     } = useSelectedEmployeeContext();
 
     /**
-     * Helper function to format a given time.
-     * If the time is valid, it is formatted and returned. If not, a question mark is returned.
-     *
-     * @param {Date} time The time to be formatted.
+     * Formats the time to a readable string.
+     * @param time
      * @returns {string} The formatted time if valid, or a question mark if not.
      */
     const formatTime = (time: Date): string => moment(time).isValid() ? moment(time).format('LT') : '?';
@@ -38,13 +47,15 @@ const PunchClockTimer = () => {
 
     return (
         <div className={styles.timeDisplay}>
-            {isTimerLoading ? (
+            {/* Make sure to either display loading or timer */}
+            {isTimerLoading || timer === 0 || !timer ? (
                 <>
                     <div className={styles.line}></div>
                     <div className={`${styles.line} ${styles.w2}`}></div>
                 </>
             ) : (
-                timer >= 0 && (
+                // If timer is valid and above 0, display the timer and check-in/out times
+                timer > 0 && (
                     <>
                         <h1>{formatTimer(timer)}</h1>
                         <h2>{formattedCheckIn} - {formattedCheckOut}</h2>

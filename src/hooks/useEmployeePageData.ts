@@ -26,23 +26,25 @@ export const useEmployeePageData = () => {
     const {employeeId} = router.query;
 
     useEffect(() => {
-        if (employeeId) {
-            // Maps over and finds the specific employee from the employees array context.
-            const foundEmployee = employees.find((employee) => employee.id === Number(employeeId));
-            if (foundEmployee) {
-                // Convert the employee's planned work-time to a daily duration in milliseconds
-                // by dividing weekly plannedwork by 5 (days in a week), then to a moment duration.
-                foundEmployee.dailyWorkTime = moment.duration(
-                    moment.duration(foundEmployee.PlannedWork).asMilliseconds() / 5
-                );
+        const fetchData = async () => {
+            if (employeeId) {
+                // Maps over and finds the specific employee from the employees array context.
+                const foundEmployee = employees.find((employee) => employee.id === Number(employeeId));
+                if (foundEmployee) {
+                    // Convert the employee's planned work-time to a daily duration in milliseconds
+                    // by dividing weekly plannedwork by 5 (days in a week), then to a moment duration.
+                    foundEmployee.dailyWorkTime = moment.duration(
+                        moment.duration(foundEmployee.PlannedWork).asMilliseconds() / 5
+                    );
 
-                // Fetch the employee's balance and set it
-                fetchBalance(foundEmployee).then(interval => {
-                    foundEmployee.balance = interval;
-                });
+                    // Fetch the employee's balance and set it
+                    foundEmployee.balance = await fetchBalance(foundEmployee);
+                }
+                setEmployeeData(foundEmployee);
             }
-            setEmployeeData(foundEmployee);
-        }
+        };
+
+        fetchData();
     }, [employeeId, employees]);
 
     return employeePageData;
