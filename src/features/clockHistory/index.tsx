@@ -1,7 +1,8 @@
-/*
-    Author: Torjus A.M
-    Responsible for defining the layout and content of the "Stemplingshistorikk" module.
-*/
+/**
+ * @file Defines the layout and content of the "Stemplingshistorikk" module.
+ * @module ClockHistory
+ * @Author Torjus A.M
+ */
 import React, {FC} from 'react';
 import ClockCheck from '../../assets/clockCheck.svg';
 import TimeModules from './components/timeModules';

@@ -1,7 +1,8 @@
-/*
-    Author: Torjus A.M, Thomas H
-    Loading rows for the clock history table. 7 empty rows.
-*/
+/**
+ * @file Loading rows for the clock history table. Displays 7 empty rows.
+ * @module ClockHistory
+ * @Author Thomas H
+ */
 import React from "react";
 import styles from './clockHistoryTable.module.css';
 

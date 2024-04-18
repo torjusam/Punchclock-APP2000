@@ -1,7 +1,8 @@
-/*
-    Author: Torjus A.M
-    Component displays fleks salary module, uses hook to fetch and then update display. Fleks saldo.
-*/
+/**
+ * @file Component fetches the fleks salary for the selected employee and displays it.
+ * @module ClockHistory
+ * @Author Torjus A.M
+ */
 import React, {FC} from 'react';
 import {formatInterval} from '../../services/formatInterval';
 import useFleksSalary from '../../hooks/useFleksSalary';

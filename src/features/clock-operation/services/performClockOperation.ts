@@ -25,6 +25,8 @@ export const clockInOutOperation = async (
     setIsLoading(true);
 
     try {
+        // Defines time of the operation, then passes it to the clocking function.
+        // This is to ensure the operations are always working with the same time.
         const currentTime = new Date();
         // Determine the function to use based on the employee's clocked in status
         const checkFunction = employee.isClockedIn ? clockOut : clockIn;

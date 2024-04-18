@@ -1,5 +1,6 @@
 /**
  * @file Fetches the last 7 rows of the clock history table for the given employee.
+ * @module ClockHistory
  * @Author Torjus A.M, Thomas H
  */
 import {useState, useEffect} from 'react';

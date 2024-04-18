@@ -1,5 +1,7 @@
 /**
- * @Author Torjus A.M
+ * @file Formats given interval into a string representation to be displayed.
+ * @module ClockHistory
+ * @Author Torjus A.M, Thomas H
  */
 import {Interval} from '../../../lib/types/types';
 
