@@ -1,24 +1,24 @@
-/* 
-    Author: Torjus A.M, Thomas H
-    This hook is used to automatically go to the homepage after a certain amount of time.
-    Starts a countdown to close, and 10s before it display a warning toast.
-    If the user interacts with the page, the timers will reset.
-*/
+/**
+ * @file Hook for automatically redirecting to the homepage after a certain amount of time, and warning the user before closing.
+ * @author Torjus A.M, Thomas H
+ */
 import {useEffect} from 'react';
 import {toast} from 'react-toastify';
 import {useRouter} from 'next/router';
 
-// Author: Torjus A.M
 const useAutoCloseTimer = (secondsToClose: number) => {
-    // useRouter to navigate to a different page.
     const router = useRouter();
     // Two timers, one for the warning and one for the actual redirect.
     let closeTimer: NodeJS.Timeout | null = null;
     let warningTimer: NodeJS.Timeout | null = null;
-    // 35 seconds of inactivity before redirecting.
+    // Timeout in milliseconds
     let timeout = secondsToClose * 1000;
 
-    // Clears both timers, and the toast warning if its being displayed.
+    /**
+     * @function resetTimers
+     * @description Clears both timers, dismisses any notifications, and restarts the timers.
+     * @author Torjus A.M
+     */
     const resetTimers = () => {
         clearTimeout(closeTimer);
         clearTimeout(warningTimer);
@@ -26,6 +26,12 @@ const useAutoCloseTimer = (secondsToClose: number) => {
         startTimers();
     };
 
+    /**
+     * @function startTimers
+     * @description Sets up two timers: warningTimer that triggers a warning 10s before redirecting,
+     * and a closeTimer that redirects the user to the homepage when it expires.
+     * @author Thomas H
+     */
     const startTimers = () => {
         // warningTimer 10 seconds before close
         warningTimer = setTimeout(() => {
@@ -38,7 +44,12 @@ const useAutoCloseTimer = (secondsToClose: number) => {
         }, timeout);
     };
 
-    // Thomas H: When component mounts (employee page), start the timers and setup eventlisteners.
+    /**
+     * @function useEffect
+     * @description Hook starts the timers and sets up event listeners when component mounts.
+     * These events reset the timers when triggered.
+     * @author Torjus A.M
+     */
     useEffect(() => {
         startTimers();
 

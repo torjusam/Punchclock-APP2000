@@ -1,7 +1,7 @@
 /**
  * @file Defines layout of the homepage content.
  * @module Homepage
- * @Author Torjus A.M, Ask I.P Aspholm
+ * @author Torjus A.M, Ask I.P Aspholm
  */
 import React, {FC} from 'react';
 import EmployeeList from './employeeList';

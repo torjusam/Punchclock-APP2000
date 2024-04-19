@@ -2,7 +2,7 @@
  * @file Renders a button that calls on the clock-operation.
  * @module ClockOperation
  * @memberOf EmployeePage
- * @Author Torjus A.M, Thomas H
+ * @author Torjus A.M, Thomas H
  */
 import React, {FC, useState} from 'react';
 import {clockInOutOperation} from '../services/performClockOperation';

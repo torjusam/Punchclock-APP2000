@@ -1,13 +1,14 @@
-/*
-    Author: Torjus A.M
-    Component for displaying the date picker for start and end dates of the shift.
-    Uses react-datepicker library.
-*/
+/**
+ * @file Component for displaying the date picker for start and end dates of the shift.
+ * @module CrudPage
+ * @description Uses react-datepicker library for date pickers.
+ * @author Torjus A.M
+ */
 import styles from "./createShift.module.css";
 import DatePicker from "react-datepicker";
 import {addDays, addHours} from "date-fns";
 import React, {FC} from "react";
-import Employee from "../../../../lib/types/employee";
+import Employee from "../../../../utils/employee";
 import "react-datepicker/dist/react-datepicker.css";
 
 interface datePickersProps {

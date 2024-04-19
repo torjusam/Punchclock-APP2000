@@ -1,7 +1,7 @@
 /**
  * @file Middleware function for handling cors requests and protecting API routes and pages.
  * @module Middleware
- * @Author Torjus A.M
+ * @author Torjus A.M
  */
 import {withAuth} from "next-auth/middleware";
 import {NextResponse} from "next/server";

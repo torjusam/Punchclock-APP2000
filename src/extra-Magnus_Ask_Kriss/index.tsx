@@ -1,12 +1,12 @@
 /**
  * @file beskrivelse av filen
  * @module Extra
- * @Author Magnus A, Ask I.P.A
+ * @author Magnus A, Ask I.P.A
  */
 import React, {FC} from "react";
 import '@fontsource/lato';
 import '@fontsource/public-sans';
-import Employee from "../lib/types/employee";
+import Employee from "../utils/employee";
 import CrudPageNav from "../components/CRUD-page/crudNav";
 import styles from "./extra.module.css";
 import ExtraTable from "./extraTable";

@@ -1,7 +1,7 @@
 /**
  * @file Navbar of the employee-page
  * @module EmployeePage
- * @Author Thomas H
+ * @author Thomas H
  */
 import React, {FC} from 'react';
 import Pinicon from '../../assets/pinCode.svg';

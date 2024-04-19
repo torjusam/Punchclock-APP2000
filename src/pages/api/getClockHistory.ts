@@ -1,4 +1,8 @@
-// Author: Torjus A.M
+/**
+ * @file Api route for getting the employees clockHistory.
+ * @module EmployeePage
+ * @author Torjus A.M
+ */
 import {NextApiRequest, NextApiResponse} from 'next';
 import {pool} from '../../lib/dbIndex';
 import {middleware_1, middleware_2} from "../../middleware/middlewares";
@@ -9,6 +13,7 @@ const getClockHistory: Middleware = async (req: NextApiRequest, res: NextApiResp
     try {
         const {employeeId} = req.body;
 
+        // Gets the last 7 clock-ins for the employee
         const text = (`
             SELECT
                 id,

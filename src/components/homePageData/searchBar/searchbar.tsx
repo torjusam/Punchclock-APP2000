@@ -1,22 +1,22 @@
-/*
-    Author: Torjus A.M
-    Searchbar to search employees on the homepage. Updates the sortedEmployees array from the global context. 
-    This array is the one used to display the employees on the frontpage: src/components/frontpageTable/employeeTable.tsx
-*/
+/**
+ * @file Searchbar component for the frontpage. Contains a search input and a button to show the keyboard.
+ * @module Homepage
+ * @author Torjus A.M
+ */
 import React, {ChangeEvent, FormEvent, useEffect, FC} from 'react';
 import Search from '../../../assets/search.svg';
-import {useEmployeeContext} from '../../context/employeeContext';
-import Employee from '../../../lib/types/employee';
-import {sortEmployees} from "../../context/services/sortEmployees";
+import {useEmployeeContext} from '../../../features/context/employeeContext';
+import Employee from '../../../utils/employee';
+import {sortEmployees} from "../../../features/context/services/sortEmployees";
 import styles from './searchbar.module.css';
 
-interface Props {
+interface SearchBarProps {
     onShowKeyboard: () => void;
     searchInput: string;
     onChangeInput: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const SearchBarForm: FC<Props> = ({onShowKeyboard, searchInput, onChangeInput}) => {
+const SearchBarForm: FC<SearchBarProps> = ({onShowKeyboard, searchInput, onChangeInput}) => {
     const {employees, setSortedEmployees} = useEmployeeContext();
 
     // Hook updates the sortedEmployees array by filtering it on the search input.

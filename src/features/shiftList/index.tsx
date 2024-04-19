@@ -1,7 +1,9 @@
-/*
-    Author: Torjus A.M, Thomas H
-    Responsible for displaying the shifts of a specific employee.
-*/
+/**
+ * @file Root component for the shiftList. Contains the module header and the RenderShiftList component.
+ * @module ShiftList
+ * @memberof EmployeePage
+ * @author Torjus A.M, Thomas H
+ */
 import React, {FC} from "react";
 import RenderShiftList from "./components/shiftList";
 import ShiftsIcon from "../../assets/shifts.svg";

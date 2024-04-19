@@ -2,12 +2,12 @@
  * @file Copied from original component and altered to remove two columns, and use the altered row item component.
  * @description original component: .src/features/clockHistory/components/clockHistoryTable/index.tsx
  * @module Extra
- * @Author Torjus A.M, Thomas H
+ * @author Torjus A.M, Thomas H
  * @Editor Magnus A, Ask I.P.A
  */
 import React, {FC} from 'react';
 import useClockHistory from '../features/clockHistory/hooks/useClockHistory';
-import Employee from "../lib/types/employee";
+import Employee from "../utils/employee";
 import LoadingRows from '../features/clockHistory/components/clockHistoryTable/clockHistoryRowLoading';
 import styles from '../features/clockHistory/components/clockHistoryTable/clockHistoryTable.module.css';
 import ExtraTableRow from './extraTableRow';

@@ -1,4 +1,9 @@
-// Author: Torjus A.M
+/**
+ * @file Displays a message when there are no shifts to display.
+ * @module ShiftList
+ * @memberof EmployeePage
+ * @author Torjus A.M
+ */
 import React, {FC} from "react";
 import Umbrella from "../../../assets/umbrella.svg";
 import styles from './shiftList.module.css';

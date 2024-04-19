@@ -1,20 +1,23 @@
-/*
-    Author: Torjus A.M
-    This file is a collection of middleware functions that can be used in the API routes.
-    It's used to check if the user is authorized, and check the rate limit before performing the API call.
-*/
+/**
+ * @file Collection of middleware functions for the API routes.
+ * @author Torjus A.M
+ */
 import {Middleware, NextFunction} from "./handler";
 import {NextApiRequest, NextApiResponse} from "next";
 import {isAuthenticated, rateLimiter} from "../pages/api/serverUtilts/handleAPICall";
 
+// Checks for rate limiting
 export const middleware_1: Middleware = async (
     req: NextApiRequest,
     res: NextApiResponse,
     next: NextFunction
 ) => {
     await rateLimiter(res);
+    // Execute the next middleware function in the chain
     next();
 }
+
+// Checks for authentication (if user is logged in)
 export const middleware_2: Middleware = async (
     req: NextApiRequest,
     res: NextApiResponse,

@@ -1,15 +1,15 @@
 /**
  * @file Fetches fleks salary, updates independently of the clock history table, whenever the employee checks out.
  * @module ClockHistory
- * @Author Torjus A.M
+ * @author Torjus A.M
  */
 import {useState, useEffect} from 'react';
-import Employee from "../../../lib/types/employee";
-import {defaultInterval, Interval} from "../../../lib/types/types";
+import Employee from "../../../utils/employee";
+import {defaultInterval, Interval} from "../../../utils/types";
 
 /**
  * Custom Hook to fetch and manage the state of an employee's fleks salary.
- * @Author Torjus A.M
+ * @author Torjus A.M
  * @param {Employee} employee - The employee object for which the fleks salary is to be fetched.
  * @returns {Object} An object containing the fleks salary as an Interval and a loading state.
  */
@@ -53,7 +53,7 @@ export default useFleksSalary;
 
 /**
  * Performs the actual fetch from the server.
- * @Author Thomas H
+ * @author Thomas H
  * @param {Employee} employee - The employee object for which the fleks salary is to be fetched.
  * @returns {Promise<Array>} A promise that resolves to an array containing the fleks salary data.
  */

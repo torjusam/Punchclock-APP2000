@@ -1,7 +1,7 @@
 /**
  * @file Defines the layout and content of the "Stemplingshistorikk" module.
  * @module ClockHistory
- * @Author Torjus A.M
+ * @author Torjus A.M
  */
 import React, {FC} from 'react';
 import ClockCheck from '../../assets/clockCheck.svg';

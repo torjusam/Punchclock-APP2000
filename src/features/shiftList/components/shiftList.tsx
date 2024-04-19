@@ -1,9 +1,9 @@
-/*
-    Author: Torjus A.M, Thomas H
-    Responsible for displaying the shifts of a specific employee.
-    Defines the layout of the headers, then maps over the shifts themselves, groups them by month
-    and displays them in a list.
-*/
+/**
+ * @file Displays the list of shifts. Maps over the emplyoees shifts, then uses the shiftCard component to display each shift.
+ * @module ShiftList
+ * @memberof EmployeePage
+ * @author Torjus A.M, Thomas H
+ */
 import React, {FC} from 'react';
 import {useSelectedEmployeeContext} from "../../context/selectedEmployeeContext";
 import {groupShiftsByMonth, sortMonths} from "../services/sortShifts";

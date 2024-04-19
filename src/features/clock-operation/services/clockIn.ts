@@ -1,9 +1,9 @@
 /**
  * @file Function for performing a clock-in operation.
  * @module ClockOperation
- * @Author Thomas H
+ * @author Thomas H
  */
-import Employee from "../../../lib/types/employee";
+import Employee from "../../../utils/employee";
 
 /**
  * Performs a clock-in operation for an employee.

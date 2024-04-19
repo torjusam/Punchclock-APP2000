@@ -1,11 +1,11 @@
-/*
-    Author: Torjus A.M, Thomas H
-    This hook encapsulates the logic for fetching employee data from an API,
-    managing related state, and sending errors.
-*/
+/**
+ * @file This hook encapsulates the logic for fetching employee data from an API,
+ * managing related state, and sending errors.
+ * @author Thomas H, Torjus A.M
+ */
 import {useEffect, useState} from 'react';
-import Employee from '../../../lib/types/employee';
-import {ResError} from "../../../lib/types/types";
+import Employee from '../../../utils/employee';
+import {ResError} from "../../../utils/types";
 import {useSession} from "next-auth/react";
 
 export default function useFetchEmployees() {
@@ -21,6 +21,7 @@ export default function useFetchEmployees() {
                 const response = await fetch('/api/getEmployees');
                 if (response.ok) {
                     const result = await response.json();
+                    // Transform the response data into an array of Employee objects
                     const employeeList = result.map((row: any) => {
                         return new Employee(
                             row.id,

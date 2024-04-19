@@ -1,8 +1,9 @@
-/*
-    Author: Torjus A.M
-    The form for description. Uses formik library.
-    Has a limit of 254, because the DB field is VARCHAR(255)
-*/
+/**
+ * @file Component for displaying the description field for the shift.
+ * @module CrudPage
+ * @description Uses formik library for improved data validation before submitting.
+ * @author Torjus A.M
+ */
 import React, {Dispatch, FC, SetStateAction} from "react";
 import {Formik, Form} from 'formik';
 import styles from './createShift.module.css'

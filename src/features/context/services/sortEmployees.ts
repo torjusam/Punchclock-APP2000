@@ -1,8 +1,8 @@
 /**
  * @file Sorting algorithm for the employee-list.
- * @Author Torjus A.M
+ * @author Torjus A.M
  */
-import Employee from "../../../lib/types/employee";
+import Employee from "../../../utils/employee";
 import moment from "moment/moment";
 
 /**

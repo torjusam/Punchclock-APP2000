@@ -1,9 +1,9 @@
 /**
  * @file Formats given interval into a string representation to be displayed.
  * @module ClockHistory
- * @Author Torjus A.M, Thomas H
+ * @author Torjus A.M, Thomas H
  */
-import {Interval} from '../../../lib/types/types';
+import {Interval} from '../../../utils/types';
 
 /**
  * Formats the given interval into a string representation.

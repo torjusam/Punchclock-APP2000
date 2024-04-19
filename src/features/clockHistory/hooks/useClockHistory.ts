@@ -1,17 +1,17 @@
 /**
  * @file Fetches the last 7 rows of the clock history table for the given employee.
  * @module ClockHistory
- * @Author Torjus A.M, Thomas H
+ * @author Torjus A.M, Thomas H
  */
 import {useState, useEffect} from 'react';
-import Employee from "../../../lib/types/employee";
-import {ClockHistoryData} from "../../../lib/types/types";
-import {intervalToDuration} from "../../../utils/intervalToDuration";
+import Employee from "../../../utils/employee";
+import {ClockHistoryData} from "../../../utils/types";
+import {intervalToDuration} from "../../../utils/durationToPGInterval";
 import {useSelectedEmployeeContext} from "../../context/selectedEmployeeContext";
 
 /**
  * Custom Hook to fetch and manage the state of an employee's clock-history data.
- * @Author Torjus A.M
+ * @author Torjus A.M
  * @returns {Object} An object containing the fleks salary as an Interval and a loading state.
  */
 const useClockHistory = () => {

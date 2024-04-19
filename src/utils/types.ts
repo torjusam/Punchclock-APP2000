@@ -1,11 +1,11 @@
 /**
  * @file This file contains all the types and interfaces used throughout the application.
- * @Author Torjus A.M, Thomas H
+ * @author Torjus A.M, Thomas H
  */
 
 /**
  * Interface for the PostgreSQL Interval type.
- * @Author Torjus A.M
+ * @author Torjus A.M
  */
 export interface Interval {
     years?: number;
@@ -38,7 +38,7 @@ export function defaultInterval(): Interval {
 /**
  * This object represents a single entry in an employee's clock history.
  * It contains information about the check-in and check-out times, as well as the work interval and overtime interval for that entry.
- * @Author Torjus A.M
+ * @author Torjus A.M
  *
  * @typedef {object} - ClockHistoryData
  * @property {number} id
@@ -58,7 +58,7 @@ export interface ClockHistoryData {
 /**
  * Interface for the ResError object
  * This object represents an error from NextApiResponse set to their status and text.
- * @Author Thomas H
+ * @author Thomas H
  *
  * @typedef {object}
  * @property {number} status - The HTTP status code of the error.
@@ -71,7 +71,7 @@ export interface ResError {
 
 /**
  * Interface for the Shift object.
- * @Author Thomas H
+ * @author Thomas H
  *
  * @typedef {object}
  * @property {number} id - The unique identifier for this shift, other employees can be assigned to the same shift.

@@ -1,10 +1,9 @@
 /**
- * @file Logic for performing fetch and posts on the workTime intervals from the database.
- * Used in the workIntervalContext.
- * @Author Torjus A.M
+ * @file Logic for performing fetch and posts on the working-time intervals from the database.
+ * @author Torjus A.M
  */
-import Employee from "../../../lib/types/employee";
-import {Interval, defaultInterval} from "../../../lib/types/types";
+import Employee from "../../../utils/employee";
+import {Interval, defaultInterval} from "../../../utils/types";
 
 /**
  * Fetches the balance of work intervals for a given employee from the database.

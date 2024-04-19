@@ -1,13 +1,14 @@
-/*
-    Author: Torjus A.M
-    Responsible for rendering the button, and handling the onClick event.
-*/
+/**
+ * @file This component is responsible for rendering the button, and handling the onClick event.
+ * @module CrudPage
+ * @author Torjus A.M
+ */
 import React, {FC} from 'react';
-import styles from "./createShift.module.css";
+import moment from "moment/moment";
+import Employee from "../../../../utils/employee";
 import {setShift} from "../../services/performSetShift";
 import {toast} from "react-toastify";
-import moment from "moment/moment";
-import Employee from "../../../../lib/types/employee";
+import styles from "./createShift.module.css";
 
 interface CreateShiftButtonProps {
     employee?: Employee;
@@ -28,7 +29,12 @@ const CreateShiftButton: FC<CreateShiftButtonProps> = ({
                                                            setErrorMsg,
                                                            description
                                                        }) => {
-
+    /**
+     * @function onClick
+     * @description This function is called when the button is clicked. It sets the disabled state of the button to true,
+     * creates the shift, and then sets the disabled state of the button back to false. If an error occurs while creating
+     * the shift, it sets the error message.
+     */
     const onClick = async () => {
         try {
             setIsDisabled(true);

@@ -1,10 +1,10 @@
 /**
  * @file Navbar for the homepage.
  * @module Homepage
- * @Author Torjus A.M
+ * @author Torjus A.M
  */
 import React, {FC} from 'react';
-import SearchBar from '../../features/searchBar';
+import SearchBar from './searchBar';
 import NotifIcon from '../../assets/notif.svg';
 import HelpIcon from '../../assets/helpIco.svg';
 import styles from '../../styles/navbar.module.css'

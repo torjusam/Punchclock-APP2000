@@ -1,6 +1,6 @@
 /**
  * @file Defines the Employee class
- * @Author Torjus A.M
+ * @author Torjus A.M
  */
 import moment from 'moment';
 import {Interval} from "./types";

@@ -1,11 +1,11 @@
 /**
  * @file Context provider for the employee list. Provides the employee list and functions to update the list globally,
  * allowing any component to access and modify the same list.
- * @Author Torjus A.M
+ * @author Torjus A.M
  */
 import React, {createContext, ReactNode, useContext, useEffect, useState} from 'react';
-import Employee from '../../lib/types/employee';
-import {ResError} from "../../lib/types/types";
+import Employee from '../../utils/employee';
+import {ResError} from "../../utils/types";
 import useFetchEmployees from "./hooks/useFetchEmployees";
 import {sortEmployees} from "./services/sortEmployees";
 
@@ -30,10 +30,7 @@ export default function EmployeeContextProvider({children}: { children: ReactNod
     const {employees, error, loading, setEmployees} = useFetchEmployees();
     const [sortedEmployees, setSortedEmployees] = useState<Employee[]>([]);
 
-    /**
-     * Effect hook to create a sorted copy of the original list of employees whenever the list changes.
-     * @effect
-     */
+    // Hook to create a sorted copy whenever the original list changes.
     useEffect(() => {
         const sortedArray = sortEmployees(employees);
         setSortedEmployees(sortedArray);

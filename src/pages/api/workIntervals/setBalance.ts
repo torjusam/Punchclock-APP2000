@@ -1,4 +1,7 @@
-// Author: Torjus A.M
+/**
+ * @file Api route for setting the employees balance.
+ * @author Torjus A.M
+ */
 import {NextApiRequest, NextApiResponse} from 'next';
 import {pool} from '../../../lib/dbIndex';
 import {Middleware, handler} from "../../../middleware/handler";

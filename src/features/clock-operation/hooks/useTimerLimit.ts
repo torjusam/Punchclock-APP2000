@@ -5,13 +5,13 @@
  * the hook lacks functionality to automatically clock out unless you're currently on the employees page.
  * Implementation would require a global timer that runs in the background, or a server-side solution.
  * @module ClockOperation
- * @Author Torjus A.M, Thomas H
+ * @author Torjus A.M, Thomas H
  */
 import {useEffect} from 'react';
 import {clockOut} from "../services/clockOut";
 import {logUserActivity} from "../../../pages/api/serverUtilts/logUserActivity";
 import {useSession} from "next-auth/react";
-import Employee from "../../../lib/types/employee";
+import Employee from "../../../utils/employee";
 
 /**
  * Hook to check if the timer limit has been reached, and clock out the employee if it has.

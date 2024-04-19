@@ -1,6 +1,6 @@
 /**
  * @file Defines the clock, responsible for displaying time, date and a greeting.
- * @Author Torjus A.M, Thomas H, Ask A.S
+ * @author Torjus A.M, Thomas H, Ask A.S
  */
 import React, {useState, useEffect} from 'react';
 import moment from 'moment';

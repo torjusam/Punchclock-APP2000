@@ -1,9 +1,11 @@
-/*
-  Author: Torjus A.M
-  Responsible for displaying the specific shifts of an employee. Works as a blueprint for each shift card.
-*/
+/**
+ * @file Blueprint for a specific shift row.
+ * @module ShiftList
+ * @memberof EmployeePage
+ * @author Torjus A.M, Thomas H
+ */
 import React, {FC} from 'react';
-import {Shift} from "../../../lib/types/types";
+import {Shift} from "../../../utils/types";
 import styles from './shiftList.module.css';
 import moment from "moment/moment";
 import Expand from "../../../assets/expand.svg";

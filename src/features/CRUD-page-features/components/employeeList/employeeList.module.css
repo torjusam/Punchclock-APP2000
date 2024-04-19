@@ -1,6 +1,4 @@
-/*
-    Author: Thomas H, Torjus A.M
-*/
+/* Author: Thomas H, Torjus A.M */
 .employeeList {
     display: flex;
     flex-direction: column;
@@ -10,6 +8,7 @@
     padding: 1rem;
     margin-bottom: 0.3rem;
     overflow-y: auto;
+    height: 38vh;
 }
 
 .employeeList h2 {

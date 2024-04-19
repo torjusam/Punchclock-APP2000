@@ -2,13 +2,13 @@
  * @file Responsible for defining the layout of a row in the clock-history table.
  * @module ClockHistory
  * @memberof EmployeePage
- * @Author Torjus A.M, Thomas H
+ * @author Torjus A.M, Thomas H
  */
 import React from 'react';
 import ArrowIn from '../../../../assets/arrowIn.svg';
 import ArrowOut from '../../../../assets/arrowOut.svg';
 import {formatInterval} from '../../services/formatInterval';
-import {ClockHistoryData} from "../../../../lib/types/types";
+import {ClockHistoryData} from "../../../../utils/types";
 import moment from 'moment';
 import styles from './clockHistoryTable.module.css';
 

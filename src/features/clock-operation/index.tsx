@@ -2,7 +2,7 @@
  * @file ClockHistory - "Stemplingsklokke" module.
  * @module ClockOperation
  * @memberof EmployeePage
- * @Author Torjus A.M
+ * @author Torjus A.M
  */
 import React, {FC} from 'react';
 import ClockIcon from '../../assets/clock.svg';

@@ -1,5 +1,9 @@
-// Author: Torjus A.M
-import Employee from "../../../lib/types/employee";
+/**
+ * @file Service for deleting an employee.
+ * @module CrudPage
+ * @author Torjus A.M
+ */
+import Employee from "../../../utils/employee";
 
 export const deleteEmployee = async (employee: Employee) => {
     const employeeId = employee.id;

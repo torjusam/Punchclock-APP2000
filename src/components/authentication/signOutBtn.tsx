@@ -3,7 +3,7 @@
  * @module Authentication
  * @description Only implemented on the extra CRUD page.
  * To be properly implemented would have to add a signin-authentication first before you can sign out.
- * @Author Torjus A.M
+ * @author Torjus A.M
  */
 import React, {FC} from 'react';
 import {signOut, useSession} from 'next-auth/react';

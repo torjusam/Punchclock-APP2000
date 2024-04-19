@@ -1,13 +1,13 @@
-/*
-    Author: Torjus A.M
-    Parent component responsible for putting together the module for creating shifts.
-    Sets up shared states passed down to each child and puts together child components.
-*/
+/**
+ * @file Root for creating a shift. Defines the layout and defines shared states for the child components.
+ * @module CrudPage
+ * @author Torjus A.M, Thomas H
+ */
 import React, {FC, useEffect, useState} from 'react';
 import {addDays} from 'date-fns';
 import {registerLocale} from "react-datepicker";
 import {nb} from 'date-fns/locale/nb';
-import Employee from "../../../../lib/types/employee";
+import Employee from "../../../../utils/employee";
 import CreateShiftButton from "./createShiftBtn";
 import DatePickers from "./datePickers";
 import DescriptionForm from "./descriptionForm";

@@ -1,7 +1,7 @@
 /**
  * @file Defines layout of the employees personal page, and dictates wether to load or not.
  * @module EmployeePage
- * @Author Torjus A.M
+ * @author Torjus A.M
  */
 import React, {FC} from 'react';
 import styles from './employeePageLayout.module.css';

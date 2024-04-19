@@ -1,11 +1,13 @@
-/*
-    Author: Thomas H
-    Maps over the employees array, and renders an EmployeeListItem for each employee in a list.
-*/
+/**
+ * @file Root for the list. Maps over the employees array and renders an EmployeeListItem for each employee in a list.
+ * @module CrudPage
+ * @author Thomas H
+ * @Editors Torjus A.M
+ */
 import React, {Dispatch, FC, SetStateAction} from 'react';
 import EmployeeListItem from './employeeListItem';
 import styles from './employeeList.module.css';
-import Employee from "../../../../lib/types/employee";
+import Employee from "../../../../utils/employee";
 import {useEmployeeContext} from "../../../context/employeeContext";
 
 interface EmployeeListProps {
@@ -24,7 +26,6 @@ const EmployeeList: FC<EmployeeListProps> = ({setSelectedEmployee}) => {
                     setSelectedEmployee={setSelectedEmployee}
                 />
             ))}
-            {/*<CreateEmployee/>*/}
         </div>
     );
 };

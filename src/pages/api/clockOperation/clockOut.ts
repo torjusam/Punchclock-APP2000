@@ -1,4 +1,8 @@
-// Author: Torjus A.M
+/**
+ * @file Api route for clocking out an employee.
+ * @module ClockOperation
+ * @author Torjus A.M
+ */
 import {NextApiRequest, NextApiResponse} from 'next';
 import {pool} from '../../../lib/dbIndex';
 import {handler, Middleware} from "../../../middleware/handler";
@@ -10,6 +14,7 @@ const clockOut: Middleware = async (req: NextApiRequest, res: NextApiResponse) =
         const {employee, currentTime, thisWorkingTime, overtimeInterval} = req.body;
         const {id} = employee;
 
+        // Query finds the latest checkin for the employee, and updates the checkout time, workinterval and overtimeinterval.
         const text = (`
         UPDATE fleksitidBank
         SET 

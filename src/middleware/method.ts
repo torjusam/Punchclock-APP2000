@@ -1,4 +1,7 @@
-// https://github.com/undrash/next.js-api-middleware/blob/main/demo-api-routes/src/pages/middleware/method.ts
+/**
+ * @file Middleware for allowing only specific HTTP methods on an endpoint.
+ * @see https://github.com/undrash/next.js-api-middleware/blob/main/demo-api-routes/src/pages/middleware/method.ts
+ */
 import {NextApiRequest, NextApiResponse} from 'next';
 import {Middleware, NextFunction} from './handler';
 

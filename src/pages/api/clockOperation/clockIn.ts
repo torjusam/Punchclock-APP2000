@@ -1,4 +1,8 @@
-// Author: Torjus A.M
+/**
+ * @file Api route for clocking in an employee.
+ * @module ClockOperation
+ * @author Torjus A.M
+ */
 import {NextApiRequest, NextApiResponse} from 'next';
 import {pool} from '../../../lib/dbIndex';
 import {handler, Middleware} from "../../../middleware/handler";

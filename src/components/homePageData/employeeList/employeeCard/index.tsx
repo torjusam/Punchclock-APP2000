@@ -2,11 +2,11 @@
  * @file Component defines *blueprint* of an employee card. Uses the employee object's info to render the card.
  * @module EmployeeList
  * @memberof Homepage
- * @Author Thomas H, Torjus A.M
+ * @author Thomas H, Torjus A.M
  */
 import React, {FC} from 'react';
 import {useRouter} from 'next/router';
-import Employee from '../../../../lib/types/employee';
+import Employee from '../../../../utils/employee';
 import LastCheckTime from './lastCheckTime';
 import AvatarIcon from "../../../../assets/avatar.svg";
 import styles from './employeeCard.module.css';

@@ -2,11 +2,11 @@
  * @file Function for calculating overtime and working-time for an employee before clocking out.
  * Uses moment.js library to handle durations and time calculations.
  * @module ClockOperation
- * @Author Torjus A.M
+ * @author Torjus A.M
  */
 import moment, {duration} from 'moment';
-import Employee from "../../../lib/types/employee";
-import {durationToPostgresInterval} from "../../../lib/durationToPGInterval";
+import Employee from "../../../utils/employee";
+import {durationToPostgresInterval} from "../../../utils/durationToPGInterval";
 
 /**
  * Calculates the working time since the last check-in and determines any overtime.

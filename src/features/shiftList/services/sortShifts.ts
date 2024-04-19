@@ -1,11 +1,17 @@
-/*
-    Author: Torjus A.M
-    Helper functions used in the shiftList. Function names are self-explanatory
-*/
+/**
+ * @file Helper functions used in the shiftList.
+ * @module ShiftList
+ * @memberof EmployeePage
+ * @author Torjus A.M
+ */
 import moment from 'moment';
-import {Shift} from "../../../lib/types/types";
+import {Shift} from "../../../utils/types";
 
-// Takes in an array of shifts, and returns an array of shifts by each month
+/**
+ * Groups shifts by month.
+ * @param {Shift[]} shifts - An array of shifts to group by month.
+ * @returns {Object} An object where the keys are the months, and the values are arrays of shifts.
+ */
 export function groupShiftsByMonth(shifts: Shift[]): { [month: string]: Shift[] } {
     const shiftsByMonth: { [month: string]: Shift[] } = {};
     shifts.forEach(shift => {
@@ -18,7 +24,11 @@ export function groupShiftsByMonth(shifts: Shift[]): { [month: string]: Shift[] 
     return shiftsByMonth;
 }
 
-// Function to sort months in ascending order
+/**
+ * Sort months in ascending order.
+ * @param {Object} shiftsByMonth - An object where the keys are the months and the values are arrays of shifts.
+ * @returns {string[]} An array of the months sorted in ascending order.
+ */
 export function sortMonths(shiftsByMonth: { [month: string]: Shift[] }): string[] {
     return Object.keys(shiftsByMonth).sort(
         (a, b) =>

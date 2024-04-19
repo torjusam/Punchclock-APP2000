@@ -1,7 +1,7 @@
 /**
  * @file Used to set a dynamic url (employee's id), wrap the context, and display the page content
  * @module Extra
- * @Author Torjus A.M, Magnus A, Ask I.P.A
+ * @author Torjus A.M, Magnus A, Ask I.P.A
  */
 import React, {FC} from "react";
 import ExtraPageData from "../../extra-Magnus_Ask_Kriss";

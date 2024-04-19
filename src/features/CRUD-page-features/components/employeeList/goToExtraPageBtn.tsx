@@ -1,11 +1,13 @@
-/*
-    Author: Torjus A.M
-    Used to redirect to the extra page
-*/
+/**
+ * @file Button used to navigate to the extra page.
+ * @module Extra
+ * @memberof CrudPage
+ * @author Thomas H
+ */
 import React, {FC} from 'react';
 import {useRouter} from 'next/router';
 import styles from './employeeList.module.css';
-import Employee from "../../../../lib/types/employee";
+import Employee from "../../../../utils/employee";
 
 interface ExtraPageButtonProps {
     employee: Employee;

@@ -1,11 +1,11 @@
-/*
-    Author: Thomas H, edited by Torjus A.M
-    This component is responsible for rendering each employee in the list of employees.
-    It also handles logic for selecting, de-selecting and deleting employees.
-*/
+/**
+ * @file Responsible for rendering each employee in the list of employees and logic for selecting, de-selecting and deleting employees.
+ * @module CrudPage
+ * @author Thomas H
+ */
 import React, {Dispatch, FC, SetStateAction} from 'react';
 import styles from './employeeList.module.css';
-import Employee from "../../../../lib/types/employee";
+import Employee from "../../../../utils/employee";
 import {deleteEmployee} from "../../services/deleteEmployee";
 import {useEmployeeContext} from "../../../context/employeeContext";
 import ExtraPageButton from "./goToExtraPageBtn";

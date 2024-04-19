@@ -2,7 +2,7 @@
  * @file Pin-code to be used to authenticate before redirect to employees personal page.
  * This functionality was not implemented with proper authentication because of a lack of time.
  * @module Authentication
- * @Author Thomas H
+ * @author Thomas H
  */
 import React, {useCallback, useState,} from 'react';
 import styles from './pinCodeV4.module.css'

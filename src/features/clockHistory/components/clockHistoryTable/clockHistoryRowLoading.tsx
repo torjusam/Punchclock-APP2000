@@ -2,7 +2,7 @@
  * @file Loading rows for the clock history table. Displays 7 empty rows.
  * @module ClockHistory
  * @memberof EmployeePage
- * @Author Thomas H
+ * @author Thomas H
  */
 import React from "react";
 import styles from './clockHistoryTable.module.css';

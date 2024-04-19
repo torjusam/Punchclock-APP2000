@@ -2,7 +2,7 @@
  * @file Responsible for setting up table, the header, and rendering the rows.
  * @module ClockHistory
  * @memberof EmployeePage
- * @Author Torjus A.M, Thomas H
+ * @author Torjus A.M, Thomas H
  */
 import React, {FC} from 'react';
 import useClockHistory from "../../hooks/useClockHistory";

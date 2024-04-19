@@ -1,4 +1,8 @@
-// Author: Torjus A.M
+/**
+ * @file Api route for getting the employees shifts.
+ * @module EmployeePage
+ * @author Torjus A.M
+ */
 import {NextApiRequest, NextApiResponse} from 'next';
 import {pool} from '../../lib/dbIndex'
 import {handler, Middleware} from "../../middleware/handler";
@@ -8,6 +12,7 @@ import {middleware_1, middleware_2} from "../../middleware/middlewares";
 const getShifts: Middleware = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
         const {employeeId} = req.body;
+        // Fetches the next 25 shifts for the employee
         const text = (`
             SELECT 
                 s.id, s.description, s.start, s."end"
@@ -16,8 +21,8 @@ const getShifts: Middleware = async (req: NextApiRequest, res: NextApiResponse) 
                 shift_employee se ON s.id = se.shift_id
             WHERE 
                 se.employee_id = $1
-                AND s.start > NOW() -- Fetch only shifts that have a start time in the future
-            LIMIT 25; -- Probably will never need to display more than 25 shifts at a time.
+                AND s.start > NOW()
+            LIMIT 25;
       `);
         const result = await pool.query(text, [employeeId]);
         res.status(200).json(result.rows);

@@ -1,42 +1,57 @@
-/* 
-    Author: Torjus A.M
-    Main entry point of NextAuth.js. This file is used to configure the authentication providers and security configuration.
-
-    Session is set to JWT, which is JSON Web Token. This is a stateless authentication method, which means that the server
-    doesn't need to store the session state, but instead the client will store the session state.
-
-    The credentials provider is used to authenticate users with our custom defined username and password.
-    In this case it was set as an email, even though it could just be a username and password.
-
-    This config also includes a callback function that will add the user id to the session object,
-    so that we can use it to log errors, and other information worth storing.
-*/
+/**
+ * @file This file is the main entry point of NextAuth.js. It is used to configure the authentication providers and security configuration.
+ * @module Authentication
+ * @author Torjus A.M
+ */
 import NextAuth, {NextAuthOptions, User} from "next-auth"
 import CredentialsProvider from 'next-auth/providers/credentials'
 import bcrypt from "bcrypt";
 import {getServerSession} from "next-auth/next";
 import {GetServerSidePropsContext, NextApiRequest, NextApiResponse} from "next";
 import {logUserActivity} from "../serverUtilts/logUserActivity";
-import RateLimitError from "../../../utils/errors";
+import {RateLimitError} from "../../../utils/errors";
 
+/**
+ * @typedef NextAuthOptions
+ * @property {Object} session - The session configuration.
+ * @property {Array} providers - The authentication providers.
+ * @property {Object} pages - The pages configuration.
+ * @property {Object} callbacks - The callbacks configuration.
+ */
 export const authOptions: NextAuthOptions = {
+    /**
+     * Session is set to JWT, which is a JSON Web Token. This is a stateless authentication method, which means that the server
+     * doesn't need to store the session state, but instead the client will store it.
+     */
     session: {
         strategy: 'jwt',
         maxAge: 24 * 60 * 60, // Session expires after 24 hours (in seconds)
         updateAge: 24 * 60 * 60, // Update session age every 24 hours (in seconds)
     },
+    /**
+     * Providers is an array of authentication providers. In this case, we only have one provider, which is the credentials provider.
+     * The credentials provider is used to authenticate users with our custom defined username and password.
+     * @description Provider includes: type of provider, the credentials object, and the authorize function.
+     * @see https://next-auth.js.org/providers/credentials
+     */
     providers: [
-        // Custom provider for authenticating with an email and password.
         CredentialsProvider({
             type: "credentials",
             credentials: {},
-            // Authorization function, used to validate information to authenticate user.
+            /**
+             * Authorization function used to validate information to authenticate user.
+             *
+             * @function authorize
+             * @param {Object} credentials - The credentials object containing the email and password of the user.
+             * @param {Object} req - The request object.
+             * @returns {User} - Returns the user object if the user is authenticated successfully.
+             * @throws {RateLimitError} - Throws a RateLimitError if the user has made too many unsuccessful attempts to sign in.
+             * @throws {Error} - Throws an error if the email or password is incorrect.
+             */
             async authorize(credentials, req) {
-                const {email, password} = credentials as {
-                    email: string
-                    password: string
-                };
-                // NODE_ENV to determine which envirnoment the application is running (development, production, etc)
+                const {email, password} = credentials as { email: string, password: string };
+
+                // Determine which environment the application is running (development, prod..)
                 const baseUrl =
                     process.env.NODE_ENV === 'production' ? 'https://app-2000-gruppe20.vercel.app' : 'http://localhost:3000';
 
@@ -49,6 +64,7 @@ export const authOptions: NextAuthOptions = {
                     body: JSON.stringify({email}),
                 });
 
+                // 429 = Too many requests for the endpoint.
                 if (response.status === 429) {
                     logUserActivity(
                         'ratelimit_reached',
@@ -61,15 +77,10 @@ export const authOptions: NextAuthOptions = {
                 const users = await response.json(); // Parse response to JSON
 
                 if (users.length > 0) {
-                    const user = users[0]; // Get the first user object from the json array
-                    /*
-                        Compare the password from the form, with the hashed password from the DB using bcrypt.
-                        The password was created with bcrypt, and since the salt is stored in the hashed password,
-                        bcrypt can use the same salt to hash the password and compare.
-                        basically, the saltedHash = salt string + hashedPassword
-                    */
+                    const user = users[0];
+                    // Compare the password from the form, with the hashed password from the DB using bcrypt.
                     const isValid = await bcrypt.compare(password, user.password_hash);
-                    // Return the user if the password matches and log the event.
+                    // Return the user if the password matches, and log the event.
                     if (isValid) {
                         logUserActivity('login', user.id, 'Successful login');
                         return {
@@ -94,11 +105,22 @@ export const authOptions: NextAuthOptions = {
         signIn: '/auth/signin',
         error: '/auth/signin',
     },
+    /**
+     * Callbacks are asynchronous functions you can use to control what happens when an action is performed.
+     * With JWT you can implement access controls without a database.
+     * @see https://next-auth.js.org/configuration/callbacks
+     */
     callbacks: {
         async redirect({url, baseUrl}) {
             return `${baseUrl}/`;
         },
-        // When session object is called on and returned, it will include the user id.
+        /**
+         * @function session
+         * @description This function is called to manage the session. It adds the user id to the session object.
+         * @param {Object} session - The session object.
+         * @param {Object} token - The token object.
+         * @returns {Object} The updated session object.
+         */
         session: ({session, token}) => ({
             ...session,
             user: {
@@ -109,7 +131,12 @@ export const authOptions: NextAuthOptions = {
     },
 } satisfies NextAuthOptions;
 
-// Helper function for fetching the serverSession (avoid passing AuthOptions to each function)
+/**
+ * @function auth
+ * @description Helper function for fetching the serverSession (avoid passing AuthOptions to each function)
+ * @param {Array} args - The arguments to pass to the getServerSession function.
+ * @returns {Object} The server session.
+ */
 export function auth(...args: [GetServerSidePropsContext["req"], GetServerSidePropsContext["res"]] | [NextApiRequest, NextApiResponse] | []) {
     return getServerSession(...args, authOptions)
 }

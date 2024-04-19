@@ -2,7 +2,7 @@
  * @file Renders and formats the punchclock-timer for the selected employee.
  * @module ClockOperation
  * @memberof EmployeePage
- * @Author Torjus A.M
+ * @author Torjus A.M
  */
 import React from 'react';
 import {useSelectedEmployeeContext} from "../../context/selectedEmployeeContext";
@@ -51,7 +51,7 @@ const PunchClockTimer = () => {
             ) : (
                 <>
                     {/* If the employee is not clocked in, and the timer is 0 or null, display "00t 00m 00s" */}
-                    {timer === 0 || (!isClockedIn && (timer === 0 || !timer)) && (
+                    {!isClockedIn && (timer === 0 || !timer) && (
                         <>
                             <h1>00t 00m 00s</h1>
                             <h2>Stemple Inn</h2>

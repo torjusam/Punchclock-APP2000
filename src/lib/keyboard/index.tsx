@@ -1,13 +1,11 @@
-/* 
-  Author: Torjus A.M
-  Used to display the keyboard on the frontpage when the searchbar is highlighted.
-  Uses library: react-simple-keyboard.
-  The keyboard is only displayed when the showKeyboard prop from searchbar is true.  
-  TODO: Ease in transition instead of suddenly appearing
-*/
+/**
+ * @file Used to display the keyboard on the frontpage when the searchbar is highlighted.'
+ * @description Uses library: react-simple-keyboard.
+ * @author Torjus A.M
+ */
 import React, {FC, MutableRefObject, useEffect, useState} from "react";
 import Keyboard, {KeyboardLayoutObject} from "react-simple-keyboard";
-import {useOutsideClick} from "../../../hooks/clickOutside";
+import {useOutsideClick} from "../../hooks/clickOutside";
 import "react-simple-keyboard/build/css/index.css";
 import styles from "./keyboardWrapper.module.css";
 

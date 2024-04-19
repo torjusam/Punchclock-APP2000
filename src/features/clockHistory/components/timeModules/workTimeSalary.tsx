@@ -1,7 +1,7 @@
 /**
  * @file Component displaying the weekly worktime module. E.G: Arbeidstid Uke 1-52, 10m 00s.
  * @module ClockHistory
- * @Author Torjus A.M
+ * @author Torjus A.M
  */
 import React from 'react';
 import {formatInterval} from '../../services/formatInterval';

@@ -1,4 +1,7 @@
-// Author: Torjus A.M
+/**
+ * @file Api route for getting the employees.
+ * @author Torjus A.M
+ */
 import {NextApiRequest, NextApiResponse} from 'next';
 import {pool} from '../../lib/dbIndex'
 import {handler, Middleware} from '../../middleware/handler';
@@ -7,6 +10,7 @@ import {middleware_1, middleware_2} from "../../middleware/middlewares";
 
 const getEmployees: Middleware = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
+        // Relevant employee data, aswell as the last check-in and check-out.
         const result = await pool.query(`
         SELECT
             e.ID,

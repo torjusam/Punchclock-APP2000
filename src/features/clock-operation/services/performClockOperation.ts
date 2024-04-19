@@ -1,9 +1,9 @@
 /**
  * @file Responsible for performing the clock in/out operation. Handles errors, and calls on toast-notifications.
  * @module ClockOperation
- * @Author Torjus A.M, Thomas H
+ * @author Torjus A.M, Thomas H
  */
-import Employee from '../../../lib/types/employee';
+import Employee from '../../../utils/employee';
 import {clockIn} from './clockIn';
 import {clockOut} from "./clockOut";
 import moment from 'moment';

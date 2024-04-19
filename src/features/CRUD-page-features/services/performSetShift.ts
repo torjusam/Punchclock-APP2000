@@ -1,11 +1,12 @@
-/*
-    Author: Torjus A.M
-    This file sets shift for the employee.
-*/
+/**
+ * @file Service for setting a shift for an employee.
+ * @module CrudPage
+ * @author Thomas H, Torjus A.M
+ */
 
-import Employee from "../../../lib/types/employee";
+import Employee from "../../../utils/employee";
 import {differenceInHours} from "date-fns";
-import {Shift} from "../../../lib/types/types";
+import {Shift} from "../../../utils/types";
 
 export const setShift = async (employee: Employee, description: string, start: Date, end: Date, setErrorMsg) => {
     if (start > end) {
@@ -13,6 +14,7 @@ export const setShift = async (employee: Employee, description: string, start: D
     } else if (differenceInHours(end, start) > 24) {
         throw new RangeError("Vakt kan ikke vare mer enn 24 timer!");
     }
+    // Create a shift object before posting to validate the input.
     const shift: Shift = {
         description: description,
         start: start.toISOString(),

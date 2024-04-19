@@ -1,10 +1,10 @@
 /**
  * @file Two main functions for performing clock-out operations, and setting the flekstid-balance.
  * @module ClockOperation
- * @Author Torjus A.M
+ * @author Torjus A.M
  */
 import calculateTime from './calculateOvertime';
-import Employee from "../../../lib/types/employee";
+import Employee from "../../../utils/employee";
 
 /**
  * Performs a clock-out operation for an employee by sending a request to the api endpoint.

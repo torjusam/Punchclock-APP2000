@@ -3,7 +3,7 @@
  * @module EmployeeList
  * @memberof Homepage
  * @description Uses the employee-context to access the array of employees, map over it, rendering each employee as an employee card.
- * @Author Thomas H, Torjus A.M
+ * @author Thomas H, Torjus A.M
  */
 import React, {FC} from 'react';
 import EmployeeCard from './employeeCard/';

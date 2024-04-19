@@ -1,7 +1,7 @@
 /**
  * @file Navbar for the CRUD-page. Contains a home button and a sign-out button.
  * @module CRUD-page
- * @Author Thomas H
+ * @author Thomas H
  */
 import React, {FC} from 'react';
 import HomeButton from "../homeButton";

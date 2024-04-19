@@ -1,7 +1,7 @@
 /**
  * @file Main component for the two time modules above the clockhistorytable.
  * @module ClockHistory
- * @Author Torjus A.M
+ * @author Torjus A.M
  */
 import React, {FC} from 'react';
 import FleksSalary from './fleksSalary';

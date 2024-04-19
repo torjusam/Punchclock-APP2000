@@ -1,6 +1,6 @@
 /**
  * @file Defines layout of the content on the left side of the screen for all pages.
- * @Author Torjus A.M, Thomas H, Ask I.P Aspholm
+ * @author Torjus A.M, Thomas H, Ask I.P Aspholm
  */
 import React, {FC} from "react"
 import {useRouter} from 'next/router';

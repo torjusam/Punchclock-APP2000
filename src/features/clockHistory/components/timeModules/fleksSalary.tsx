@@ -1,7 +1,7 @@
 /**
  * @file Component fetches the fleks salary for the selected employee and displays it.
  * @module ClockHistory
- * @Author Torjus A.M
+ * @author Torjus A.M
  */
 import React, {FC} from 'react';
 import {formatInterval} from '../../services/formatInterval';

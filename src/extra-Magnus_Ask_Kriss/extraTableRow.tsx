@@ -2,11 +2,11 @@
  * @file Copied from original component and altered to remove two columns.
  * @description original component: .src/features/clockHistory/components/clockHistoryTable/clockHistoryRow.tsx
  * @module Extra
- * @Author Torjus A.M, Thomas H
+ * @author Torjus A.M, Thomas H
  * @Editors Magnus A, Ask I.P.A
  */
 import React from 'react';
-import {ClockHistoryData} from '../lib/types/types'
+import {ClockHistoryData} from '../utils/types'
 import moment from 'moment';
 import styles from '../features/clockHistory/components/clockHistoryTable/clockHistoryTable.module.css';
 
