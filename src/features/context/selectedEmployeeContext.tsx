@@ -27,6 +27,7 @@ interface SelectedEmployeeContextProps {
     setTimer: (time: number) => void;
     timerLimit: boolean;
     isTimerLoading: boolean;
+    setIsTimerLoading: (isLoading: boolean) => void;
 }
 
 export const SelectedEmployeeContext = createContext<SelectedEmployeeContextProps | undefined>(undefined);
@@ -46,7 +47,7 @@ interface SelectedEmployeeProviderProps {
 export default function SelectedEmployeeProvider({children, employee}: SelectedEmployeeProviderProps) {
     const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(employee);
     const {setEmployees} = useEmployeeContext();
-    const {timer, setTimer, timerLimit, isTimerLoading} = usePunchClockTimer(employee);
+    const {timer, setTimer, timerLimit, isTimerLoading, setIsTimerLoading} = usePunchClockTimer(employee);
 
     useEffect(() => {
         setSelectedEmployee(employee);
@@ -87,6 +88,7 @@ export default function SelectedEmployeeProvider({children, employee}: SelectedE
             setTimer,
             timerLimit,
             isTimerLoading,
+            setIsTimerLoading
         }}>
             {children}
         </SelectedEmployeeContext.Provider>

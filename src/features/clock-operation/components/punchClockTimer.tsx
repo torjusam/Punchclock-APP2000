@@ -11,7 +11,7 @@ import styles from './punchClock.module.css';
 /**
  * Helper function to format given time into a string representation of hours, minutes, and seconds.
  * @param {number} seconds - The time in seconds to be formatted.
- * @returns {string} A string representing the formatted time. The format is "`"00t 00m 00s".
+ * @returns {string} A string representing the formatted time. The format is "00t 00m 00s".
  */
 function formatTimer(seconds: number) {
     const duration = moment.duration(seconds, 'seconds');
@@ -23,7 +23,7 @@ function formatTimer(seconds: number) {
 
 /**
  * Component displays the punchclock-timer for the selected employee.
- * It also shows the check-in and check-out times of the employee.
+ * It also shows the check-in and check-out times of the employee, depending on their clocked-in status.
  * @returns {ReactNode} The PunchClockTimer component.
  */
 const PunchClockTimer = () => {
@@ -34,11 +34,6 @@ const PunchClockTimer = () => {
         isTimerLoading
     } = useSelectedEmployeeContext();
 
-    /**
-     * Formats the time to a readable string.
-     * @param time
-     * @returns {string} The formatted time if valid, or a question mark if not.
-     */
     const formatTime = (time: Date): string => moment(time).isValid() ? moment(time).format('LT') : '?';
 
     // Format the check-in and check-out times using the helper function.
@@ -47,7 +42,7 @@ const PunchClockTimer = () => {
 
     return (
         <div className={styles.timeDisplay}>
-            {isTimerLoading ? (
+            {isTimerLoading || (isClockedIn && timer === 0) ? (
                 <>
                     <div className={styles.line}></div>
                     <div className={`${styles.line} ${styles.w2}`}></div>
@@ -62,7 +57,7 @@ const PunchClockTimer = () => {
                         </>
                     )}
                     {/* If timer is valid and above 0, display the timer and check-in/out times */}
-                    {timer >= 0 && (
+                    {timer >= 1 && (
                         <>
                             <h1>{formatTimer(timer)}</h1>
                             <h2>{formattedCheckIn} - {formattedCheckOut}</h2>
