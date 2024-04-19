@@ -5,7 +5,7 @@
 import React, {FC} from 'react';
 import {useRouter} from 'next/router';
 import styles from './employeeList.module.css';
-import {Employee} from "../../../../lib/types/employee";
+import Employee from "../../../../lib/types/employee";
 
 interface ExtraPageButtonProps {
     employee: Employee;

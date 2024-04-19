@@ -6,7 +6,7 @@
 import React, {ChangeEvent, FormEvent, useEffect, FC} from 'react';
 import Search from '../../../assets/search.svg';
 import {useEmployeeContext} from '../../context/employeeContext';
-import {Employee} from '../../../lib/types/employee';
+import Employee from '../../../lib/types/employee';
 import {sortEmployees} from "../../context/services/sortEmployees";
 import styles from './searchbar.module.css';
 

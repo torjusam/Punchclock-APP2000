@@ -9,7 +9,7 @@ import React, {FC, useEffect, useState} from 'react';
 import {addDays} from 'date-fns';
 import {registerLocale} from "react-datepicker";
 import {nb} from 'date-fns/locale/nb';
-import {Employee} from "../lib/types/employee";
+import Employee from "../lib/types/employee";
 import CreateShiftButton from '../features/CRUD-page-features/components/createShift/createShiftBtn';
 import DatePickers from '../features/CRUD-page-features/components/createShift/datePickers';
 import DescriptionForm from '../features/CRUD-page-features/components/createShift/descriptionForm';

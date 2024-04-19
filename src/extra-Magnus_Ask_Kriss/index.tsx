@@ -6,7 +6,7 @@
 import React, {FC} from "react";
 import '@fontsource/lato';
 import '@fontsource/public-sans';
-import {Employee} from "../lib/types/employee";
+import Employee from "../lib/types/employee";
 import CrudPageNav from "../components/CRUD-page/crudNav";
 import styles from "./extra.module.css";
 import ExtraTable from "./extraTable";

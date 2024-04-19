@@ -7,7 +7,7 @@ import {useEffect} from 'react';
 import {clockOut} from "../services/clockOut";
 import {logUserActivity} from "../../../pages/api/serverUtilts/logUserActivity";
 import {useSession} from "next-auth/react";
-import {Employee} from "../../../lib/types/employee";
+import Employee from "../../../lib/types/employee";
 
 /**
  * Hook to check if the timer limit has been reached, and clock out the employee if it has.

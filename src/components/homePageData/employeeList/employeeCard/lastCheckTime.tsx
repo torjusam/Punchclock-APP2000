@@ -4,7 +4,7 @@
     along with an icon indicating the action (checked in / out).
 */
 import React, {FC, useEffect, useState} from 'react';
-import {Employee} from '../../../../lib/types/employee';
+import Employee from '../../../../lib/types/employee';
 import ArrowIn from '../../../../assets/arrowIn.svg';
 import ArrowOut from '../../../../assets/arrowOut.svg';
 import moment from 'moment';

@@ -3,7 +3,7 @@
  * @module ClockOperation
  * @Author Torjus A.M, Thomas H
  */
-import {Employee} from '../../../lib/types/employee';
+import Employee from '../../../lib/types/employee';
 import {clockIn} from './clockIn';
 import {clockOut} from "./clockOut";
 import moment from 'moment';

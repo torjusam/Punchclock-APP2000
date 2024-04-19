@@ -3,7 +3,7 @@
     This file sets shift for the employee.
 */
 
-import {Employee} from "../../../lib/types/employee";
+import Employee from "../../../lib/types/employee";
 import {differenceInHours} from "date-fns";
 import {Shift} from "../../../lib/types/types";
 

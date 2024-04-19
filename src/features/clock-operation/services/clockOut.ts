@@ -5,6 +5,7 @@
  */
 import calculateTime from './calculateIntervals/calculateOvertime';
 import {Employee} from "../../../lib/types/employee";
+import Employee from "../../../lib/types/employee";
 
 /**
  * Performs a clock-out operation for an employee by sending a request to the api endpoint.

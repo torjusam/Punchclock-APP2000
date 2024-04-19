@@ -20,7 +20,7 @@ import {Interval} from "./types";
  * @property {moment.Duration} dailyWorkTime - The employee's daily work time.
  * @property {boolean} isWorkTimeReached - Boolean indicating if the employee's work time has been reached.
  */
-export class Employee {
+class Employee {
     id: number;
     name: string;
     pin?: number;
@@ -51,3 +51,5 @@ export class Employee {
         this.isClockedIn = (this.lastCheckIn && this.lastCheckOut && this.lastCheckIn > this.lastCheckOut);
     }
 }
+
+export default Employee;

@@ -4,7 +4,7 @@
  * @Author Torjus A.M, Thomas H
  */
 import {useState, useEffect} from 'react';
-import {Employee} from "../../../lib/types/employee";
+import Employee from "../../../lib/types/employee";
 import {ClockHistoryData} from "../../../lib/types/types";
 import {intervalToDuration} from "../../../utils/intervalToDuration";
 import {useSelectedEmployeeContext} from "../../context/selectedEmployeeContext";

@@ -4,7 +4,7 @@
     managing related state, and sending errors.
 */
 import {useEffect, useState} from 'react';
-import {Employee} from '../../../lib/types/employee';
+import Employee from '../../../lib/types/employee';
 import {ResError} from "../../../lib/types/types";
 import {useSession} from "next-auth/react";
 

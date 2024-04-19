@@ -1,5 +1,5 @@
 // Author: Torjus A.M
-import {Employee} from "../../../lib/types/employee";
+import Employee from "../../../lib/types/employee";
 
 export const deleteEmployee = async (employee: Employee) => {
     const employeeId = employee.id;

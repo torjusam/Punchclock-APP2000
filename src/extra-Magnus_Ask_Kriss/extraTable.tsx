@@ -7,7 +7,7 @@
  */
 import React, {FC} from 'react';
 import useClockHistory from '../features/clockHistory/hooks/useClockHistory';
-import {Employee} from "../lib/types/employee";
+import Employee from "../lib/types/employee";
 import LoadingRows from '../features/clockHistory/components/clockHistoryTable/clockHistoryRowLoading';
 import styles from '../features/clockHistory/components/clockHistoryTable/clockHistoryTable.module.css';
 import ExtraTableRow from './extraTableRow';

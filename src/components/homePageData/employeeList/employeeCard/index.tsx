@@ -5,7 +5,7 @@
 */
 import React, {FC} from 'react';
 import {useRouter} from 'next/router';
-import {Employee} from '../../../../lib/types/employee';
+import Employee from '../../../../lib/types/employee';
 import LastCheckTime from './lastCheckTime';
 import AvatarIcon from "../../../../assets/avatar.svg";
 import styles from './employeeCard.module.css';

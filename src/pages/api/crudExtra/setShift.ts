@@ -2,7 +2,7 @@
 import {NextApiRequest, NextApiResponse} from 'next';
 import {pool} from '../../../lib/dbIndex';
 import {Shift} from "../../../lib/types/types";
-import {Employee} from "../../../lib/types/employee";
+import Employee from "../../../lib/types/employee";
 import {handler, Middleware} from "../../../middleware/handler";
 import {allowMethods} from "../../../middleware/method";
 import {middleware_1, middleware_2} from "../../../middleware/middlewares";

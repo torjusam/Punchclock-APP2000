@@ -9,7 +9,7 @@
 import {useState, useEffect} from 'react';
 import {useRouter} from 'next/router';
 import moment from 'moment';
-import {Employee} from '../lib/types/employee';
+import Employee from '../lib/types/employee';
 import {useEmployeeContext} from '../features/context/employeeContext';
 import {fetchBalance} from "../features/context/services/workIntervalsAPI";
 

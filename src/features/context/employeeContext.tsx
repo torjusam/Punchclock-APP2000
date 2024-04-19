@@ -4,7 +4,7 @@
  * @Author Torjus A.M
  */
 import React, {createContext, ReactNode, useContext, useEffect, useState} from 'react';
-import {Employee} from '../../lib/types/employee';
+import Employee from '../../lib/types/employee';
 import {ResError} from "../../lib/types/types";
 import useFetchEmployees from "./hooks/useFetchEmployees";
 import {sortEmployees} from "./services/sortEmployees";

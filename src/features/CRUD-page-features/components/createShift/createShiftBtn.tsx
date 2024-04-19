@@ -7,7 +7,7 @@ import styles from "./createShift.module.css";
 import {setShift} from "../../services/performSetShift";
 import {toast} from "react-toastify";
 import moment from "moment/moment";
-import {Employee} from "../../../../lib/types/employee";
+import Employee from "../../../../lib/types/employee";
 
 interface CreateShiftButtonProps {
     employee?: Employee;

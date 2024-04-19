@@ -3,7 +3,7 @@
  * Used in the workIntervalContext.
  * @Author Torjus A.M
  */
-import {Employee} from "../../../lib/types/employee";
+import Employee from "../../../lib/types/employee";
 import {Interval, defaultInterval} from "../../../lib/types/types";
 
 /**

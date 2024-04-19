@@ -3,7 +3,7 @@
  * @module ClockOperation
  * @Author Thomas H
  */
-import {Employee} from "../../../lib/types/employee";
+import Employee from "../../../lib/types/employee";
 
 /**
  * Performs a clock-in operation for an employee.

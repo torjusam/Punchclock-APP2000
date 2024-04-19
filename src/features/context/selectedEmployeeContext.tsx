@@ -4,7 +4,7 @@
  * @author Torjus A.M
  */
 import React, {createContext, ReactNode, useContext, useEffect, useState} from 'react';
-import {Employee} from '../../lib/types/employee';
+import Employee from '../../lib/types/employee';
 import {useEmployeeContext} from './employeeContext';
 import {useTimerLimit} from "../clock-operation/hooks/useTimerLimit";
 import {usePunchClockTimer} from "./hooks/usePunchClockTimer";

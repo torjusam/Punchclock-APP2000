@@ -4,7 +4,7 @@
  * @author Torjus A.M
  */
 import {useState, useEffect} from 'react';
-import {Employee} from '../../../lib/types/employee';
+import Employee from '../../../lib/types/employee';
 import moment from 'moment';
 
 /**
