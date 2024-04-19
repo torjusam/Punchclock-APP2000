@@ -1,7 +1,11 @@
 /**
  * @file Clocks employee out automatically after a set timerLimit has been passed. In this case 15 hours.
+ *
+ * @description Since the timer is only initalized when visible (on the employee page),
+ * the hook lacks functionality to automatically clock out unless you're currently on the employees page.
+ * Implementation would require a global timer that runs in the background, or a server-side solution.
  * @module ClockOperation
- * @Author: Torjus A.M, Thomas H
+ * @Author Torjus A.M, Thomas H
  */
 import {useEffect} from 'react';
 import {clockOut} from "../services/clockOut";

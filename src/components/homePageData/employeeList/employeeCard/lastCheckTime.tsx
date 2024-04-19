@@ -1,8 +1,9 @@
-/* 
-    Author: Torjus A.M
-    This component is used to display the last check time of an employee
-    along with an icon indicating the action (checked in / out).
-*/
+/**
+ * @file This component is used to display the last check time of an employee.
+ * @module EmployeeList
+ * @memberof Homepage
+ * @Author Torjus A.M
+ */
 import React, {FC, useEffect, useState} from 'react';
 import Employee from '../../../../lib/types/employee';
 import ArrowIn from '../../../../assets/arrowIn.svg';
@@ -14,13 +15,16 @@ const LastCheckTime: FC<{ employee: Employee }> = ({employee}) => {
     const [lastCheckTime, setLastCheckTime] = useState('');
     const [lastAction, setLastAction] = useState('');
 
+    // Changing the last check time and action based on the employees last check in/out time.
+    // Done in a hook incase the automatic clockout feature is implemented.
     useEffect(() => {
         const time = employee.isClockedIn ? moment(employee.lastCheckIn) : moment(employee.lastCheckOut);
         setLastCheckTime(time.isValid() ? time.format('HH:mm') : '?');
         setLastAction(employee.isClockedIn ? 'in' : 'out');
-    }, [employee.lastCheckIn, employee.lastCheckOut]);
+    }, [employee]);
 
     const Arrow = lastAction === 'in' ? ArrowIn : ArrowOut;
+
     return (
         <div className={styles.lastCheckContainer}>
             <Arrow className={styles.icon}/>

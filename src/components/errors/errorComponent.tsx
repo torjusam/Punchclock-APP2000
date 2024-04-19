@@ -1,4 +1,8 @@
-// ErrorComponent.tsx
+/**
+ * @file Error component for error handling
+ * @module Error
+ * @Author Ask I.P Aspholm, Torjus A.M
+ */
 import React, {FC} from 'react';
 import {useRouter} from "next/router";
 import Styles from "./error.module.css";

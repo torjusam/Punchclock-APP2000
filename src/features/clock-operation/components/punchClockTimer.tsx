@@ -1,6 +1,7 @@
 /**
  * @file Renders and formats the punchclock-timer for the selected employee.
  * @module ClockOperation
+ * @memberof EmployeePage
  * @Author Torjus A.M
  */
 import React from 'react';

@@ -1,4 +1,8 @@
-// Author: Torjus A.M
+/**
+ * @file Navbar of the employee-page
+ * @module EmployeePage
+ * @Author Thomas H
+ */
 import React, {FC} from 'react';
 import Pinicon from '../../assets/pinCode.svg';
 import Notif from '../../assets/notif.svg';

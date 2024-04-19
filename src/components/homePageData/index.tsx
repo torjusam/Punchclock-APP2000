@@ -1,7 +1,8 @@
-/* 
-    Author: Torjus A.M, Ask I.P Aspholm
-    Responsible for setting up the layout of the homepage, and export it.
-*/
+/**
+ * @file Defines layout of the homepage content.
+ * @module Homepage
+ * @Author Torjus A.M, Ask I.P Aspholm
+ */
 import React, {FC} from 'react';
 import EmployeeList from './employeeList';
 import HomePageNav from './homePageNav';

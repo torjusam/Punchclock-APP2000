@@ -6,19 +6,21 @@ import moment from 'moment';
 import {Interval} from "./types";
 
 /**
- * @class Employee
- * @classdesc Represents a single employee object.
- * @property {number} id
- * @property {string} name
- * @property {number} pin - The employee's pin. Would be used for personal-page authentication.
- * @property {string} profilePictureUrl - The employee's profile picture url.
- * @property {Date} lastCheckIn - The employee's last check in.
- * @property {Date} lastCheckOut - The employee's last check out.
- * @property {string} PlannedWork - The employee's planned work hours.
- * @property {string} balance - The employee's balance.
- * @property {boolean} isClockedIn - Boolean indicating if the employee is clocked in.
- * @property {moment.Duration} dailyWorkTime - The employee's daily work time.
- * @property {boolean} isWorkTimeReached - Boolean indicating if the employee's work time has been reached.
+ * Represents an employee with personal and work-related details.
+ * @class
+ * @classdesc This class encapsulates all the personal and work-related attributes of an employee.
+ *
+ * @property {number} id - Unique ID.
+ * @property {string} name - Full name.
+ * @property {number} [pin] - Personal pin-number.
+ * @property {string} [profilePictureUrl] - URL pointing to the employee's profile picture.
+ * @property {Date} [lastCheckIn] - Timestamp of the last check-in.
+ * @property {Date} [lastCheckOut] - Timestamp of the last check-out.
+ * @property {string} PlannedWork - Planned work hours for the employee, in ISO 8601 duration format.
+ * @property {Interval} [balance] - The current balance of work hours as an interval.
+ * @property {boolean} isClockedIn - Indicates whether the employee is currently clocked in. Derived from check-in/out timestamps.
+ * @property {moment.Duration} [dailyWorkTime] - Daily work time as a moment.js Duration object.
+ * @property {boolean} [isWorkTimeReached] - Flag indicating if the planned daily work time has been reached.
  */
 class Employee {
     id: number;

@@ -1,6 +1,7 @@
 /**
  * @file Responsible for defining the layout of a row in the clock-history table.
  * @module ClockHistory
+ * @memberof EmployeePage
  * @Author Torjus A.M, Thomas H
  */
 import React from 'react';

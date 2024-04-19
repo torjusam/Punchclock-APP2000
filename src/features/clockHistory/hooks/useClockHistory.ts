@@ -15,9 +15,9 @@ import {useSelectedEmployeeContext} from "../../context/selectedEmployeeContext"
  * @returns {Object} An object containing the fleks salary as an Interval and a loading state.
  */
 const useClockHistory = () => {
-    const [clockHistoryData, setClockHistoryData] = useState(null);
+    const [clockHistoryData, setClockHistoryData] = useState<ClockHistoryData[] | null>(null);
     const [isLoading, setIsLoading] = useState(true);
-    const {selectedEmployee, setTimer} = useSelectedEmployeeContext();
+    const {selectedEmployee, setTimer, setIsTimerLoading} = useSelectedEmployeeContext();
 
     useEffect(() => {
         if (!selectedEmployee) return;
@@ -29,21 +29,17 @@ const useClockHistory = () => {
         const result = await performFetch(employee);
         setClockHistoryData(result);
         setIsLoading(false);
-        // Cast to seconds using moment and set to the punchclock-timer, using the context.
+        // After clocking out, make the punchClockTimer display the same time as the latest workInterval fetched from the server.
         if (result.length > 0) {
+            setIsTimerLoading(true);
             const duration = intervalToDuration(result[0].workinterval);
             setTimer(duration.asSeconds());
+            setIsTimerLoading(false);
         }
     };
     return {clockHistoryData, isLoading};
 };
 
-/**
- * Fetches the rows of clockHistory for a given employee from the server.
- * @Author Thomas H
- * @param {Employee} employee - The employee object for which the fleks salary is to be fetched.
- * @returns {Promise<Array>} A promise that resolves to an array containing the fleks salary data.
- */
 const performFetch = async (employee: Employee): Promise<ClockHistoryData[]> => {
     const response = await fetch('/api/getClockHistory', {
         method: 'POST',
@@ -52,8 +48,19 @@ const performFetch = async (employee: Employee): Promise<ClockHistoryData[]> => 
         },
         body: JSON.stringify({employeeId: employee.id}),
     });
-    // Expected to be an array that fits type ClockHistoryData. Empty array if HTTP response is in 200-299 range.
-    return response.ok ? await response.json() : [];
+
+    if (!response.ok) {
+        return [];
+    }
+
+    const rawData = await response.json();
+    return rawData.map((item: any): ClockHistoryData => ({
+        id: item.id,
+        checkin: new Date(item.checkin),
+        checkout: item.checkout ? new Date(item.checkout) : null,
+        workinterval: item.workinterval,
+        overtimeinterval: item.overtimeinterval,
+    }));
 };
 
 export default useClockHistory;

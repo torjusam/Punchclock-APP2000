@@ -1,4 +1,8 @@
-// Author: Thomas H
+/**
+ * @file Navbar for the CRUD-page. Contains a home button and a sign-out button.
+ * @module CRUD-page
+ * @Author Thomas H
+ */
 import React, {FC} from 'react';
 import HomeButton from "../homeButton";
 import SignOutBtn from "../authentication/signOutBtn";

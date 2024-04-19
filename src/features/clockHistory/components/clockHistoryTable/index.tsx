@@ -1,6 +1,7 @@
 /**
  * @file Responsible for setting up table, the header, and rendering the rows.
  * @module ClockHistory
+ * @memberof EmployeePage
  * @Author Torjus A.M, Thomas H
  */
 import React, {FC} from 'react';
@@ -12,6 +13,9 @@ import styles from './clockHistoryTable.module.css';
 const ClockHistoryTable: FC = () => {
     const {clockHistoryData, isLoading} = useClockHistory();
 
+    if (isLoading)
+        return <LoadingRows/>;
+
     return (
         <div className={styles.tableContainer}>
             {/* Table header row */}
@@ -21,17 +25,14 @@ const ClockHistoryTable: FC = () => {
                 <div className={styles.rowItem}>Arbeidstid</div>
                 <div className={`${styles.rowItem}`} style={{color: '#0DB714'}}>Saldo</div>
             </div>
-            {/* Either loadingRows, or map over the data and render rows with it */}
-            {isLoading ? <LoadingRows/> :
-                clockHistoryData.map((data) => (
-                    <ClockHistoryRow
-                        key={data.id}
-                        clockHistoryData={data}
-                    />
-                ))
-            }
+            {/* Map over the data and render rows with it */}
+            {clockHistoryData.map((data) => (
+                <ClockHistoryRow
+                    key={data.id}
+                    clockHistoryData={data}
+                />
+            ))}
         </div>
     );
 };
-
 export default ClockHistoryTable;

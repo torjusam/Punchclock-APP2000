@@ -1,6 +1,8 @@
-/*
-    Author: Torjus A.M
-*/
+/**
+ * @file Root file for the CRUD-page. Contains the main layout.
+ * @module CRUD-page
+ * @Author Torjus A.M
+ */
 import React, {FC} from 'react';
 import CrudPageNav from './crudNav';
 import CrudPageData from "../../features/CRUD-page-features";

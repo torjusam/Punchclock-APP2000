@@ -1,6 +1,7 @@
 /**
- * @file ClockHistory - "Stemplingsklokke" module on the personal page.
+ * @file ClockHistory - "Stemplingsklokke" module.
  * @module ClockOperation
+ * @memberof EmployeePage
  * @Author Torjus A.M
  */
 import React, {FC} from 'react';
@@ -8,7 +9,6 @@ import ClockIcon from '../../assets/clock.svg';
 import ClockInOutButton from './components/clockInOutButton';
 import PunchClockTimer from "./components/punchClockTimer";
 import styles from '../../components/employeePageData/employeePageLayout.module.css';
-
 
 const PunchClock: FC = () => {
     return (

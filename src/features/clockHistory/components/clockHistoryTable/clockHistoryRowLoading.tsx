@@ -1,6 +1,7 @@
 /**
  * @file Loading rows for the clock history table. Displays 7 empty rows.
  * @module ClockHistory
+ * @memberof EmployeePage
  * @Author Thomas H
  */
 import React from "react";

@@ -1,8 +1,9 @@
-/*
-  Author: Thomas H, Torjus A.M
-  "Blueprint" for each employee card, including selection logic to redirect to the employees page.
-  Takes employee objects and returns a div styled as a card.
-*/
+/**
+ * @file Component defines *blueprint* of an employee card. Uses the employee object's info to render the card.
+ * @module EmployeeList
+ * @memberof Homepage
+ * @Author Thomas H, Torjus A.M
+ */
 import React, {FC} from 'react';
 import {useRouter} from 'next/router';
 import Employee from '../../../../lib/types/employee';
@@ -18,12 +19,11 @@ interface EmployeeCardProps {
 const EmployeeCard: FC<EmployeeCardProps> = ({employee}) => {
     const router = useRouter();
 
-    // Author: Thomas H. When a card is selected, the user is redirected to their page. The employees ID is the page url path.
+    // When a card is selected, the user is redirected to their page. The employees ID is the page url path.
     const onSelect = () => {
         router.push(`/${employee.id}`);
     }
 
-    // Author: Torjus A.M, Thomas H
     return (
         // Border styled conditionally, based on employees clocked in status.
         <div className={`${styles.employeeCardContainer} ${employee.isClockedIn && styles.isClockedIn}`}

@@ -1,24 +1,38 @@
-/* 
-    Author: Torjus A.M, Ask I.P Aspholm
-    This is the signin page for the application. Redirects to this page if the user is not authenticated.
-*/
-import React, {useState} from 'react'
+/**
+ * @file This is the signin page for the application. Redirects to this page if the user is not authenticated.
+ * @module Authentication
+ * @description Formik library is used for form handling to simplify form management and validation.
+ * @Author Torjus A.M, Ask I.P Aspholm
+ */
+import React, {FC, useState} from 'react'
 import {signIn} from 'next-auth/react'
 import {useFormik} from 'formik';
 import login_validate from "../../utils/validateSignin"
 import styles from './signInPage.module.css'
 import {toast} from "react-toastify";
 
-export default function SignInPage() {
-    // Author: Torjus A.M
+const SignInForm: FC = () => {
+    // Status text for displaying error messages
     const [statusText, setStatusText] = useState('')
 
+    // Define formik hook
     const formik = useFormik({
         initialValues: {email: "", password: ""},
+        /**
+         * Function to handle form submission.
+         * @description Authenticates users using custom implementation of NextAuth's signIn function for credentials-provider.
+         * Details, refer to: .pages/api/auth/[...nextauth].ts
+         *
+         * @param {object} values Form values containing email and password.
+         * @Author Torjus A.M
+         */
         onSubmit: async (values) => {
             try {
-                const result = await signIn("credentials", {...values, redirect: false});
-                // Window.location.replace is used to redirect AND refresh main page
+                // Next-auth signIn function
+                const result = await signIn(
+                    "credentials", {...values, redirect: false}
+                );
+                // If sign in is successful, redirect to the home page, otherwise display an error message
                 result.ok ? window.location.replace('/') : setStatusText(result.error);
             } catch (error) {
                 setStatusText(error.message);
@@ -33,20 +47,23 @@ export default function SignInPage() {
         <div className={styles.outerContainer}>
             <div className={styles.formContainer}>
                 <h1>Logg inn</h1>
-                {/* Feilmelding */}
+                {/* Display error message if there is one */}
                 {statusText &&
                     <div className={styles.errorMsg}>
                         <h2>
                             <span className={styles.strongText}>Feil -</span>{statusText}
                         </h2>
                     </div>}
+                {/* Formik form */}
                 <form onSubmit={formik.handleSubmit}>
                     <div className={styles.inputGroup}>
                         <h2>Brukernavn</h2>
                         <input
                             type="email" {...formik.getFieldProps('email')}
                             required
-                            style={{borderColor: formik.errors.email && formik.touched.email ? 'red' : undefined}}
+                            style={{
+                                borderColor: formik.errors.email && formik.touched.email ? 'red' : undefined
+                            }}
                         />
                     </div>
                     <div className={styles.inputGroup}>
@@ -54,12 +71,21 @@ export default function SignInPage() {
                         <input
                             type="password" {...formik.getFieldProps('password')}
                             required
-                            style={{borderColor: formik.errors.password && formik.touched.password ? 'red' : undefined}}
+                            style={{
+                                borderColor: formik.errors.password && formik.touched.password ? 'red' : undefined
+                            }}
                         />
                     </div>
-                    <button type="submit" className={styles.submitBtn}>Login</button>
+                    <button
+                        className={styles.submitBtn}
+                        type="submit"
+                    >
+                        Login
+                    </button>
                 </form>
             </div>
         </div>
     )
 }
+
+export default SignInForm;

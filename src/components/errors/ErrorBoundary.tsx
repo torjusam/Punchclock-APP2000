@@ -1,33 +1,37 @@
 /**
- * Author: Ask I.P Aspholm
- *
- * error boundary code
+ * @file error boundary code
+ * @module Error
+ * @Author Ask I.P Aspholm
  */
 
-import React, { ErrorInfo, ReactNode } from 'react';
+import React, {ErrorInfo, ReactNode} from 'react';
 
-interface ErrorBoundaryProps{
+interface ErrorBoundaryProps {
     fallback: ReactNode;
     children: ReactNode;
 }
-interface State{
+
+interface State {
     hasError: boolean;
 }
 
-class ErrorBoundary extends React.Component<ErrorBoundaryProps, State>{
+class ErrorBoundary extends React.Component<ErrorBoundaryProps, State> {
     public state: State = {
         hasError: false
     };
-    componentDidCatch(error: Error,errorInfo: ErrorInfo){
-        console.log(error,errorInfo)
+
+    componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+        console.log(error, errorInfo)
     }
+
     render() {
-        if(this.state.hasError){
+        if (this.state.hasError) {
             return this.props.fallback;
-        
-        } 
+
+        }
         return this.props.children;
-        
+
     }
 }
+
 export default ErrorBoundary;

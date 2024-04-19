@@ -1,4 +1,8 @@
-// Author: Torjus A.M
+/**
+ * @file Navbar for the homepage.
+ * @module Homepage
+ * @Author Torjus A.M
+ */
 import React, {FC} from 'react';
 import SearchBar from '../../features/searchBar';
 import NotifIcon from '../../assets/notif.svg';

@@ -3,8 +3,7 @@
  * @module ClockOperation
  * @Author Torjus A.M
  */
-import calculateTime from './calculateIntervals/calculateOvertime';
-import {Employee} from "../../../lib/types/employee";
+import calculateTime from './calculateOvertime';
 import Employee from "../../../lib/types/employee";
 
 /**
