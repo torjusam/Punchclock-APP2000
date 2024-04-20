@@ -1,15 +1,27 @@
 # Stemplingsskjerm
 
-A touchscreen punchlock for a workplace. Using the Moment.js library, the system handles time calculations and formatting, allowing for accurate tracking of total work hours and overtime. The app has a simple nextAuth authentication system, so that one admin has to open the app before it can be used. 
+**Stemplingsskjerm** is a full-stack web application designed as a touchscreen punchlock system for workplace environments. Created as a part of the university course APP2000, this project showcases a practical solution to track employee attendance, and calculate work hours efficiently. As my first web project, it represents a personal achievement and a steep learning curve in web dev.
 
-The app uses a self-defined API to communicate with a PostgreSQL database.
-
-- **URL**: https://app-2000-gruppe20.vercel.app
+Explore the application here: https://app-2000-gruppe20.vercel.app
 
 ### Login
-To open the app and the API, use the following placeholder credentials:
+To access the app and the API, use the following placeholder credentials:
 - **Username**: adminGruppe20@gmail.com
 - **Password**: Passord123
+
+## Key Features:
+
+- **Time Tracking**: Uses the Moment.js library, to handle time calculations and formatting. This feature enables the accurate tracking of total work hours, overtime, work-time balance, and various time intervals.
+- **Authentication**: Uses NextAuth for simple user authentication. The project had a requirement that a service-user must log in to activate the app and API. This ensures that access to the system is gated, requiring admin authentication before the application becomes operational.
+- **Custom API**: The application uses a self-defined API to interact with a PostgreSQL database. This setup ensures all data transactions are managed efficiently and securely, allowing for scalable data management and real-time updates to the frontend.
+- **Deployment**: Hosted on Vercel, the application not only benefits from high availability and reliability but also offered us experience on maintaining and updating a production environment.
+
+### Extra Features:
+- The app currently includes a few extra pages accessible by pressing the icon on the bottom left corner (required for the delivery of the project).
+
+## Installation
+
+The app currently has a few extra pages that can be accessed by pressing the icon on the bottom left.
 
 # Installation
 
