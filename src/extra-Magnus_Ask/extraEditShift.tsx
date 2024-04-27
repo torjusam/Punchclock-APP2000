@@ -43,13 +43,20 @@ const ExtraEditShift: FC<createShiftProps> = ({employee}) => {
                         <span className={styles.strongText}>Feil - </span>{errorMsg}
                     </h2>
                 </div>}
-            <DatePickers
+             <div> <DatePickers
                 isDisabled={isDisabled}
                 start={start}
                 end={end}
                 setStart={setStart}
                 setEnd={setEnd}
-            />
+            /> </div>
+             <div> <DatePickers
+                isDisabled={isDisabled}
+                start={start}
+                end={end}
+                setStart={setStart}
+                setEnd={setEnd}
+            /> </div>
             <DescriptionForm
                 isDisabled={isDisabled}
                 setErrorMsg={setErrorMsg}

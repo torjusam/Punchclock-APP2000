@@ -1,5 +1,5 @@
 /**
- * @file beskrivelse av filen
+ * @file that sets up the extra page
  * @module Extra
  * @author Magnus A, Ask I.P.A
  */
