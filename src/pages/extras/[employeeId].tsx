@@ -4,7 +4,7 @@
  * @author Torjus A.M, Magnus A, Ask I.P.A
  */
 import React, {FC} from "react";
-import ExtraPageData from "../../extra-Magnus_Ask_Kriss";
+import ExtraPageData from "../../extra-Magnus_Ask";
 import SelectedEmployeeProvider from "../../features/context/selectedEmployeeContext";
 import {useEmployeePageData} from "../../hooks/useEmployeePageData";
 
