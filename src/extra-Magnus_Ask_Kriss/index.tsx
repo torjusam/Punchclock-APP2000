@@ -19,11 +19,11 @@ interface ExtraPageDataProps {
 const ExtraPageData: FC<ExtraPageDataProps> = ({employee}) => {
 
     return (
-        <div style={{display: 'flex', flexDirection: 'column', width: '100%', padding: '2.3rem', overflow: 'auto'}}>
+        <div className={styles.extraPage}>
             <CrudPageNav/>
-            <div style={{display: 'flex', flexDirection: 'row', width: '100%', padding: '2.3rem'}}>
+            <div className={styles.extraPageModuleContainer}>
                 <div className={styles.extraContainer}>
-                    <div>
+                    <div className={styles.extraTableContainer}>
                         <ExtraTable employee={employee}/>
                     </div>
                 </div>

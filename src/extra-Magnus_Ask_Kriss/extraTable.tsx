@@ -1,5 +1,5 @@
 /**
- * @file Copied from original component and altered to remove two columns, and use the altered row item component.
+ * @file Copied from original component and altered to present a table only displaying information relevant to extraEditShift.
  * @description original component: .src/features/clockHistory/components/clockHistoryTable/index.tsx
  * @module Extra
  * @author Torjus A.M, Thomas H
@@ -24,10 +24,8 @@ const ExtraTable: FC<ClockHistoryTableProps> = ({employee}) => {
             <div className={`${styles.tableRow} ${styles.heading}`}>
                 <div className={styles.rowItem}>Dato</div>
                 <div className={styles.rowItem}>Stempling</div>
-                {/*<div className={styles.rowItem}>Arbeidstid</div>
-                <div className={`${styles.rowItem}`} style={{color: '#0DB714'}}>Saldo</div>*/}
+                <div className={styles.rowItem}>Utstempling</div>
             </div>
-            {/* Either loadingRows, or map over the data and render rows with it */}
             {isLoading ? <LoadingRows/> :
                 clockHistoryData.map((data) => (
                     <ExtraTableRow
