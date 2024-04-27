@@ -1,5 +1,5 @@
 /**
- * @file Copied from original component and altered to remove two columns.
+ * @file Copied from original component and altered to display information more relevant to the extra table.
  * @description original component: .src/features/clockHistory/components/clockHistoryTable/clockHistoryRow.tsx
  * @module Extra
  * @author Torjus A.M, Thomas H
@@ -7,6 +7,8 @@
  */
 import React from 'react';
 import {ClockHistoryData} from '../utils/types'
+import ArrowIn from '../assets/arrowIn.svg';
+import ArrowOut from '../assets/arrowOut.svg';
 import moment from 'moment';
 import styles from '../features/clockHistory/components/clockHistoryTable/clockHistoryTable.module.css';
 
@@ -29,11 +31,13 @@ const ExtraTableRow = ({clockHistoryData}: ClockHistoryRowProps) => {
             </div>
             <div className={styles.rowSubContainer}>
                 <div className={styles.rowItem}>
-                    {/*<ArrowIn className={styles.icon}/>*/}
+                    {<ArrowIn className={styles.icon}/>}
                     <h1>{formatDate(checkin, 'LT')}</h1>
                 </div>
+            </div>
+            <div className={styles.rowSubContainer}>
                 <div className={styles.rowItem}>
-                    {/*<ArrowOut className={styles.icon}/>*/}
+                    {<ArrowOut className={styles.icon}/>}
                     <h1>{formatDate(checkout, 'LT')}</h1>
                 </div>
             </div>
