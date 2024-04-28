@@ -13,14 +13,16 @@ const useShifts = (employee: Employee) => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
+        if (!employee) return;
+
+        setIsLoading(true);
         const fetchData = async () => {
-            setIsLoading(true);
             const result = await performFetch(employee);
             setShifts(result);
             setIsLoading(false);
         };
         fetchData();
-    }, []);
+    }, [employee?.lastCheckOut]);
     return {shifts, isLoading};
 }
 

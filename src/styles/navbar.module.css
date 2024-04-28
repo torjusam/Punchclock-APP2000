@@ -3,7 +3,7 @@
 /* Parent of all navbars */
 .navBarContainer {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: row;
     background-color: #FFFFFF;
@@ -20,7 +20,7 @@
 /* Icons (employee-page and homepage) */
 .iconContainer {
     display: flex;
-    margin-right: 2em;
+    margin: 0 2em;
     justify-content: space-between;
     align-items: center;
 }

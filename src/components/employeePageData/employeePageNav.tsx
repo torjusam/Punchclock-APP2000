@@ -14,31 +14,32 @@ import layout from '../../styles/navbar.module.css'
 import styles from './employeePageNav.module.css'
 
 const EmployeePageNav: FC = () => {
-    const {selectedEmployee} = useSelectedEmployeeContext();
-
-    if (!selectedEmployee)
-        return <nav className={layout.navBarContainer}>Loading..</nav>;
+    // Get the selected employee as 'emp'
+    const {selectedEmployee: emp} = useSelectedEmployeeContext();
 
     return (
         <nav className={layout.navBarContainer}>
             <HomeButton/>
             <div className={styles.profileContainer}>
+                {/* Icons */}
                 <div className={layout.iconContainer}>
                     <Pinicon className={styles.pinIcon}/>
                     <Notif className={layout.notifIcon}/>
                     <Helpico className={layout.helpIcon}/>
                 </div>
-                {selectedEmployee.profilePictureUrl ? (
-                    // Render either employees profile picture or default avatar icon
+                {emp && emp.profilePictureUrl ? (
                     <img
                         className={styles.avatar}
-                        src={selectedEmployee.profilePictureUrl}
+                        src={emp.profilePictureUrl}
                         alt="Profile Avatar"
                     />
                 ) : (
-                    <Avatarico className={styles.avatar}/>
+                    // Show default icon if they don't have one, or an empty white circle while loading.
+                    emp ? <Avatarico className={styles.avatar}/> : <div className={styles.avatar}/>
                 )}
-                <h2 className={styles.employeeName}>{selectedEmployee.name}</h2>
+                {/* Employee name, or nothing while loading */}
+                {emp &&
+                    <h2 className={styles.employeeName}>{emp.name} </h2>}
             </div>
         </nav>
     );

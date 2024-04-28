@@ -16,13 +16,10 @@ const FleksSalary: FC = () => {
     return (
         <div className={styles.timeModules}>
             <h1 style={{color: '#0DB714'}}>Fleks saldo</h1>
-            {isLoading ? (
-                <h2 style={{color: '#0DB714'}}>00m 00s</h2>
-            ) : (
-                <h2 style={{color: '#0DB714'}}>
-                    {formatInterval(fleksSalary)}
-                </h2>
-            )}
+            {/* Either 00 while loading, or the time */}
+            <h2 style={{color: '#0DB714'}}>
+                {isLoading || !selectedEmployee ? '00m 00s' : formatInterval(fleksSalary)}
+            </h2>
         </div>
     );
 };

@@ -10,7 +10,8 @@ import styles from './timeModules.module.css';
 import {useSelectedEmployeeContext} from "../../../context/selectedEmployeeContext";
 
 const WorkTimeSalary = () => {
-    const {selectedEmployee: {balance}} = useSelectedEmployeeContext();
+    // Get the balance, or undefined if loading
+    const {selectedEmployee: {balance} = {}} = useSelectedEmployeeContext();
     const displayBalance = balance ? formatInterval(balance) : '00m 00s';
 
     return (

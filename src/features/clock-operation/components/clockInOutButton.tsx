@@ -11,6 +11,7 @@ import ArrowIn from '../../../assets/arrowIn.svg';
 import {useSelectedEmployeeContext} from "../../context/selectedEmployeeContext";
 import Toast from '../../../lib/toastContainer';
 import styles from './punchClock.module.css'
+import ClockBtnLoading from "./clockInOutBtnLoading";
 
 /**
  * ClockInOutButton is a functional component that renders a button with conditional styling.
@@ -23,10 +24,11 @@ const ClockInOutButton: FC = () => {
     const {selectedEmployee, updateEmployeeStatus, isTimerLoading} = useSelectedEmployeeContext();
     const [isLoading, setIsLoading] = useState(false);
 
-    /**
-     * handleClick is an async function that triggers the clockInOutOperation function.
-     * It updates the loading state and the selected employee's status.
-     */
+    // Loading
+    if (!selectedEmployee)
+        return <ClockBtnLoading/>;
+
+    // Button press handles clocking in or out
     const handleClick = async () => {
         await clockInOutOperation(
             selectedEmployee,
@@ -35,9 +37,11 @@ const ClockInOutButton: FC = () => {
         );
     };
 
-    // Which style and icon to use based on if employee is clocked in or not
-    const status = selectedEmployee.isClockedIn ? styles.clockedIn : styles.clockedOut;
-    const Arrow = selectedEmployee.isClockedIn ? ArrowOut : ArrowIn;
+    // Style the button based on the employee's clocked-in status
+    const {isClockedIn} = selectedEmployee;
+    const status = isClockedIn ? styles.clockedIn : styles.clockedOut;
+    const text = isClockedIn ? 'Stemple ut' : 'Stemple inn';
+    const Arrow = isClockedIn ? ArrowOut : ArrowIn;
 
     return (
         <>
@@ -49,7 +53,7 @@ const ClockInOutButton: FC = () => {
                 <div className={styles.iconContainer}>
                     <Arrow className={styles.icon}/>
                 </div>
-                {selectedEmployee.isClockedIn ? 'Stemple ut' : 'Stemple inn'}
+                {text}
             </button>
             <Toast/> {/* Toast notification can be called from here */}
         </>

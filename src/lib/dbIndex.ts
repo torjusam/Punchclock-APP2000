@@ -1,13 +1,15 @@
-//Author: Torjus A.M
-//data access class, pool for connecting to db
+/**
+ * @file This file is the entry point for the database connection.
+ * It exports a pool object that is used to query the database.
+ * @Author Torjus A.M
+ */
 import pg from 'pg';
-import {QueryResult} from 'pg'
+
 process.env.TZ = 'CET';
 
-const { Pool,  } = pg;
+const {Pool} = pg;
 
+// Export the pool object for use in other files.
 export const pool = new Pool({
-  connectionString: process.env.PSQL_URL + "?sslmode=require",
+    connectionString: process.env.PSQL_URL + "?sslmode=require",
 })
-
-export const query = (text: string, params: any[]): Promise<QueryResult> => pool.query(text, params);

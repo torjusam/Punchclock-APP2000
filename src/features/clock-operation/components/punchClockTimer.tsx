@@ -25,47 +25,40 @@ function formatTimer(seconds: number) {
 /**
  * Component displays the punchclock-timer for the selected employee.
  * It also shows the check-in and check-out times of the employee, depending on their clocked-in status.
+ * @description The timer will display a loading animation while fetching data.
  * @returns {ReactNode} The PunchClockTimer component.
  */
 const PunchClockTimer = () => {
-    // Destructure necessary properties from the selected employee, and the timer and loading state.
-    const {
-        selectedEmployee: {lastCheckIn, lastCheckOut, isClockedIn},
-        timer,
-        isTimerLoading
-    } = useSelectedEmployeeContext();
+    const {selectedEmployee: emp, timer, isTimerLoading} = useSelectedEmployeeContext();
 
+    // Loading animation while fetching data. Last part of if-statement is to avoid a flicker when the timer is 0.
+    if (!emp || isTimerLoading || (!isTimerLoading && emp.isClockedIn && timer <= 0)) {
+        return (
+            <div className={styles.timeDisplay}>
+                <div className={styles.line}></div>
+                <div className={`${styles.line} ${styles.w2}`}></div>
+            </div>
+        )
+    }
+
+    // If the employee is not clocked in, and the timer is 0 or null display default. This is for newly created employees.
+    if (!emp.isClockedIn && (!timer && !emp.lastCheckOut)) {
+        return (
+            <div className={styles.timeDisplay}>
+                <h1>00t 00m 00s</h1>
+                <h2>Stemple Inn</h2>
+            </div>
+        );
+    }
+
+    // Format time as 00:00 if valid, or ? if not.
     const formatTime = (time: Date): string => moment(time).isValid() ? moment(time).format('LT') : '?';
-
-    // Format the check-in and check-out times using the helper function.
-    const formattedCheckIn = formatTime(lastCheckIn);
-    const formattedCheckOut = isClockedIn ? ' ?' : formatTime(lastCheckOut);
 
     return (
         <div className={styles.timeDisplay}>
-            {isTimerLoading || (isClockedIn && timer === 0) ? (
-                <>
-                    <div className={styles.line}></div>
-                    <div className={`${styles.line} ${styles.w2}`}></div>
-                </>
-            ) : (
-                <>
-                    {/* If the employee is not clocked in, and the timer is 0 or null, display "00t 00m 00s" */}
-                    {!isClockedIn && (timer === 0 || !timer) && (
-                        <>
-                            <h1>00t 00m 00s</h1>
-                            <h2>Stemple Inn</h2>
-                        </>
-                    )}
-                    {/* If timer is valid and above 0, display the timer and check-in/out times */}
-                    {timer >= 1 && (
-                        <>
-                            <h1>{formatTimer(timer)}</h1>
-                            <h2>{formattedCheckIn} - {formattedCheckOut}</h2>
-                        </>
-                    )}
-                </>
-            )}
+            <h1>{formatTimer(timer)}</h1>
+            {/* Display checkin - checkout, or ? if checked in */}
+            <h2>{formatTime(emp.lastCheckIn)} - {emp.isClockedIn ? ' ?' : formatTime(emp.lastCheckOut)}</h2>
         </div>
     );
 };

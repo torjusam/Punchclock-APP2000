@@ -18,6 +18,7 @@ const useFleksSalary = (employee: Employee) => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
+        if (!employee) return;
         setIsLoading(true);
 
         fetchFleksSalary(employee)
@@ -44,7 +45,7 @@ const useFleksSalary = (employee: Employee) => {
                 }
             })
             .finally(() => setIsLoading(false));
-    }, [employee.lastCheckOut]);
+    }, [employee?.lastCheckOut]);
 
     return {fleksSalary, isLoading};
 };

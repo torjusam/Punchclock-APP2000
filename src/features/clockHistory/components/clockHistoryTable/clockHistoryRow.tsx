@@ -22,12 +22,11 @@ interface ClockHistoryRowProps {
  * working interval and overtimeinterval.
  */
 const ClockHistoryRow = ({clockHistoryData}: ClockHistoryRowProps) => {
-    // Destructs the object to get the specific values
     const {checkin, checkout, workinterval, overtimeinterval} = clockHistoryData;
-
     // Helper function takes in date and how to format it. If date is null, return '-'
-    const formatDate = (date, format) => date ? moment(date).format(format) : '-';
+    const formatDate = (date: Date, format: string) => date ? moment(date).format(format) : '-';
 
+    // Each row has a div for each column in the table.
     return (
         <div className={styles.tableRow}>
             <div className={`${styles.rowItem} ${styles.date}`}>

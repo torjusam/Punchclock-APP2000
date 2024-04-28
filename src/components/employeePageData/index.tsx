@@ -9,13 +9,8 @@ import EmployeePageNav from './employeePageNav';
 import PunchClock from '../../features/clock-operation';
 import ShiftList from '../../features/shiftList'
 import ClockHistory from '../../features/clockHistory';
-import {useSelectedEmployeeContext} from "../../features/context/selectedEmployeeContext";
 
 const EmployeePageData: FC = () => {
-    const {selectedEmployee} = useSelectedEmployeeContext();
-
-    if (!selectedEmployee)
-        return <div>Loading...</div>;
 
     return (
         <div className={styles.personalPageContainer}>
