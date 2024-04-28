@@ -1,5 +1,5 @@
 /**
- * @file Api route for clocking in an employee.
+ * @file Api route for changing an employee's clockin
  * @module ClockOperation
  * @author Torjus A.M
  * @editor Ask I.P.A
