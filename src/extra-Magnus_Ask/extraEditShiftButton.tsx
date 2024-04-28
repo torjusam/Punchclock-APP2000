@@ -39,7 +39,7 @@ const EditShiftButton: FC<EditShiftButtonProps> = ({
 
             toast.success(`
                 Endret stempling for ${employee.name}, 
-                ny stempling er ${moment(start).format('LTS')} - ${moment(end).format('LTS')} 
+                ny stempling er ${moment(nyStempling).format('LTS')} - ${moment(nyUtstempling).format('LTS')} 
                 den ${moment(start).format('DD.MM')}
                 `, {
                     autoClose: 10000

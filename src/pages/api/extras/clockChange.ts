@@ -18,7 +18,7 @@ const clockChange: Middleware = async (req: NextApiRequest, res: NextApiResponse
 
         const text = 'UPDATE fleksitidBank SET Checkin = $1, Checkout = $2 WHERE Employee_id = $3 AND Checkin = $4 AND Checkout = $5 ';
         const values = [newClockIn, newClockOut, id, oldClockIn, oldClockOut ];
-        
+
         await pool.query(text, values);
         res.status(200).json({success: true});
     } catch (error) {
