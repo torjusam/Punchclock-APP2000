@@ -55,11 +55,13 @@ const ExtraPickers: FC<pickersProps> = ({
         <div style={{display: 'flex', flexDirection: 'row'}}>
             <div className={styles.contentContainer} style={{marginRight: '0.4rem'}}>
                 <h2>Ny Innstempling</h2>
-                <input className={styles.datePickerField}/>
+                <input className={styles.datePickerField}
+                        name = "nyStDato"/>
             </div>
             <div className={styles.contentContainer} style={{marginLeft: '0.4rem'}}>
                 <h2>Ny Utstempling</h2>
-                <input className={styles.datePickerField}/>
+                <input className={styles.datePickerField}
+                        name = "nySlDato"/>
             </div>
         </div>
     </div>
