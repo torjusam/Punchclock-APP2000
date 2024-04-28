@@ -19,7 +19,7 @@ import Employee from "../../../../utils/employee";
  */
 export const clockChange = async (employee: Employee, oldClockIn: Date, oldClockOut: Date, newClockIn: Date, newClockOut: Date) => {
     try {
-        const response = await fetch('/api/clockOperation/clockIn', {
+        const response = await fetch('/api/extras/clockChange', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
