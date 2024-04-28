@@ -12,7 +12,7 @@ import {middleware_1, middleware_2} from "../../../middleware/middlewares";
 
 const clockChange: Middleware = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
-        const {employee, oldClockIn, oldClockOut, newClockIn, newClockOut} = req.body;
+        const {newClockIn, newClockOut, employee, oldClockIn, oldClockOut,} = req.body;
         const {id} = employee;
 
         const text = 'UPDATE fleksitidBank SET Clockin = $1, Clockout = $2 WHERE Employee_id = $3 AND oldClockIn = $4 AND oldClockout = $5 ';
