@@ -30,7 +30,7 @@ const ExtraPageData: FC<ExtraPageDataProps> = ({employee}) => {
                 </div>
                 <div className={styles.extraContainer}>
                     <div>
-                        <ExtraEditShift/>
+                        <ExtraEditShift employee={employee}/>
                     </div>
                 </div>
             </div>

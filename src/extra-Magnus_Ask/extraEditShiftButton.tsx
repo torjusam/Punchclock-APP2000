@@ -9,31 +9,31 @@ import React, {FC} from 'react';
 import moment from "moment/moment";
 import Employee from "../utils/employee";
 import {toast} from "react-toastify";
-import styles from "./createShift.module.css";
+import styles from "../features/CRUD-page-features/components/createShift/createShift.module.css";
 import {clockChange} from '../features/clock-operation/services/extras/clockChange';
 
-interface CreateShiftButtonProps {
+interface EditShiftButtonProps {
     employee?: Employee;
     start: Date;
     end: Date;
-    nyStDato: string;
-    nySlDato: string;
+    startDato: string;
+    sluttDato: string;
     setErrorMsg: (errorMsg: string) => void;
 }
 
-const EditShiftButton: FC<CreateShiftButtonProps> = ({
+const EditShiftButton: FC<EditShiftButtonProps> = ({
                                                            employee,
                                                            start,
                                                            end,
                                                            setErrorMsg,
-                                                           nyStDato,
-                                                           nySlDato
+                                                           startDato,
+                                                           sluttDato
                                                        }) => {
 
     const extraOnClick = async () => {
         try {
-            const nyStempling = new Date(nyStDato);
-            const nyUtstempling = new Date(nySlDato)
+            const nyStempling = new Date(startDato);
+            const nyUtstempling = new Date(sluttDato);
             await clockChange(employee, start, end, nyStempling, nyUtstempling);
 
             toast.success(`
