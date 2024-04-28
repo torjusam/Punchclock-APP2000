@@ -1,47 +1,84 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Stemplingsskjerm
+
+**Stemplingsskjerm** is a full-stack web application designed as a touchscreen punchlock system for workplace environments. Created as a part of the university course APP2000, this project showcases a practical solution to track employee attendance, and calculate work hours efficiently. As my first web project, it represents a personal achievement and a steep learning curve in web dev.
+
+Explore the application here: https://app-2000-gruppe20.vercel.app
+
+### Login
+To access the app and the API, use the following placeholder credentials:
+- **Username**: adminGruppe20@gmail.com
+- **Password**: Passord123
+
+## Key Features:
+
+- **Time Tracking**: Uses the Moment.js library, to handle time calculations and formatting. This feature enables the accurate tracking of total work hours, overtime, work-time balance, and various time intervals.
+- **Authentication**: Uses NextAuth for simple user authentication. The project had a requirement that a service-user must log in to activate the app and API. This ensures that access to the system is gated, requiring admin authentication before the application becomes operational.
+- **Custom API**: The application uses a self-defined API to interact with a PostgreSQL database. This setup ensures all data transactions are managed efficiently and securely, allowing for scalable data management and real-time updates to the frontend.
+- **Deployment**: Hosted on Vercel, the application not only benefits from high availability and reliability but also offered us experience on maintaining and updating a production environment.
+
+### Extra Features:
+- The app currently includes a few extra pages accessible by pressing the icon on the bottom left corner (required for the delivery of the project).
+
+## Installation
+
+The app currently has a few extra pages that can be accessed by pressing the icon on the bottom left.
+
+# Installation
 
 ## Getting Started
 
-```bash
-npm install
-npm install npx
-npm i @vercel/postgres
-##latest version of Vercel CLI (idk if needed)
-npm i -g vercel@latest
-```
-First, run the development server:
+To run this project locally, you have to follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Clone the repository
+2. Setup the database
+3. Set the environment variables
+4. Run the development server
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Database Setup
+You will need to setup a database and use the schema.sql file from the SQL dump provided in the repository.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+1. **Install PostgreSQL:** If not already installed, you can find installation instructions [here](https://www.postgresql.org/download/).
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+2. **Create database:** 
+   ```bash
+   createdb mydatabase
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+3. **Import schema:**
+    ```bash
+   psql mydatabase < path/to/schema.sql
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Configure environment variables:
+Create a .env.local file in the root directory of your project.
+Add your database connection details in the file like this:
 
-## Learn More
+    PSQL_URL=
+    PSQL_PRISMA_URL=
+    PSQL_URL_NO_SSL=
+    PSQL_URL_NON_POOLING=
+    PSQL_USER=
+    PSQL_HOST=
+    PSQL_PASSWORD=
+    PSQL_DATABASE=
 
-To learn more about Next.js, take a look at the following resources:
+Then, add a .env file in the root.
+Add these two [NextAuth environment variables](https://next-auth.js.org/configuration/options)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    NEXTAUTH_SECRET=random_secret
+    NEXTAUTH_URL=http://localhost:3000
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Run development server
+    npm run dev
+    # or
+    yarn dev
+    # or
+    pnpm dev
+    # or
+    bun dev
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    # then
+    npm install
+    
+This is my first web app :)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
