@@ -15,21 +15,17 @@ import Employee from "../../../../utils/employee";
  * @throws {TypeError} - Throws a TypeError if the employee is already clocked in.
  * @throws {Error} - Throws an Error if the response from the server is not ok.
  */
-export const clockChange = async (employee: Employee, date, oldClockIn, oldClockOut, newClockIn, newClockOut) => {
-    /*
-    if (employee.isClockedIn)
-        return Promise.reject(new TypeError(employee.name + ' er ikke utstemplet!'));
-    */
+export const clockChange = async (employee: Employee, oldClockIn: Date, oldClockOut: Date, newClockIn: Date, newClockOut: Date) => {
     try {
         const response = await fetch('/api/clockOperation/clockIn', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({employee, date, oldClockIn, oldClockOut, newClockIn, newClockOut}),
+            body: JSON.stringify({newClockIn, newClockOut, employee, oldClockIn, oldClockOut}),
         });
         if (!response.ok) {
-            throw new Error('Feil ved utstempling!');
+            throw new Error('Feil ved shift endring!');
         }
         return true; // Tell the caller that the operation was successful.
     } catch (error) {

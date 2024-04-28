@@ -12,11 +12,11 @@ import {middleware_1, middleware_2} from "../../../middleware/middlewares";
 
 const clockChange: Middleware = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
-        const {employee, date, oldClockIn, oldClockOut, newClockIn, newClockOut} = req.body;
+        const {employee, oldClockIn, oldClockOut, newClockIn, newClockOut} = req.body;
         const {id} = employee;
 
-        const text = 'UPDATE fleksitidBank SET Date = $1, Clockin = $2, Clockout = $3 WHERE Employee_id = $4';
-        const values = [id, oldClockIn, oldClockOut, date,  newClockIn, newClockOut];
+        const text = 'UPDATE fleksitidBank SET Clockin = $1, Clockout = $2 WHERE Employee_id = $3 AND oldClockIn = $4 AND oldClockout = $5 ';
+        const values = [newClockIn, newClockOut, id, oldClockIn, oldClockOut ];
 
         await pool.query(text, values);
         res.status(200).json({success: true});
