@@ -1,7 +1,7 @@
 /**
  * @file error boundary code
  * @module Error
- * @author Ask I.P Aspholm
+ * @author Ask I.P.A
  */
 
 import React, {ErrorInfo, ReactNode} from 'react';

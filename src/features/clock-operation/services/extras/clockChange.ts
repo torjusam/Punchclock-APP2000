@@ -1,5 +1,5 @@
 /**
- * @file Function for performing a clock-in operation.
+ * @file Function for performing a clock-Change operation.
  * @module ClockOperation
  * @Author Thomas H
  * @editor Ask I.P.A
