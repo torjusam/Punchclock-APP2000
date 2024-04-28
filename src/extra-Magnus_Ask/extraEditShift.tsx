@@ -10,28 +10,21 @@ import {addDays} from 'date-fns';
 import {registerLocale} from "react-datepicker";
 import {nb} from 'date-fns/locale/nb';
 import Employee from "../utils/employee";
-import CreateShiftButton from '../features/CRUD-page-features/components/createShift/createShiftBtn';
 import ExtraPickers from './extraDatePickers';
-import DescriptionForm from '../features/CRUD-page-features/components/createShift/descriptionForm';
+import EditShiftButton from './extraEditShiftButton';
 import styles from '../features/CRUD-page-features/components/createShift/createShift.module.css';
 //import EditShiftButton from './extraEditShiftButton';
 // Norwegian bokmål locale for datepicker
 registerLocale('nb', nb)
 
-interface createShiftProps {
+interface changeShiftProps {
     employee?: Employee;
 }
 
-const ExtraEditShift: FC<createShiftProps> = ({employee}) => {
+const ExtraEditShift: FC<changeShiftProps> = ({employee}) => {
     const [start, setStart] = useState(new Date());
     const [end, setEnd] = useState(addDays(new Date(), 1));
-    const [description, setDescription] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
-    const [isDisabled, setIsDisabled] = useState(true);
-
-    useEffect(() => {
-        setIsDisabled(!employee);
-    }, [employee]);
 
     return (
         <div className={styles.container}>
@@ -50,7 +43,12 @@ const ExtraEditShift: FC<createShiftProps> = ({employee}) => {
                 setStart={setStart}
                 setEnd={setEnd}
             />
-            {/*<EditShiftButton/>*/}
+            <EditShiftButton
+                start={start}
+                end={end}
+                nySlDato='nySlDato'
+                nyStDato='nyStDato'
+                setErrorMsg={setErrorMsg}/>
         </div>
     );
 };
