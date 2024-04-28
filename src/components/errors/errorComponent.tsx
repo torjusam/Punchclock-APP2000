@@ -1,7 +1,7 @@
 /**
  * @file Error component for error handling
  * @module Error
- * @author Ask I.P Aspholm, Torjus A.M
+ * @author Ask I.P.A, Torjus A.M
  */
 import React, {FC} from 'react';
 import {useRouter} from "next/router";

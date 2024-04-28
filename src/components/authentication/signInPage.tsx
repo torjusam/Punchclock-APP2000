@@ -2,7 +2,7 @@
  * @file This is the signin page for the application. Redirects to this page if the user is not authenticated.
  * @module Authentication
  * @description Formik library is used for form handling to simplify form management and validation.
- * @author Torjus A.M, Ask I.P Aspholm
+ * @author Torjus A.M, Ask I.P.A
  */
 import React, {FC, useState} from 'react'
 import {signIn} from 'next-auth/react'
@@ -42,7 +42,7 @@ const SignInForm: FC = () => {
         validate: login_validate
     });
 
-    // Author: Ask I.P Aspholm
+    // Author: Ask I.P.A
     return (
         <div className={styles.outerContainer}>
             <div className={styles.formContainer}>
