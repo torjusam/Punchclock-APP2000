@@ -6,7 +6,6 @@
  */
 import moment, {duration} from 'moment';
 import Employee from "../../../utils/employee";
-import {durationToPostgresInterval} from "../../../utils/durationToPGInterval";
 
 /**
  * Calculates the working time since the last check-in and determines any overtime.
@@ -62,14 +61,6 @@ export default function calculateTime(employee: Employee, currentTime: Date) {
         overtimeInterval = duration(thisWorkingTime - plannedDailyWork);
     }
 
-    // Return an object with both thisWorkingTime and overtimeInterval
-    // Convert thisWorkingTime and overtimeInterval to PostgreSQL intervals
-    const thisWorkingTimeInterval = durationToPostgresInterval(duration(thisWorkingTime));
-    const overtimePostgresInterval = durationToPostgresInterval(overtimeInterval);
-
     // Return an object with both thisWorkingTime and overtimeInterval as PostgreSQL intervals
-    return {
-        thisWorkingTime: thisWorkingTimeInterval,
-        overtimeInterval: overtimePostgresInterval
-    };
+    return {thisWorkingTime, overtimeInterval};
 }

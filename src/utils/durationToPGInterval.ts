@@ -6,24 +6,29 @@
 import {duration, Duration} from "moment";
 import {Interval} from "./types";
 
-export function durationToPostgresInterval(duration: Duration): string {
-    const hours = duration.hours();
-    const minutes = duration.minutes();
-    const seconds = duration.seconds();
-    const milliseconds = duration.milliseconds();
+/**
+ * Converts a Moment.js duration object to a PostgreSQL interval string.
+ * @param d - Moment Duration object
+ * @returns String compatible with PG interval type
+ */
+export function durationToPostgresInterval(d: Duration): string {
+    const totalHours = Math.floor(d.asHours());
 
-    return `${hours} hours ${minutes} minutes ${seconds} seconds ${milliseconds} milliseconds`;
+    return `${totalHours} hours ${d.minutes()} minutes ${d.seconds()} seconds ${d.milliseconds()} milliseconds`;
 }
 
-// Takes in an interval and returns it as a moment duration object.
-export function intervalToDuration(interval: Interval): Duration {
-    if (!interval)
-        return duration();
+/**
+ * Converts a PostgreSQL interval to a Moment.js duration object.
+ * @param i - Interval object
+ * @returns A Duration object
+ */
+export function intervalToDuration(i: Interval): Duration {
+    if (!i) return duration();
 
     return duration({
-        hours: interval.hours || 0,
-        minutes: interval.minutes || 0,
-        seconds: interval.seconds || 0,
-        milliseconds: interval.milliseconds || 0
+        hours: i.hours || 0,
+        minutes: i.minutes || 0,
+        seconds: i.seconds || 0,
+        milliseconds: i.milliseconds || 0
     });
 }
