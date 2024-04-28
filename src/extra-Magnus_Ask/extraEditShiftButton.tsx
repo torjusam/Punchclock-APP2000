@@ -34,10 +34,7 @@ const EditShiftButton: FC<EditShiftButtonProps> = ({
         try {
             const nyStempling = new Date(startDato);
             const nyUtstempling = new Date(sluttDato);
-            console.log(nyStempling)
-            console.log(nyUtstempling)
-            console.log(start + "manuelt")
-            console.log(end + "manuelt")
+
             await clockChange(employee, start, end, nyStempling, nyUtstempling);
 
             toast.success(`
