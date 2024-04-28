@@ -3,7 +3,7 @@
  * @description original component: .src/features/clockHistory/components/clockHistoryTable/clockHistoryRow.tsx
  * @module Extra
  * @author Torjus A.M, Thomas H
- * @Editors Magnus A, Ask I.P.A
+ * @Editor Magnus A, Ask I.P.A
  */
 import React from 'react';
 import {ClockHistoryData} from '../utils/types'
