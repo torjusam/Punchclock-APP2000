@@ -14,6 +14,7 @@ import CreateShiftButton from '../features/CRUD-page-features/components/createS
 import ExtraPickers from './extraDatePickers';
 import DescriptionForm from '../features/CRUD-page-features/components/createShift/descriptionForm';
 import styles from '../features/CRUD-page-features/components/createShift/createShift.module.css';
+//import EditShiftButton from './extraEditShiftButton';
 // Norwegian bokmål locale for datepicker
 registerLocale('nb', nb)
 
@@ -49,15 +50,7 @@ const ExtraEditShift: FC<createShiftProps> = ({employee}) => {
                 setStart={setStart}
                 setEnd={setEnd}
             />
-            <CreateShiftButton
-                isDisabled={isDisabled}
-                setIsDisabled={setIsDisabled}
-                employee={employee}
-                start={start}
-                end={end}
-                description={description}
-                setErrorMsg={setErrorMsg}
-            />
+            {/*<EditShiftButton/>*/}
         </div>
     );
 };
