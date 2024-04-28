@@ -1,7 +1,8 @@
 /**
  * @file for setting up an alternative datepickers which can support four individual datepickers
  * @module Extra
- * @author Magnus A, Ask I.P.A, Torjus A.M
+ * @author Magnus A, Torjus A.M
+ * @editor Ask I.P.A
  */
 
 import styles from "../features/CRUD-page-features/components/createShift/createShift.module.css";
