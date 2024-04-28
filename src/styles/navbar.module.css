@@ -3,8 +3,8 @@
 /* Parent of all navbars */
 .navBarContainer {
     display: flex;
-    justify-content: flex-start;
     align-items: center;
+    justify-content: space-between;
     flex-direction: row;
     background-color: #FFFFFF;
     border-radius: 0.8em;
@@ -21,7 +21,6 @@
 .iconContainer {
     display: flex;
     margin: 0 2em;
-    justify-content: space-between;
     align-items: center;
 }
 

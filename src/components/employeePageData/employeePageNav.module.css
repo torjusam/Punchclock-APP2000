@@ -32,6 +32,30 @@
     aspect-ratio: 1/1;
 }
 
+/* Text loading styles
+   ========================================================================== */
+.line {
+    margin-top: 1.3em;
+    height: 2.4rem;
+    width: 12em;
+    border-radius: 5em;
+    background: var(--loading-bg);
+    background-size: var(--loading-bg-size);
+    animation: var(--loading-effect);
+}
+
+@keyframes wave-lines {
+    0% {
+        background-position: -468px 0;
+    }
+
+    100% {
+        background-position: 468px 0;
+    }
+}
+
+/* Media queries
+   ========================================================================== */
 @media (max-height: 900px), (max-width: 1280px) {
     .avatar {
         width: 3.9rem;

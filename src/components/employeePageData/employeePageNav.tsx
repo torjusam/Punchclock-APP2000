@@ -14,7 +14,6 @@ import layout from '../../styles/navbar.module.css'
 import styles from './employeePageNav.module.css'
 
 const EmployeePageNav: FC = () => {
-    // Get the selected employee as 'emp'
     const {selectedEmployee: emp} = useSelectedEmployeeContext();
 
     return (
@@ -37,9 +36,8 @@ const EmployeePageNav: FC = () => {
                     // Show default icon if they don't have one, or an empty white circle while loading.
                     emp ? <Avatarico className={styles.avatar}/> : <div className={styles.avatar}/>
                 )}
-                {/* Employee name, or nothing while loading */}
-                {emp &&
-                    <h2 className={styles.employeeName}>{emp.name} </h2>}
+                {/* Employee name, or loading */}
+                {emp ? <h2 className={styles.employeeName}>{emp.name}</h2> : <div className={styles.line}></div>}
             </div>
         </nav>
     );

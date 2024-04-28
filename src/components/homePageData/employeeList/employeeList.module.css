@@ -19,8 +19,7 @@
     justify-content: space-evenly;
 }
 
-/* Author: Torjus A.M
-    Ruleset for adjusting the employee-cards based on width of the screen
+/* Media queries for adjusting the cards per row, based on screen size
    ========================================================================== */
 
 /* M resolution, default. Display 2 cards pr row */
