@@ -11,7 +11,7 @@ import {registerLocale} from "react-datepicker";
 import {nb} from 'date-fns/locale/nb';
 import Employee from "../utils/employee";
 import CreateShiftButton from '../features/CRUD-page-features/components/createShift/createShiftBtn';
-import DatePickers from '../features/CRUD-page-features/components/createShift/datePickers';
+import ExtraPickers from './extraDatePickers';
 import DescriptionForm from '../features/CRUD-page-features/components/createShift/descriptionForm';
 import styles from '../features/CRUD-page-features/components/createShift/createShift.module.css';
 // Norwegian bokmål locale for datepicker
@@ -43,25 +43,11 @@ const ExtraEditShift: FC<createShiftProps> = ({employee}) => {
                         <span className={styles.strongText}>Feil - </span>{errorMsg}
                     </h2>
                 </div>}
-             <div> <DatePickers
-                isDisabled={isDisabled}
+            <ExtraPickers
                 start={start}
                 end={end}
                 setStart={setStart}
                 setEnd={setEnd}
-            /> </div>
-             <div> <DatePickers
-                isDisabled={isDisabled}
-                start={start}
-                end={end}
-                setStart={setStart}
-                setEnd={setEnd}
-            /> </div>
-            <DescriptionForm
-                isDisabled={isDisabled}
-                setErrorMsg={setErrorMsg}
-                description={description}
-                setDescription={setDescription}
             />
             <CreateShiftButton
                 isDisabled={isDisabled}

@@ -11,6 +11,7 @@ import CrudPageNav from "../components/CRUD-page/crudNav";
 import styles from "./extra.module.css";
 import ExtraTable from "./extraTable";
 import CreateShift from "../features/CRUD-page-features/components/createShift";
+import ExtraEditShift from "./extraEditShift";
 
 interface ExtraPageDataProps {
     employee: Employee;
@@ -29,7 +30,7 @@ const ExtraPageData: FC<ExtraPageDataProps> = ({employee}) => {
                 </div>
                 <div className={styles.extraContainer}>
                     <div>
-                        <CreateShift/>
+                        <ExtraEditShift/>
                     </div>
                 </div>
             </div>
