@@ -24,6 +24,8 @@ interface changeShiftProps {
 const ExtraEditShift: FC<changeShiftProps> = ({employee}) => {
     const [start, setStart] = useState(new Date());
     const [end, setEnd] = useState(addDays(new Date(), 1));
+    const [startDato, setStartDato] = useState('');
+    const [sluttDato, setSluttDato] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
 
     return (
@@ -42,12 +44,17 @@ const ExtraEditShift: FC<changeShiftProps> = ({employee}) => {
                 end={end}
                 setStart={setStart}
                 setEnd={setEnd}
+                startDato={startDato}
+                sluttDato={sluttDato}
+                setStartDato={setStartDato}
+                setSluttDato={setSluttDato}
             />
             <EditShiftButton
+                employee={employee}
                 start={start}
                 end={end}
-                nySlDato='nySlDato'
-                nyStDato='nyStDato'
+                startDato={startDato}
+                sluttDato={sluttDato}
                 setErrorMsg={setErrorMsg}/>
         </div>
     );

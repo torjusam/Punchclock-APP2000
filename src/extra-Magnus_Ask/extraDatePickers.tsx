@@ -7,7 +7,7 @@
 
 import styles from "../features/CRUD-page-features/components/createShift/createShift.module.css";
 import DatePicker from "react-datepicker";
-import React, {FC} from "react";
+import React,{Dispatch, FC, SetStateAction} from "react";
 import Employee from "../utils/employee";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -15,15 +15,23 @@ interface pickersProps {
     employee?: Employee;
     start: Date;
     end: Date;
+    startDato: string;
+    sluttDato: string;
     setStart: (date: Date) => void;
     setEnd: (date: Date) => void;
+    setStartDato: Dispatch<SetStateAction<string>>;
+    setSluttDato: Dispatch<SetStateAction<string>>;
 }
 
 const ExtraPickers: FC<pickersProps> = ({
                                                start,
                                                end,
+                                               startDato,
+                                               sluttDato,
                                                setStart,
                                                setEnd,
+                                               setStartDato,
+                                               setSluttDato,
                                            }) => {
     return (
     <div style={{display: 'flex', flexDirection: 'column'}}>
@@ -56,12 +64,16 @@ const ExtraPickers: FC<pickersProps> = ({
             <div className={styles.contentContainer} style={{marginRight: '0.4rem'}}>
                 <h2>Ny Innstempling</h2>
                 <input className={styles.datePickerField}
-                        name = "nyStDato"/>
+                        name = "startDato"
+                        value = {startDato}
+                        onChange={(event) => setStartDato(event.target.value)}/>
             </div>
             <div className={styles.contentContainer} style={{marginLeft: '0.4rem'}}>
                 <h2>Ny Utstempling</h2>
                 <input className={styles.datePickerField}
-                        name = "nySlDato"/>
+                        name = "sluttDato"
+                        value = {sluttDato}
+                        onChange={(event) => setSluttDato(event.target.value)}/>
             </div>
         </div>
     </div>
