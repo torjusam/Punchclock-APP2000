@@ -1,5 +1,5 @@
 /**
- * @file for setting up an alternative datepickers which can support four individual datepickers
+ * @file for setting up an alternative datepickers which can support both datepickers and two inputs
  * @module Extra
  * @author Magnus A, Torjus A.M
  * @editor Ask I.P.A
@@ -44,6 +44,7 @@ const ExtraPickers: FC<pickersProps> = ({
                     selected={start}
                     onChange={date => setStart(date)}
                     showTimeSelect
+                    timeIntervals={1}
                     shouldCloseOnSelect={true}
                     dateFormat="yyyy-MM-d, HH:mm"/>
             </div>
@@ -56,6 +57,7 @@ const ExtraPickers: FC<pickersProps> = ({
                     onChange={date => setEnd(date)}
                     shouldCloseOnSelect={true}
                     showTimeSelect
+                    timeIntervals={1}
                     dateFormat="yyyy-MM-d, HH:mm"/>
             </div>
         </div>
