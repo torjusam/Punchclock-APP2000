@@ -10,7 +10,6 @@ import Employee from "../utils/employee";
 import CrudPageNav from "../components/CRUD-page/crudNav";
 import styles from "./extra.module.css";
 import ExtraTable from "./extraTable";
-import CreateShift from "../features/CRUD-page-features/components/createShift";
 import ExtraEditShift from "./extraEditShift";
 
 interface ExtraPageDataProps {
