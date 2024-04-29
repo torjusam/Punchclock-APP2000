@@ -5,7 +5,14 @@
  * @author Torjus A.M
  * @Editors Magnus A, Ask I.P.A
  */
-import React, {FC, useEffect, useState} from 'react';
+
+/**
+ * Note: This file and extraEditShift button work like they are supposed to. They correctly change an employees clocked times.
+ * However, we have a small problem with displaying the changes in extraTable. We suspect this is linked to the checkin and checkout values used in the table. 
+ * Had we more time, this would have been fixed.
+ */
+
+import React, {FC, useState} from 'react';
 import {addDays} from 'date-fns';
 import {registerLocale} from "react-datepicker";
 import {nb} from 'date-fns/locale/nb';
@@ -13,7 +20,6 @@ import Employee from "../utils/employee";
 import ExtraPickers from './extraDatePickers';
 import EditShiftButton from './extraEditShiftButton';
 import styles from '../features/CRUD-page-features/components/createShift/createShift.module.css';
-//import EditShiftButton from './extraEditShiftButton';
 // Norwegian bokmål locale for datepicker
 registerLocale('nb', nb)
 
