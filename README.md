@@ -1,45 +1,31 @@
 # Stemplingsskjerm
 
-**Stemplingsskjerm** is a full-stack webapp that functions as a touchscreen punchlock for a workplace. Created as a part of the uni course, this project is a solution to track employee attendance and calculate work hours. This is my first web app.
+**Stemplingsskjerm** is a full-stack webapp that functions as a touchscreen punchlock for a workplace. Created as a part of the uni course, this project is a solution to track employee attendance and calculate work hours. 
 
-Explore the app here: https://app-2000-gruppe20.vercel.app
+Hosted on vercel: https://app-2000-gruppe20.vercel.app
+
 
 ### Login
-To access the app and the API, use these placeholder credentials:
+
+
+To access, login with these placeholder credentials:
 - **Username**: adminGruppe20@gmail.com
 - **Password**: Passord123
 
 ## Key Features
 
-- **Time Tracking**: Uses the Moment library for time calculations and formatting. Accurate tracking of total work hours, overtime, work-time balance, and other intervals.
-- **Authentication**: Uses NextAuth for a user authentication. A requirement was that a service-user must log in to activate the app and API.
-- **Custom API**: The app uses a self-defined API, using next api-routes to interact with a PostgreSQL database.
+
+- **Authentication**: Uses NextAuth for authentication. A requirement was that a service-user must log in to activate the app and API.
+- **Time Tracking**: Uses the [Moment](https://momentjs.com/) library for time and interval calculations, and formatting.
+- **API**: API is made with [next api-routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) to interact with a PostgreSQL database.
 
 #### Extra pages
-The app currently has a few extra pages accessible by pressing the icon on the bottom left corner (required for the delivery of the project).
+The app has a few extra pages, accessible by pressing the icon on the bottom left corner, which has features required for the delivery of the project.
 
 # Installation
-
-## Getting Started
-
-To run the project locally, this is how we've done it:
-1. Clone the repo
-2. Setup the database
-3. Set the environment variables
-4. Run the development server
-
-## Database Setup
-You will need to setup a database and use the schema.sql file from the SQL dump provided in the repository.
-
-1. **Install PostgreSQL:** Installation instructions [here](https://www.postgresql.org/download/).
-
-2. **Create database:** 
-   ```bash
-   createdb mydatabase
-
-3. **Import schema:**
-    ```bash
-   psql mydatabase < path/to/schema.sql
+This is a [Next.js](https://nextjs.org/) project using next pages routing, bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Database
+You will need to setup a database using the schema.sql file, either locally or on a cloud service, like [vercel postgres.](https://vercel.com/storage/postgres) 
 
 ## Environment variables
 Create a .env.local file in the root directory. Add the DB connection details in the file like this:
@@ -60,7 +46,9 @@ Add these two [NextAuth environment variables](https://next-auth.js.org/configur
     NEXTAUTH_URL=http://localhost:3000
 
 
-## Development server
+## Run dev server
+
+
     npm run dev
     # or
     yarn dev
@@ -72,4 +60,3 @@ Add these two [NextAuth environment variables](https://next-auth.js.org/configur
     # then
     npm install
     
-This is a [Next.js](https://nextjs.org/) project using next pages routing, bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
