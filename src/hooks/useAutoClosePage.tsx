@@ -1,7 +1,4 @@
-/**
- * @file Hook for automatically redirecting to the homepage after a certain amount of time, and warning the user before closing.
- * @author Torjus A.M, Thomas H
- */
+// Hook for automatically redirecting to the homepage after a certain amount of time, and warning the user before closing.
 import {useEffect} from 'react';
 import {toast} from 'react-toastify';
 import {useRouter} from 'next/router';

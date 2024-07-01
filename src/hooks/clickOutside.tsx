@@ -1,6 +1,7 @@
 /**
- * @file Custom hook for handling clicks outside of a component. Registers click outside of a component using useRef and useEffect hook.
- * @description Taken from: https://dev.to/rashed_iqbal/how-to-handle-outside-clicks-in-react-with-typescript-4lmc
+ * Hook for handling clicks outside of a component.
+ *
+ * Taken from: https://dev.to/rashed_iqbal/how-to-handle-outside-clicks-in-react-with-typescript-4lmc
  * Modified to use touchstart aswell as mouseevents, to make it work on touchscreens.
  */
 import {useEffect, useRef} from 'react';

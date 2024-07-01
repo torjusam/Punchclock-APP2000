@@ -1,9 +1,4 @@
-/**
- * @file This is the signin page for the application. Redirects to this page if the user is not authenticated.
- * @module Authentication
- * @description Formik library is used for form handling to simplify form management and validation.
- * @author Torjus A.M, Ask I.P.A
- */
+// Kinda scuffed login handling, but it works.
 import React, {FC, useState} from 'react'
 import {signIn} from 'next-auth/react'
 import {useFormik} from 'formik';
@@ -15,24 +10,16 @@ const SignInForm: FC = () => {
     // Status text for displaying error messages
     const [statusText, setStatusText] = useState('')
 
-    // Define formik hook
+    // Formik hook for handling login info on submit
     const formik = useFormik({
         initialValues: {email: "", password: ""},
-        /**
-         * Function to handle form submission.
-         * @description Authenticates users using custom implementation of NextAuth's signIn function for credentials-provider.
-         * Details, refer to: .pages/api/auth/[...nextauth].ts
-         *
-         * @param {object} values Form values containing email and password.
-         * @author Torjus A.M
-         */
+        // Handles login info
         onSubmit: async (values) => {
             try {
-                // Next-auth signIn function
                 const result = await signIn(
                     "credentials", {...values, redirect: false}
                 );
-                // If sign in is successful, redirect to the home page, otherwise display an error message
+                // Redirect to home page, or display error message
                 result.ok ? window.location.replace('/') : setStatusText(result.error);
             } catch (error) {
                 setStatusText(error.message);
@@ -42,7 +29,6 @@ const SignInForm: FC = () => {
         validate: login_validate
     });
 
-    // Author: Ask I.P.A
     return (
         <div className={styles.outerContainer}>
             <div className={styles.formContainer}>

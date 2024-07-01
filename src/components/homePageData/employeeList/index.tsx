@@ -1,10 +1,4 @@
-/**
- * @file This component is responsible for rendering a list of employee-cards in a table-like list.
- * @module EmployeeList
- * @memberof Homepage
- * @description Uses the employee-context to access the array of employees, map over it, rendering each employee as an employee card.
- * @author Thomas H, Torjus A.M
- */
+// List of employee cards
 import React, {FC} from 'react';
 import EmployeeCard from './employeeCard/';
 import {useEmployeeContext} from '../../../features/context/employeeContext';

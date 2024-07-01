@@ -1,8 +1,3 @@
-/**
- * @file Custom error file for the app.
- * @module Errors
- * @author Torjus A.M
- */
 export class RateLimitError extends Error {
     statusCode: number;
 

@@ -1,11 +1,4 @@
-/**
- * Author: Torjus A.M
- * Inspiration: https://codepen.io/liamj/pen/vYYLGZj
- *
- * The styles for the searchbar. The searchbar alters after beginning to type.
- *
- */
-
+/* Inspiration: https://codepen.io/liamj/pen/vYYLGZj */
 .form {
     display: flex;
     width: 50%;

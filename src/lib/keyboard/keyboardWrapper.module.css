@@ -1,7 +1,3 @@
-/*
-    Author: Torjus A.M
-    Makes the keyboard take up half the screen without disturbing the flex layout of the rest of the app.
-*/
 .keyboardContainer {
     /* Position at the middle of the screen vertically */
     position: fixed;

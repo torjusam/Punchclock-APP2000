@@ -1,10 +1,3 @@
-/*
- * Author: Thomas H, Torjus A.M
- *
- * Styles for the list of employees on the homepage
- *
- */
-
 .employeeList {
     background-color: #FFF;
     box-shadow: var(--moduleBorder);

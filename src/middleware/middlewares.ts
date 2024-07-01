@@ -1,7 +1,3 @@
-/**
- * @file Collection of middleware functions for the API routes.
- * @author Torjus A.M
- */
 import {Middleware, NextFunction} from "./handler";
 import {NextApiRequest, NextApiResponse} from "next";
 import {isAuthenticated, rateLimiter} from "../pages/api/serverUtilts/handleAPICall";

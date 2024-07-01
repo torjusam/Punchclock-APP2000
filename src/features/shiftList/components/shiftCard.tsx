@@ -1,16 +1,9 @@
-/**
- * @file Blueprint for a specific shift row.
- * @module ShiftList
- * @memberof EmployeePage
- * @author Torjus A.M, Thomas H
- */
 import React, {FC} from 'react';
 import {Shift} from "../../../utils/types";
 import styles from './shiftList.module.css';
 import moment from "moment/moment";
 import Expand from "../../../assets/expand.svg";
 
-// Takes a type shift as parameter
 interface ShiftCardProps {
     shift: Shift;
 }

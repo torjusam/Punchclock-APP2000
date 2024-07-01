@@ -1,9 +1,4 @@
-/**
- * @file components for employee select error screen
- * shows an image and has a button to take you back to homepage
- * @module Error
- * @author Ask I.P.A
- */
+// Author: Ask I.P.A
 import React from 'react';
 import Styles from './error.module.css';
 import {useRouter} from 'next/router';

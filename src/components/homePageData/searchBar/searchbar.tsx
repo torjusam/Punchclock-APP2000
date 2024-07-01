@@ -1,9 +1,5 @@
-/**
- * @file Searchbar component for the frontpage. Contains a search input and a button to show the keyboard.
- * @module Homepage
- * @author Torjus A.M
- */
-import React, {ChangeEvent, FormEvent, useEffect, FC} from 'react';
+// Searchbar component that contains a search input, and a button to show the keyboard.
+import React, {ChangeEvent, FC, FormEvent, useEffect} from 'react';
 import Search from '../../../assets/search.svg';
 import {useEmployeeContext} from '../../../features/context/employeeContext';
 import Employee from '../../../utils/employee';

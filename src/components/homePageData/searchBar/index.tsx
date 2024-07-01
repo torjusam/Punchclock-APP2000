@@ -1,10 +1,4 @@
-/**
- * @file Main file for the searchbar. Contains the searchbar and the keyboardWrapper component.
- * @module Homepage
- * @description Shares state with the custom keyboardWrapper component.
- * @author Torjus A.M
- */
-import React, {useState, useRef, FC, ChangeEvent} from 'react';
+import React, {ChangeEvent, FC, useRef, useState} from 'react';
 import SearchBarForm from './searchbar';
 import KeyboardWrapper from '../../../lib/keyboard';
 

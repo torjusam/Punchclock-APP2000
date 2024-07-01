@@ -1,9 +1,4 @@
-/**
- * @file Root component for the shiftList. Contains the module header and the RenderShiftList component.
- * @module ShiftList
- * @memberof EmployeePage
- * @author Torjus A.M, Thomas H
- */
+// List of shifts for an employee
 import React, {FC} from "react";
 import RenderShiftList from "./components/shiftList";
 import ShiftsIcon from "../../assets/shifts.svg";

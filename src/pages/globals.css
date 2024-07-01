@@ -1,8 +1,3 @@
-/*
-    Author: Torjus A.M
-    Only css file that is not a module. Global css file for the entire project.
-    Must be defined in the pages folder.
-*/
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -1,8 +1,3 @@
-/**
- * @file Used to display the keyboard on the frontpage when the searchbar is highlighted.'
- * @description Uses library: react-simple-keyboard.
- * @author Torjus A.M
- */
 import React, {FC, MutableRefObject, useEffect, useState} from "react";
 import Keyboard, {KeyboardLayoutObject} from "react-simple-keyboard";
 import {useOutsideClick} from "../../hooks/clickOutside";

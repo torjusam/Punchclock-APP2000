@@ -1,8 +1,3 @@
-/**
- * @file Validate function for the signin-form.
- * @module Authentication
- * @author Torjus A.M, Thomas H
- */
 import {FormikErrors} from 'formik';
 
 export interface FormValues {
@@ -10,13 +5,6 @@ export interface FormValues {
     password: string;
 }
 
-/**
- * @function login_validate
- * @description Validates the signin-form. It checks if the email and password fields are not empty and if they meet the required conditions.
- * If a field does not meet the conditions, an error message is assigned to that field in the errors object.
- * @param {FormValues} values - The values of the form fields.
- * @returns {FormikErrors<FormValues>} An object containing error messages for the form fields that do not meet the required conditions.
- */
 export default function login_validate(values: FormValues) {
     let errors: FormikErrors<FormValues> = {};
 

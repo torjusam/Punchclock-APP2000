@@ -1,10 +1,3 @@
-/**
- * Author: Torjus A.M
- *
- * CSS module for the shared content on the left side of the screen.
- * Changes the size of the clock, date and greeting based on the screen width.
- */
-
 /* Logo top left */
 .logo {
     display: flex;

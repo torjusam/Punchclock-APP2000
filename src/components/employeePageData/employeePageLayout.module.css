@@ -1,11 +1,4 @@
-/**
- * Author: Torjus A.M, Thomas H
- *
- * Styles for the employee-page and its modules. (Nav bar styling is in .src/styles/navbars.module.css).
- * Starts by defining shared styles for all containers, then specific styles for the modules.
- */
-
-/* Container holding navbar and the personalpage-data */
+/* Author: Torjus A.M, Thomas H */
 .personalPageContainer {
     display: flex;
     flex-direction: column;

@@ -1,7 +1,3 @@
-/**
- * @file Button that redirects to the homepage: "<- Tilbake"
- * @author Torjus A.M
- */
 import React, {FC} from 'react';
 import {useRouter} from 'next/router';
 import Expand from '../assets/expand.svg';

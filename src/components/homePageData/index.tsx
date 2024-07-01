@@ -1,8 +1,4 @@
-/**
- * @file Defines layout of the homepage content.
- * @module Homepage
- * @author Torjus A.M, Ask I.P Aspholm
- */
+// Homepage root-layout
 import React, {FC} from 'react';
 import EmployeeList from './employeeList';
 import HomePageNav from './homePageNav';

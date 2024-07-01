@@ -1,9 +1,3 @@
-/**
- * @file This component is used to display the last check time of an employee.
- * @module EmployeeList
- * @memberof Homepage
- * @author Torjus A.M
- */
 import React, {FC, useEffect, useState} from 'react';
 import Employee from '../../../../utils/employee';
 import ArrowIn from '../../../../assets/arrowIn.svg';

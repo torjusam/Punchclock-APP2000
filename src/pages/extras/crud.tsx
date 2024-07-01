@@ -1,8 +1,3 @@
-/**
- * @file CRUD-page
- * @module CrudPage
- * @author Thomas H
- */
 import React, {FC} from "react";
 import CrudPage from "../../components/CRUD-page";
 

@@ -1,13 +1,8 @@
-/**
- * @file Hook for fetching shifts for a given employee.
- * @module ShiftList
- * @memberof EmployeePage
- * @author Torjus A.M
- */
 import {useEffect, useState} from 'react';
 import Employee from "../../../utils/employee";
 import {Shift} from "../../../utils/types";
 
+// Hook fetches shifts for given employee
 const useShifts = (employee: Employee) => {
     const [shifts, setShifts] = useState<Shift[] | null>(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -28,13 +23,7 @@ const useShifts = (employee: Employee) => {
 
 export default useShifts;
 
-/**
- * Function fetches the shift data for a given employee from the server, using the employee's id.
- *
- * @param {Employee} employee - The employee for whom to fetch the shift data.
- * @returns {Promise<Shift[]>} - A promise that resolves to an array of `Shift` objects.
- * @throws {Object} - An object with the status and message of the error.
- */
+// Fetches using the employees ID
 const performFetch = async (employee: Employee) => {
     try {
         const employeeId = employee.id;

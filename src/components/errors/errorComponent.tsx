@@ -1,8 +1,4 @@
-/**
- * @file Error component for error handling
- * @module Error
- * @author Ask I.P.A, Torjus A.M
- */
+// Author: Ask I.P.A
 import React, {FC} from 'react';
 import {useRouter} from "next/router";
 import Styles from "./error.module.css";

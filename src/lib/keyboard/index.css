@@ -1,8 +1,4 @@
-/*
-    CSS to override keyboard libraries original css. Library does not offer support 
-    for css modules, which means i have to override the library css and use it as a global file instead.
-    This means it can only be imported in _app.tsx
-*/
+/* CSS overrides the library css and use it as a global file instead. */
 .simple-keyboard {
     width: 100%;
     height: 100%;

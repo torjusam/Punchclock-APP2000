@@ -1,10 +1,4 @@
-/**
- * @file Displays a loading spinner.
- * @module EmployeeList
- * @memberof Homepage
- * @description Uses the rotating lines loader from react-loader-spinner library.
- * @author Torjus A.M
- */
+// Loading spinner
 import React, {FC} from "react";
 import {RotatingLines} from 'react-loader-spinner';
 import styles from './employeeList.module.css';

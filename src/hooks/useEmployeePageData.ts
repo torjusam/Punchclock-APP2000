@@ -1,23 +1,14 @@
-/**
- * @file Sets the employee and their data before setting the selectedEmployee-context, and going to their page.
- * @module EmployeePage
- * @description In react, the objects passed to children are read-only, and cannot be modified directly, therefore we need to
- * find the employee, calculate and set its dailyworktime & balance, before using this employee in the context.
- * This way the children can use these values directly using employee.balance etc. without having to calculate it themselves.
- * @author Torjus A.M
- */
-import {useState, useEffect} from 'react';
+// Sets the employee and their data before setting the selectedEmployee-context, and going to their page.
+import {useEffect, useState} from 'react';
 import {useRouter} from 'next/router';
-import moment, {duration} from 'moment';
+import {duration} from 'moment';
 import Employee from '../utils/employee';
 import {useEmployeeContext} from '../features/context/employeeContext';
 import {fetchBalance} from "../features/context/services/workIntervalsAPI";
 
-/**
- * Hook for fetching and setting up data for an employee's page based on the employee ID from the URL.
- * Retrieves employee details from the global context, calculates daily work time, fetches current balance,
- * and updates these details before setting them into local state for use in rendering the employee's page.
- * @returns {Employee | undefined} The employee's updated data ready for use, or undefined if the data could not be fetched or the employee was not found.
+/*
+    Fetches and sets data for an employee's page using the employee ID from the URL,
+    updating global context and local state with employee details, daily work time, and current balance.
  */
 export const useEmployeePageData = () => {
     const [employeePageData, setEmployeeData] = useState<Employee | undefined>();

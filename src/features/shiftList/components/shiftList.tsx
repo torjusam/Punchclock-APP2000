@@ -1,9 +1,4 @@
-/**
- * @file Displays the list of shifts. Maps over the emplyoees shifts, then uses the shiftCard component to display each shift.
- * @module ShiftList
- * @memberof EmployeePage
- * @author Torjus A.M, Thomas H
- */
+// Displays the list of shifts. Maps over the emplyoees shifts, then uses the shiftCard component to display each shift.
 import React, {FC} from 'react';
 import {useSelectedEmployeeContext} from "../../context/selectedEmployeeContext";
 import {groupShiftsByMonth, sortMonths} from "../services/sortShifts";
