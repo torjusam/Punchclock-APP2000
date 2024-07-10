@@ -5,7 +5,7 @@ import HelpIco from '../../assets//helpIco.svg'
 import Clock from "./clock"
 import styles from "./layout.module.css"
 import Image from "next/image";
-import vismaLogo from "../../assets/vismalogo.png";
+import logo from "../../assets/placeholderLogo.png";
 import '@fontsource/dm-sans';
 
 const LeftContent: FC = () => {
@@ -25,7 +25,7 @@ const LeftContent: FC = () => {
         <>
             <Image
                 className={styles.logo}
-                src={vismaLogo}
+                src={logo}
                 alt={"logo"}
                 onClick={handleLogoClick}
             />
