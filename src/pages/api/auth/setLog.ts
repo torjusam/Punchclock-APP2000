@@ -1,8 +1,3 @@
-/**
- * @file API endpoint for setting logs in the database.
- * @module Authentication
- * @author Torjus A.M
- */
 import {NextApiRequest, NextApiResponse} from "next";
 import {pool} from "../../../lib/dbIndex";
 

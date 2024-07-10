@@ -1,8 +1,3 @@
-/**
- * @file Api route for clocking out an employee.
- * @module ClockOperation
- * @author Torjus A.M
- */
 import {NextApiRequest, NextApiResponse} from 'next';
 import {pool} from '../../../lib/dbIndex';
 import {handler, Middleware} from "../../../middleware/handler";
@@ -41,14 +36,12 @@ const clockOut: Middleware = async (req: NextApiRequest, res: NextApiResponse) =
 }
 
 export default handler(
-    allowMethods(['POST']), // Use the method middleware to allow only POST requests
+    allowMethods(['POST']),
     middleware_1,
     middleware_2,
     clockOut,
 );
 
-/* Avoid false-positive warning "API resolved without sending a response":
-Code taken from forum post answer: https://github.com/vercel/next.js/discussions/40270#discussioncomment-3571223 */
 export const config = {
     api: {
         externalResolver: true,

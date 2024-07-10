@@ -1,8 +1,3 @@
-/**
- * @file Api route for clocking in an employee.
- * @module ClockOperation
- * @author Torjus A.M
- */
 import {NextApiRequest, NextApiResponse} from 'next';
 import {pool} from '../../../lib/dbIndex';
 import {handler, Middleware} from "../../../middleware/handler";
@@ -32,8 +27,6 @@ export default handler(
     clockIn,
 );
 
-/* Avoid false-positive warning "API resolved without sending a response":
-Code taken from forum post answer: https://github.com/vercel/next.js/discussions/40270#discussioncomment-3571223 */
 export const config = {
     api: {
         externalResolver: true,

@@ -1,7 +1,3 @@
-/**
- * @file Rate limiter for the API routes. Avoid abuse of the API and DDoS attacks by limiting the amount of requests a that can be made to the server in certain time intervals.
- * @author Torjun A.M
- */
 import {RateLimiter} from "limiter";
 
 // General limiter for most requests. Set to 80 requests per minute, can be altered

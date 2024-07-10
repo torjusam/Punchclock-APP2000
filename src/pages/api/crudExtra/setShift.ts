@@ -1,8 +1,3 @@
-/**
- * @file Api route for inseting a shift.
- * @module CrudPage
- * @author Torjus A.M
- */
 import {NextApiRequest, NextApiResponse} from 'next';
 import {pool} from '../../../lib/dbIndex';
 import {Shift} from "../../../utils/types";
@@ -41,7 +36,7 @@ const setShift: Middleware = async (req: NextApiRequest, res: NextApiResponse) =
     }
 }
 export default handler(
-    allowMethods(['POST']), // Use the method middleware to allow only POST requests
+    allowMethods(['POST']),
     middleware_1,
     middleware_2,
     setShift,

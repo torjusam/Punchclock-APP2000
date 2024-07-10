@@ -1,22 +1,9 @@
-/**
- * @file Api route for deleting an employee and all records associated with the employee.
- * @module CrudPage
- * @author Torjus A.M
- */
 import {NextApiRequest, NextApiResponse} from 'next';
 import {pool} from '../../../lib/dbIndex';
 import {handler, Middleware} from "../../../middleware/handler";
 import {allowMethods} from "../../../middleware/method";
 import {middleware_1, middleware_2} from "../../../middleware/middlewares";
 
-/**
- * Performs a transaction to delete records from the shift, shift_employee, fleksitidbank, and employee tables.
- * @function deleteEmployee
- * @param {NextApiRequest} req - The request object. The employee ID should be provided in the request body.
- * @param {NextApiResponse} res - The response object.
- * @returns {Promise<void>} - This function returns a Promise that resolves to void. It does not return a value.
- * @throws {Error} - Throws an Error if an error occurs during the transaction.
- */
 const deleteEmployee: Middleware = async (req: NextApiRequest, res: NextApiResponse) => {
     const {employeeId} = req.body;
     // Connect to its own client to perform the transaction, instead of the pool
